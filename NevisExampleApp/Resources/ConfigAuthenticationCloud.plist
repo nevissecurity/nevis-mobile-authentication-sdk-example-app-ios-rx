@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>login</key>
+	<dict>
+		<key>loginRequestURL</key>
+		<string>https://myinstance.mauth.nevis.cloud/_app/auth/pwd</string>
+	</dict>
+	<key>sdk</key>
+	<dict>
+		<key>hostName</key>
+		<string>myinstance.mauth.nevis.cloud</string>
+	</dict>
+</dict>
+</plist>

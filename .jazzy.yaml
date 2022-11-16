@@ -1,0 +1,201 @@
+author: Nevis Security AG
+copyright: '© 2022 Nevis Security AG. All rights reserved.'
+module: NevisExampleApp
+
+clean: true
+theme: fullwidth
+output: Docs/generated
+include: 'NevisExampleApp/*'
+exclude: 'Pods/*'
+skip_undocumented: true
+hide_documentation_coverage: true
+xcodebuild_arguments:
+    - '-workspace'
+    - 'NevisExampleApp.xcworkspace'
+    - '-scheme'
+    - 'NevisExampleApp'
+
+custom_categories:
+  - name: Application
+    children:
+      - AppDelegate
+      - AppLoader
+      - DependencyProvider
+      - AppAssembly
+  - name: Presentation / Coordinator
+    children:
+      - AppCoordinator
+      - AppCoordinatorImpl
+  - name: Presentation / Screens
+    children:
+      - Screen
+      - ScreenViewModel
+      - BaseScreen
+      - LaunchScreen
+      - LaunchViewModel
+      - HomeScreen
+      - HomeViewModel
+      - QrScannerScreen
+      - QrScannerViewModel
+      - SelectAccountScreen
+      - SelectAccountViewModel
+      - SelectAccountParameter
+      - SelectAccountItemViewModel
+      - AccountCell
+      - SelectAuthenticatorScreen
+      - SelectAuthenticatorViewModel
+      - SelectAuthenticatorParameter
+      - SelectAuthenticatorItemViewModel
+      - AuthenticatorCell
+      - PinScreen
+      - PinViewModel
+      - PinParameter
+      - PinProtectionInformation
+      - AuthCloudApiRegistrationScreen
+      - AuthCloudApiRegistrationViewModel
+      - ChangeDeviceInformationScreen
+      - ChangeDeviceInformationViewModel
+      - ChangeDeviceInformationParameter
+      - LegacyLoginScreen
+      - LegacyLoginViewModel
+      - NotEnrolledAuthenticatorScreen
+      - NotEnrolledAuthenticatorViewModel
+      - TransactionConfirmationScreen
+      - TransactionConfirmationViewModel
+      - TransactionConfirmationParameter
+      - ResultScreen
+      - ResultViewModel
+      - ResultParameter
+      - LoggingScreen
+      - LoggingViewModel
+  - name: Presentation / Utility
+    children:
+      - Authenticator
+      - PinAuthenticatorProtectionStatus
+      - ResponseObserver
+      - ResponseObserverImpl
+      - AuthCloudApiRegistrationValidator
+      - JWTValidator
+      - ValidationError
+      - ValidationResult
+      - OutlinedButton
+      - Style
+      - NSLabel
+      - NSTextField
+      - L10n
+      - InteractionCountDownTimer
+      - ObservableType
+      - Reactive
+      - SharedSequenceConvertibleType
+      - Result
+      - Optional
+      - UIApplication
+      - UINavigationController
+      - UIStackView
+      - UIView
+  - name: Domain / Nevis
+    children:
+      - PinChangerImpl
+      - PinEnrollerImpl
+      - AccountSelectorImpl
+      - AuthenticationAuthenticatorSelectorName
+      - AuthenticationAuthenticatorSelectorImpl
+      - RegistrationAuthenticatorSelectorName
+      - RegistrationAuthenticatorSelectorImpl
+      - PinUserVerifierImpl
+      - BiometricUserVerifierImpl
+      - AccountValidator
+      - AccountValidatorImpl
+  - name: Domain / Model
+    children:
+      - Operation
+      - OperationError
+      - BusinessError
+      - Credentials
+      - OperationResponse
+      - ChangePinResponse
+      - CompletedResponse
+      - ConfirmTransactionResponse
+      - EnrollPinResponse
+      - SelectAccountResponse
+      - SelectAuthenticatorResponse
+      - VerifyPinResponse      
+  - name: Domain / Repository
+    children:
+      - LoginRepository
+  - name: Domain / Use Case
+    children:
+      - AuthCloudApiRegistrationUseCase
+      - AuthCloudApiRegistrationUseCaseImpl
+      - ChangeDeviceInformationUseCase
+      - ChangeDeviceInformationUseCaseImpl
+      - ChangePinUseCase
+      - ChangePinUseCaseImpl
+      - CreateDeviceInformationUseCase
+      - CreateDeviceInformationUseCaseImpl
+      - DecodePayloadUseCase
+      - DecodePayloadUseCaseImpl
+      - DeregistrationUseCase
+      - DeregistrationUseCaseImpl
+      - GetAccountsUseCase
+      - GetAccountsUseCaseImpl
+      - GetAuthenticatorsUseCase
+      - GetAuthenticatorsUseCaseImpl
+      - GetDeviceInformationUseCase
+      - GetDeviceInformationUseCaseImpl
+      - InBandAuthenticationUseCase
+      - InBandAuthenticationUseCaseImpl
+      - InitClientUseCase
+      - InitClientUseCaseImpl
+      - LoginUseCase
+      - LoginUseCaseImpl
+      - OutOfBandOperationUseCase
+      - OutOfBandOperationUseCaseImpl
+      - RegistrationUseCase
+      - RegistrationUseCaseImpl
+  - name: Domain / Client Provider
+    children:
+      - ClientProvider
+      - ClientProviderImpl
+  - name: Domain / Response Emitter
+    children:
+      - ResponseEmitter
+      - ResponseEmitterImpl
+  - name: Data / Model
+    children:
+      - LoginRequest
+      - LoginResponse
+  - name: Data / Repository
+    children:
+      - LoginRepositoryImpl
+  - name: Data / Data Source
+    children:
+      - LoginDataSource
+      - LoginDataSourceImpl
+      - LoginSessionDelegate
+      - URLRequest
+  - name: Common
+    children:
+      - LoginConfiguration
+      - AppConfiguration
+      - Environment
+      - ConfigurationLoader
+      - ConfigurationLoaderImpl
+      - Coordinator
+      - NavigationParameterizable
+      - DeepLink
+      - DeepLinkHandler
+      - DeepLinkHandlerImpl
+      - AppError
+      - ErrorHandlerChain
+      - ErrorHandlerChainImpl
+      - ErrorHandler
+      - GeneralErrorHandlerName
+      - GeneralErrorHandler
+      - NevisErrorHandlerName
+      - NevisErrorHandler
+      - OSLog
+      - String
+      - UIDevice
+      - SDKLogger
+      - SDKLoggerImpl
