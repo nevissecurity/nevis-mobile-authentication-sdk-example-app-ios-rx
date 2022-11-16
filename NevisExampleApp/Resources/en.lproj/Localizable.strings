@@ -1,0 +1,116 @@
+
+// General
+"screen_loading"="Please wait...";
+
+// Home screen
+"home_title"="Nevis Example App";
+"home_description"="Registered accounts: %@";
+"home_read_qr_code_button"="Read Qr Code";
+"home_authenticate_button"="In-Band Authenticate";
+"home_deregister_button"="Deregister";
+"home_pin_change_button"="PIN change";
+"home_change_device_information_button"="Change Device Information";
+"home_auth_cloud_api_registration_button"="Auth Cloud Api Registration";
+"home_separator"="Identity Suite only";
+"home_in_band_registration_button"="In-Band Register";
+
+// Account Selection screen
+"account_selection_title"="Select an Account";
+
+// Authenticator Selection screen
+"authenticator_selection_title"="Select an Authentication Method";
+
+// Pin screen
+"pin_enrollment_title"="Create PIN";
+"pin_enrollment_description"="Please define a six digit PIN.";
+"pin_verify_title"="Verify PIN";
+"pin_verify_description"="Please enter your PIN to complete the process.";
+"pin_change_title"="Change PIN";
+"pin_change_description"="Please define a six digit PIN.";
+"pin_old_pin_placeholder"="Enter old PIN";
+"pin_pin_placeholder"="Enter PIN";
+"pin_done_button"="Done";
+"pin_confirm_button"="Confirm";
+"pin_cancel_button"="Cancel";
+"pin_protection_status_locked_out" = "Your PIN is blocked.";
+"pin_protection_status_last_retry_with_cool_down" = "You have %@ try left.\nPlease retry in %@ seconds.\nAfter that your PIN will be blocked.";
+"pin_protection_status_last_retry_without_cool_down" = "You have %@ try left.\nAfter that your PIN will be blocked.";
+"pin_protection_status_retries_with_cool_down" = "You have %@ tries left.\nPlease retry in %@ seconds.";
+"pin_protection_status_retries_without_cool_down" = "You have %@ tries left.";
+
+// Transaction Confirmation screen
+"transaction_confirmation_title"="Transaction Confirmation";
+"transaction_confirmation_confirm_button"="Confirm";
+"transaction_confirmation_cancel_button"="Cancel";
+
+// Change Device Information screen
+"change_device_information_title"="Change Device Information";
+"change_device_information_current_name"="Current name: %@";
+"change_device_information_name_placeholder"="New name";
+"change_device_information_confirm_button"="Confirm";
+"change_device_information_cancel_button"="Cancel";
+
+// Auth Cloud Api Registration screen
+"auth_cloud_api_registration_title"="Auth Cloud Registration";
+"auth_cloud_api_registration_enroll_response_placeholder"="Enroll response";
+"auth_cloud_api_registration_app_link_uri_placeholder"="App Link Uri";
+"auth_cloud_api_registration_confirm_button"="Confirm";
+"auth_cloud_api_registration_cancel_button"="Cancel";
+"auth_cloud_api_registration_missing_data"="Either the response or the appLinkUri is required.";
+"auth_cloud_api_registration_wrong_data"="You cannot provide both the response and the appLinkUri.";
+
+// Auth Cloud Api Registration screen
+"legacy_login_title"="In-Band Registration";
+"legacy_login_username_placeholder"="Enter username";
+"legacy_login_password_placeholder"="Enter password";
+"legacy_login_confirm_button"="Confirm";
+"legacy_login_cancel_button"="Cancel";
+
+// Result screen
+"result_continue_button"="Continue";
+
+// Authenticator Not Enrolled screen
+"authenticator_not_enrolled_action_button" = "Go to Settings";
+"authenticator_not_enrolled_description" = "Your selected authentication method is not yet set up. Please configure it in the System Settings.";
+"authenticator_not_enrolled_title" = "Authentication Method Not Configured";
+
+// Logging screen
+"logging_title"="Pull to see log";
+
+// Operation
+"operation_success_title"="%@ successful!";
+"operation_failed_title"="%@ failed!";
+"operation_init_client_title"="Client initialization";
+"operation_payload_decode_title"="Payload decode";
+"operation_out_of_band_title"="Out-of-Band operation";
+"operation_registration_title"="Registration";
+"operation_authentication_title"="Authentication";
+"operation_deregistration_title"="Deregistration";
+"operation_pin_change_title"="PIN change";
+"operation_device_information_change_title"="Device information change";
+
+"operation_interrupt_alert_title" = "Warning";
+"operation_interrupt_alert_message" = "Do you really want to interrupt the ongoing operation and continue with the new one?";
+"operation_interrupt_alert_confirm_button" = "Yes";
+"operation_interrupt_alert_cancel_button" = "No";
+
+// Error
+"error_generic_title"="Failure";
+"error_generic_message"="We're sorry, it seems you encountered an unknown error. Please try again.";
+"error_pin_authenticator_not_found_message"="Pin authenticator not found.";
+"error_app_load_app_configuration_error_message"="Failed to load the configuration file.";
+"error_app_read_login_configuration_error_message"="Failed to read the login configuration.";
+"error_app_cookie_not_found_error_message"="No cookie was provided in the legacy login response.";
+"error_app_pin_authenticator_not_found_message"="Pin authenticator not found.";
+"error_business_authenticator_not_found_message"="Authenticator not found.";
+"error_business_device_information_not_found_message"="No device information was found for the operation.";
+"error_business_accounts_not_found_message"="There are no registered accounts.";
+"error_business_login_failed_message"="Legacy login failed.";
+
+// Authenticator
+"authenticator_pin_title" = "PIN";
+"authenticator_pin_description" = "Authentication using a PIN";
+"authenticator_face_recognition_title" = "Face ID";
+"authenticator_face_recognition_description" = "Authentication based on Face ID";
+"authenticator_fingerprint_title" = "Touch ID";
+"authenticator_fingerprint_description" = "Authentication based on Touch ID";

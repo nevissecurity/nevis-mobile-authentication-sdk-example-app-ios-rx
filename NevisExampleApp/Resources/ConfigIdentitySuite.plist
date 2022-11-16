@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>login</key>
+	<dict>
+		<key>loginRequestURL</key>
+		<string>https://mycompany.com/auth/pwd</string>
+	</dict>
+	<key>sdk</key>
+	<dict>
+		<key>baseUrl</key>
+		<dict>
+			<key>relative</key>
+			<string>https://mycompany.com</string>
+		</dict>
+		<key>registrationRequestPath</key>
+		<string>/nevisfido/uaf/1.1/request/registration/</string>
+		<key>registrationResponsePath</key>
+		<string>/nevisfido/uaf/1.1/registration/</string>
+		<key>authenticationRequestPath</key>
+		<string>/auth/fidouaf</string>
+		<key>authenticationResponsePath</key>
+		<string>/auth/fidouaf/authenticationresponse/</string>
+		<key>deregistrationRequestPath</key>
+		<string>/nevisfido/uaf/1.1/request/deregistration/</string>
+		<key>dispatchTargetResourcePath</key>
+		<string>/nevisfido/token/dispatch/targets/</string>
+		<key>networkTimeoutInSeconds</key>
+		<integer>60</integer>
+		<key>authenticationMaxRetries</key>
+		<integer>3</integer>
+		<key>authenticationRetryIntervalInSeconds</key>
+		<integer>1</integer>
+		<key>userInteractionTimeoutInSeconds</key>
+		<integer>240</integer>
+	</dict>
+</dict>
+</plist>
