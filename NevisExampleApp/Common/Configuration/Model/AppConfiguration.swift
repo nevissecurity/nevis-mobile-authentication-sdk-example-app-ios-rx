@@ -66,7 +66,7 @@ struct AppConfiguration: Codable {
 		self.loginConfiguration = try container.decode(LoginConfiguration.self, forKey: .loginConfiguration)
 		let sdkContainer = try container.nestedContainer(keyedBy: CodingKeys.NestedCodingKeys.self, forKey: .sdkConfiguration)
 		let hostName = try sdkContainer.decodeIfPresent(String.self, forKey: .hostName)
-		if let hostName = hostName {
+		if let hostName {
 			// using the convenience initializer
 			self.sdkConfiguration = Configuration(authCloudHostname: hostName)
 		}

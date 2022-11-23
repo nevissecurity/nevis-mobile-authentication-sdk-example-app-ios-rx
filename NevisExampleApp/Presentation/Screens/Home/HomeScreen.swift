@@ -212,7 +212,7 @@ private extension HomeScreen {
 	}
 
 	var accountsBinder: Binder<Set<Account>> {
-		return Binder(self) { base, accounts in
+		Binder(self) { base, accounts in
 			base.descriptionLabel.text = L10n.Home.description(accounts.count)
 		}
 	}

@@ -110,10 +110,11 @@ private extension QrScannerScreen {
 
 	func showAlert() {
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-			let alert = UIAlertController(title: "Error",
-			                              message: "Camera is required to use in this application",
+			let alert = UIAlertController(title: L10n.Error.App.QrCodeScan.title,
+			                              message: L10n.Error.App.QrCodeScan.Unauthorized.message,
 			                              preferredStyle: .alert)
-			alert.addAction(.init(title: "OK", style: .default))
+			alert.addAction(.init(title: L10n.Error.App.QrCodeScan.confirm,
+			                      style: .default))
 			self?.present(alert, animated: true)
 		}
 	}

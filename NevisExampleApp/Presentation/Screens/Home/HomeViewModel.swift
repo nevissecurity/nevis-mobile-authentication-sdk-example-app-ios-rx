@@ -144,7 +144,7 @@ extension HomeViewModel: ScreenViewModel {
 		let initClient = input.loadTrigger
 			.asObservable()
 			.flatMapLatest(configurationLoader.load)
-			.map { $0.sdkConfiguration }
+			.map(\.sdkConfiguration)
 			.flatMap(initClientUseCase.execute(configuration:))
 			.trackError(errorTracker)
 			.asDriverOnErrorJustComplete()

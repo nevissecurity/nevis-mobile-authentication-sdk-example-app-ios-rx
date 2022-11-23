@@ -55,7 +55,7 @@ class InBandAuthenticationUseCaseImpl {
 extension InBandAuthenticationUseCaseImpl: InBandAuthenticationUseCase {
 	func execute(username: String, operation: Operation) -> Observable<OperationResponse> {
 		Observable.create { [weak self] observer in
-			guard let self = self else { return Disposables.create() }
+			guard let self else { return Disposables.create() }
 
 			let client = self.clientProvider.get()
 			client?.operations.authentication

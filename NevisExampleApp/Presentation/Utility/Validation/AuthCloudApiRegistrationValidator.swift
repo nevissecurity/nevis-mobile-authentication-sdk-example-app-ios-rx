@@ -24,7 +24,7 @@ extension AuthCloudApiRegistrationValidator {
 			return .failure(ValidationError(message: L10n.AuthCloudApiRegistration.Validation.missingData))
 		}
 
-		guard let enrollResponse = enrollResponse, let appLinkUri = appLinkUri else {
+		guard let enrollResponse, let appLinkUri else {
 			return .success(())
 		}
 

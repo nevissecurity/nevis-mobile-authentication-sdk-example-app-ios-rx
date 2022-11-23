@@ -42,7 +42,7 @@ extension DeregistrationUseCaseImpl: DeregistrationUseCase {
 
 		var responses = [Observable<OperationResponse>]()
 		authenticators.forEach { authenticator in
-			if let username = username {
+			if let username {
 				// deregister only an account
 				if let registration = authenticator.registration, registration.isRegistered(username) {
 					responses.append(deregister(username: username,
@@ -100,7 +100,7 @@ private extension DeregistrationUseCaseImpl {
 				}
 				.onError(observer.onError)
 
-			if let authorizationProvider = authorizationProvider {
+			if let authorizationProvider {
 				operation?.authorizationProvider(authorizationProvider)
 			}
 

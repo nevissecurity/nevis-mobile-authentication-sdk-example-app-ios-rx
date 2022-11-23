@@ -55,7 +55,7 @@ class RegistrationUseCaseImpl {
 extension RegistrationUseCaseImpl: RegistrationUseCase {
 	func execute(username: String, authorizationProvider: AuthorizationProvider?) -> Observable<OperationResponse> {
 		Observable.create { [weak self] observer in
-			guard let self = self else {
+			guard let self else {
 				return Disposables.create()
 			}
 
@@ -72,7 +72,7 @@ extension RegistrationUseCaseImpl: RegistrationUseCase {
 				}
 				.onError(observer.onError)
 
-			if let authorizationProvider = authorizationProvider {
+			if let authorizationProvider {
 				operation?.authorizationProvider(authorizationProvider)
 			}
 

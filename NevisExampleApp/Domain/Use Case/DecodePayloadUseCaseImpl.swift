@@ -48,11 +48,11 @@ extension DecodePayloadUseCaseImpl: DecodePayloadUseCase {
 					                                underlyingError: $0))
 				}
 
-			if let json = json {
+			if let json {
 				operation?.json(json)
 			}
 
-			if let base64UrlEncoded = base64UrlEncoded {
+			if let base64UrlEncoded {
 				operation?.base64UrlEncoded(base64UrlEncoded)
 			}
 

@@ -39,7 +39,8 @@ extension LoginDataSourceImpl: LoginDataSource {
 				return Observable.error(BusinessError.loginFailed)
 			}
 
-			httpRequest.encode(parameters: parameters)
+			let urlEncodedBody = parameters.urlEncoded()
+			httpRequest.httpBody = urlEncodedBody.data(using: .utf8)
 			return session.rx.response(request: httpRequest)
 				.map { httpResponse, data in
 					var response = try JSONDecoder().decode(LoginResponse.self, from: data)

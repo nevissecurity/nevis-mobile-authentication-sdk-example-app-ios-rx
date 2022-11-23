@@ -13,7 +13,7 @@ class AccountValidatorImpl {}
 
 extension AccountValidatorImpl: AccountValidator {
 	func validate(context: AccountSelectionContext) throws -> Set<Account> {
-		let supportedAuthenticators = context.authenticators.filter { $0.isSupportedByHardware }
+		let supportedAuthenticators = context.authenticators.filter(\.isSupportedByHardware)
 		if supportedAuthenticators.isEmpty {
 			throw BusinessError.authenticatorNotFound
 		}

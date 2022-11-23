@@ -61,7 +61,7 @@ class AuthCloudApiRegistrationUseCaseImpl {
 extension AuthCloudApiRegistrationUseCaseImpl: AuthCloudApiRegistrationUseCase {
 	func execute(enrollResponse: String?, appLinkUri: String?) -> Observable<OperationResponse> {
 		Observable.create { [weak self] observer in
-			guard let self = self else {
+			guard let self else {
 				return Disposables.create()
 			}
 
@@ -83,12 +83,12 @@ extension AuthCloudApiRegistrationUseCaseImpl: AuthCloudApiRegistrationUseCase {
 				}
 
 			// Emtpy string is not allowed!
-			if let enrollResponse = enrollResponse, !enrollResponse.isEmpty {
+			if let enrollResponse, !enrollResponse.isEmpty {
 				operation?.enrollResponse(enrollResponse)
 			}
 
 			// Emtpy string is not allowed!
-			if let appLinkUri = appLinkUri, !appLinkUri.isEmpty {
+			if let appLinkUri, !appLinkUri.isEmpty {
 				operation?.appLinkUri(appLinkUri)
 			}
 

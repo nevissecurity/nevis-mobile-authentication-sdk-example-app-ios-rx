@@ -102,6 +102,10 @@
 "error_app_read_login_configuration_error_message"="Failed to read the login configuration.";
 "error_app_cookie_not_found_error_message"="No cookie was provided in the legacy login response.";
 "error_app_pin_authenticator_not_found_message"="Pin authenticator not found.";
+"error_app_qr_scan_title"="Error";
+"error_app_qr_scan_unavailable_message"="Qr Code scanning is not supported using a simulator. You can start an Out-of-Band operation by opening a deep link or try out the Auth Cloud API registration.";
+"error_app_qr_scan_unauthorized_message"="Camera access is required to scan Qr code.";
+"error_app_qr_scan_confirm"="Ok";
 "error_business_authenticator_not_found_message"="Authenticator not found.";
 "error_business_device_information_not_found_message"="No device information was found for the operation.";
 "error_business_accounts_not_found_message"="There are no registered accounts.";

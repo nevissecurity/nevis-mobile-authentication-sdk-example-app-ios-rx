@@ -80,12 +80,12 @@ extension AuthCloudApiRegistrationViewModel: ScreenViewModel {
 		let inputData = Driver.combineLatest(input.enrollResponse, input.appLinkUri)
 		let validator = AuthCloudApiRegistrationValidator()
 		let confirmPinValidation = Driver.combineLatest(inputData, input.confirmTrigger)
-			.map { $0.0 }
+			.map(\.0)
 			.map(validator.validate(_:_:))
-		let validationError = confirmPinValidation.map { $0.message }
+		let validationError = confirmPinValidation.map(\.message)
 
 		let confirm = input.confirmTrigger
-			.withLatestFrom(confirmPinValidation.map { $0.isValid }.startWith(true))
+			.withLatestFrom(confirmPinValidation.map(\.isValid).startWith(true))
 			.filter { $0 }
 			.withLatestFrom(inputData)
 			.asObservable()

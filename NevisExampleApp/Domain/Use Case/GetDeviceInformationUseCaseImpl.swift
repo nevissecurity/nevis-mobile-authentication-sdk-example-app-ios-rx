@@ -38,7 +38,7 @@ extension GetDeviceInformationUseCaseImpl: GetDeviceInformationUseCase {
 			let client = clientProvider.get()
 			let deviceInformation = client?.localData.deviceInformation
 			let disposable = Disposables.create()
-			guard let deviceInformation = deviceInformation else {
+			guard let deviceInformation else {
 				self.logger.log("Get device information failed.", color: .red)
 				observer.onError(BusinessError.deviceInformationNotFound)
 				return disposable

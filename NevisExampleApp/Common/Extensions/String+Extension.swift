@@ -22,20 +22,23 @@ extension String {
 			rangeOfCharacter(from: CharacterSet.alphanumerics.inverted) == nil
 	}
 
-	/// Percent escapes the instance.
-	func percentEscaped() -> String {
-		var characterSet = CharacterSet.alphanumerics
-		characterSet.insert(charactersIn: "-._* ")
+	/// Returns a string escaped for `application/x-www-form-urlencoded` encoding.
+	///
+	/// - Returns: The encoded string.
+	func escape() -> String {
+		var characterSet = CharacterSet.urlQueryAllowed
+		characterSet.insert(charactersIn: " ")
+		characterSet.remove(charactersIn: "+/?")
 
 		return addingPercentEncoding(withAllowedCharacters: characterSet)!
 			.replacingOccurrences(of: " ", with: "+")
 	}
 }
 
-extension Optional where Wrapped == String {
+extension String? {
 
 	/// Tells whether a string is empty or nil.
 	var isEmptyOrNil: Bool {
-		return self?.isEmpty ?? true
+		self?.isEmpty ?? true
 	}
 }

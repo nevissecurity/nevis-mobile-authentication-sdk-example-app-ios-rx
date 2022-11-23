@@ -43,6 +43,6 @@ extension SharedSequenceConvertibleType where Self.SharingStrategy == DriverShar
 	///
 	/// - Returns: An observable sequence of non-optional elements.
 	func unwrap<T>() -> Driver<T> where Element == T? {
-		return filter { $0 != nil }.map { $0! }
+		filter { $0 != nil }.map { $0! }
 	}
 }
