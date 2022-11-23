@@ -110,7 +110,7 @@ private extension SelectAuthenticatorViewModel {
 	///
 	/// - Parameter paramter: The parameter to handle.
 	func setParameter(_ parameter: SelectAuthenticatorParameter?) {
-		guard let parameter = parameter else {
+		guard let parameter else {
 			preconditionFailure("Parameter type mismatch!")
 		}
 

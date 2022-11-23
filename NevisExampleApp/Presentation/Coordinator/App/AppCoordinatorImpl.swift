@@ -73,12 +73,21 @@ extension AppCoordinatorImpl: AppCoordinator {
 	}
 
 	func navigateToQrScanner() {
-		guard let screen = DependencyProvider.shared.container.resolve(QrScannerScreen.self) else {
-			return
-		}
+		#if targetEnvironment(simulator)
+			let alert = UIAlertController(title: L10n.Error.App.QrCodeScan.title,
+			                              message: L10n.Error.App.QrCodeScan.Unavailable.message,
+			                              preferredStyle: .alert)
+			alert.addAction(.init(title: L10n.Error.App.QrCodeScan.confirm,
+			                      style: .default))
+			present(alert)
+		#else
+			guard let screen = DependencyProvider.shared.container.resolve(QrScannerScreen.self) else {
+				return
+			}
 
-		logger.log("Navigating to Qr Scanner screen.", color: .purple)
-		rootNavigationController?.pushViewController(screen, animated: true)
+			logger.log("Navigating to Qr Scanner screen.", color: .purple)
+			rootNavigationController?.pushViewController(screen, animated: true)
+		#endif
 	}
 
 	func navigateToChangeDeviceInformation(with parameter: ChangeDeviceInformationParameter) {

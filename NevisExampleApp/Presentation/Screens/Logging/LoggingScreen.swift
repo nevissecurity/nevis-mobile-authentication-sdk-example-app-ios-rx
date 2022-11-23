@@ -125,7 +125,7 @@ private extension LoggingScreen {
 	}
 
 	var logMessageBinder: Binder<NSAttributedString> {
-		return Binder(self) { base, message in
+		Binder(self) { base, message in
 			let attributedText = NSMutableAttributedString(attributedString: base.logView.attributedText)
 			attributedText.append(NSAttributedString(attributedString: message))
 			base.logView.attributedText = attributedText

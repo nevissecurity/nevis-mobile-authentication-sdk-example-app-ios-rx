@@ -43,7 +43,7 @@ class ChangePinUseCaseImpl {
 extension ChangePinUseCaseImpl: ChangePinUseCase {
 	func execute(username: String) -> Observable<OperationResponse> {
 		Observable.create { [weak self] observer in
-			guard let self = self else {
+			guard let self else {
 				return Disposables.create()
 			}
 

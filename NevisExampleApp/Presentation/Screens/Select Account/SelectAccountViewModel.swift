@@ -150,7 +150,7 @@ private extension SelectAccountViewModel {
 	///
 	/// - Parameter paramter: The parameter to handle.
 	func setParameter(_ parameter: SelectAccountParameter?) {
-		guard let parameter = parameter else {
+		guard let parameter else {
 			preconditionFailure("Parameter type mismatch!")
 		}
 
@@ -168,13 +168,14 @@ private extension SelectAccountViewModel {
 	/// - Parameter account: The selected account to handle.
 	/// - Returns:An observable sequence.
 	func handle(account: Account) -> Observable<()> {
-		if let transactionConfirmationData = transactionConfirmationData {
+		if let transactionConfirmationData {
 			// Transaction confirmation data is received from the SDK
 			// Show it to the user for confirmation or cancellation
 			// The AccountSelectionHandler will be invoked or cancelled there.
 			let parameter: TransactionConfirmationParameter = .confirm(message: transactionConfirmationData,
 			                                                           account: account,
 			                                                           handler: handler!)
+			handler = nil
 			return .just(appCoordinator.navigateToTransactionConfirmation(with: parameter))
 		}
 

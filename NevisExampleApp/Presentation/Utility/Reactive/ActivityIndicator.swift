@@ -79,7 +79,7 @@ extension ObservableConvertibleType {
 private extension ActivityIndicator {
 
 	func trackActivityOfObservable<Source: ObservableConvertibleType>(_ source: Source) -> Observable<Source.Element> {
-		return Observable.using({ () -> ActivityToken<Source.Element> in
+		Observable.using({ () -> ActivityToken<Source.Element> in
 			self.increment()
 			return ActivityToken(source: source.asObservable(), disposeAction: self.decrement)
 		}) { t in

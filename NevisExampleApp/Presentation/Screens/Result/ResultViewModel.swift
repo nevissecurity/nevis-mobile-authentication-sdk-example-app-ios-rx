@@ -89,8 +89,8 @@ extension ResultViewModel: ScreenViewModel {
 	/// - Parameter input: The input need to be transformed.
 	/// - Returns: The transformed output.
 	func transform(input: Input) -> Output {
-		let title = Driver.just(self.title())
-		let description = Driver.just(self.description)
+		let title = Driver.just(title())
+		let description = Driver.just(description)
 		let action = input.actionTrigger
 			.do(onNext: appCoordinator.start)
 
@@ -108,7 +108,7 @@ private extension ResultViewModel {
 	///
 	/// - Parameter paramter: The parameter to handle.
 	func setParameter(_ parameter: ResultParameter?) {
-		guard let parameter = parameter else {
+		guard let parameter else {
 			preconditionFailure("Parameter type mismatch!")
 		}
 
@@ -130,7 +130,7 @@ private extension ResultViewModel {
 		case .success:
 			return L10n.Operation.Success.title(operation!.localizedTitle)
 		case .failure:
-			guard let operation = operation else {
+			guard let operation else {
 				return L10n.Error.App.Generic.title
 			}
 

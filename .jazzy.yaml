@@ -88,7 +88,7 @@ custom_categories:
       - Reactive
       - SharedSequenceConvertibleType
       - Result
-      - Optional
+      - String?
       - UIApplication
       - UINavigationController
       - UIStackView
@@ -173,7 +173,6 @@ custom_categories:
       - LoginDataSource
       - LoginDataSourceImpl
       - LoginSessionDelegate
-      - URLRequest
   - name: Common
     children:
       - LoginConfiguration
@@ -196,6 +195,7 @@ custom_categories:
       - NevisErrorHandler
       - OSLog
       - String
+      - '[String: String]'
       - UIDevice
       - SDKLogger
       - SDKLoggerImpl

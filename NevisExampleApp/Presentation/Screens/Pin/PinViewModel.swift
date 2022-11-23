@@ -189,7 +189,7 @@ private extension PinViewModel {
 	///
 	/// - Parameter paramter: The parameter to handle.
 	func setParameter(_ parameter: PinParameter?) {
-		guard let parameter = parameter else {
+		guard let parameter else {
 			preconditionFailure("Parameter type mismatch!")
 		}
 
@@ -261,13 +261,21 @@ private extension PinViewModel {
 	/// - Returns: An observable sequence.
 	func confirm(oldPin: String, pin: String) -> Observable<()> {
 		logger.log("Confirming entered credentials.")
-		switch operation {
-		case .enrollment:
-			return .just(enrollmentHandler!.pin(pin))
-		case .verification:
-			return .just(verificationHandler!.verify(pin))
-		case .credentialChange:
-			return .just(credentialChangeHandler!.pins(oldPin, pin))
+		return Observable.create {
+			switch self.operation {
+			case .enrollment:
+				self.enrollmentHandler!.pin(pin)
+				self.enrollmentHandler = nil
+			case .verification:
+				self.verificationHandler!.verify(pin)
+				self.verificationHandler = nil
+			case .credentialChange:
+				self.credentialChangeHandler!.pins(oldPin, pin)
+				self.credentialChangeHandler = nil
+			}
+
+			$0.onCompleted()
+			return Disposables.create()
 		}
 	}
 
@@ -324,7 +332,7 @@ private extension PinViewModel {
 			let status: PinAuthenticatorProtectionStatus = .LastAttemptFailed(remainingTries: remainingTries,
 			                                                                  coolDownTimeInSeconds: remainingCoolDown)
 			let info = PinProtectionInformation(message: status.localizedDescription,
-			                                    isInCoolDown: true)
+			                                    isInCoolDown: remainingCoolDown > 0)
 			self.pinProtectionInfoSubject.accept(info)
 		}
 

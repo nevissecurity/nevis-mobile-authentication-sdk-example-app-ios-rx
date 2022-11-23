@@ -219,13 +219,13 @@ private extension PinScreen {
 	}
 
 	var hideOldPinBinder: Binder<Bool> {
-		return Binder(self) { base, isHidden in
+		Binder(self) { base, isHidden in
 			base.oldPinField.superview?.isHidden = isHidden
 		}
 	}
 
 	var pinProtectionInfoBinder: Binder<PinProtectionInformation> {
-		return Binder(self) { base, info in
+		Binder(self) { base, info in
 			base.infoMessageLabel.text = info.message
 			base.confirmButton.isEnabled = !info.isInCoolDown
 			base.cancelButton.isEnabled = !info.isInCoolDown

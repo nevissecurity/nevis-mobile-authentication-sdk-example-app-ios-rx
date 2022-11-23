@@ -1,3 +1,6 @@
+# File options
+--swiftversion 5.7
+
 # Format options
 --allman false
 --elseposition next-line

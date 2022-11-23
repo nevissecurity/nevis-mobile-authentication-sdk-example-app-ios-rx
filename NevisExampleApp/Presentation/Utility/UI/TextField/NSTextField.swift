@@ -22,7 +22,9 @@ class NSTextField: UITextField {
 		self.text = nil
 		self.placeholder = placeholder
 		self.returnKeyType = returnKeyType
-		borderStyle = .roundedRect
+		self.autocorrectionType = .no
+		self.spellCheckingType = .no
+		self.borderStyle = .roundedRect
 	}
 
 	@available(*, unavailable)

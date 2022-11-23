@@ -50,15 +50,15 @@ extension ChangeDeviceInformationUseCaseImpl: ChangeDeviceInformationUseCase {
 					                                underlyingError: $0))
 				}
 
-			if let name = name {
+			if let name {
 				operation?.name(name)
 			}
 
-			if let fcmRegistrationToken = fcmRegistrationToken {
+			if let fcmRegistrationToken {
 				operation?.fcmRegistrationToken(fcmRegistrationToken)
 			}
 
-			if let disablePushNotifications = disablePushNotifications, disablePushNotifications {
+			if let disablePushNotifications, disablePushNotifications {
 				operation?.disablePushNotifications()
 			}
 
