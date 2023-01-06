@@ -115,7 +115,7 @@ extension HomeViewModel: ScreenViewModel {
 		/// Observable sequence used for listening to authenticate event.
 		let initClient: Driver<()>
 		/// Observable sequence used for listening to registered accounts event.
-		let accounts: Driver<Set<Account>>
+		let accounts: Driver<[any Account]>
 		/// Observable sequence used for listening to Qr Code read event.
 		let readQrCode: Driver<()>
 		/// Observable sequence used for listening to authenticate event.
@@ -208,7 +208,7 @@ private extension HomeViewModel {
 	///
 	/// - Parameter accounts: The list of the available accounts.
 	/// - Returns: An observable sequence.
-	func authenticate(with accounts: Set<Account>) -> Observable<()> {
+	func authenticate(with accounts: [any Account]) -> Observable<()> {
 		guard !accounts.isEmpty else {
 			return .error(BusinessError.accountsNotFound)
 		}
@@ -254,7 +254,12 @@ private extension HomeViewModel {
 		Observable.combineLatest(getPinEnrollment(),
 		                         getAccountsUseCase.execute())
 			.flatMap { enrollment, accounts -> Observable<()> in
-				let eligibleAccounts = accounts.filter { enrollment.enrolledAccounts.contains($0) }
+				let eligibleAccounts = accounts.filter { account in
+					enrollment.enrolledAccounts.contains { enrolledAccount in
+						enrolledAccount.username == account.username
+					}
+				}
+
 				switch eligibleAccounts.count {
 				case 0:
 					return .error(BusinessError.accountsNotFound)
@@ -280,7 +285,7 @@ private extension HomeViewModel {
 		getAuthenticatorsUseCase.execute()
 			.flatMap { authenticators -> Observable<SdkUserEnrollment> in
 				// searching for the PIN authenticator
-				guard let pinAuthenticator = authenticators.filter({ $0.aaid == Authenticator.pinAuthenticatorAaid }).first else {
+				guard let pinAuthenticator = authenticators.filter({ $0.aaid == AuthenticatorAaid.Pin.rawValue }).first else {
 					return .error(AppError.pinAuthenticatorNotFound)
 				}
 

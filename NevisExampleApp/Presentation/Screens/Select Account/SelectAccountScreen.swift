@@ -26,7 +26,7 @@ final class SelectAccountScreen: BaseScreen, Screen {
 	var viewModel: SelectAccountViewModel!
 
 	/// Observable sequence used to emit the selected account.
-	private let accountSubject = PublishSubject<Account>()
+	private let accountSubject = PublishSubject<any Account>()
 
 	/// Thread safe bag that disposes added disposables.
 	private let disposeBag = DisposeBag()
@@ -88,7 +88,7 @@ private extension SelectAccountScreen {
 			$0.rowHeight = UITableView.automaticDimension
 		}
 
-		Observable.zip(tableView.rx.modelSelected(Account.self),
+		Observable.zip(tableView.rx.modelSelected((any Account).self),
 		               tableView.rx.itemSelected)
 			.bind { [weak self] account, indexPath in
 				self?.tableView.deselectRow(at: indexPath, animated: true)
@@ -126,13 +126,13 @@ private extension SelectAccountScreen {
 		[output.accounts.drive(tableView.rx.items) { tableView, index, account in
 			tableView.dequeueReusableCell(for: IndexPath(row: index, section: 0),
 			                              cellType: AccountCell.self)
-				.then {
-					$0.bind(viewModel: SelectAccountItemViewModel(account: account))
-				}
-		},
-		output.selection.drive(),
-		output.loading.drive(rx.isLoading),
-		output.error.drive(rx.error)]
+		 	.then {
+		 		$0.bind(viewModel: SelectAccountItemViewModel(account: account))
+		 	}
+		 },
+		 output.selection.drive(),
+		 output.loading.drive(rx.isLoading),
+		 output.error.drive(rx.error)]
 			.forEach { $0.disposed(by: disposeBag) }
 	}
 }

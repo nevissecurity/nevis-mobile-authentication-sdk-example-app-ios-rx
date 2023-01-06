@@ -15,7 +15,7 @@ final class ConfirmTransactionResponse: OperationResponse {
 	let message: String
 
 	/// The selected account.
-	let account: Account
+	let account: any Account
 
 	/// The object that is notified of the account selection result.
 	let handler: AccountSelectionHandler
@@ -29,7 +29,7 @@ final class ConfirmTransactionResponse: OperationResponse {
 	///   - account: The selected account.
 	///   - handler: The object that is notified of the account selection result.
 	init(message: String,
-	     account: Account,
+	     account: any Account,
 	     handler: AccountSelectionHandler) {
 		self.message = message
 		self.account = account

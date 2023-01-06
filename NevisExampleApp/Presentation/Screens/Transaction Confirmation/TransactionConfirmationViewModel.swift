@@ -16,7 +16,7 @@ enum TransactionConfirmationParameter: NavigationParameterizable {
 	///    - message: The message to confirm.
 	///    - account: The previously selected account.
 	///    - handler: The account selection handler.
-	case confirm(message: String, account: Account, handler: AccountSelectionHandler)
+	case confirm(message: String, account: any Account, handler: AccountSelectionHandler)
 }
 
 /// View model of Transaction Confirmation view.
@@ -31,7 +31,7 @@ final class TransactionConfirmationViewModel {
 	private var message: String?
 
 	/// The previously selected account.
-	private var account: Account?
+	private var account: (any Account)?
 
 	/// The account selection handler.
 	private var handler: AccountSelectionHandler?

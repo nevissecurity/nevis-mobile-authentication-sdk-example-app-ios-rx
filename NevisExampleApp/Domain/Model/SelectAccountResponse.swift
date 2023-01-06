@@ -12,7 +12,7 @@ final class SelectAccountResponse: OperationResponse {
 	// MARK: - Properties
 
 	/// The list of available accounts.
-	let accounts: Set<Account>
+	let accounts: [any Account]
 
 	/// The object that is notified of the selection result.
 	let handler: AccountSelectionHandler
@@ -28,7 +28,7 @@ final class SelectAccountResponse: OperationResponse {
 	///   - authenticators: The list of available accounts.
 	///   - handler: The object that is notified of the selection result.
 	///   - transactionConfirmationData: The transaction confirmation data, if any, to be presented to the user for verification.
-	init(accounts: Set<Account>,
+	init(accounts: [any Account],
 	     handler: AccountSelectionHandler,
 	     transactionConfirmationData: String?) {
 		self.accounts = accounts

@@ -17,7 +17,7 @@ enum SelectAccountParameter: NavigationParameterizable {
 	///    - operation: The ongoing operation.
 	///    - handler: The account selection handler.
 	///    - message: The message to confirm.
-	case select(accounts: Set<Account>,
+	case select(accounts: [any Account],
 	            operation: Operation,
 	            handler: AccountSelectionHandler?,
 	            message: String?)
@@ -44,7 +44,7 @@ final class SelectAccountViewModel {
 	private let appCoordinator: AppCoordinator
 
 	/// The list of accounts.
-	private var accounts = Set<Account>()
+	private var accounts = [any Account]()
 
 	/// The current operation.
 	private var operation: Operation?
@@ -100,13 +100,13 @@ extension SelectAccountViewModel: ScreenViewModel {
 		/// Observable sequence used for starting to load the accounts.
 		let loadTrigger: Driver<()>
 		/// Observable sequence used for selecting an account at given index path.
-		let selectAccount: Driver<Account>
+		let selectAccount: Driver<any Account>
 	}
 
 	/// The output of the view model.
 	struct Output {
 		/// Observable sequence used for listening to accounts event.
-		let accounts: Driver<Set<Account>>
+		let accounts: Driver<[any Account]>
 		/// Observable sequence used for listening to account selection event.
 		let selection: Driver<()>
 		/// Observable sequence used for listening to loading events.
@@ -167,7 +167,7 @@ private extension SelectAccountViewModel {
 	///
 	/// - Parameter account: The selected account to handle.
 	/// - Returns:An observable sequence.
-	func handle(account: Account) -> Observable<()> {
+	func handle(account: any Account) -> Observable<()> {
 		if let transactionConfirmationData {
 			// Transaction confirmation data is received from the SDK
 			// Show it to the user for confirmation or cancellation
@@ -195,7 +195,6 @@ private extension SelectAccountViewModel {
 						return .error(AppError.cookieNotFound)
 					}
 
-					// TODO: testing needed, maybe the cookie path need to be changed to deregistrationRequestPath
 					return self.deregistrationUseCase.execute(username: account.username,
 					                                          authorizationProvider: authorizationProvider)
 				}
@@ -213,7 +212,7 @@ private extension SelectAccountViewModel {
 	///
 	/// - Parameter account: The selected account to handle.
 	/// - Returns:An observable sequence.
-	func select(account: Account) -> Observable<()> {
+	func select(account: any Account) -> Observable<()> {
 		Observable.create {
 			self.handler?.username(account.username)
 			self.handler = nil

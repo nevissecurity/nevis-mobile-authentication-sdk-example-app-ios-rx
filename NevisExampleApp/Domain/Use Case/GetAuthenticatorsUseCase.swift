@@ -13,5 +13,5 @@ protocol GetAuthenticatorsUseCase {
 	/// Retrieves the authenticators.
 	///
 	/// - Returns: The observable sequence that will emit a list of ``Authenticator`` objects.
-	func execute() -> Observable<Set<Authenticator>>
+	func execute() -> Observable<[any Authenticator]>
 }

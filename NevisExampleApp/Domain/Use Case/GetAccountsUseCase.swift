@@ -13,5 +13,5 @@ protocol GetAccountsUseCase {
 	/// Retrieves the registered accounts.
 	///
 	/// - Returns: The observable sequence that will emit a list of ``Account`` objects.
-	func execute() -> Observable<Set<Account>>
+	func execute() -> Observable<[any Account]>
 }

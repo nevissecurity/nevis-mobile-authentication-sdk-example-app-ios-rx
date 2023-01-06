@@ -14,5 +14,5 @@ protocol AccountValidator {
 	/// - Parameter context: The context holding the accounts to validate.
 	/// - Throws: ``BusinessError`` if supported authenticators are not found.
 	/// - Returns: The list of valid accounts.
-	func validate(context: AccountSelectionContext) throws -> Set<Account>
+	func validate(context: AccountSelectionContext) throws -> [any Account]
 }

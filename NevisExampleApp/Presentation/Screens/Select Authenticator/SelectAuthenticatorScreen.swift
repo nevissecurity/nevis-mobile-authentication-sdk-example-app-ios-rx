@@ -26,7 +26,7 @@ final class SelectAuthenticatorScreen: BaseScreen, Screen {
 	var viewModel: SelectAuthenticatorViewModel!
 
 	/// Observable sequence used to emit the selected authenticator.
-	private let authenticatorSubject = PublishSubject<Authenticator>()
+	private let authenticatorSubject = PublishSubject<any Authenticator>()
 
 	/// Thread safe bag that disposes added disposables.
 	private let disposeBag = DisposeBag()
@@ -88,7 +88,7 @@ private extension SelectAuthenticatorScreen {
 			$0.rowHeight = UITableView.automaticDimension
 		}
 
-		Observable.zip(tableView.rx.modelSelected(Authenticator.self),
+		Observable.zip(tableView.rx.modelSelected((any Authenticator).self),
 		               tableView.rx.itemSelected)
 			.bind { [weak self] authenticator, indexPath in
 				self?.tableView.deselectRow(at: indexPath, animated: true)
@@ -126,11 +126,11 @@ private extension SelectAuthenticatorScreen {
 		[output.authenticators.drive(tableView.rx.items) { tableView, index, authenticator in
 			tableView.dequeueReusableCell(for: IndexPath(row: index, section: 0),
 			                              cellType: AuthenticatorCell.self)
-				.then {
-					$0.bind(viewModel: SelectAuthenticatorItemViewModel(authenticator: authenticator))
-				}
-		},
-		output.selection.drive()]
+		 	.then {
+		 		$0.bind(viewModel: SelectAuthenticatorItemViewModel(authenticator: authenticator))
+		 	}
+		 },
+		 output.selection.drive()]
 			.forEach { $0.disposed(by: disposeBag) }
 	}
 }
