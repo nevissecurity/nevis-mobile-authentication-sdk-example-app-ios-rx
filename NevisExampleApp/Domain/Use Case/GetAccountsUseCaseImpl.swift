@@ -28,7 +28,7 @@ class GetAccountsUseCaseImpl {
 // MARK: - GetAccountsUseCase
 
 extension GetAccountsUseCaseImpl: GetAccountsUseCase {
-	func execute() -> Observable<Set<Account>> {
-		.just(clientProvider.get()?.localData.accounts ?? Set<Account>())
+	func execute() -> Observable<[any Account]> {
+		.just(clientProvider.get()?.localData.accounts ?? [any Account]())
 	}
 }

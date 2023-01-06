@@ -12,7 +12,7 @@ final class SelectAuthenticatorResponse: OperationResponse {
 	// MARK: - Properties
 
 	/// The list of available authenticators.
-	let authenticators: Set<Authenticator>
+	let authenticators: [any Authenticator]
 
 	/// The object that is notified of the selection result.
 	let handler: AuthenticatorSelectionHandler
@@ -24,7 +24,7 @@ final class SelectAuthenticatorResponse: OperationResponse {
 	/// - Parameters:
 	///   - authenticators: The list of available authenticators.
 	///   - handler: The object that is notified of the selection result.
-	init(authenticators: Set<Authenticator>,
+	init(authenticators: [any Authenticator],
 	     handler: AuthenticatorSelectionHandler) {
 		self.authenticators = authenticators
 		self.handler = handler

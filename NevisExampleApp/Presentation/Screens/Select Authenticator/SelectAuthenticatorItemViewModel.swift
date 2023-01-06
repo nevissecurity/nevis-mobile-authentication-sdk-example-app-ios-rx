@@ -24,7 +24,7 @@ struct SelectAuthenticatorItemViewModel {
 	/// - Parameters:
 	///   - title: The readable title.
 	///   - details: The readable details.
-	init(authenticator: Authenticator) {
+	init(authenticator: any Authenticator) {
 		self.title = authenticator.localizedTitle
 		self.details = authenticator.localizedDescription
 	}

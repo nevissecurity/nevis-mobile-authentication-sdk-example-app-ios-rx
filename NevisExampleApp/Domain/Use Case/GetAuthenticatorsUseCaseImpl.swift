@@ -28,7 +28,7 @@ class GetAuthenticatorsUseCaseImpl {
 // MARK: - GetAuthenticatorsUseCase
 
 extension GetAuthenticatorsUseCaseImpl: GetAuthenticatorsUseCase {
-	func execute() -> Observable<Set<Authenticator>> {
-		.just(clientProvider.get()?.localData.authenticators ?? Set<Authenticator>())
+	func execute() -> Observable<[any Authenticator]> {
+		.just(clientProvider.get()?.localData.authenticators ?? [any Authenticator]())
 	}
 }

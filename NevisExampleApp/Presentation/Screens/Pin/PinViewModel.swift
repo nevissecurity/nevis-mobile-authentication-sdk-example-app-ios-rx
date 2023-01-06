@@ -120,6 +120,8 @@ extension PinViewModel: ScreenViewModel {
 		let oldPin: Driver<String>
 		/// Observable sequence used for listening to Pin confirmation.
 		let pin: Driver<String>
+		/// Observable sequence used for clearing the state.
+		let clearTrigger: Driver<()>
 		/// Observable sequence used for starting confirmation.
 		let confirmTrigger: Driver<()>
 		/// Observable sequence used for starting cancellation.
@@ -136,6 +138,8 @@ extension PinViewModel: ScreenViewModel {
 		let lastRecoverableError: Driver<String>
 		/// Observable sequence used for listening to whether Pin confirmation is needed.
 		let hideOldPin: Driver<Bool>
+		/// Observable sequence used for clearing the state.
+		let clear: Driver<()>
 		/// Observable sequence used for listening to confirm event.
 		let confirm: Driver<()>
 		/// Observable sequence used for listening to cancel event.
@@ -158,6 +162,12 @@ extension PinViewModel: ScreenViewModel {
 		let hideOldPin = Driver.just(operation != .credentialChange)
 
 		handleProtectionStatus()
+
+		let clear = input.clearTrigger
+			.asObservable()
+			.flatMap(clear)
+			.asDriverOnErrorJustComplete()
+
 		let confirm = input.confirmTrigger
 			.withLatestFrom(Driver.combineLatest(input.oldPin, input.pin))
 			.asObservable()
@@ -174,6 +184,7 @@ extension PinViewModel: ScreenViewModel {
 		              description: description,
 		              lastRecoverableError: lastRecoverableError,
 		              hideOldPin: hideOldPin,
+		              clear: clear,
 		              confirm: confirm,
 		              cancel: cancel,
 		              error: error,
@@ -253,6 +264,19 @@ private extension PinViewModel {
 		}
 	}
 
+	/// Clears the state of the view model.
+	///
+	/// - Returns: An observable sequence.
+	func clear() -> Observable<()> {
+		Observable.create {
+			self.enrollmentHandler = nil
+			self.verificationHandler = nil
+			self.credentialChangeHandler = nil
+			$0.onCompleted()
+			return Disposables.create()
+		}
+	}
+
 	/// Confirms the given credentials.
 	///
 	/// - Parameters:
@@ -265,13 +289,10 @@ private extension PinViewModel {
 			switch self.operation {
 			case .enrollment:
 				self.enrollmentHandler!.pin(pin)
-				self.enrollmentHandler = nil
 			case .verification:
 				self.verificationHandler!.verify(pin)
-				self.verificationHandler = nil
 			case .credentialChange:
 				self.credentialChangeHandler!.pins(oldPin, pin)
-				self.credentialChangeHandler = nil
 			}
 
 			$0.onCompleted()

@@ -202,8 +202,14 @@ private extension PinScreen {
 
 	func bindViewModel() {
 		assert(viewModel != nil)
+		let clearTrigger = rx.viewDidDisappear
+			.take(1)
+			.mapToVoid()
+			.asDriverOnErrorJustComplete()
+
 		let input = PinViewModel.Input(oldPin: oldPinField.rx.text.orEmpty.asDriver(),
 		                               pin: pinField.rx.text.orEmpty.asDriver(),
+		                               clearTrigger: clearTrigger,
 		                               confirmTrigger: confirmButton.rx.tap.asDriver(),
 		                               cancelTrigger: cancelButton.rx.tap.asDriver())
 		let output = viewModel.transform(input: input)
@@ -211,6 +217,7 @@ private extension PinScreen {
 		 output.description.drive(descriptionLabel.rx.text),
 		 output.lastRecoverableError.drive(errorLabel.rx.text),
 		 output.hideOldPin.drive(hideOldPinBinder),
+		 output.clear.drive(),
 		 output.confirm.drive(),
 		 output.cancel.drive(),
 		 output.error.drive(rx.error),

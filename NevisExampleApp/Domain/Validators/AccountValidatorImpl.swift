@@ -12,17 +12,17 @@ class AccountValidatorImpl {}
 // MARK: - AccountValidator
 
 extension AccountValidatorImpl: AccountValidator {
-	func validate(context: AccountSelectionContext) throws -> Set<Account> {
+	func validate(context: AccountSelectionContext) throws -> [any Account] {
 		let supportedAuthenticators = context.authenticators.filter(\.isSupportedByHardware)
 		if supportedAuthenticators.isEmpty {
 			throw BusinessError.authenticatorNotFound
 		}
 
-		var accounts = Set<Account>()
+		var accounts = [any Account]()
 		supportedAuthenticators.forEach { authenticator in
 			authenticator.registration?.registeredAccounts.forEach { account in
 				if context.isPolicyCompliant(username: account.username, aaid: authenticator.aaid) {
-					accounts.insert(account)
+					accounts.append(account)
 				}
 			}
 		}

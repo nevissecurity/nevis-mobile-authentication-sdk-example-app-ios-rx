@@ -11,11 +11,11 @@ extension Authenticator {
 	/// Returns the localized title.
 	var localizedTitle: String {
 		switch aaid {
-		case Authenticator.pinAuthenticatorAaid:
+		case AuthenticatorAaid.Pin.rawValue:
 			return L10n.Authenticator.Pin.title
-		case Authenticator.faceRecognitionAuthenticatorAaid:
+		case AuthenticatorAaid.FaceRecognition.rawValue:
 			return L10n.Authenticator.FaceRecognition.title
-		case Authenticator.fingerprintAuthenticatorAaid:
+		case AuthenticatorAaid.Fingerprint.rawValue:
 			return L10n.Authenticator.Fingerprint.title
 		default:
 			return String()
@@ -25,11 +25,11 @@ extension Authenticator {
 	/// Returns the localized description.
 	var localizedDescription: String {
 		switch aaid {
-		case Authenticator.pinAuthenticatorAaid:
+		case AuthenticatorAaid.Pin.rawValue:
 			return L10n.Authenticator.Pin.description
-		case Authenticator.faceRecognitionAuthenticatorAaid:
+		case AuthenticatorAaid.FaceRecognition.rawValue:
 			return L10n.Authenticator.FaceRecognition.description
-		case Authenticator.fingerprintAuthenticatorAaid:
+		case AuthenticatorAaid.Fingerprint.rawValue:
 			return L10n.Authenticator.Fingerprint.description
 		default:
 			return String()

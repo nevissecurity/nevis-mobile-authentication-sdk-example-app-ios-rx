@@ -211,7 +211,7 @@ private extension HomeScreen {
 			.forEach { $0.disposed(by: disposeBag) }
 	}
 
-	var accountsBinder: Binder<Set<Account>> {
+	var accountsBinder: Binder<[any Account]> {
 		Binder(self) { base, accounts in
 			base.descriptionLabel.text = L10n.Home.description(accounts.count)
 		}

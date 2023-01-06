@@ -64,7 +64,6 @@
 		386FC336290926AD00CB30A7 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FC335290926AD00CB30A7 /* LoginResponse.swift */; };
 		386FC33929094F2600CB30A7 /* RegistrationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FC33829094F2600CB30A7 /* RegistrationUseCase.swift */; };
 		386FC33B29094F2C00CB30A7 /* RegistrationUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FC33A29094F2C00CB30A7 /* RegistrationUseCaseImpl.swift */; };
-		386FC33E290965A000CB30A7 /* URLRequest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FC33D290965A000CB30A7 /* URLRequest+Extension.swift */; };
 		3875ADCC291BF6D100939D16 /* PinUserVerifierImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875ADC2291BF6D100939D16 /* PinUserVerifierImpl.swift */; };
 		3875ADCD291BF6D100939D16 /* RegistrationAuthenticatorSelectorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875ADC3291BF6D100939D16 /* RegistrationAuthenticatorSelectorImpl.swift */; };
 		3875ADD0291BF6D100939D16 /* AuthenticationAuthenticatorSelectorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875ADC7291BF6D100939D16 /* AuthenticationAuthenticatorSelectorImpl.swift */; };
@@ -78,6 +77,7 @@
 		38821E70292502670009522A /* ConfigAuthenticationCloud.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38821E6F292502670009522A /* ConfigAuthenticationCloud.plist */; };
 		388844DC2695C1E500CCFB00 /* PinScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388844DB2695C1E500CCFB00 /* PinScreen.swift */; };
 		388844DE2695C1F200CCFB00 /* PinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388844DD2695C1F200CCFB00 /* PinViewModel.swift */; };
+		388D0A622968236400EBFC1D /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388D0A612968236400EBFC1D /* Dictionary+Extension.swift */; };
 		38A0C0ED26E0C7F700898B6A /* PinProtectionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A0C0EC26E0C7F700898B6A /* PinProtectionInformation.swift */; };
 		38A0C0F926E1118D00898B6A /* NotEnrolledAuthenticatorScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A0C0F826E1118D00898B6A /* NotEnrolledAuthenticatorScreen.swift */; };
 		38A0C0FB26E1119A00898B6A /* NotEnrolledAuthenticatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A0C0FA26E1119A00898B6A /* NotEnrolledAuthenticatorViewModel.swift */; };
@@ -223,7 +223,6 @@
 		386FC335290926AD00CB30A7 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		386FC33829094F2600CB30A7 /* RegistrationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUseCase.swift; sourceTree = "<group>"; };
 		386FC33A29094F2C00CB30A7 /* RegistrationUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUseCaseImpl.swift; sourceTree = "<group>"; };
-		386FC33D290965A000CB30A7 /* URLRequest+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Extension.swift"; sourceTree = "<group>"; };
 		3875ADC2291BF6D100939D16 /* PinUserVerifierImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinUserVerifierImpl.swift; sourceTree = "<group>"; };
 		3875ADC3291BF6D100939D16 /* RegistrationAuthenticatorSelectorImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationAuthenticatorSelectorImpl.swift; sourceTree = "<group>"; };
 		3875ADC7291BF6D100939D16 /* AuthenticationAuthenticatorSelectorImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationAuthenticatorSelectorImpl.swift; sourceTree = "<group>"; };
@@ -237,6 +236,7 @@
 		38821E6F292502670009522A /* ConfigAuthenticationCloud.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ConfigAuthenticationCloud.plist; sourceTree = "<group>"; };
 		388844DB2695C1E500CCFB00 /* PinScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinScreen.swift; sourceTree = "<group>"; };
 		388844DD2695C1F200CCFB00 /* PinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewModel.swift; sourceTree = "<group>"; };
+		388D0A612968236400EBFC1D /* Dictionary+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
 		38A0C0EC26E0C7F700898B6A /* PinProtectionInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinProtectionInformation.swift; sourceTree = "<group>"; };
 		38A0C0F826E1118D00898B6A /* NotEnrolledAuthenticatorScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotEnrolledAuthenticatorScreen.swift; sourceTree = "<group>"; };
 		38A0C0FA26E1119A00898B6A /* NotEnrolledAuthenticatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotEnrolledAuthenticatorViewModel.swift; sourceTree = "<group>"; };
@@ -582,6 +582,7 @@
 		386423E826971195005F5961 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				388D0A612968236400EBFC1D /* Dictionary+Extension.swift */,
 				38B0A2B8269C2BCC00FABCC1 /* OSLog+Extension.swift */,
 				386423E9269711A5005F5961 /* String+Extension.swift */,
 				386423FB26984B89005F5961 /* UIDevice+Extension.swift */,
@@ -699,7 +700,6 @@
 			isa = PBXGroup;
 			children = (
 				386FC3302909260600CB30A7 /* Data Source */,
-				386FC33C2909659100CB30A7 /* Extensions */,
 				386FC3372909354A00CB30A7 /* Model */,
 				386FC32D290925EC00CB30A7 /* Repository */,
 			);
@@ -730,14 +730,6 @@
 				386FC335290926AD00CB30A7 /* LoginResponse.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		386FC33C2909659100CB30A7 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				386FC33D290965A000CB30A7 /* URLRequest+Extension.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		3875ADC1291BF6D100939D16 /* Interaction */ = {
@@ -1147,6 +1139,7 @@
 				3875ADD1291BF6D100939D16 /* PinChangerImpl.swift in Sources */,
 				386F25322902E3900036615B /* DeregistrationUseCaseImpl.swift in Sources */,
 				38B0A2BF269C47B900FABCC1 /* ErrorHandler.swift in Sources */,
+				388D0A622968236400EBFC1D /* Dictionary+Extension.swift in Sources */,
 				3852F39826860C400051FF73 /* UIView+Extension.swift in Sources */,
 				38B085AF29081EAF006295D8 /* AuthCloudApiRegistrationValidator.swift in Sources */,
 				38D67ECB26C6AC630068334F /* CompletedResponse.swift in Sources */,
@@ -1199,7 +1192,6 @@
 				382D51AE26B194EB00B774CF /* LoggingScreen.swift in Sources */,
 				386DA8FE26CA9B9A00060ADD /* Operation.swift in Sources */,
 				38DF72802901657700429337 /* ResponseObserverImpl.swift in Sources */,
-				386FC33E290965A000CB30A7 /* URLRequest+Extension.swift in Sources */,
 				38C1B385269DB56C00ED5782 /* UINavigationController+Extension.swift in Sources */,
 				38EB176D29027E7600E82236 /* ResponseEmitterImpl.swift in Sources */,
 				3852F3A9268624720051FF73 /* BaseScreen.swift in Sources */,

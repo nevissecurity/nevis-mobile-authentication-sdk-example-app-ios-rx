@@ -15,7 +15,7 @@ enum SelectAuthenticatorParameter: NavigationParameterizable {
 	///  - Parameters:
 	///    - authenticators: The list of authenticators.
 	///    - handler: The authenticator selection handler.
-	case select(authenticators: Set<Authenticator>,
+	case select(authenticators: [any Authenticator],
 	            handler: AuthenticatorSelectionHandler)
 }
 
@@ -28,7 +28,7 @@ final class SelectAuthenticatorViewModel {
 	private let appCoordinator: AppCoordinator
 
 	/// The list of authenticators.
-	private var authenticators = Set<Authenticator>()
+	private var authenticators = [any Authenticator]()
 
 	/// The authenticator selection handler.
 	private var handler: AuthenticatorSelectionHandler?
@@ -63,13 +63,13 @@ extension SelectAuthenticatorViewModel: ScreenViewModel {
 		/// Observable sequence used for starting to load the authenticators.
 		let loadTrigger: Driver<()>
 		/// Observable sequence used for selecting an authenticator at given index path.
-		let selectAuthenticator: Driver<Authenticator>
+		let selectAuthenticator: Driver<any Authenticator>
 	}
 
 	/// The output of the view model.
 	struct Output {
 		/// Observable sequence used for listening to authenticators event.
-		let authenticators: Driver<Set<Authenticator>>
+		let authenticators: Driver<[any Authenticator]>
 		/// Observable sequence used for listening to authenticator selection event.
 		let selection: Driver<()>
 	}
@@ -125,7 +125,7 @@ private extension SelectAuthenticatorViewModel {
 	///
 	/// - Parameter authenticator: The selected authenticator.
 	/// - Returns: An observable sequence.
-	func select(authenticator: Authenticator) -> Observable<()> {
+	func select(authenticator: any Authenticator) -> Observable<()> {
 		Observable.create {
 			self.handler?.aaid(authenticator.aaid)
 			self.handler = nil
