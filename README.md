@@ -1,6 +1,9 @@
 ![Nevis Logo](https://www.nevis.net/hubfs/Nevis/images/logotype.svg)
 
-# Nevis Mobile Authentication SDK iOS Example App
+# Nevis Mobile Authentication SDK iOS Example App Reactive
+
+[![Main Branch Commit](https://github.com/nevissecurity/nevis-mobile-authentication-sdk-example-app-ios-rx/actions/workflows/main.yml/badge.svg)](https://github.com/nevissecurity/nevis-mobile-authentication-sdk-example-app-ios-rx/actions/workflows/main.yml)
+[![Verify Pull Request](https://github.com/nevissecurity/nevis-mobile-authentication-sdk-example-app-ios-rx/actions/workflows/pr.yml/badge.svg)](https://github.com/nevissecurity/nevis-mobile-authentication-sdk-example-app-ios-rx/actions/workflows/pr.yml)
 
 This repository contains the example app demonstrating how to use the Nevis Mobile Authentication SDK in an iOS mobile application.
 The Nevis Mobile Authentication SDK allows you to integrate passwordless authentication to your existing mobile app, backed by the FIDO UAF 1.1 Standard.
@@ -26,7 +29,7 @@ Before you start compiling and using the example applications please ensure you 
 Your development setup has to meet the following prerequisites:
 
 * iOS 12 or later
-* Xcode 14, including Swift 5.5.7
+* Xcode 14, including Swift 5.7
 
 ### Initialization
 
