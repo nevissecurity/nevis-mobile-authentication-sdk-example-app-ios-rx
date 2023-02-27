@@ -136,4 +136,4 @@ The following use cases are responsible for getting information with the help of
 * The [GetAuthenticatorsUseCaseImpl](NevisExampleApp/Domain/Use%20Case/GetAuthenticatorsUseCaseImpl.swift) class obtains the authenticator information.
 * The [GetDeviceInformationUseCaseImpl](NevisExampleApp/Domain/Use%20Case/GetDeviceInformationUseCaseImpl.swift) class obtains the device information.
 
-© 2022 made with ❤ by Nevis
+© 2023 made with ❤ by Nevis
