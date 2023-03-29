@@ -184,7 +184,7 @@ extension HomeViewModel: ScreenViewModel {
 			.do(onNext: appCoordinator.navigateToAuthCloudApiRegistration)
 
 		let inBandRegistration = input.inBandRegistrationTrigger
-			.do(onNext: appCoordinator.navigateToLegacyLogin)
+			.do(onNext: appCoordinator.navigateToUsernamePasswordLogin)
 
 		let loading = activityIndicator.asDriver()
 		let error = errorTracker.asDriver()

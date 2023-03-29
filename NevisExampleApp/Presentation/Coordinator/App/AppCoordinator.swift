@@ -26,8 +26,8 @@ protocol AppCoordinator: Coordinator {
 	/// Navigates to the Auth Cloud Api Registration screen.
 	func navigateToAuthCloudApiRegistration()
 
-	/// Navigates to the Legacy Login screen.
-	func navigateToLegacyLogin()
+	/// Navigates to the Username Password Login screen.
+	func navigateToUsernamePasswordLogin()
 
 	/// Navigates to the Account Selection screen.
 	///

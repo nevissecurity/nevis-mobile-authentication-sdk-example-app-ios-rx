@@ -109,12 +109,12 @@ extension AppCoordinatorImpl: AppCoordinator {
 		rootNavigationController?.pushViewController(screen, animated: true)
 	}
 
-	func navigateToLegacyLogin() {
-		guard let screen = DependencyProvider.shared.container.resolve(LegacyLoginScreen.self) else {
+	func navigateToUsernamePasswordLogin() {
+		guard let screen = DependencyProvider.shared.container.resolve(UsernamePasswordLoginScreen.self) else {
 			return
 		}
 
-		logger.log("Navigating to Legacy Login screen.", color: .purple)
+		logger.log("Navigating to Username Password Login screen.", color: .purple)
 		rootNavigationController?.pushViewController(screen, animated: true)
 	}
 

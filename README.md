@@ -29,7 +29,7 @@ Before you start compiling and using the example applications please ensure you 
 Your development setup has to meet the following prerequisites:
 
 * iOS 12 or later
-* Xcode 14, including Swift 5.7
+* Xcode 14.2, including Swift 5.7.2
 
 ### Initialization
 
@@ -88,7 +88,7 @@ Before being able to authenticate using the Nevis Mobile Authentication SDK, go 
 If the application is using a backend using the Nevis Authentication Cloud, the [AuthCloudApiRegistrationUseCaseImpl](NevisExampleApp/Domain/Use%20Case/AuthCloudApiRegistrationUseCaseImpl.swift) class will be used by passing the `enrollment` response or an `appLinkUri`.
 
 When the backend used by the application does not use the Nevis Authentication Cloud the name of the user to be registered is passed to the [RegistrationUseCaseImpl](NevisExampleApp/Domain/Use%20Case/RegistrationUseCaseImpl.swift) class.
-If authorization is required by the backend to register, provide an `AuthorizationProvider`. In the example app a `CookieAuthorizationProvider` is created from the cookies (see [LegacyLoginViewModel](NevisExampleApp/Presentation/Screens/Legacy%20Login/LegacyLoginViewModel.swift)) obtained by the [LoginUseCase](NevisExampleApp/Domain/Use%20Case/LoginUseCase.swift) class.
+If authorization is required by the backend to register, provide an `AuthorizationProvider`. In the example app a `CookieAuthorizationProvider` is created from the cookies (see [UsernamePasswordLoginViewModel](NevisExampleApp/Presentation/Screens/Username%20Password%20Login/UsernamePasswordLoginViewModel.swift)) obtained by the [LoginUseCase](NevisExampleApp/Domain/Use%20Case/LoginUseCase.swift) class.
 
 #### Out-of-band registration
 

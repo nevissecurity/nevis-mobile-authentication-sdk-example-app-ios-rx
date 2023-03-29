@@ -51,8 +51,6 @@
 		386DA8FE26CA9B9A00060ADD /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386DA8FD26CA9B9A00060ADD /* Operation.swift */; };
 		386F25302902E38A0036615B /* DeregistrationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386F252F2902E38A0036615B /* DeregistrationUseCase.swift */; };
 		386F25322902E3900036615B /* DeregistrationUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386F25312902E3900036615B /* DeregistrationUseCaseImpl.swift */; };
-		386FC31E29091E9700CB30A7 /* LegacyLoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FC31D29091E9700CB30A7 /* LegacyLoginScreen.swift */; };
-		386FC32029091EA000CB30A7 /* LegacyLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FC31F29091EA000CB30A7 /* LegacyLoginViewModel.swift */; };
 		386FC3222909210300CB30A7 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FC3212909210300CB30A7 /* LoginUseCase.swift */; };
 		386FC3242909210A00CB30A7 /* LoginUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FC3232909210A00CB30A7 /* LoginUseCaseImpl.swift */; };
 		386FC3262909215000CB30A7 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FC3252909215000CB30A7 /* LoginRequest.swift */; };
@@ -115,6 +113,8 @@
 		38C2D11E290BC20800E41764 /* ResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2D11C290BC20800E41764 /* ResultScreen.swift */; };
 		38D67EC926C69BCC0068334F /* VerifyPinResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D67EC826C69BCC0068334F /* VerifyPinResponse.swift */; };
 		38D67ECB26C6AC630068334F /* CompletedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D67ECA26C6AC630068334F /* CompletedResponse.swift */; };
+		38DABD7229D58B11008B8116 /* UsernamePasswordLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DABD7029D58B11008B8116 /* UsernamePasswordLoginViewModel.swift */; };
+		38DABD7329D58B11008B8116 /* UsernamePasswordLoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DABD7129D58B11008B8116 /* UsernamePasswordLoginScreen.swift */; };
 		38DD19AB26A070F000FE08A4 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD19A726A070F000FE08A4 /* ValidationError.swift */; };
 		38DD19AD26A070F000FE08A4 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD19A926A070F000FE08A4 /* ValidationResult.swift */; };
 		38DF72752901450700429337 /* SelectAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF72742901450700429337 /* SelectAccountScreen.swift */; };
@@ -208,8 +208,6 @@
 		386DA8FD26CA9B9A00060ADD /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		386F252F2902E38A0036615B /* DeregistrationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeregistrationUseCase.swift; sourceTree = "<group>"; };
 		386F25312902E3900036615B /* DeregistrationUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeregistrationUseCaseImpl.swift; sourceTree = "<group>"; };
-		386FC31D29091E9700CB30A7 /* LegacyLoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyLoginScreen.swift; sourceTree = "<group>"; };
-		386FC31F29091EA000CB30A7 /* LegacyLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyLoginViewModel.swift; sourceTree = "<group>"; };
 		386FC3212909210300CB30A7 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		386FC3232909210A00CB30A7 /* LoginUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseImpl.swift; sourceTree = "<group>"; };
 		386FC3252909215000CB30A7 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
@@ -274,6 +272,8 @@
 		38C2D11C290BC20800E41764 /* ResultScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultScreen.swift; sourceTree = "<group>"; };
 		38D67EC826C69BCC0068334F /* VerifyPinResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPinResponse.swift; sourceTree = "<group>"; };
 		38D67ECA26C6AC630068334F /* CompletedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedResponse.swift; sourceTree = "<group>"; };
+		38DABD7029D58B11008B8116 /* UsernamePasswordLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernamePasswordLoginViewModel.swift; sourceTree = "<group>"; };
+		38DABD7129D58B11008B8116 /* UsernamePasswordLoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernamePasswordLoginScreen.swift; sourceTree = "<group>"; };
 		38DD19A726A070F000FE08A4 /* ValidationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		38DD19A926A070F000FE08A4 /* ValidationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
 		38DF72742901450700429337 /* SelectAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAccountScreen.swift; sourceTree = "<group>"; };
@@ -502,7 +502,6 @@
 				38ABBB502906AD1E006B19B9 /* Change Device Information */,
 				38FE58C22693442B0014DF93 /* Home */,
 				3852F3A4268624470051FF73 /* Launch */,
-				386FC31C29091E8300CB30A7 /* Legacy Login */,
 				382D51AC26B194DC00B774CF /* Logging */,
 				38A0C0F726E1116F00898B6A /* Not Enrolled */,
 				388844DA2695C1D600CCFB00 /* Pin */,
@@ -511,6 +510,7 @@
 				38DF7273290144F300429337 /* Select Account */,
 				381F2C29268F464600EE6A97 /* Select Authenticator */,
 				38EB176E2902939900E82236 /* Transaction Confirmation */,
+				38DABD6B29D58ADB008B8116 /* Username Password Login */,
 				3852F39B268611830051FF73 /* Screen.swift */,
 				3852F39D2686193C0051FF73 /* ScreenViewModel.swift */,
 			);
@@ -662,15 +662,6 @@
 				386A74972913B91A00951EF8 /* NSTextField.swift */,
 			);
 			path = TextField;
-			sourceTree = "<group>";
-		};
-		386FC31C29091E8300CB30A7 /* Legacy Login */ = {
-			isa = PBXGroup;
-			children = (
-				386FC31D29091E9700CB30A7 /* LegacyLoginScreen.swift */,
-				386FC31F29091EA000CB30A7 /* LegacyLoginViewModel.swift */,
-			);
-			path = "Legacy Login";
 			sourceTree = "<group>";
 		};
 		386FC329290925C200CB30A7 /* Repository */ = {
@@ -864,6 +855,15 @@
 				38C2D11B290BC20800E41764 /* ResultViewModel.swift */,
 			);
 			path = Result;
+			sourceTree = "<group>";
+		};
+		38DABD6B29D58ADB008B8116 /* Username Password Login */ = {
+			isa = PBXGroup;
+			children = (
+				38DABD7129D58B11008B8116 /* UsernamePasswordLoginScreen.swift */,
+				38DABD7029D58B11008B8116 /* UsernamePasswordLoginViewModel.swift */,
+			);
+			path = "Username Password Login";
 			sourceTree = "<group>";
 		};
 		38DD19A526A070F000FE08A4 /* Validation */ = {
@@ -1118,6 +1118,7 @@
 				386A74922913AEC000951EF8 /* Style.swift in Sources */,
 				38FD7AC328FEA67800F64099 /* Environment.swift in Sources */,
 				3867A61F29013B23006EE5A6 /* SelectAccountResponse.swift in Sources */,
+				38DABD7229D58B11008B8116 /* UsernamePasswordLoginViewModel.swift in Sources */,
 				3867C1A32685F73A00A8B98B /* AppLoader.swift in Sources */,
 				3867C1A62685F7AF00A8B98B /* DependencyProvider.swift in Sources */,
 				38ABBB4F2906A158006B19B9 /* ChangeDeviceInformationUseCaseImpl.swift in Sources */,
@@ -1181,11 +1182,9 @@
 				38A0C0FD26E1153800898B6A /* UIApplication+Extension.swift in Sources */,
 				386A74982913B91A00951EF8 /* NSTextField.swift in Sources */,
 				386FC3222909210300CB30A7 /* LoginUseCase.swift in Sources */,
-				386FC32029091EA000CB30A7 /* LegacyLoginViewModel.swift in Sources */,
 				386FC3242909210A00CB30A7 /* LoginUseCaseImpl.swift in Sources */,
 				38487845268C6B4800FD8419 /* SelectAuthenticatorScreen.swift in Sources */,
 				3852F3AB268624D70051FF73 /* LaunchViewModel.swift in Sources */,
-				386FC31E29091E9700CB30A7 /* LegacyLoginScreen.swift in Sources */,
 				3863F3A72907BEF00028D26E /* GetAuthenticatorsUseCaseImpl.swift in Sources */,
 				382D51AB26B1679B00B774CF /* JWTValidator.swift in Sources */,
 				3863F3B02907CE3D0028D26E /* ChangePinUseCaseImpl.swift in Sources */,
@@ -1193,6 +1192,7 @@
 				38F0769929000BA400EFDAF8 /* Authenticator+LocalizedExtension.swift in Sources */,
 				38A0C0ED26E0C7F700898B6A /* PinProtectionInformation.swift in Sources */,
 				38AC7AB62689DC8600A5A5AD /* AppCoordinator.swift in Sources */,
+				38DABD7329D58B11008B8116 /* UsernamePasswordLoginScreen.swift in Sources */,
 				38F0769D290041FB00EFDAF8 /* GetAccountsUseCase.swift in Sources */,
 				38B085A82907F44F006295D8 /* AuthCloudApiRegistrationUseCaseImpl.swift in Sources */,
 				3848784B268C778800FD8419 /* DeepLinkHandlerImpl.swift in Sources */,
@@ -1376,7 +1376,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.0;
+				MARKETING_VERSION = 3.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.nevis.mobile.authentication.sdk.ios.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1407,7 +1407,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.0;
+				MARKETING_VERSION = 3.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.nevis.mobile.authentication.sdk.ios.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
