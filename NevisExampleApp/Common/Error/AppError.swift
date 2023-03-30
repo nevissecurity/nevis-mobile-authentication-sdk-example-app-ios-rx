@@ -12,7 +12,7 @@ enum AppError: Error {
 	case loadAppConfigurationError
 	/// Login configuration read error.
 	case readLoginConfigurationError
-	/// No ccokie were received during Legacy Login.
+	/// No ccokie were received during login.
 	case cookieNotFound
 	/// No PIN authenticator found in the list of registered authenticators.
 	case pinAuthenticatorNotFound

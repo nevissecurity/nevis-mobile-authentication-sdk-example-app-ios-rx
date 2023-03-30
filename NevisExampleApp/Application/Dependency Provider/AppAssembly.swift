@@ -55,8 +55,8 @@ private extension AppAssembly {
 		                       initializer: AuthCloudApiRegistrationScreen.init)
 			.inObjectScope(.weak)
 
-		container.autoregister(LegacyLoginScreen.self,
-		                       initializer: LegacyLoginScreen.init)
+		container.autoregister(UsernamePasswordLoginScreen.self,
+		                       initializer: UsernamePasswordLoginScreen.init)
 			.inObjectScope(.weak)
 
 		container.register(SelectAccountScreen.self) { (res: Resolver, arg: NavigationParameterizable) in
@@ -126,8 +126,8 @@ private extension AppAssembly {
 		                       initializer: AuthCloudApiRegistrationViewModel.init)
 			.inObjectScope(.transient)
 
-		container.autoregister(LegacyLoginViewModel.self,
-		                       initializer: LegacyLoginViewModel.init)
+		container.autoregister(UsernamePasswordLoginViewModel.self,
+		                       initializer: UsernamePasswordLoginViewModel.init)
 			.inObjectScope(.transient)
 
 		container.autoregister(SelectAccountViewModel.self,

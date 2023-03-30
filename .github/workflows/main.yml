@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  XCODE_VERSION: '14.1'
+  XCODE_VERSION: '14.2'
   CURRENT_BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
 jobs:

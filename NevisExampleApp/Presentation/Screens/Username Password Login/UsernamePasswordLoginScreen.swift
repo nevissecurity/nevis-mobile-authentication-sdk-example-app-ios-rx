@@ -8,30 +8,30 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-/// The Legacy Login view.
-final class LegacyLoginScreen: BaseScreen, Screen {
+/// The Username Password Login view.
+final class UsernamePasswordLoginScreen: BaseScreen, Screen {
 
 	// MARK: - UI
 
 	/// The title label.
-	private let titleLabel = NSLabel(text: L10n.LegacyLogin.title, style: .title)
+	private let titleLabel = NSLabel(text: L10n.UsernamePasswordLogin.title, style: .title)
 
 	/// The text field for the username.
-	private let usernameField = NSTextField(placeholder: L10n.LegacyLogin.usernamePlaceholder, returnKeyType: .next)
+	private let usernameField = NSTextField(placeholder: L10n.UsernamePasswordLogin.usernamePlaceholder, returnKeyType: .next)
 
 	/// The text field for the password.
-	private let passwordField = NSTextField(placeholder: L10n.LegacyLogin.passwordPlaceholder)
+	private let passwordField = NSTextField(placeholder: L10n.UsernamePasswordLogin.passwordPlaceholder)
 
 	/// The confirm button.
-	private let confirmButton = OutlinedButton(title: L10n.LegacyLogin.confirm)
+	private let confirmButton = OutlinedButton(title: L10n.UsernamePasswordLogin.confirm)
 
 	/// The cancel button.
-	private let cancelButton = OutlinedButton(title: L10n.LegacyLogin.cancel)
+	private let cancelButton = OutlinedButton(title: L10n.UsernamePasswordLogin.cancel)
 
 	// MARK: - Properties
 
 	/// The view model.
-	var viewModel: LegacyLoginViewModel!
+	var viewModel: UsernamePasswordLoginViewModel!
 
 	/// Thread safe bag that disposes added disposables.
 	private let disposeBag = DisposeBag()
@@ -41,20 +41,20 @@ final class LegacyLoginScreen: BaseScreen, Screen {
 	/// Creates a new instance.
 	///
 	/// - Parameter viewModel: The view model.
-	init(viewModel: LegacyLoginViewModel) {
+	init(viewModel: UsernamePasswordLoginViewModel) {
 		self.viewModel = viewModel
 		super.init()
 	}
 
 	/// :nodoc:
 	deinit {
-		os_log("LegacyLoginScreen", log: OSLog.deinit, type: .debug)
+		os_log("UsernamePasswordLoginScreen", log: OSLog.deinit, type: .debug)
 	}
 }
 
 // MARK: - Lifecycle
 
-extension LegacyLoginScreen {
+extension UsernamePasswordLoginScreen {
 
 	/// Override of the `viewDidLoad()` lifecycle method. Sets up the user interface.
 	override func viewDidLoad() {
@@ -71,7 +71,7 @@ extension LegacyLoginScreen {
 // MARK: - Setups
 
 /// :nodoc:
-private extension LegacyLoginScreen {
+private extension UsernamePasswordLoginScreen {
 
 	func setupUI() {
 		setupTitleLabel()
@@ -121,7 +121,7 @@ private extension LegacyLoginScreen {
 // MARK: - UITextFieldDelegate
 
 /// :nodoc:
-extension LegacyLoginScreen: UITextFieldDelegate {
+extension UsernamePasswordLoginScreen: UITextFieldDelegate {
 	func textFieldShouldReturn(_: UITextField) -> Bool {
 		passwordField.becomeFirstResponder()
 		return true
@@ -131,14 +131,14 @@ extension LegacyLoginScreen: UITextFieldDelegate {
 // MARK: - Binding
 
 /// :nodoc:
-private extension LegacyLoginScreen {
+private extension UsernamePasswordLoginScreen {
 
 	func bindViewModel() {
 		assert(viewModel != nil)
-		let input = LegacyLoginViewModel.Input(username: usernameField.rx.text.orEmpty.asDriver(),
-		                                       password: passwordField.rx.text.orEmpty.asDriver(),
-		                                       confirmTrigger: confirmButton.rx.tap.asDriver(),
-		                                       cancelTrigger: cancelButton.rx.tap.asDriver())
+		let input = UsernamePasswordLoginViewModel.Input(username: usernameField.rx.text.orEmpty.asDriver(),
+		                                                 password: passwordField.rx.text.orEmpty.asDriver(),
+		                                                 confirmTrigger: confirmButton.rx.tap.asDriver(),
+		                                                 cancelTrigger: cancelButton.rx.tap.asDriver())
 		let output = viewModel.transform(input: input)
 		[output.confirm.drive(),
 		 output.cancel.drive(),

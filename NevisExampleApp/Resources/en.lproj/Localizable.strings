@@ -59,12 +59,12 @@
 "auth_cloud_api_registration_missing_data"="Either the response or the appLinkUri is required.";
 "auth_cloud_api_registration_wrong_data"="You cannot provide both the response and the appLinkUri.";
 
-// Auth Cloud Api Registration screen
-"legacy_login_title"="In-Band Registration";
-"legacy_login_username_placeholder"="Enter username";
-"legacy_login_password_placeholder"="Enter password";
-"legacy_login_confirm_button"="Confirm";
-"legacy_login_cancel_button"="Cancel";
+// Username Password Login screen
+"username_password_login_title"="In-Band Registration";
+"username_password_login_username_placeholder"="Enter username";
+"username_password_login_password_placeholder"="Enter password";
+"username_password_login_confirm_button"="Confirm";
+"username_password_login_cancel_button"="Cancel";
 
 // Result screen
 "result_continue_button"="Continue";
@@ -100,7 +100,7 @@
 "error_pin_authenticator_not_found_message"="Pin authenticator not found.";
 "error_app_load_app_configuration_error_message"="Failed to load the configuration file.";
 "error_app_read_login_configuration_error_message"="Failed to read the login configuration.";
-"error_app_cookie_not_found_error_message"="No cookie was provided in the legacy login response.";
+"error_app_cookie_not_found_error_message"="No cookie was provided in the login response.";
 "error_app_pin_authenticator_not_found_message"="Pin authenticator not found.";
 "error_app_qr_scan_title"="Error";
 "error_app_qr_scan_unavailable_message"="Qr Code scanning is not supported using a simulator. You can start an Out-of-Band operation by opening a deep link or try out the Auth Cloud API registration.";
@@ -109,7 +109,7 @@
 "error_business_authenticator_not_found_message"="Authenticator not found.";
 "error_business_device_information_not_found_message"="No device information was found for the operation.";
 "error_business_accounts_not_found_message"="There are no registered accounts.";
-"error_business_login_failed_message"="Legacy login failed.";
+"error_business_login_failed_message"="Login failed.";
 
 // Authenticator
 "authenticator_pin_title" = "PIN";

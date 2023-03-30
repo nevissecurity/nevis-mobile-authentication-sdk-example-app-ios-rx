@@ -8,15 +8,15 @@ import NevisMobileAuthentication
 import RxCocoa
 import RxSwift
 
-/// View model of Legacy Login view.
-final class LegacyLoginViewModel {
+/// View model of Username Password Login view.
+final class UsernamePasswordLoginViewModel {
 
 	// MARK: - Properties
 
 	/// The configuration loader.
 	private let configurationLoader: ConfigurationLoader
 
-	/// Use case for legacy login.
+	/// Use case for login.
 	private let loginUseCase: LoginUseCase
 
 	/// Use case for registration.
@@ -37,7 +37,7 @@ final class LegacyLoginViewModel {
 	///
 	/// - Parameters:
 	///   - configurationLoader: The configuration loader.
-	///   - loginUseCase: Use case for legacy login.
+	///   - loginUseCase: Use case for login.
 	///   - registrationUseCase: Use case for registration.
 	///   - responseObserver: The response observer.
 	///   - appCoordinator: The application coordinator.
@@ -55,13 +55,13 @@ final class LegacyLoginViewModel {
 
 	/// :nodoc:
 	deinit {
-		os_log("LegacyLoginViewModel", log: OSLog.deinit, type: .debug)
+		os_log("UsernamePasswordLoginViewModel", log: OSLog.deinit, type: .debug)
 	}
 }
 
 // MARK: - ScreenViewModel
 
-extension LegacyLoginViewModel: ScreenViewModel {
+extension UsernamePasswordLoginViewModel: ScreenViewModel {
 
 	/// The input of the view model.
 	struct Input {
@@ -115,9 +115,9 @@ extension LegacyLoginViewModel: ScreenViewModel {
 	}
 }
 
-private extension LegacyLoginViewModel {
+private extension UsernamePasswordLoginViewModel {
 
-	/// Start legacy login.
+	/// Starts login.
 	///
 	/// - Parameters:
 	///   - username: The username.
@@ -138,7 +138,7 @@ private extension LegacyLoginViewModel {
 			}
 	}
 
-	/// Start In-Band registration.
+	/// Starts In-Band registration.
 	///
 	/// - Parameter credentials: The credentials.
 	/// - Returns: An observable sequence.
