@@ -170,15 +170,6 @@ extension AppCoordinatorImpl: AppCoordinator {
 		rootNavigationController?.pushViewController(screen, animated: true)
 	}
 
-	func navigateToNotEnrolledAuthenticator() {
-		guard let screen = DependencyProvider.shared.container.resolve(NotEnrolledAuthenticatorScreen.self) else {
-			return
-		}
-
-		logger.log("Navigating to Not Enrolled Authenticator screen.", color: .purple)
-		rootNavigationController?.pushViewController(screen, animated: true)
-	}
-
 	func navigateToResult(with parameter: ResultParameter) {
 		guard let screen = DependencyProvider.shared.container.resolve(ResultScreen.self,
 		                                                               argument: parameter as NavigationParameterizable) else {

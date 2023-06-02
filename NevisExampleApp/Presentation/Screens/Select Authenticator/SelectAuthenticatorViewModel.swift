@@ -13,9 +13,9 @@ enum SelectAuthenticatorParameter: NavigationParameterizable {
 	/// Represents authenticator selection.
 	///
 	///  - Parameters:
-	///    - authenticators: The list of authenticators.
+	///    - authenticatorItems: The list of authenticator items.
 	///    - handler: The authenticator selection handler.
-	case select(authenticators: [any Authenticator],
+	case select(authenticatorItems: [AuthenticatorItem],
 	            handler: AuthenticatorSelectionHandler)
 }
 
@@ -27,8 +27,8 @@ final class SelectAuthenticatorViewModel {
 	/// The application coordinator.
 	private let appCoordinator: AppCoordinator
 
-	/// The list of authenticators.
-	private var authenticators = [any Authenticator]()
+	/// The list of authenticator items.
+	private var authenticatorItems = [AuthenticatorItem]()
 
 	/// The authenticator selection handler.
 	private var handler: AuthenticatorSelectionHandler?
@@ -68,8 +68,8 @@ extension SelectAuthenticatorViewModel: ScreenViewModel {
 
 	/// The output of the view model.
 	struct Output {
-		/// Observable sequence used for listening to authenticators event.
-		let authenticators: Driver<[any Authenticator]>
+		/// Observable sequence used for listening to authenticator items event.
+		let authenticators: Driver<[AuthenticatorItem]>
 		/// Observable sequence used for listening to authenticator selection event.
 		let selection: Driver<()>
 	}
@@ -81,20 +81,12 @@ extension SelectAuthenticatorViewModel: ScreenViewModel {
 	func transform(input: Input) -> Output {
 		let authenticators = input.loadTrigger
 			.flatMapLatest { [unowned self] _ in
-				Driver.just(self.authenticators)
+				Driver.just(self.authenticatorItems)
 			}
 
 		let selection = input.selectAuthenticator
 			.asObservable()
-			.flatMap { [unowned self] authenticator -> Observable<()> in
-				if let enrollment = authenticator.userEnrollment as? OsUserEnrollment, !enrollment.isEnrolled() {
-					// The selected authenticator is an OS based authenticator (Face/Touch ID)
-					// But the user is not enrolled
-					return .just(self.appCoordinator.navigateToNotEnrolledAuthenticator())
-				}
-
-				return self.select(authenticator: authenticator)
-			}
+			.flatMap(select(authenticator:))
 			.asDriverOnErrorJustComplete()
 
 		return Output(authenticators: authenticators,
@@ -115,8 +107,8 @@ private extension SelectAuthenticatorViewModel {
 		}
 
 		switch parameter {
-		case let .select(authenticators, handler):
-			self.authenticators = authenticators
+		case let .select(authenticatorItems, handler):
+			self.authenticatorItems = authenticatorItems
 			self.handler = handler
 		}
 	}

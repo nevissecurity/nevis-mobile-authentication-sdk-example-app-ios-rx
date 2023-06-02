@@ -57,6 +57,10 @@ enum L10n {
 	enum AuthenticatorSelection {
 		/// Screen title: "Select an Authentication Method"
 		static let title = L10n.tr("authenticator_selection_title")
+		/// Screen title: "Before using the authenticator, enroll it in the phone System Settings"
+		static let authenticatorNotEnrolled = L10n.tr("authenticator_selection_authenticator_is_not_enrolled")
+		/// Screen title: "This authentication method cannot be used with your application"
+		static let authenticatorNotPolicyCompliant = L10n.tr("authenticator_selection_authenticator_is_not_policy_compliant")
 	}
 
 	/// Pin screen related localized strings.
@@ -222,16 +226,6 @@ enum L10n {
 		static let `continue` = L10n.tr("result_continue_button")
 	}
 
-	/// Not Enrolled Authenticator screen related localized strings.
-	enum NotEnrolledAuthenticator {
-		/// Screen title: "Authentication Method Not Configured"
-		static let title = L10n.tr("authenticator_not_enrolled_title")
-		/// Screen description: "Your selected authentication method is not yet set up. Please configure it in the System Settings."
-		static let description = L10n.tr("authenticator_not_enrolled_description")
-		/// Confirm button: "Go to Settings"
-		static let action = L10n.tr("authenticator_not_enrolled_action_button")
-	}
-
 	/// Logging screen related localized strings.
 	enum Logging {
 		/// Screen title: "Pull to see log"
@@ -337,24 +331,18 @@ enum L10n {
 		enum Pin {
 			/// Title: "PIN"
 			static let title = L10n.tr("authenticator_pin_title")
-			/// Description: "Authentication using a PIN"
-			static let description = L10n.tr("authenticator_pin_description")
 		}
 
 		/// Face recognition authenticator related localized strings.
 		enum FaceRecognition {
 			/// Title: "Face ID"
 			static let title = L10n.tr("authenticator_face_recognition_title")
-			/// Description: "Authentication based on Face ID"
-			static let description = L10n.tr("authenticator_face_recognition_description")
 		}
 
 		/// Fingerprint authenticator related localized strings.
 		enum Fingerprint {
 			/// Title: "Touch ID"
 			static let title = L10n.tr("authenticator_fingerprint_title")
-			/// Description: "Authentication based on Touch ID"
-			static let description = L10n.tr("authenticator_fingerprint_description")
 		}
 	}
 

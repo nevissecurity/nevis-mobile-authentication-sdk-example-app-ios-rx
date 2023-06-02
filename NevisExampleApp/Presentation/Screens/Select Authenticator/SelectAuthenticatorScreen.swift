@@ -88,11 +88,13 @@ private extension SelectAuthenticatorScreen {
 			$0.rowHeight = UITableView.automaticDimension
 		}
 
-		Observable.zip(tableView.rx.modelSelected((any Authenticator).self),
+		Observable.zip(tableView.rx.modelSelected(AuthenticatorItem.self),
 		               tableView.rx.itemSelected)
-			.bind { [weak self] authenticator, indexPath in
+			.bind { [weak self] item, indexPath in
 				self?.tableView.deselectRow(at: indexPath, animated: true)
-				self?.authenticatorSubject.on(.next(authenticator))
+				if item.isEnabled {
+					self?.authenticatorSubject.on(.next(item.authenticator))
+				}
 			}
 			.disposed(by: disposeBag)
 
@@ -123,11 +125,11 @@ private extension SelectAuthenticatorScreen {
 		let input = SelectAuthenticatorViewModel.Input(loadTrigger: loadTrigger,
 		                                               selectAuthenticator: authenticatorSubject.asDriverOnErrorJustComplete())
 		let output = viewModel.transform(input: input)
-		[output.authenticators.drive(tableView.rx.items) { tableView, index, authenticator in
+		[output.authenticators.drive(tableView.rx.items) { tableView, index, item in
 			tableView.dequeueReusableCell(for: IndexPath(row: index, section: 0),
 			                              cellType: AuthenticatorCell.self)
 		 	.then {
-		 		$0.bind(viewModel: SelectAuthenticatorItemViewModel(authenticator: authenticator))
+		 		$0.bind(viewModel: SelectAuthenticatorItemViewModel(item: item))
 		 	}
 		 },
 		 output.selection.drive()]

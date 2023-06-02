@@ -14,18 +14,29 @@ struct SelectAuthenticatorItemViewModel {
 	/// The readable title.
 	let title: String
 
+	/// Flag that tells whether the item is selectable.
+	let isEnabled: Bool
+
 	/// The readable details.
-	let details: String
+	var details: String?
 
 	// MARK: - Initialization
 
 	/// Creates a new instance.
 	///
-	/// - Parameters:
-	///   - title: The readable title.
-	///   - details: The readable details.
-	init(authenticator: any Authenticator) {
-		self.title = authenticator.localizedTitle
-		self.details = authenticator.localizedDescription
+	/// - Parameter authenticatorItem: The authenticator item.
+	init(item: AuthenticatorItem) {
+		self.title = item.authenticator.localizedTitle
+		self.isEnabled = item.isEnabled
+		guard !item.isEnabled else {
+			return
+		}
+
+		if !item.isPolicyCompliant {
+			self.details = L10n.AuthenticatorSelection.authenticatorNotPolicyCompliant
+		}
+		if !item.isUserEnrolled {
+			self.details = L10n.AuthenticatorSelection.authenticatorNotEnrolled
+		}
 	}
 }

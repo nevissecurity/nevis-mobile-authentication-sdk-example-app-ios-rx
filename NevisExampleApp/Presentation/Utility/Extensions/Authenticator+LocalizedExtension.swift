@@ -21,18 +21,4 @@ extension Authenticator {
 			return String()
 		}
 	}
-
-	/// Returns the localized description.
-	var localizedDescription: String {
-		switch aaid {
-		case AuthenticatorAaid.Pin.rawValue:
-			return L10n.Authenticator.Pin.description
-		case AuthenticatorAaid.FaceRecognition.rawValue:
-			return L10n.Authenticator.FaceRecognition.description
-		case AuthenticatorAaid.Fingerprint.rawValue:
-			return L10n.Authenticator.Fingerprint.description
-		default:
-			return String()
-		}
-	}
 }

@@ -58,8 +58,6 @@ custom_categories:
       - ChangeDeviceInformationParameter
       - UsernamePasswordLoginScreen
       - UsernamePasswordLoginViewModel
-      - NotEnrolledAuthenticatorScreen
-      - NotEnrolledAuthenticatorViewModel
       - TransactionConfirmationScreen
       - TransactionConfirmationViewModel
       - TransactionConfirmationParameter

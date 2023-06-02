@@ -49,9 +49,6 @@ protocol AppCoordinator: Coordinator {
 	/// - Parameter parameter: The navigation parameter.
 	func navigateToTransactionConfirmation(with parameter: TransactionConfirmationParameter)
 
-	/// Navigates to the Not Enrolled Authenticator screen.
-	func navigateToNotEnrolledAuthenticator()
-
 	/// Navigates to the Result screen.
 	///
 	/// - Parameter parameter: The navigation parameter.
