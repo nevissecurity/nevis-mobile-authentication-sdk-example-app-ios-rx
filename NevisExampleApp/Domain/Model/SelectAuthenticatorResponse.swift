@@ -11,8 +11,8 @@ final class SelectAuthenticatorResponse: OperationResponse {
 
 	// MARK: - Properties
 
-	/// The list of available authenticators.
-	let authenticators: [any Authenticator]
+	/// The list of authenticator items.
+	let authenticatorItems: [AuthenticatorItem]
 
 	/// The object that is notified of the selection result.
 	let handler: AuthenticatorSelectionHandler
@@ -22,11 +22,11 @@ final class SelectAuthenticatorResponse: OperationResponse {
 	/// Creates a new instance.
 	///
 	/// - Parameters:
-	///   - authenticators: The list of available authenticators.
+	///   - authenticatorItems: The list of authenticator items.
 	///   - handler: The object that is notified of the selection result.
-	init(authenticators: [any Authenticator],
+	init(authenticatorItems: [AuthenticatorItem],
 	     handler: AuthenticatorSelectionHandler) {
-		self.authenticators = authenticators
+		self.authenticatorItems = authenticatorItems
 		self.handler = handler
 		super.init()
 	}

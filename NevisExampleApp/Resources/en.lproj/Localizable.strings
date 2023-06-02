@@ -19,6 +19,8 @@
 
 // Authenticator Selection screen
 "authenticator_selection_title"="Select an Authentication Method";
+"authenticator_selection_authenticator_is_not_enrolled"="Before using the authenticator, enroll it in the phone System Settings";
+"authenticator_selection_authenticator_is_not_policy_compliant"="This authentication method cannot be used with your application";
 
 // Pin screen
 "pin_enrollment_title"="Create PIN";
@@ -69,11 +71,6 @@
 // Result screen
 "result_continue_button"="Continue";
 
-// Authenticator Not Enrolled screen
-"authenticator_not_enrolled_action_button" = "Go to Settings";
-"authenticator_not_enrolled_description" = "Your selected authentication method is not yet set up. Please configure it in the System Settings.";
-"authenticator_not_enrolled_title" = "Authentication Method Not Configured";
-
 // Logging screen
 "logging_title"="Pull to see log";
 
@@ -113,8 +110,5 @@
 
 // Authenticator
 "authenticator_pin_title" = "PIN";
-"authenticator_pin_description" = "Authentication using a PIN";
 "authenticator_face_recognition_title" = "Face ID";
-"authenticator_face_recognition_description" = "Authentication based on Face ID";
 "authenticator_fingerprint_title" = "Touch ID";
-"authenticator_fingerprint_description" = "Authentication based on Touch ID";

@@ -61,7 +61,7 @@ private extension ResponseObserverImpl {
 	/// - Parameter response: The operation response.
 	func handle(response: OperationResponse) {
 		if let response = response as? SelectAuthenticatorResponse {
-			let parameter: SelectAuthenticatorParameter = .select(authenticators: response.authenticators,
+			let parameter: SelectAuthenticatorParameter = .select(authenticatorItems: response.authenticatorItems,
 			                                                      handler: response.handler)
 			appCoordinator.navigateToAuthenticatorSelection(with: parameter)
 		}
