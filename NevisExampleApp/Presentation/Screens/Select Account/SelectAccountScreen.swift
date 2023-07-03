@@ -126,13 +126,13 @@ private extension SelectAccountScreen {
 		[output.accounts.drive(tableView.rx.items) { tableView, index, account in
 			tableView.dequeueReusableCell(for: IndexPath(row: index, section: 0),
 			                              cellType: AccountCell.self)
-		 	.then {
-		 		$0.bind(viewModel: SelectAccountItemViewModel(account: account))
-		 	}
-		 },
-		 output.selection.drive(),
-		 output.loading.drive(rx.isLoading),
-		 output.error.drive(rx.error)]
+				.then {
+					$0.bind(viewModel: SelectAccountItemViewModel(account: account))
+				}
+		},
+		output.selection.drive(),
+		output.loading.drive(rx.isLoading),
+		output.error.drive(rx.error)]
 			.forEach { $0.disposed(by: disposeBag) }
 	}
 }

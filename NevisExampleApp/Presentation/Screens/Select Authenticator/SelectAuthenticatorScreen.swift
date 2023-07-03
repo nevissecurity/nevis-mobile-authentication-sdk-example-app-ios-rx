@@ -128,11 +128,11 @@ private extension SelectAuthenticatorScreen {
 		[output.authenticators.drive(tableView.rx.items) { tableView, index, item in
 			tableView.dequeueReusableCell(for: IndexPath(row: index, section: 0),
 			                              cellType: AuthenticatorCell.self)
-		 	.then {
-		 		$0.bind(viewModel: SelectAuthenticatorItemViewModel(item: item))
-		 	}
-		 },
-		 output.selection.drive()]
+				.then {
+					$0.bind(viewModel: SelectAuthenticatorItemViewModel(item: item))
+				}
+		},
+		output.selection.drive()]
 			.forEach { $0.disposed(by: disposeBag) }
 	}
 }
