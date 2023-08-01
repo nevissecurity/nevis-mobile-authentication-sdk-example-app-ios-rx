@@ -83,7 +83,7 @@ extension OutOfBandOperationUseCaseImpl: OutOfBandOperationUseCase {
 				return Disposables.create()
 			}
 
-			let client = self.clientProvider.get()
+			let client = clientProvider.get()
 			client?.operations.outOfBandOperation
 				.payload(payload)
 				.onRegistration {

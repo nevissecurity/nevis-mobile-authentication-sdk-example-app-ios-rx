@@ -57,12 +57,12 @@ extension InBandAuthenticationUseCaseImpl: InBandAuthenticationUseCase {
 		Observable.create { [weak self] observer in
 			guard let self else { return Disposables.create() }
 
-			let client = self.clientProvider.get()
+			let client = clientProvider.get()
 			client?.operations.authentication
 				.username(username)
-				.authenticatorSelector(self.authenticatorSelector)
-				.pinUserVerifier(self.pinUserVerifier)
-				.biometricUserVerifier(self.biometricUserVerifier)
+				.authenticatorSelector(authenticatorSelector)
+				.pinUserVerifier(pinUserVerifier)
+				.biometricUserVerifier(biometricUserVerifier)
 				.onSuccess {
 					self.logger.log("In-Band authentication succeeded.", color: .green)
 					if let cookieAuthorizationProvider = $0 as? CookieAuthorizationProvider {

@@ -39,12 +39,12 @@ extension GetDeviceInformationUseCaseImpl: GetDeviceInformationUseCase {
 			let deviceInformation = client?.localData.deviceInformation
 			let disposable = Disposables.create()
 			guard let deviceInformation else {
-				self.logger.log("Get device information failed.", color: .red)
+				logger.log("Get device information failed.", color: .red)
 				observer.onError(BusinessError.deviceInformationNotFound)
 				return disposable
 			}
 
-			self.logger.log("Get device information succeeded.", color: .green)
+			logger.log("Get device information succeeded.", color: .green)
 			observer.onNext(deviceInformation)
 			observer.onCompleted()
 			return disposable

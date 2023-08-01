@@ -81,7 +81,7 @@ extension SelectAuthenticatorViewModel: ScreenViewModel {
 	func transform(input: Input) -> Output {
 		let authenticators = input.loadTrigger
 			.flatMapLatest { [unowned self] _ in
-				Driver.just(self.authenticatorItems)
+				Driver.just(authenticatorItems)
 			}
 
 		let selection = input.selectAuthenticator
