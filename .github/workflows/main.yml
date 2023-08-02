@@ -9,12 +9,12 @@ on:
   workflow_dispatch:
 
 env:
-  XCODE_VERSION: '14.2'
+  XCODE_VERSION: '14.3.1'
   CURRENT_BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
 jobs:
   main:
-    runs-on: macos-latest
+    runs-on: macos-13
 
     steps:
       # Checkout the repository under $GITHUB_WORKSPACE

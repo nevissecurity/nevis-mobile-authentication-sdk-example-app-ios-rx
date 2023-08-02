@@ -47,10 +47,10 @@ extension ChangePinUseCaseImpl: ChangePinUseCase {
 				return Disposables.create()
 			}
 
-			let client = self.clientProvider.get()
+			let client = clientProvider.get()
 			client?.operations.pinChange
 				.username(username)
-				.pinChanger(self.pinChanger)
+				.pinChanger(pinChanger)
 				.onSuccess {
 					self.logger.log("PIN change succeeded.", color: .green)
 					observer.onNext(CompletedResponse(operation: .pinChange))

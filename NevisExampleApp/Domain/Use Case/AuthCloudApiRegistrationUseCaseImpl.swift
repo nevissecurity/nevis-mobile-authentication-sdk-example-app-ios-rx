@@ -65,12 +65,12 @@ extension AuthCloudApiRegistrationUseCaseImpl: AuthCloudApiRegistrationUseCase {
 				return Disposables.create()
 			}
 
-			let client = self.clientProvider.get()
+			let client = clientProvider.get()
 			let operation = client?.operations.authCloudApiRegistration
-				.deviceInformation(self.createDeviceInformationUseCase.execute())
-				.authenticatorSelector(self.authenticatorSelector)
-				.pinEnroller(self.pinEnroller)
-				.biometricUserVerifier(self.biometricUserVerifier)
+				.deviceInformation(createDeviceInformationUseCase.execute())
+				.authenticatorSelector(authenticatorSelector)
+				.pinEnroller(pinEnroller)
+				.biometricUserVerifier(biometricUserVerifier)
 				.onSuccess {
 					self.logger.log("Auth Cloud Api registration succeeded.", color: .green)
 					observer.onNext(CompletedResponse(operation: .registration))
