@@ -344,6 +344,12 @@ enum L10n {
 			/// Title: "Touch ID"
 			static let title = L10n.tr("authenticator_fingerprint_title")
 		}
+
+		/// Device Passcode authenticator related localized strings.
+		enum DevicePasscode {
+			/// Title: "Device Passcode"
+			static let title = L10n.tr("authenticator_device_passcode_title")
+		}
 	}
 
 	/// Error related localized strings.

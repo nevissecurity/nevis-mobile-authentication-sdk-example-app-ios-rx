@@ -17,7 +17,6 @@ import RxSwift
 /// - See: ``AuthenticationAuthenticatorSelectorImpl``
 /// - See: ``RegistrationAuthenticatorSelectorImpl``
 /// - See: ``PinUserVerifierImpl``
-/// - See: ``BiometricUserVerifierImpl``
 protocol ResponseEmitter {
 
 	/// An observable that will emit an ``OperationResponse`` object or an error in case of failed operation.

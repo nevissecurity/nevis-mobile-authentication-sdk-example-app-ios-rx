@@ -27,6 +27,9 @@ class AuthCloudApiRegistrationUseCaseImpl {
 	/// The biometric user verifier.
 	private let biometricUserVerifier: BiometricUserVerifier
 
+	/// The device passcode user verifier.
+	private let devicePasscodeUserVerifier: DevicePasscodeUserVerifier
+
 	/// The logger.
 	private let logger: SDKLogger
 
@@ -40,18 +43,21 @@ class AuthCloudApiRegistrationUseCaseImpl {
 	///   - authenticatorSelector: The authenticator selector.
 	///   - pinEnroller: The PIN enroller.
 	///   - biometricUserVerifier: The biometric user verifier.
+	///   - devicePasscodeUserVerifier: The device passcode user verifier.
 	///   - logger: The logger.
 	init(clientProvider: ClientProvider,
 	     createDeviceInformationUseCase: CreateDeviceInformationUseCase,
 	     authenticatorSelector: AuthenticatorSelector,
 	     pinEnroller: PinEnroller,
 	     biometricUserVerifier: BiometricUserVerifier,
+	     devicePasscodeUserVerifier: DevicePasscodeUserVerifier,
 	     logger: SDKLogger) {
 		self.clientProvider = clientProvider
 		self.createDeviceInformationUseCase = createDeviceInformationUseCase
 		self.authenticatorSelector = authenticatorSelector
 		self.pinEnroller = pinEnroller
 		self.biometricUserVerifier = biometricUserVerifier
+		self.devicePasscodeUserVerifier = devicePasscodeUserVerifier
 		self.logger = logger
 	}
 }
@@ -71,6 +77,7 @@ extension AuthCloudApiRegistrationUseCaseImpl: AuthCloudApiRegistrationUseCase {
 				.authenticatorSelector(authenticatorSelector)
 				.pinEnroller(pinEnroller)
 				.biometricUserVerifier(biometricUserVerifier)
+				.devicePasscodeUserVerifier(devicePasscodeUserVerifier)
 				.onSuccess {
 					self.logger.log("Auth Cloud Api registration succeeded.", color: .green)
 					observer.onNext(CompletedResponse(operation: .registration))

@@ -199,6 +199,7 @@ private extension AppAssembly {
 			                                       authenticatorSelector: authenticatorSelector,
 			                                       pinUserVerifier: res~>,
 			                                       biometricUserVerifier: res~>,
+			                                       devicePasscodeUserVerifier: res~>,
 			                                       logger: res~>)
 		}
 
@@ -216,6 +217,7 @@ private extension AppAssembly {
 			                                           authenticatorSelector: authenticatorSelector,
 			                                           pinEnroller: res~>,
 			                                           biometricUserVerifier: res~>,
+			                                           devicePasscodeUserVerifier: res~>,
 			                                           logger: res~>)
 		}
 
@@ -288,6 +290,9 @@ private extension AppAssembly {
 
 		container.autoregister(BiometricUserVerifier.self,
 		                       initializer: BiometricUserVerifierImpl.init)
+
+		container.autoregister(DevicePasscodeUserVerifier.self,
+		                       initializer: DevicePasscodeUserVerifierImpl.init)
 
 		container.autoregister(ResponseEmitter.self,
 		                       initializer: ResponseEmitterImpl.init)
