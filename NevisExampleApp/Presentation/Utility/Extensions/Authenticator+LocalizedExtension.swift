@@ -17,6 +17,8 @@ extension Authenticator {
 			return L10n.Authenticator.FaceRecognition.title
 		case AuthenticatorAaid.Fingerprint.rawValue:
 			return L10n.Authenticator.Fingerprint.title
+		case AuthenticatorAaid.DevicePasscode.rawValue:
+			return L10n.Authenticator.DevicePasscode.title
 		default:
 			return String()
 		}

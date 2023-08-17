@@ -7,8 +7,6 @@
 import NevisMobileAuthentication
 
 /// Default implementation of ``BiometricUserVerifier`` protocol.
-///
-/// With the help of the ``ResponseEmitter`` it will emit a ``VerifyFaceIdResponse``.
 class BiometricUserVerifierImpl {
 
 	// MARK: - Properties

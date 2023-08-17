@@ -122,6 +122,7 @@
 		38DF727B2901481000429337 /* SelectAccountItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF727A2901481000429337 /* SelectAccountItemViewModel.swift */; };
 		38DF727E2901656F00429337 /* ResponseObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF727D2901656F00429337 /* ResponseObserver.swift */; };
 		38DF72802901657700429337 /* ResponseObserverImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF727F2901657700429337 /* ResponseObserverImpl.swift */; };
+		38E1CBF52A8E3A0E00D4F7EB /* DevicePasscodeUserVerifierImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E1CBF42A8E3A0E00D4F7EB /* DevicePasscodeUserVerifierImpl.swift */; };
 		38EB176A29027B9C00E82236 /* PinAuthenticatorProtectionStatus+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB176929027B9C00E82236 /* PinAuthenticatorProtectionStatus+Extension.swift */; };
 		38EB176D29027E7600E82236 /* ResponseEmitterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB176C29027E7600E82236 /* ResponseEmitterImpl.swift */; };
 		38EB1770290293B000E82236 /* TransactionConfirmationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB176F290293B000E82236 /* TransactionConfirmationScreen.swift */; };
@@ -280,6 +281,7 @@
 		38DF727A2901481000429337 /* SelectAccountItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAccountItemViewModel.swift; sourceTree = "<group>"; };
 		38DF727D2901656F00429337 /* ResponseObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObserver.swift; sourceTree = "<group>"; };
 		38DF727F2901657700429337 /* ResponseObserverImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObserverImpl.swift; sourceTree = "<group>"; };
+		38E1CBF42A8E3A0E00D4F7EB /* DevicePasscodeUserVerifierImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePasscodeUserVerifierImpl.swift; sourceTree = "<group>"; };
 		38EB176929027B9C00E82236 /* PinAuthenticatorProtectionStatus+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinAuthenticatorProtectionStatus+Extension.swift"; sourceTree = "<group>"; };
 		38EB176C29027E7600E82236 /* ResponseEmitterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseEmitterImpl.swift; sourceTree = "<group>"; };
 		38EB176F290293B000E82236 /* TransactionConfirmationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionConfirmationScreen.swift; sourceTree = "<group>"; };
@@ -392,7 +394,6 @@
 			children = (
 				3833EB1B2685EA03002C5E0C /* NevisExampleApp */,
 				3833EB1A2685EA03002C5E0C /* Products */,
-				733B93F723E766663B2A0D1A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -713,6 +714,7 @@
 				3875ADC9291BF6D100939D16 /* AccountSelectorImpl.swift */,
 				3875ADC7291BF6D100939D16 /* AuthenticationAuthenticatorSelectorImpl.swift */,
 				3875ADCB291BF6D100939D16 /* BiometricUserVerifierImpl.swift */,
+				38E1CBF42A8E3A0E00D4F7EB /* DevicePasscodeUserVerifierImpl.swift */,
 				3875ADC8291BF6D100939D16 /* PinChangerImpl.swift */,
 				3875ADCA291BF6D100939D16 /* PinEnrollerImpl.swift */,
 				3875ADC2291BF6D100939D16 /* PinUserVerifierImpl.swift */,
@@ -960,13 +962,6 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		733B93F723E766663B2A0D1A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1205,6 +1200,7 @@
 				386FC32F290925FB00CB30A7 /* LoginRepositoryImpl.swift in Sources */,
 				38F0769528FFEBDE00EFDAF8 /* ResponseEmitter.swift in Sources */,
 				3833EB1D2685EA03002C5E0C /* AppDelegate.swift in Sources */,
+				38E1CBF52A8E3A0E00D4F7EB /* DevicePasscodeUserVerifierImpl.swift in Sources */,
 				3852F39C268611830051FF73 /* Screen.swift in Sources */,
 				38EB177F2902D31000E82236 /* InBandAuthenticationUseCaseImpl.swift in Sources */,
 				38C1B365269D6E9C00ED5782 /* NevisErrorHandler.swift in Sources */,
