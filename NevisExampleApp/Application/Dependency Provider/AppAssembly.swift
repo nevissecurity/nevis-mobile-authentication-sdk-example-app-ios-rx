@@ -236,6 +236,9 @@ private extension AppAssembly {
 		container.autoregister(GetAuthenticatorsUseCase.self,
 		                       initializer: GetAuthenticatorsUseCaseImpl.init)
 
+		container.autoregister(DeleteAuthenticatorsUseCase.self,
+		                       initializer: DeleteAuthenticatorsUseCaseImpl.init)
+
 		container.autoregister(LoginUseCase.self,
 		                       initializer: LoginUseCaseImpl.init)
 	}

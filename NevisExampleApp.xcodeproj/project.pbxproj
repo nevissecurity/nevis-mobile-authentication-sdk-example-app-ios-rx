@@ -110,6 +110,8 @@
 		38C1B385269DB56C00ED5782 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1B384269DB56C00ED5782 /* UINavigationController+Extension.swift */; };
 		38C2D11D290BC20800E41764 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2D11B290BC20800E41764 /* ResultViewModel.swift */; };
 		38C2D11E290BC20800E41764 /* ResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2D11C290BC20800E41764 /* ResultScreen.swift */; };
+		38CAEE9B2B021F9D00143059 /* DeleteAuthenticatorsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CAEE9A2B021F9D00143059 /* DeleteAuthenticatorsUseCase.swift */; };
+		38CAEE9D2B021FA600143059 /* DeleteAuthenticatorsUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CAEE9C2B021FA600143059 /* DeleteAuthenticatorsUseCaseImpl.swift */; };
 		38D67EC926C69BCC0068334F /* VerifyPinResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D67EC826C69BCC0068334F /* VerifyPinResponse.swift */; };
 		38D67ECB26C6AC630068334F /* CompletedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D67ECA26C6AC630068334F /* CompletedResponse.swift */; };
 		38DABD7229D58B11008B8116 /* UsernamePasswordLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DABD7029D58B11008B8116 /* UsernamePasswordLoginViewModel.swift */; };
@@ -269,6 +271,8 @@
 		38C1B384269DB56C00ED5782 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		38C2D11B290BC20800E41764 /* ResultViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
 		38C2D11C290BC20800E41764 /* ResultScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultScreen.swift; sourceTree = "<group>"; };
+		38CAEE9A2B021F9D00143059 /* DeleteAuthenticatorsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAuthenticatorsUseCase.swift; sourceTree = "<group>"; };
+		38CAEE9C2B021FA600143059 /* DeleteAuthenticatorsUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAuthenticatorsUseCaseImpl.swift; sourceTree = "<group>"; };
 		38D67EC826C69BCC0068334F /* VerifyPinResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPinResponse.swift; sourceTree = "<group>"; };
 		38D67ECA26C6AC630068334F /* CompletedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedResponse.swift; sourceTree = "<group>"; };
 		38DABD7029D58B11008B8116 /* UsernamePasswordLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernamePasswordLoginViewModel.swift; sourceTree = "<group>"; };
@@ -473,6 +477,8 @@
 				38F0769028FFD8C100EFDAF8 /* CreateDeviceInformationUseCaseImpl.swift */,
 				38FD7ACE28FEEA6800F64099 /* DecodePayloadUseCase.swift */,
 				38FD7AD028FEEAD500F64099 /* DecodePayloadUseCaseImpl.swift */,
+				38CAEE9A2B021F9D00143059 /* DeleteAuthenticatorsUseCase.swift */,
+				38CAEE9C2B021FA600143059 /* DeleteAuthenticatorsUseCaseImpl.swift */,
 				386F252F2902E38A0036615B /* DeregistrationUseCase.swift */,
 				386F25312902E3900036615B /* DeregistrationUseCaseImpl.swift */,
 				38F0769C290041FB00EFDAF8 /* GetAccountsUseCase.swift */,
@@ -1086,6 +1092,7 @@
 				38FD7AD128FEEAD500F64099 /* DecodePayloadUseCaseImpl.swift in Sources */,
 				38C2D11D290BC20800E41764 /* ResultViewModel.swift in Sources */,
 				381EC649290ABEDB0005546B /* BusinessError+Extension.swift in Sources */,
+				38CAEE9D2B021FA600143059 /* DeleteAuthenticatorsUseCaseImpl.swift in Sources */,
 				38FD7AC928FEDCC600F64099 /* QrScannerScreen.swift in Sources */,
 				3840BEF1268DCAD900DBEA62 /* AuthenticatorCell.swift in Sources */,
 				3872BFD12A29E8D40041C594 /* AuthenticatorItem.swift in Sources */,
@@ -1140,6 +1147,7 @@
 				38ABBB522906AD41006B19B9 /* ChangeDeviceInformationScreen.swift in Sources */,
 				38487847268C6B5100FD8419 /* SelectAuthenticatorViewModel.swift in Sources */,
 				386FC336290926AD00CB30A7 /* LoginResponse.swift in Sources */,
+				38CAEE9B2B021F9D00143059 /* DeleteAuthenticatorsUseCase.swift in Sources */,
 				38C2D11E290BC20800E41764 /* ResultScreen.swift in Sources */,
 				3863F3AC2907CAFF0028D26E /* ChangePinResponse.swift in Sources */,
 				38EB1770290293B000E82236 /* TransactionConfirmationScreen.swift in Sources */,

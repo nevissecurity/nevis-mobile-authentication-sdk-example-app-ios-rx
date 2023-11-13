@@ -49,7 +49,7 @@ Edit the [ConfigAuthenticationCloud.plist](NevisExampleApp/Resources/ConfigAuthe
 
 The example apps are supporting two kinds of configuration: `authenticationCloud` and `identitySuite`.
 
-> **_NOTE_**  
+> [!NOTE]
 > Only *build-time* configuration change is supported.
 
 To change the configuration open the [AppAssembly.swift](NevisExampleApp/Application/Dependency%20Provider/AppAssembly.swift) file which describes the dependency injection related configuration using the `Swinject` library.
@@ -59,7 +59,7 @@ The `environment` parameter should be changed when injecting the `ConfigurationL
 
 Now you're ready to build and run the example app by choosing Product > Run from Xcode's menu or by clicking the Run button in your project’s toolbar.
 
-> **_NOTE_**  
+> [!NOTE]
 > Running the app on an iOS device requires codesign setup.
 
 ### Try it out

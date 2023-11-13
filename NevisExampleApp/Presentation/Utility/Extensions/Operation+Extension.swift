@@ -27,6 +27,8 @@ extension Operation {
 			return L10n.Operation.Pinchange.title
 		case .deviceInformationChange:
 			return L10n.Operation.DeviceInformationChange.title
+		case .localData:
+			return L10n.Operation.LocalData.title
 		case .unknown:
 			return String()
 		}
