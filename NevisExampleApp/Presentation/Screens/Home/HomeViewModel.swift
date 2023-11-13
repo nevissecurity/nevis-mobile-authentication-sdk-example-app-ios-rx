@@ -31,6 +31,9 @@ final class HomeViewModel {
 	/// Use case for retrieving the authenticators.
 	private let getAuthenticatorsUseCase: GetAuthenticatorsUseCase
 
+	/// Use case for deleting local authenticators.
+	private let deleteAuthenticatorsUseCase: DeleteAuthenticatorsUseCase
+
 	/// Use case for retrieving the device information.
 	private let getDeviceInformationUseCase: GetDeviceInformationUseCase
 
@@ -57,6 +60,7 @@ final class HomeViewModel {
 	///   - changePinUseCase: Use case for PIN change.
 	///   - getAccountsUseCase: Use case for retrieving the accounts.
 	///   - getAuthenticatorsUseCase: Use case for retrieving the authenticators.
+	///   - deleteAuthenticatorsUseCase: Use case for deleting local authenticators.
 	///   - getDeviceInformationUseCase: Use case for retrieving the device information.
 	///   - responseObserver: The response observer.
 	///   - appCoordinator: The application coordinator.
@@ -66,6 +70,7 @@ final class HomeViewModel {
 	     changePinUseCase: ChangePinUseCase,
 	     getAccountsUseCase: GetAccountsUseCase,
 	     getAuthenticatorsUseCase: GetAuthenticatorsUseCase,
+	     deleteAuthenticatorsUseCase: DeleteAuthenticatorsUseCase,
 	     getDeviceInformationUseCase: GetDeviceInformationUseCase,
 	     responseObserver: ResponseObserver,
 	     appCoordinator: AppCoordinator) {
@@ -75,6 +80,7 @@ final class HomeViewModel {
 		self.changePinUseCase = changePinUseCase
 		self.getAccountsUseCase = getAccountsUseCase
 		self.getAuthenticatorsUseCase = getAuthenticatorsUseCase
+		self.deleteAuthenticatorsUseCase = deleteAuthenticatorsUseCase
 		self.getDeviceInformationUseCase = getDeviceInformationUseCase
 		self.responseObserver = responseObserver
 		self.appCoordinator = appCoordinator
@@ -106,6 +112,8 @@ extension HomeViewModel: ScreenViewModel {
 		let changeDeviceInformationTrigger: Driver<()>
 		/// Observable sequence used for starting auth cloud api registration.
 		let authCloudApiRegistrationTrigger: Driver<()>
+		/// Observable sequence used for starting authenticators deletion.
+		let deleteAuthenticatorsTrigger: Driver<()>
 		/// Observable sequence used for starting in-band registration.
 		let inBandRegistrationTrigger: Driver<()>
 	}
@@ -128,6 +136,8 @@ extension HomeViewModel: ScreenViewModel {
 		let changeDeviceInformation: Driver<()>
 		/// Observable sequence used for listening to auth cloud api registration event.
 		let authCloudApiRegistration: Driver<()>
+		/// Observable sequence used for listening to authenticators deletion event.
+		let deleteAuthenticators: Driver<()>
 		/// Observable sequence used for listening to in-band registration event.
 		let inBandRegistration: Driver<()>
 		/// Observable sequence used for listening to loading events.
@@ -183,6 +193,14 @@ extension HomeViewModel: ScreenViewModel {
 		let authCloudApiRegistration = input.authCloudApiRegistrationTrigger
 			.do(onNext: appCoordinator.navigateToAuthCloudApiRegistration)
 
+		let deleteAuthenticators = input.deleteAuthenticatorsTrigger
+			.asObservable()
+			.flatMapLatest(getAccountsUseCase.execute)
+			.flatMapLatest(deleteAuthenticatorsUseCase.execute)
+			.flatMap(responseObserver.observe(response:))
+			.trackError(errorTracker)
+			.asDriverOnErrorJustComplete()
+
 		let inBandRegistration = input.inBandRegistrationTrigger
 			.do(onNext: appCoordinator.navigateToUsernamePasswordLogin)
 
@@ -196,6 +214,7 @@ extension HomeViewModel: ScreenViewModel {
 		              pinChange: pinChange,
 		              changeDeviceInformation: changeDeviceInformation,
 		              authCloudApiRegistration: authCloudApiRegistration,
+		              deleteAuthenticators: deleteAuthenticators,
 		              inBandRegistration: inBandRegistration,
 		              loading: loading,
 		              error: error)

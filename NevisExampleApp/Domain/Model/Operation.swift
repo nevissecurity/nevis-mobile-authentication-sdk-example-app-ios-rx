@@ -32,6 +32,9 @@ public enum Operation {
 	/// Device information change operation.
 	case deviceInformationChange
 
+	/// Local data operation.
+	case localData
+
 	/// Unknown operation.
 	case unknown
 }

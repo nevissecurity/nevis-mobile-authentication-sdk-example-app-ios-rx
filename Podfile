@@ -8,7 +8,7 @@ IOSDeploymentTarget = '12.0'
 target 'NevisExampleApp' do
 	platform :ios, IOSDeploymentTarget
 
-	pod 'FittedSheets', '= 2.5.3'
+	pod 'FittedSheets', '= 2.6.1'
 	pod 'KRProgressHUD', '= 3.4.7'
 	pod 'MercariQRScanner', '= 1.9.0'
 	pod 'Reusable', '= 4.1.2'

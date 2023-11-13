@@ -11,6 +11,7 @@
 "home_pin_change_button" = "PIN change";
 "home_change_device_information_button" = "Change Device Information";
 "home_auth_cloud_api_registration_button" = "Auth Cloud Api Registration";
+"home_delete_authenticators_button" = "Delete Authenticators";
 "home_separator" = "Identity Suite only";
 "home_in_band_registration_button" = "In-Band Register";
 
@@ -75,7 +76,7 @@
 "logging_title" = "Pull to see log";
 
 // Operation
-"operation_success_title" = "%@ successful!";
+"operation_success_title" = "%@ succeeded!";
 "operation_failed_title" = "%@ failed!";
 "operation_init_client_title" = "Client initialization";
 "operation_payload_decode_title" = "Payload decode";
@@ -85,6 +86,7 @@
 "operation_deregistration_title" = "Deregistration";
 "operation_pin_change_title" = "PIN change";
 "operation_device_information_change_title" = "Device information change";
+"operation_local_data_title" = "Local data operation";
 
 "operation_interrupt_alert_title" = "Warning";
 "operation_interrupt_alert_message" = "Do you really want to interrupt the ongoing operation and continue with the new one?";

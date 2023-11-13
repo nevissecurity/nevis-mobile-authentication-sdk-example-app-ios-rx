@@ -37,6 +37,9 @@ final class HomeScreen: BaseScreen, Screen {
 	/// The Auth Cloud Api Register button.
 	private let authCloudApiRegisterButton = OutlinedButton(title: L10n.Home.authCloudApiRegistration)
 
+	/// The Delete Authenticators button.
+	private let deleteAuthenticatorsButton = OutlinedButton(title: L10n.Home.deleteAuthenticators)
+
 	/// The separator label.
 	private let separatorLabel = NSLabel(text: L10n.Home.separator, style: .normal)
 
@@ -105,6 +108,7 @@ private extension HomeScreen {
 		setupPinChangeButton()
 		setupChangeDeviceInformationButton()
 		setupAuthCloudApiRegisterButton()
+		setupDeleteAuthenticatorsButton()
 		setupSeparatorLabel()
 		setupInBandRegisterButton()
 	}
@@ -163,6 +167,13 @@ private extension HomeScreen {
 		}
 	}
 
+	func setupDeleteAuthenticatorsButton() {
+		deleteAuthenticatorsButton.do {
+			addItemToBottom($0, spacing: 16)
+			$0.setHeight(with: 40)
+		}
+	}
+
 	func setupSeparatorLabel() {
 		separatorLabel.do {
 			addItemToBottom($0, spacing: 8)
@@ -195,6 +206,7 @@ private extension HomeScreen {
 		                                pinChangeTrigger: pinChangeButton.rx.tap.asDriver(),
 		                                changeDeviceInformationTrigger: changeDeviceInformationButton.rx.tap.asDriver(),
 		                                authCloudApiRegistrationTrigger: authCloudApiRegisterButton.rx.tap.asDriver(),
+		                                deleteAuthenticatorsTrigger: deleteAuthenticatorsButton.rx.tap.asDriver(),
 		                                inBandRegistrationTrigger: inBandRegisterButton.rx.tap.asDriver())
 		let output = viewModel.transform(input: input)
 		[output.initClient.drive(),
@@ -205,6 +217,7 @@ private extension HomeScreen {
 		 output.pinChange.drive(),
 		 output.changeDeviceInformation.drive(),
 		 output.authCloudApiRegistration.drive(),
+		 output.deleteAuthenticators.drive(),
 		 output.inBandRegistration.drive(),
 		 output.loading.drive(rx.isLoading),
 		 output.error.drive(rx.error)]

@@ -39,8 +39,10 @@ enum L10n {
 		static let changePin = L10n.tr("home_pin_change_button")
 		/// Change device information button: "Change Device Information"
 		static let changeDeviceInformation = L10n.tr("home_change_device_information_button")
-		/// Auth cloud api registration button: "Auth Cloud Api Registration"
+		/// Auth Cloud Api registration button: "Auth Cloud Api Registration"
 		static let authCloudApiRegistration = L10n.tr("home_auth_cloud_api_registration_button")
+		/// Delete authenticators button: "Delete Authenticators"
+		static let deleteAuthenticators = L10n.tr("home_delete_authenticators_button")
 		/// Screen description: "Identity Suite only"
 		static let separator = L10n.tr("home_separator")
 		/// In-band registration button: "In-Band Register"
@@ -283,9 +285,14 @@ enum L10n {
 			static let title = L10n.tr("operation_device_information_change_title")
 		}
 
+		enum LocalData {
+			/// Operation title: "Local data operation"
+			static let title = L10n.tr("operation_local_data_title")
+		}
+
 		/// Successful operation related localized strings.
 		enum Success {
-			/// Title: "%@ successful!"
+			/// Title: "%@ succeeded!"
 			///
 			/// - parameter operation: The current operation.
 			/// - returns: The localized string.
