@@ -6,7 +6,7 @@ on:
     types: [opened, edited, synchronize, reopened]
 
 env:
-  XCODE_VERSION: '14.3.1'
+  XCODE_VERSION: '15.0.1'
 
 jobs:
   pr:
