@@ -55,6 +55,31 @@ The example apps are supporting two kinds of configuration: `authenticationCloud
 To change the configuration open the [AppAssembly.swift](NevisExampleApp/Application/Dependency%20Provider/AppAssembly.swift) file which describes the dependency injection related configuration using the `Swinject` library.
 The `environment` parameter should be changed when injecting the `ConfigurationLoaderImpl` component to one of the values already mentioned.
 
+#### Handling deep links
+
+The example applications handle deep links which contain a valid `dispatchTokenResponse` query parameter of an out-of-band operation.
+
+The feature is achieved with Custom URL Schemes.
+
+> [!NOTE]
+> Further information: [Define custom url scheme](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app).
+
+##### Custom URL Schemes
+
+Modify the content of `CFBundleURLSchemes` array in the [Info.plist](NevisExampleApp/Resources/Info.plist) file with the right scheme information of your environment.
+
+```
+<key>CFBundleURLTypes</key>
+<array>
+    <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+            <string>nevisaccess</string>
+        </array>
+    </dict>
+</array>
+```
+
 ### Build & run
 
 Now you're ready to build and run the example app by choosing Product > Run from Xcode's menu or by clicking the Run button in your project’s toolbar.
