@@ -15,6 +15,9 @@ class OutOfBandOperationUseCaseImpl {
 	/// The client provider.
 	private let clientProvider: ClientProvider
 
+	/// Use case for creating device information.
+	private let createDeviceInformationUseCase: CreateDeviceInformationUseCase
+
 	/// The account selector.
 	private let accountSelector: AccountSelector
 
@@ -33,8 +36,8 @@ class OutOfBandOperationUseCaseImpl {
 	/// The biometric user verifier.
 	private let biometricUserVerifier: BiometricUserVerifier
 
-	/// Use case for creating device information.
-	private let createDeviceInformationUseCase: CreateDeviceInformationUseCase
+	/// The device passcode user verifier.
+	private let devicePasscodeUserVerifier: DevicePasscodeUserVerifier
 
 	/// The logger.
 	private let logger: SDKLogger
@@ -45,31 +48,34 @@ class OutOfBandOperationUseCaseImpl {
 	///
 	/// - Parameters:
 	///   - clientProvider: The client provider.
+	///   - createDeviceInformationUseCase: Use case for creating device information.
 	///   - accountSelector: The account selector.
 	///   - registrationAuthenticatorSelector: The authenticator selector used during registration.
 	///   - authenticationAuthenticatorSelector: The authenticator selector used during authentication.
 	///   - pinEnroller: The PIN enroller.
 	///   - pinUserVerifier: The PIN user verifier.
 	///   - biometricUserVerifier: The biometric user verifier.
-	///   - createDeviceInformationUseCase: Use case for creating device information.
+	///   - devicePasscodeUserVerifier: The device passcode user verifier.
 	///   - logger: The logger.
 	init(clientProvider: ClientProvider,
+	     createDeviceInformationUseCase: CreateDeviceInformationUseCase,
 	     accountSelector: AccountSelector,
 	     registrationAuthenticatorSelector: AuthenticatorSelector,
 	     authenticationAuthenticatorSelector: AuthenticatorSelector,
 	     pinEnroller: PinEnroller,
 	     pinUserVerifier: PinUserVerifier,
 	     biometricUserVerifier: BiometricUserVerifier,
-	     createDeviceInformationUseCase: CreateDeviceInformationUseCase,
+	     devicePasscodeUserVerifier: DevicePasscodeUserVerifier,
 	     logger: SDKLogger) {
 		self.clientProvider = clientProvider
+		self.createDeviceInformationUseCase = createDeviceInformationUseCase
 		self.accountSelector = accountSelector
 		self.registrationAuthenticatorSelector = registrationAuthenticatorSelector
 		self.authenticationAuthenticatorSelector = authenticationAuthenticatorSelector
 		self.pinEnroller = pinEnroller
 		self.pinUserVerifier = pinUserVerifier
 		self.biometricUserVerifier = biometricUserVerifier
-		self.createDeviceInformationUseCase = createDeviceInformationUseCase
+		self.devicePasscodeUserVerifier = devicePasscodeUserVerifier
 		self.logger = logger
 	}
 }
@@ -119,6 +125,7 @@ private extension OutOfBandOperationUseCaseImpl {
 			.authenticatorSelector(registrationAuthenticatorSelector)
 			.pinEnroller(pinEnroller)
 			.biometricUserVerifier(biometricUserVerifier)
+			.devicePasscodeUserVerifier(devicePasscodeUserVerifier)
 			.onSuccess {
 				self.logger.log("Out-of-Band registration succeeded.", color: .green)
 				observer.onNext(CompletedResponse(operation: .registration))
@@ -143,6 +150,7 @@ private extension OutOfBandOperationUseCaseImpl {
 			.authenticatorSelector(authenticationAuthenticatorSelector)
 			.pinUserVerifier(pinUserVerifier)
 			.biometricUserVerifier(biometricUserVerifier)
+			.devicePasscodeUserVerifier(devicePasscodeUserVerifier)
 			.onSuccess {
 				self.logger.log("Out-of-Band authentication succeeded.", color: .green)
 				observer.onNext(CompletedResponse(operation: .authentication,

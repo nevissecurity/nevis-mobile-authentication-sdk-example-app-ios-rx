@@ -27,6 +27,9 @@ class RegistrationUseCaseImpl {
 	/// The biometric user verifier.
 	private let biometricUserVerifier: BiometricUserVerifier
 
+	/// The device passcode user verifier.
+	private let devicePasscodeUserVerifier: DevicePasscodeUserVerifier
+
 	// MARK: - Initialization
 
 	/// Creates a new instance.
@@ -37,16 +40,19 @@ class RegistrationUseCaseImpl {
 	///   - authenticatorSelector: The authenticator selector.
 	///   - pinEnroller: The PIN enroller.
 	///   - biometricUserVerifier: The biometric user verifier.
+	///   - devicePasscodeUserVerifier: The device passcode user verifier.
 	init(clientProvider: ClientProvider,
 	     createDeviceInformationUseCase: CreateDeviceInformationUseCase,
 	     authenticatorSelector: AuthenticatorSelector,
 	     pinEnroller: PinEnroller,
-	     biometricUserVerifier: BiometricUserVerifier) {
+	     biometricUserVerifier: BiometricUserVerifier,
+	     devicePasscodeUserVerifier: DevicePasscodeUserVerifier) {
 		self.clientProvider = clientProvider
 		self.createDeviceInformationUseCase = createDeviceInformationUseCase
 		self.authenticatorSelector = authenticatorSelector
 		self.pinEnroller = pinEnroller
 		self.biometricUserVerifier = biometricUserVerifier
+		self.devicePasscodeUserVerifier = devicePasscodeUserVerifier
 	}
 }
 
@@ -69,6 +75,7 @@ extension RegistrationUseCaseImpl: RegistrationUseCase {
 				.authenticatorSelector(authenticatorSelector)
 				.pinEnroller(pinEnroller)
 				.biometricUserVerifier(biometricUserVerifier)
+				.devicePasscodeUserVerifier(devicePasscodeUserVerifier)
 				.onSuccess {
 					observer.onNext(CompletedResponse(operation: .registration))
 					observer.onCompleted()

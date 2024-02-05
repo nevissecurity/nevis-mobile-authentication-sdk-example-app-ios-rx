@@ -50,9 +50,9 @@ extension PinChangerImpl: PinChanger {
 		responseEmitter.subject.onNext(response)
 	}
 
-	///  You can add custom PIN policy by overriding the `pinPolicy` getter
-	///  The default is `PinPolicy(minLength: 6, maxLength: 6)`
-	/// func pinPolicy() -> PinPolicy {
-	/// 	PinPolicy(minLength: 5, maxLength: 8)
-	/// }
+	/// You can add custom PIN policy by overriding the `pinPolicy` getter.
+	/// The default minimum and maximum PIN length is 6 without any furhter validation during PIN enrollment or change.
+//	func pinPolicy() -> PinPolicy {
+//		// custom PinPolicy implementation
+//	}
 }

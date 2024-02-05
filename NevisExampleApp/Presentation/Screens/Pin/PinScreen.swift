@@ -136,6 +136,7 @@ private extension PinScreen {
 			addItem($0, topSpacing: 16)
 			$0.setHeight(with: 40)
 			$0.keyboardType = .numberPad
+			$0.isSecureTextEntry = true
 			$0.inputAccessoryView = keyboardToolbar
 		}
 	}
@@ -145,6 +146,7 @@ private extension PinScreen {
 			addItem($0, topSpacing: 16)
 			$0.setHeight(with: 40)
 			$0.keyboardType = .numberPad
+			$0.isSecureTextEntry = true
 			$0.inputAccessoryView = keyboardToolbar
 		}
 	}

@@ -172,13 +172,14 @@ private extension AppAssembly {
 			let authSelectorForAuth = res ~> (AuthenticatorSelector.self,
 			                                  name: AuthenticationAuthenticatorSelectorName)
 			return OutOfBandOperationUseCaseImpl(clientProvider: res~>,
+			                                     createDeviceInformationUseCase: res~>,
 			                                     accountSelector: res~>,
 			                                     registrationAuthenticatorSelector: authSelectorForReg,
 			                                     authenticationAuthenticatorSelector: authSelectorForAuth,
 			                                     pinEnroller: res~>,
 			                                     pinUserVerifier: res~>,
 			                                     biometricUserVerifier: res~>,
-			                                     createDeviceInformationUseCase: res~>,
+			                                     devicePasscodeUserVerifier: res~>,
 			                                     logger: res~>)
 		}
 
@@ -189,7 +190,8 @@ private extension AppAssembly {
 			                               createDeviceInformationUseCase: res~>,
 			                               authenticatorSelector: authenticatorSelector,
 			                               pinEnroller: res~>,
-			                               biometricUserVerifier: res~>)
+			                               biometricUserVerifier: res~>,
+			                               devicePasscodeUserVerifier: res~>)
 		}
 
 		container.register(InBandAuthenticationUseCase.self) { res in
