@@ -31,6 +31,7 @@
 --disable blankLinesAtStartOfScope
 --disable redundantFileprivate
 --disable wrapMultilineStatementBraces
+--disable preferForLoop
 
 # File options
 --exclude Pods

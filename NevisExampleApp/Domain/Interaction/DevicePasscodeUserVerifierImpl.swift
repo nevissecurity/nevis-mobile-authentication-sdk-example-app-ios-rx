@@ -27,7 +27,7 @@ class DevicePasscodeUserVerifierImpl {
 // MARK: - DevicePasscodeUserVerifier
 
 extension DevicePasscodeUserVerifierImpl: DevicePasscodeUserVerifier {
-	func verifyDevicePasscode(context _: NevisMobileAuthentication.DevicePasscodeUserVerificationContext, handler: NevisMobileAuthentication.DevicePasscodeUserVerificationHandler) {
+	func verifyDevicePasscode(context _: DevicePasscodeUserVerificationContext, handler: DevicePasscodeUserVerificationHandler) {
 		logger.log("Please start device passcode user verification.")
 		logger.log("Performing automatic user verification.")
 		handler.verify()
