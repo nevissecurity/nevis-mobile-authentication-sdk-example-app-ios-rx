@@ -1,0 +1,72 @@
+PODS:
+  - FittedSheets (2.6.1)
+  - KRActivityIndicatorView (3.0.7)
+  - KRProgressHUD (3.4.7):
+    - KRActivityIndicatorView (= 3.0.7)
+  - MercariQRScanner (1.9.0)
+  - NevisMobileAuthentication (3.6.1)
+  - NevisMobileAuthentication-Debug (3.6.1)
+  - Reusable (4.1.2):
+    - Reusable/Storyboard (= 4.1.2)
+    - Reusable/View (= 4.1.2)
+  - Reusable/Storyboard (4.1.2)
+  - Reusable/View (4.1.2)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
+  - Swinject (2.8.3)
+  - SwinjectAutoregistration (2.8.3):
+    - Swinject (~> 2.8.3)
+  - Then (3.0.0)
+
+DEPENDENCIES:
+  - FittedSheets (= 2.6.1)
+  - KRProgressHUD (= 3.4.7)
+  - MercariQRScanner (= 1.9.0)
+  - NevisMobileAuthentication (~> 3.6.0)
+  - NevisMobileAuthentication-Debug (~> 3.6.0)
+  - Reusable (= 4.1.2)
+  - RxCocoa (= 6.5.0)
+  - RxSwift (= 6.5.0)
+  - Swinject (= 2.8.3)
+  - SwinjectAutoregistration (= 2.8.3)
+  - Then (= 3.0.0)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - KRActivityIndicatorView
+    - KRProgressHUD
+    - MercariQRScanner
+    - Reusable
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - Then
+  trunk:
+    - FittedSheets
+    - NevisMobileAuthentication
+    - NevisMobileAuthentication-Debug
+    - Swinject
+    - SwinjectAutoregistration
+
+SPEC CHECKSUMS:
+  FittedSheets: 37e35f105c531f3845075f1788dd8517a35315c4
+  KRActivityIndicatorView: ad69e89c4ce40c986cf580595be4829dcad0e35a
+  KRProgressHUD: a248f0bc6c9c2aed40a37b76e03ffecc7f85c887
+  MercariQRScanner: e5aea873969af59b09b4cc411fc1c5b6293dba44
+  NevisMobileAuthentication: 3801ddc251892ee3c9fc2b01d9ba62ce083332a2
+  NevisMobileAuthentication-Debug: 6f122eac4bdc5d0916b535784eff0ab9f3088ce0
+  Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  Swinject: 893c9a543000ac2f10ee4cbaf0933c6992c935d5
+  SwinjectAutoregistration: e3ee378dc458acf78d176fc7fec3902603452667
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
+
+PODFILE CHECKSUM: 74cc85c013a793a69781789429086b667bfc6305
+
+COCOAPODS: 1.15.2
