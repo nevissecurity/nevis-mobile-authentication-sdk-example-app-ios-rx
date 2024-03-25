@@ -22,7 +22,9 @@ extension AccountValidatorImpl: AccountValidator {
 		supportedAuthenticators.forEach { authenticator in
 			authenticator.registration?.registeredAccounts.forEach { account in
 				if context.isPolicyCompliant(username: account.username, aaid: authenticator.aaid) {
-					accounts.append(account)
+					if !accounts.contains(where: { $0.username == account.username }) {
+						accounts.append(account)
+					}
 				}
 			}
 		}

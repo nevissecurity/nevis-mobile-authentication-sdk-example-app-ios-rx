@@ -170,6 +170,16 @@ extension AppCoordinatorImpl: AppCoordinator {
 		rootNavigationController?.pushViewController(screen, animated: true)
 	}
 
+	func navigateToConfirmation(with parameter: ConfirmationParameter) {
+		guard let screen = DependencyProvider.shared.container.resolve(ConfirmationScreen.self,
+		                                                               argument: parameter as NavigationParameterizable) else {
+			return
+		}
+
+		logger.log("Navigating to Confirmation screen.", color: .purple)
+		rootNavigationController?.pushViewController(screen, animated: true)
+	}
+
 	func navigateToResult(with parameter: ResultParameter) {
 		guard let screen = DependencyProvider.shared.container.resolve(ResultScreen.self,
 		                                                               argument: parameter as NavigationParameterizable) else {

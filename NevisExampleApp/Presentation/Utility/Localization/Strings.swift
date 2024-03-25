@@ -168,9 +168,9 @@ enum L10n {
 		/// Screen title: "Change Device Information"
 		static let title = L10n.tr("change_device_information_title")
 
-		/// Pin protection status message for last retry without cool down: "You have %@ try left.\nAfter that your PIN will be blocked."
+		/// The current name of the device: "Current name: %@"
 		///
-		/// - parameter remainingTries: The number of remaining retries.
+		/// - parameter currentName: The current name of the device.
 		/// - returns: The localized string.
 		static func currentName(_ currentName: Any) -> String {
 			L10n.tr("change_device_information_current_name",
@@ -220,6 +220,24 @@ enum L10n {
 		static let confirm = L10n.tr("username_password_login_confirm_button")
 		/// Confirm button: "Cancel"
 		static let cancel = L10n.tr("username_password_login_cancel_button")
+	}
+
+	/// Confirmation screen related localized strings.
+	enum Confirmation {
+		/// Screen title: "Authenticate using %@"
+		///
+		/// - parameter authenticator: The selected authenticator.
+		/// - returns: The localized string.
+		static func title(_ authenticator: Any) -> String {
+			L10n.tr("confirmation_title",
+			        "Localizable",
+			        String(describing: authenticator))
+		}
+
+		/// Confirm button: "Confirm"
+		static let confirm = L10n.tr("confirmation_confirm_button")
+		/// Confirm button: "Cancel"
+		static let cancel = L10n.tr("confirmation_cancel_button")
 	}
 
 	/// Result screen related localized strings.

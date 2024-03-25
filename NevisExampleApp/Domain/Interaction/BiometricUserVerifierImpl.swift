@@ -7,9 +7,14 @@
 import NevisMobileAuthentication
 
 /// Default implementation of ``BiometricUserVerifier`` protocol.
+///
+/// With the help of the ``ResponseEmitter`` it will emit a ``VerifyBiometricResponse``.
 class BiometricUserVerifierImpl {
 
 	// MARK: - Properties
+
+	/// The response emitter.
+	private let responseEmitter: ResponseEmitter
 
 	/// The logger.
 	private let logger: SDKLogger
@@ -18,8 +23,12 @@ class BiometricUserVerifierImpl {
 
 	/// Creates a new instance.
 	///
-	/// - Parameter logger: The logger.
-	init(logger: SDKLogger) {
+	/// - Parameters:
+	///   - responseEmitter: The response emitter.
+	///   - logger: The logger.
+	init(responseEmitter: ResponseEmitter,
+	     logger: SDKLogger) {
+		self.responseEmitter = responseEmitter
 		self.logger = logger
 	}
 }
@@ -27,13 +36,11 @@ class BiometricUserVerifierImpl {
 // MARK: - BiometricUserVerifier
 
 extension BiometricUserVerifierImpl: BiometricUserVerifier {
-	func verifyBiometric(context _: BiometricUserVerificationContext, handler: BiometricUserVerificationHandler) {
+	func verifyBiometric(context: BiometricUserVerificationContext, handler: BiometricUserVerificationHandler) {
 		logger.log("Please start biometric user verification.")
 
-		// In case of face recognition authenticator (Face ID) you may show a confirmation screen
-		// because the OS provided popup doesn't give the possibility to cancel the process.
-		// In the example app automatic verification is selected.
-		logger.log("Performing automatic user verification.")
-		handler.verify()
+		let response = VerifyBiometricResponse(authenticator: context.authenticator.localizedTitle,
+		                                       handler: handler)
+		responseEmitter.subject.onNext(response)
 	}
 }
