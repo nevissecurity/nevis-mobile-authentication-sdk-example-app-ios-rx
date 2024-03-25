@@ -69,6 +69,11 @@
 "username_password_login_confirm_button" = "Confirm";
 "username_password_login_cancel_button" = "Cancel";
 
+// Confirmation screen
+"confirmation_title"="Authenticate using %@";
+"confirmation_confirm_button" = "Confirm";
+"confirmation_cancel_button" = "Cancel";
+
 // Result screen
 "result_continue_button" = "Continue";
 

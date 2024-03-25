@@ -78,6 +78,11 @@ private extension AppAssembly {
 			                                                 argument: arg))
 		}.inObjectScope(.weak)
 
+		container.register(ConfirmationScreen.self) { (res: Resolver, arg: NavigationParameterizable) in
+			ConfirmationScreen(viewModel: res ~> (ConfirmationViewModel.self,
+			                                      argument: arg))
+		}.inObjectScope(.weak)
+
 		container.register(ResultScreen.self) { (res: Resolver, arg: NavigationParameterizable) in
 			ResultScreen(viewModel: res ~> (ResultViewModel.self,
 			                                argument: arg))
@@ -146,6 +151,11 @@ private extension AppAssembly {
 		                       initializer: TransactionConfirmationViewModel.init)
 			.inObjectScope(.transient)
 
+		container.autoregister(ConfirmationViewModel.self,
+		                       argument: NavigationParameterizable.self,
+		                       initializer: ConfirmationViewModel.init)
+			.inObjectScope(.transient)
+
 		container.autoregister(ResultViewModel.self,
 		                       argument: NavigationParameterizable.self,
 		                       initializer: ResultViewModel.init)
@@ -191,7 +201,8 @@ private extension AppAssembly {
 			                               authenticatorSelector: authenticatorSelector,
 			                               pinEnroller: res~>,
 			                               biometricUserVerifier: res~>,
-			                               devicePasscodeUserVerifier: res~>)
+			                               devicePasscodeUserVerifier: res~>,
+			                               logger: res~>)
 		}
 
 		container.register(InBandAuthenticationUseCase.self) { res in

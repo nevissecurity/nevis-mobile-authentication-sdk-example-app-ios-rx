@@ -30,6 +30,9 @@ class RegistrationUseCaseImpl {
 	/// The device passcode user verifier.
 	private let devicePasscodeUserVerifier: DevicePasscodeUserVerifier
 
+	/// The logger.
+	private let logger: SDKLogger
+
 	// MARK: - Initialization
 
 	/// Creates a new instance.
@@ -41,18 +44,21 @@ class RegistrationUseCaseImpl {
 	///   - pinEnroller: The PIN enroller.
 	///   - biometricUserVerifier: The biometric user verifier.
 	///   - devicePasscodeUserVerifier: The device passcode user verifier.
+	///   - logger: The logger.
 	init(clientProvider: ClientProvider,
 	     createDeviceInformationUseCase: CreateDeviceInformationUseCase,
 	     authenticatorSelector: AuthenticatorSelector,
 	     pinEnroller: PinEnroller,
 	     biometricUserVerifier: BiometricUserVerifier,
-	     devicePasscodeUserVerifier: DevicePasscodeUserVerifier) {
+	     devicePasscodeUserVerifier: DevicePasscodeUserVerifier,
+	     logger: SDKLogger) {
 		self.clientProvider = clientProvider
 		self.createDeviceInformationUseCase = createDeviceInformationUseCase
 		self.authenticatorSelector = authenticatorSelector
 		self.pinEnroller = pinEnroller
 		self.biometricUserVerifier = biometricUserVerifier
 		self.devicePasscodeUserVerifier = devicePasscodeUserVerifier
+		self.logger = logger
 	}
 }
 
@@ -77,10 +83,15 @@ extension RegistrationUseCaseImpl: RegistrationUseCase {
 				.biometricUserVerifier(biometricUserVerifier)
 				.devicePasscodeUserVerifier(devicePasscodeUserVerifier)
 				.onSuccess {
+					self.logger.log("In-Band registration succeeded.", color: .green)
 					observer.onNext(CompletedResponse(operation: .registration))
 					observer.onCompleted()
 				}
-				.onError(observer.onError)
+				.onError {
+					self.logger.log("In-Band registration failed.", color: .red)
+					observer.onError(OperationError(operation: .registration,
+					                                underlyingError: $0))
+				}
 
 			if let authorizationProvider {
 				operation?.authorizationProvider(authorizationProvider)

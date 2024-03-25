@@ -83,6 +83,16 @@ private extension ResponseObserverImpl {
 			                                            handler: response.handler)
 			appCoordinator.navigateToPin(with: parameter)
 		}
+		else if let response = response as? VerifyBiometricResponse {
+			let parameter: ConfirmationParameter = .confirmBiometric(authenticator: response.authenticator,
+			                                                         handler: response.handler)
+			appCoordinator.navigateToConfirmation(with: parameter)
+		}
+		else if let response = response as? VerifyDevicePasscodeResponse {
+			let parameter: ConfirmationParameter = .confirmDevicePasscode(authenticator: response.authenticator,
+			                                                              handler: response.handler)
+			appCoordinator.navigateToConfirmation(with: parameter)
+		}
 		else if let response = response as? ConfirmTransactionResponse {
 			let parameter: TransactionConfirmationParameter = .confirm(message: response.message,
 			                                                           account: response.account,

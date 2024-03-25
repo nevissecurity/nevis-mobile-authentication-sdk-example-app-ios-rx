@@ -49,6 +49,11 @@ protocol AppCoordinator: Coordinator {
 	/// - Parameter parameter: The navigation parameter.
 	func navigateToTransactionConfirmation(with parameter: TransactionConfirmationParameter)
 
+	/// Navigates to the Confirmation screen.
+	///
+	/// - Parameter parameter: The navigation parameter.
+	func navigateToConfirmation(with parameter: ConfirmationParameter)
+
 	/// Navigates to the Result screen.
 	///
 	/// - Parameter parameter: The navigation parameter.
