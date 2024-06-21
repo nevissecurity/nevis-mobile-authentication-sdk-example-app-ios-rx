@@ -164,9 +164,11 @@
 		38FD7AD128FEEAD500F64099 /* DecodePayloadUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FD7AD028FEEAD500F64099 /* DecodePayloadUseCaseImpl.swift */; };
 		38FE58C4269344340014DF93 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FE58C3269344340014DF93 /* HomeScreen.swift */; };
 		38FE58C62693443C0014DF93 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FE58C52693443C0014DF93 /* HomeViewModel.swift */; };
+		6C37659B6DE0DDE851A056F3 /* Pods_NevisExampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E792052CC61AC2811699E15F /* Pods_NevisExampleApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E256C9B57CBCD476D68E544 /* Pods-NevisExampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NevisExampleApp.release.xcconfig"; path = "Target Support Files/Pods-NevisExampleApp/Pods-NevisExampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		3810439E268B0BBA0095D449 /* NavigationParameterizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationParameterizable.swift; sourceTree = "<group>"; };
 		381043A1268B2C940095D449 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		381043A5268B33620095D449 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -329,6 +331,8 @@
 		38FD7AD028FEEAD500F64099 /* DecodePayloadUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodePayloadUseCaseImpl.swift; sourceTree = "<group>"; };
 		38FE58C3269344340014DF93 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		38FE58C52693443C0014DF93 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		62C2371A7532EBAD0A0021FF /* Pods-NevisExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NevisExampleApp.debug.xcconfig"; path = "Target Support Files/Pods-NevisExampleApp/Pods-NevisExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		E792052CC61AC2811699E15F /* Pods_NevisExampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NevisExampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,6 +340,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C37659B6DE0DDE851A056F3 /* Pods_NevisExampleApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +413,8 @@
 			children = (
 				3833EB1B2685EA03002C5E0C /* NevisExampleApp */,
 				3833EB1A2685EA03002C5E0C /* Products */,
+				5982DE8405D7B002EEB48C3D /* Pods */,
+				93491D3F2F2A1133C938BE92 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -988,6 +995,24 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		5982DE8405D7B002EEB48C3D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				62C2371A7532EBAD0A0021FF /* Pods-NevisExampleApp.debug.xcconfig */,
+				2E256C9B57CBCD476D68E544 /* Pods-NevisExampleApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		93491D3F2F2A1133C938BE92 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E792052CC61AC2811699E15F /* Pods_NevisExampleApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -995,10 +1020,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3833EB2D2685EA03002C5E0C /* Build configuration list for PBXNativeTarget "NevisExampleApp" */;
 			buildPhases = (
+				597F9B730AA7680BCE6E1F38 /* [CP] Check Pods Manifest.lock */,
 				3867C1972685EE1F00A8B98B /* Swiftformat */,
 				3833EB152685EA03002C5E0C /* Sources */,
 				3833EB162685EA03002C5E0C /* Frameworks */,
 				3833EB172685EA03002C5E0C /* Resources */,
+				47890EDE050EC58C6AAB876C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1076,6 +1103,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftformat >/dev/null; then\n    echo \"SwiftFormat version: $(swiftformat --version)\"\n    echo \"Swift version: ${SWIFT_VERSION}\"\n    swiftformat \"${SRCROOT}/\" --config \"${SRCROOT}/.swiftformat\" --swiftversion ${SWIFT_VERSION}\nelse\n    echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+		};
+		47890EDE050EC58C6AAB876C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NevisExampleApp/Pods-NevisExampleApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NevisExampleApp/Pods-NevisExampleApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NevisExampleApp/Pods-NevisExampleApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		597F9B730AA7680BCE6E1F38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NevisExampleApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1383,6 +1449,7 @@
 		};
 		3833EB2E2685EA03002C5E0C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62C2371A7532EBAD0A0021FF /* Pods-NevisExampleApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1414,6 +1481,7 @@
 		};
 		3833EB2F2685EA03002C5E0C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E256C9B57CBCD476D68E544 /* Pods-NevisExampleApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
