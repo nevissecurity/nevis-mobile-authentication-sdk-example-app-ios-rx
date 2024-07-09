@@ -31,6 +31,9 @@ final class HomeScreen: BaseScreen, Screen {
 	/// The PIN Change button.
 	private let pinChangeButton = OutlinedButton(title: L10n.Home.changePin)
 
+	/// The Password Change button.
+	private let passwordChangeButton = OutlinedButton(title: L10n.Home.changePassword)
+
 	/// The Change Device Information button.
 	private let changeDeviceInformationButton = OutlinedButton(title: L10n.Home.changeDeviceInformation)
 
@@ -106,6 +109,7 @@ private extension HomeScreen {
 		setupAuthenticateButton()
 		setupDeregisterButton()
 		setupPinChangeButton()
+		setupPasswordChangeButton()
 		setupChangeDeviceInformationButton()
 		setupAuthCloudApiRegisterButton()
 		setupDeleteAuthenticatorsButton()
@@ -148,6 +152,13 @@ private extension HomeScreen {
 
 	func setupPinChangeButton() {
 		pinChangeButton.do {
+			addItemToBottom($0, spacing: 16)
+			$0.setHeight(with: 40)
+		}
+	}
+
+	func setupPasswordChangeButton() {
+		passwordChangeButton.do {
 			addItemToBottom($0, spacing: 16)
 			$0.setHeight(with: 40)
 		}
@@ -204,6 +215,7 @@ private extension HomeScreen {
 		                                authenticateTrigger: authenticateButton.rx.tap.asDriver(),
 		                                deregisterTrigger: deregisterButton.rx.tap.asDriver(),
 		                                pinChangeTrigger: pinChangeButton.rx.tap.asDriver(),
+		                                passwordChangeTrigger: passwordChangeButton.rx.tap.asDriver(),
 		                                changeDeviceInformationTrigger: changeDeviceInformationButton.rx.tap.asDriver(),
 		                                authCloudApiRegistrationTrigger: authCloudApiRegisterButton.rx.tap.asDriver(),
 		                                deleteAuthenticatorsTrigger: deleteAuthenticatorsButton.rx.tap.asDriver(),
@@ -215,6 +227,7 @@ private extension HomeScreen {
 		 output.authenticate.drive(),
 		 output.deregister.drive(),
 		 output.pinChange.drive(),
+		 output.passwordChange.drive(),
 		 output.changeDeviceInformation.drive(),
 		 output.authCloudApiRegistration.drive(),
 		 output.deleteAuthenticators.drive(),

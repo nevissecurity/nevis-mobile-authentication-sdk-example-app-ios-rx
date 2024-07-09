@@ -75,13 +75,24 @@ private extension ResponseObserverImpl {
 		else if let response = response as? EnrollPinResponse {
 			let parameter: PinParameter = .enrollment(lastRecoverableError: response.lastRecoverableError,
 			                                          handler: response.handler)
-			appCoordinator.navigateToPin(with: parameter)
+			appCoordinator.navigateToCredential(with: parameter)
+		}
+		else if let response = response as? EnrollPasswordResponse {
+			let parameter: PasswordParameter = .enrollment(lastRecoverableError: response.lastRecoverableError,
+			                                               handler: response.handler)
+			appCoordinator.navigateToCredential(with: parameter)
 		}
 		else if let response = response as? VerifyPinResponse {
 			let parameter: PinParameter = .verification(protectionStatus: response.protectionStatus,
 			                                            lastRecoverableError: response.lastRecoverableError,
 			                                            handler: response.handler)
-			appCoordinator.navigateToPin(with: parameter)
+			appCoordinator.navigateToCredential(with: parameter)
+		}
+		else if let response = response as? VerifyPasswordResponse {
+			let parameter: PasswordParameter = .verification(protectionStatus: response.protectionStatus,
+			                                                 lastRecoverableError: response.lastRecoverableError,
+			                                                 handler: response.handler)
+			appCoordinator.navigateToCredential(with: parameter)
 		}
 		else if let response = response as? VerifyBiometricResponse {
 			let parameter: ConfirmationParameter = .confirmBiometric(authenticator: response.authenticator,
@@ -103,7 +114,13 @@ private extension ResponseObserverImpl {
 			let parameter: PinParameter = .credentialChange(protectionStatus: response.protectionStatus,
 			                                                lastRecoverableError: response.lastRecoverableError,
 			                                                handler: response.handler)
-			appCoordinator.navigateToPin(with: parameter)
+			appCoordinator.navigateToCredential(with: parameter)
+		}
+		else if let response = response as? ChangePasswordResponse {
+			let parameter: PasswordParameter = .credentialChange(protectionStatus: response.protectionStatus,
+			                                                     lastRecoverableError: response.lastRecoverableError,
+			                                                     handler: response.handler)
+			appCoordinator.navigateToCredential(with: parameter)
 		}
 		else if let response = response as? CompletedResponse {
 			appCoordinator.navigateToResult(with: .success(operation: response.operation))

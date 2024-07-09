@@ -39,10 +39,10 @@ protocol AppCoordinator: Coordinator {
 	/// - Parameter parameter: The navigation parameter.
 	func navigateToAuthenticatorSelection(with parameter: SelectAuthenticatorParameter)
 
-	/// Navigates to the Pin screen.
+	/// Navigates to the Credential screen.
 	///
 	/// - Parameter parameter: The navigation parameter.
-	func navigateToPin(with parameter: PinParameter)
+	func navigateToCredential(with parameter: CredentialParameter)
 
 	/// Navigates to the Transaction Confirmation screen.
 	///

@@ -23,9 +23,6 @@ class AccountSelectorImpl {
 	/// The response emitter.
 	private let responseEmitter: ResponseEmitter
 
-	/// The error handler chain.
-	private let errorHandlerChain: ErrorHandlerChain
-
 	/// The logger.
 	private let logger: SDKLogger
 
@@ -36,15 +33,13 @@ class AccountSelectorImpl {
 	/// - Parameters:
 	///   - accountValidator: The account validator.
 	///   - responseEmitter: The response emitter.
-	///   - errorHandlerChain: The error handler chain.
-	///   - responseEmitter: The response emitter.
+	///   - logger: The logger.
 	init(accountValidator: AccountValidator,
 	     responseEmitter: ResponseEmitter,
-	     errorHandlerChain: ErrorHandlerChain,
+	     errorHandlerChain _: ErrorHandlerChain,
 	     logger: SDKLogger) {
 		self.accountValidator = accountValidator
 		self.responseEmitter = responseEmitter
-		self.errorHandlerChain = errorHandlerChain
 		self.logger = logger
 	}
 }
@@ -90,7 +85,8 @@ extension AccountSelectorImpl: AccountSelector {
 			}
 		}
 		catch {
-			errorHandlerChain.handle(error: error)
+			logger.log("Authenticator selection failed due to \(error.localizedDescription)", color: .red)
+			handler.cancel()
 		}
 	}
 }

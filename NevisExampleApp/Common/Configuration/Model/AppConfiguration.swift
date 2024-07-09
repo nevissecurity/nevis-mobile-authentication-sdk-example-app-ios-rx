@@ -17,6 +17,9 @@ struct AppConfiguration: Codable {
 	/// The Nevis Mobile Authentication SDK configuration.
 	let sdkConfiguration: Configuration
 
+	/// The allowed authenticators.
+	let authenticatorWhitelist: [AuthenticatorAaid]
+
 	// MARK: - CodingKey
 
 	/// Enumeration for keys used during coding.
@@ -25,6 +28,8 @@ struct AppConfiguration: Codable {
 		case loginConfiguration = "login"
 		/// Key for the SDK configuration.
 		case sdkConfiguration = "sdk"
+		/// Key for the authenticator whitelist.
+		case authenticatorWhitelist
 
 		/// Enumeration for the nested SDK configuration keys used during coding.
 		enum NestedCodingKeys: String, CodingKey {
@@ -73,5 +78,6 @@ struct AppConfiguration: Codable {
 		else {
 			self.sdkConfiguration = try container.decode(Configuration.self, forKey: .sdkConfiguration)
 		}
+		self.authenticatorWhitelist = try container.decode([AuthenticatorAaid].self, forKey: .authenticatorWhitelist)
 	}
 }

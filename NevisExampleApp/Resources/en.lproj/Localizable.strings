@@ -9,6 +9,7 @@
 "home_authenticate_button" = "In-Band Authenticate";
 "home_deregister_button" = "Deregister";
 "home_pin_change_button" = "PIN change";
+"home_password_change_button" = "Password change";
 "home_change_device_information_button" = "Change Device Information";
 "home_auth_cloud_api_registration_button" = "Auth Cloud Api Registration";
 "home_delete_authenticators_button" = "Delete Authenticators";
@@ -23,6 +24,11 @@
 "authenticator_selection_authenticator_is_not_enrolled" = "Before using the authenticator, enroll it in the phone System Settings";
 "authenticator_selection_authenticator_is_not_policy_compliant" = "This authentication method cannot be used with your application";
 
+// Credential screen
+"credential_done_button" = "Done";
+"credential_confirm_button" = "Confirm";
+"credential_cancel_button" = "Cancel";
+
 // Pin screen
 "pin_enrollment_title" = "Create PIN";
 "pin_enrollment_description" = "Please define a six digit PIN.";
@@ -32,14 +38,26 @@
 "pin_change_description" = "Please define a six digit PIN.";
 "pin_old_pin_placeholder" = "Enter old PIN";
 "pin_pin_placeholder" = "Enter PIN";
-"pin_done_button" = "Done";
-"pin_confirm_button" = "Confirm";
-"pin_cancel_button" = "Cancel";
 "pin_protection_status_locked_out" = "Your PIN is blocked.";
 "pin_protection_status_last_retry_with_cool_down" = "You have %@ try left.\nPlease retry in %@ seconds.\nAfter that your PIN will be blocked.";
 "pin_protection_status_last_retry_without_cool_down" = "You have %@ try left.\nAfter that your PIN will be blocked.";
 "pin_protection_status_retries_with_cool_down" = "You have %@ tries left.\nPlease retry in %@ seconds.";
 "pin_protection_status_retries_without_cool_down" = "You have %@ tries left.";
+
+// Password screen
+"password_enrollment_title" = "Create Password";
+"password_enrollment_description" = "Please define a Password.";
+"password_verify_title" = "Verify Password";
+"password_verify_description" = "Please enter your Password to complete the process.";
+"password_change_title" = "Change Password";
+"password_change_description" = "Please define a Password.";
+"password_old_password_placeholder" = "Enter old Password";
+"password_password_placeholder" = "Enter Password";
+"password_protection_status_locked_out" = "Your Password is blocked.";
+"password_protection_status_last_retry_with_cool_down" = "You have %@ try left.\nPlease retry in %@ seconds.\nAfter that your Password will be blocked.";
+"password_protection_status_last_retry_without_cool_down" = "You have %@ try left.\nAfter that your Password will be blocked.";
+"password_protection_status_retries_with_cool_down" = "You have %@ tries left.\nPlease retry in %@ seconds.";
+"password_protection_status_retries_without_cool_down" = "You have %@ tries left.";
 
 // Transaction Confirmation screen
 "transaction_confirmation_title" = "Transaction Confirmation";
@@ -90,6 +108,7 @@
 "operation_authentication_title" = "Authentication";
 "operation_deregistration_title" = "Deregistration";
 "operation_pin_change_title" = "PIN change";
+"operation_password_change_title" = "Password change";
 "operation_device_information_change_title" = "Device information change";
 "operation_local_data_title" = "Local data operation";
 
@@ -101,11 +120,11 @@
 // Error
 "error_generic_title" = "Failure";
 "error_generic_message" = "We're sorry, it seems you encountered an unknown error. Please try again.";
-"error_pin_authenticator_not_found_message" = "Pin authenticator not found.";
 "error_app_load_app_configuration_error_message" = "Failed to load the configuration file.";
 "error_app_read_login_configuration_error_message" = "Failed to read the login configuration.";
 "error_app_cookie_not_found_error_message" = "No cookie was provided in the login response.";
 "error_app_pin_authenticator_not_found_message" = "Pin authenticator not found.";
+"error_app_password_authenticator_not_found_message" = "Password authenticator not found.";
 "error_app_qr_scan_title" = "Error";
 "error_app_qr_scan_unavailable_message" = "Qr Code scanning is not supported using a simulator. You can start an Out-of-Band operation by opening a deep link or try out the Auth Cloud API registration.";
 "error_app_qr_scan_unauthorized_message" = "Camera access is required to scan Qr code.";
@@ -120,3 +139,4 @@
 "authenticator_face_recognition_title" = "Face ID";
 "authenticator_fingerprint_title" = "Touch ID";
 "authenticator_device_passcode_title" = "Device Passcode";
+"authenticator_device_password_title" = "Password";

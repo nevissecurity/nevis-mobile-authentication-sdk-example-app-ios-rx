@@ -71,8 +71,8 @@ private extension DeleteAuthenticatorsUseCaseImpl {
 	func deleteAuthenticators(of username: Username) -> Observable<OperationResponse> {
 		Observable.create { [unowned self] observer in
 			do {
-				try self.provider.get()?.localData.deleteAuthenticator(username: username, aaid: nil)
-				self.logger.log("Delete authenticators succeeded for user \(username).", color: .green)
+				try provider.get()?.localData.deleteAuthenticator(username: username, aaid: nil)
+				logger.log("Delete authenticators succeeded for user \(username).", color: .green)
 				observer.onNext(CompletedResponse(operation: .localData))
 				observer.onCompleted()
 			}

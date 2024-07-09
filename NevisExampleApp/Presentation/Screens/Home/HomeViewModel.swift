@@ -25,6 +25,9 @@ final class HomeViewModel {
 	/// Use case for PIN change.
 	private let changePinUseCase: ChangePinUseCase
 
+	/// Use case for Password change.
+	private let changePasswordUseCase: ChangePasswordUseCase
+
 	/// Use case for retrieving the accounts.
 	private let getAccountsUseCase: GetAccountsUseCase
 
@@ -58,6 +61,7 @@ final class HomeViewModel {
 	///   - initClientUseCase: Use case for initializing the client.
 	///   - deregistrationUseCase: Use case for deregistration.
 	///   - changePinUseCase: Use case for PIN change.
+	///   - changePasswordUseCase: Use case for Password change.
 	///   - getAccountsUseCase: Use case for retrieving the accounts.
 	///   - getAuthenticatorsUseCase: Use case for retrieving the authenticators.
 	///   - deleteAuthenticatorsUseCase: Use case for deleting local authenticators.
@@ -68,6 +72,7 @@ final class HomeViewModel {
 	     initClientUseCase: InitClientUseCase,
 	     deregistrationUseCase: DeregistrationUseCase,
 	     changePinUseCase: ChangePinUseCase,
+	     changePasswordUseCase: ChangePasswordUseCase,
 	     getAccountsUseCase: GetAccountsUseCase,
 	     getAuthenticatorsUseCase: GetAuthenticatorsUseCase,
 	     deleteAuthenticatorsUseCase: DeleteAuthenticatorsUseCase,
@@ -78,6 +83,7 @@ final class HomeViewModel {
 		self.initClientUseCase = initClientUseCase
 		self.deregistrationUseCase = deregistrationUseCase
 		self.changePinUseCase = changePinUseCase
+		self.changePasswordUseCase = changePasswordUseCase
 		self.getAccountsUseCase = getAccountsUseCase
 		self.getAuthenticatorsUseCase = getAuthenticatorsUseCase
 		self.deleteAuthenticatorsUseCase = deleteAuthenticatorsUseCase
@@ -108,6 +114,8 @@ extension HomeViewModel: ScreenViewModel {
 		let deregisterTrigger: Driver<()>
 		/// Observable sequence used for starting PIN change.
 		let pinChangeTrigger: Driver<()>
+		/// Observable sequence used for starting Password change.
+		let passwordChangeTrigger: Driver<()>
 		/// Observable sequence used for starting device information change.
 		let changeDeviceInformationTrigger: Driver<()>
 		/// Observable sequence used for starting auth cloud api registration.
@@ -132,6 +140,8 @@ extension HomeViewModel: ScreenViewModel {
 		let deregister: Driver<()>
 		/// Observable sequence used for listening to PIN change event.
 		let pinChange: Driver<()>
+		/// Observable sequence used for listening to Password change event.
+		let passwordChange: Driver<()>
 		/// Observable sequence used for listening to deregister event.
 		let changeDeviceInformation: Driver<()>
 		/// Observable sequence used for listening to auth cloud api registration event.
@@ -185,6 +195,12 @@ extension HomeViewModel: ScreenViewModel {
 			.trackError(errorTracker)
 			.asDriverOnErrorJustComplete()
 
+		let passwordChange = input.passwordChangeTrigger
+			.asObservable()
+			.flatMapLatest(changePassword)
+			.trackError(errorTracker)
+			.asDriverOnErrorJustComplete()
+
 		let changeDeviceInformation = input.changeDeviceInformationTrigger
 			.asObservable()
 			.flatMapLatest(changeDeviceInformation)
@@ -212,6 +228,7 @@ extension HomeViewModel: ScreenViewModel {
 		              authenticate: authenticate,
 		              deregister: deregister,
 		              pinChange: pinChange,
+		              passwordChange: passwordChange,
 		              changeDeviceInformation: changeDeviceInformation,
 		              authCloudApiRegistration: authCloudApiRegistration,
 		              deleteAuthenticators: deleteAuthenticators,
@@ -245,8 +262,8 @@ private extension HomeViewModel {
 	func deregister() -> Observable<()> {
 		switch configurationLoader.environment {
 		case .authenticationCloud:
-			return deregistrationUseCase.execute(username: nil,
-			                                     authorizationProvider: nil)
+			deregistrationUseCase.execute(username: nil,
+			                              authorizationProvider: nil)
 				.flatMap(responseObserver.observe(response:))
 				.trackActivity(activityIndicator)
 				.trackError(errorTracker)
@@ -255,7 +272,7 @@ private extension HomeViewModel {
 			// and as such we need to provide a cookie to the deregister call.
 			// Also in Identity Siute a deregistration has to be authenticated for every user,
 			// so batch deregistration is not really possible.
-			return getAccountsUseCase.execute()
+			getAccountsUseCase.execute()
 				.flatMap {
 					let parameter: SelectAccountParameter = .select(accounts: $0,
 					                                                operation: .deregistration,
@@ -270,7 +287,7 @@ private extension HomeViewModel {
 	///
 	/// - Returns: An observable sequence.
 	func changePin() -> Observable<()> {
-		Observable.combineLatest(getPinEnrollment(),
+		Observable.combineLatest(getSdkEnrollment(for: .Pin),
 		                         getAccountsUseCase.execute())
 			.flatMap { enrollment, accounts -> Observable<()> in
 				let eligibleAccounts = accounts.filter { account in
@@ -297,19 +314,57 @@ private extension HomeViewModel {
 			}
 	}
 
-	/// Starts In-Band authentication.
+	/// Starts Password changing.
 	///
-	/// - Returns: An observable sequence that will emit an ``SdkUserEnrollment`` object.
-	func getPinEnrollment() -> Observable<SdkUserEnrollment> {
-		getAuthenticatorsUseCase.execute()
-			.flatMap { authenticators -> Observable<SdkUserEnrollment> in
-				// searching for the PIN authenticator
-				guard let pinAuthenticator = authenticators.filter({ $0.aaid == AuthenticatorAaid.Pin.rawValue }).first else {
-					return .error(AppError.pinAuthenticatorNotFound)
+	/// - Returns: An observable sequence.
+	func changePassword() -> Observable<()> {
+		Observable.combineLatest(getSdkEnrollment(for: .Password),
+		                         getAccountsUseCase.execute())
+			.flatMap { enrollment, accounts -> Observable<()> in
+				let eligibleAccounts = accounts.filter { account in
+					enrollment.enrolledAccounts.contains { enrolledAccount in
+						enrolledAccount.username == account.username
+					}
 				}
 
-				guard let enrollment = pinAuthenticator.userEnrollment as? SdkUserEnrollment else {
-					return .error(AppError.pinAuthenticatorNotFound)
+				switch eligibleAccounts.count {
+				case 0:
+					return .error(BusinessError.accountsNotFound)
+				case 1:
+					// in case of one account we can select it automatically
+					return self.changePasswordUseCase.execute(username: eligibleAccounts.first!.username)
+						.flatMap(self.responseObserver.observe(response:))
+				default:
+					// in case of multiple eligible accounts we have to show the account selection screen
+					let parameter: SelectAccountParameter = .select(accounts: eligibleAccounts,
+					                                                operation: .passwordChange,
+					                                                handler: nil,
+					                                                message: nil)
+					return .just(self.appCoordinator.navigateToAccountSelection(with: parameter))
+				}
+			}
+	}
+
+	/// Fetching the SDK managed authenticator enrollments.
+	///
+	/// - Parameter authenticator: The SDK managed authenticator.
+	/// - Returns: An observable sequence that will emit an ``SdkUserEnrollment`` object.
+	func getSdkEnrollment(for authenticator: AuthenticatorAaid) -> Observable<SdkUserEnrollment> {
+		let error = switch authenticator {
+		case .Password: AppError.passwordAuthenticatorNotFound
+		case .Pin: AppError.pinAuthenticatorNotFound
+		default: AppError.unknown
+		}
+
+		return getAuthenticatorsUseCase.execute()
+			.flatMap { authenticators -> Observable<SdkUserEnrollment> in
+				// searching for the given authenticator
+				guard let credentialAuthenticator = authenticators.filter({ $0.aaid == authenticator.rawValue }).first else {
+					return .error(error)
+				}
+
+				guard let enrollment = credentialAuthenticator.userEnrollment as? SdkUserEnrollment else {
+					return .error(error)
 				}
 
 				return .just(enrollment)

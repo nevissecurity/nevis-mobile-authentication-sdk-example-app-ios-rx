@@ -35,5 +35,13 @@
 		<key>userInteractionTimeoutInSeconds</key>
 		<integer>240</integer>
 	</dict>
+	<key>authenticatorWhitelist</key>
+	<array>
+		<string>F1D0#1001</string>
+		<string>F1D0#1002</string>
+		<string>F1D0#1003</string>
+		<string>F1D0#1004</string>
+		<string>F1D0#1005</string>
+	</array>
 </dict>
 </plist>

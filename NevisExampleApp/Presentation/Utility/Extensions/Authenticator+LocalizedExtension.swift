@@ -12,15 +12,17 @@ extension Authenticator {
 	var localizedTitle: String {
 		switch aaid {
 		case AuthenticatorAaid.Pin.rawValue:
-			return L10n.Authenticator.Pin.title
+			L10n.Authenticator.Pin.title
 		case AuthenticatorAaid.FaceRecognition.rawValue:
-			return L10n.Authenticator.FaceRecognition.title
+			L10n.Authenticator.FaceRecognition.title
 		case AuthenticatorAaid.Fingerprint.rawValue:
-			return L10n.Authenticator.Fingerprint.title
+			L10n.Authenticator.Fingerprint.title
 		case AuthenticatorAaid.DevicePasscode.rawValue:
-			return L10n.Authenticator.DevicePasscode.title
+			L10n.Authenticator.DevicePasscode.title
+		case AuthenticatorAaid.Password.rawValue:
+			L10n.Authenticator.Password.title
 		default:
-			return String()
+			String()
 		}
 	}
 }

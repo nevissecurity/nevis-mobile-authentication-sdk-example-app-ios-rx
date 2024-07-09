@@ -16,8 +16,8 @@ enum Environment {
 	/// The configuration file name for an environment.
 	var configFileName: String {
 		switch self {
-		case .authenticationCloud: return "ConfigAuthenticationCloud"
-		case .identitySuite: return "ConfigIdentitySuite"
+		case .authenticationCloud: "ConfigAuthenticationCloud"
+		case .identitySuite: "ConfigIdentitySuite"
 		}
 	}
 }
