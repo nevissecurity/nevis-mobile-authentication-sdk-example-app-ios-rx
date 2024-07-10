@@ -4,11 +4,12 @@
 // Copyright © 2022. Nevis Security AG. All rights reserved.
 //
 
+import NevisMobileAuthentication
 import RxSwift
 import UIKit
 
-/// The Pin view. Used for Pin code creation verification and change.
-class PinScreen: BaseScreen, Screen {
+/// The Credential view. Used for PIN / Password creation verification and change.
+class CredentialScreen: BaseScreen, Screen {
 
 	// MARK: - UI
 
@@ -18,11 +19,11 @@ class PinScreen: BaseScreen, Screen {
 	/// The description label.
 	private let descriptionLabel = NSLabel(style: .normal)
 
-	/// The text field for the old PIN.
-	private let oldPinField = NSTextField(placeholder: L10n.Pin.oldPinPlaceholder, returnKeyType: .next)
+	/// The text field for the old credential.
+	private let oldCredentialField = NSTextField(returnKeyType: .next)
 
-	/// The text field for the PIN.
-	private let pinField = NSTextField(placeholder: L10n.Pin.pinPlaceholder)
+	/// The text field for the credential.
+	private let credentialField = NSTextField()
 
 	/// The error label.
 	private let errorLabel = NSLabel(style: .error)
@@ -31,10 +32,10 @@ class PinScreen: BaseScreen, Screen {
 	private let infoMessageLabel = NSLabel(style: .info)
 
 	/// The confirm button.
-	private let confirmButton = OutlinedButton(title: L10n.Pin.confirm)
+	private let confirmButton = OutlinedButton(title: L10n.Credential.confirm)
 
 	/// The cancel button.
-	private let cancelButton = OutlinedButton(title: L10n.Pin.cancel)
+	private let cancelButton = OutlinedButton(title: L10n.Credential.cancel)
 
 	/// The toolbar for the keyboard with type *numberPad*.
 	private let keyboardToolbar = UIToolbar()
@@ -42,7 +43,7 @@ class PinScreen: BaseScreen, Screen {
 	// MARK: - Properties
 
 	/// The view model.
-	var viewModel: PinViewModel!
+	var viewModel: CredentialViewModel!
 
 	/// Thread safe bag that disposes added disposables.
 	private let disposeBag = DisposeBag()
@@ -52,20 +53,20 @@ class PinScreen: BaseScreen, Screen {
 	/// Creates a new instance.
 	///
 	/// - Parameter viewModel: The view model.
-	init(viewModel: PinViewModel) {
+	init(viewModel: CredentialViewModel) {
 		self.viewModel = viewModel
 		super.init()
 	}
 
 	/// :nodoc:
 	deinit {
-		os_log("PinScreen", log: OSLog.deinit, type: .debug)
+		os_log("CredentialScreen", log: OSLog.deinit, type: .debug)
 	}
 }
 
 // MARK: - Lifecycle
 
-extension PinScreen {
+extension CredentialScreen {
 
 	/// Override of the `viewDidLoad()` lifecycle method. Sets up the user interface and binds the view model.
 	override func viewDidLoad() {
@@ -90,14 +91,14 @@ extension PinScreen {
 // MARK: - Setups
 
 /// :nodoc:
-private extension PinScreen {
+private extension CredentialScreen {
 
 	func setupUI() {
 		setupTitleLabel()
 		setupDescriptionLabel()
 		setupToolbar()
-		setupOldPinField()
-		setupPinField()
+		setupOldCredentialField()
+		setupCredentialField()
 		setupErrorLabel()
 		setupInfoMessageLabel()
 		setupConfirmButton()
@@ -120,7 +121,7 @@ private extension PinScreen {
 		let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
 		                                target: nil,
 		                                action: nil)
-		let doneButton = UIBarButtonItem(title: L10n.Pin.done,
+		let doneButton = UIBarButtonItem(title: L10n.Credential.done,
 		                                 style: .done,
 		                                 target: self,
 		                                 action: #selector(done))
@@ -131,18 +132,17 @@ private extension PinScreen {
 		}
 	}
 
-	func setupOldPinField() {
-		oldPinField.do {
+	func setupOldCredentialField() {
+		oldCredentialField.do {
 			addItem($0, topSpacing: 16)
 			$0.setHeight(with: 40)
-			$0.keyboardType = .numberPad
 			$0.isSecureTextEntry = true
 			$0.inputAccessoryView = keyboardToolbar
 		}
 	}
 
-	func setupPinField() {
-		pinField.do {
+	func setupCredentialField() {
+		credentialField.do {
 			addItem($0, topSpacing: 16)
 			$0.setHeight(with: 40)
 			$0.keyboardType = .numberPad
@@ -178,11 +178,11 @@ private extension PinScreen {
 	}
 
 	func setupTextFields() {
-		if let superview = oldPinField.superview, !superview.isHidden {
-			oldPinField.becomeFirstResponder()
+		if let superview = oldCredentialField.superview, !superview.isHidden {
+			oldCredentialField.becomeFirstResponder()
 		}
 		else {
-			pinField.becomeFirstResponder()
+			credentialField.becomeFirstResponder()
 		}
 	}
 }
@@ -190,7 +190,7 @@ private extension PinScreen {
 // MARK: - Actions
 
 /// :nodoc:
-private extension PinScreen {
+private extension CredentialScreen {
 	@objc
 	func done() {
 		view.endEditing(true)
@@ -200,7 +200,7 @@ private extension PinScreen {
 // MARK: - Binding
 
 /// :nodoc:
-private extension PinScreen {
+private extension CredentialScreen {
 
 	func bindViewModel() {
 		assert(viewModel != nil)
@@ -209,31 +209,44 @@ private extension PinScreen {
 			.mapToVoid()
 			.asDriverOnErrorJustComplete()
 
-		let input = PinViewModel.Input(oldPin: oldPinField.rx.text.orEmpty.asDriver(),
-		                               pin: pinField.rx.text.orEmpty.asDriver(),
-		                               clearTrigger: clearTrigger,
-		                               confirmTrigger: confirmButton.rx.tap.asDriver(),
-		                               cancelTrigger: cancelButton.rx.tap.asDriver())
+		let input = CredentialViewModel.Input(oldCredential: oldCredentialField.rx.text.orEmpty.asDriver(),
+		                                      credential: credentialField.rx.text.orEmpty.asDriver(),
+		                                      clearTrigger: clearTrigger,
+		                                      confirmTrigger: confirmButton.rx.tap.asDriver(),
+		                                      cancelTrigger: cancelButton.rx.tap.asDriver())
 		let output = viewModel.transform(input: input)
 		[output.title.drive(titleLabel.rx.text),
 		 output.description.drive(descriptionLabel.rx.text),
 		 output.lastRecoverableError.drive(errorLabel.rx.text),
-		 output.hideOldPin.drive(hideOldPinBinder),
+		 output.credentialType.drive(credentialTypeBinder),
+		 output.hideOldCredential.drive(hideOldPinBinder),
 		 output.clear.drive(),
 		 output.confirm.drive(),
 		 output.cancel.drive(),
 		 output.error.drive(rx.error),
-		 output.pinProtectionInformation.drive(pinProtectionInfoBinder)]
+		 output.credentialProtectionInformation.drive(pinProtectionInfoBinder)]
 			.forEach { $0.disposed(by: disposeBag) }
+	}
+
+	var credentialTypeBinder: Binder<AuthenticatorAaid> {
+		Binder(self) { base, credentialType in
+			base.oldCredentialField.do {
+				$0.placeholder = credentialType == .Pin ? L10n.Credential.Pin.oldPinPlaceholder : L10n.Credential.Password.oldPasswordPlaceholder
+				$0.keyboardType = credentialType == .Pin ? .numberPad : .default
+			}
+			base.credentialField.do {
+				$0.keyboardType = credentialType == .Pin ? .numberPad : .default
+			}
+		}
 	}
 
 	var hideOldPinBinder: Binder<Bool> {
 		Binder(self) { base, isHidden in
-			base.oldPinField.superview?.isHidden = isHidden
+			base.oldCredentialField.superview?.isHidden = isHidden
 		}
 	}
 
-	var pinProtectionInfoBinder: Binder<PinProtectionInformation> {
+	var pinProtectionInfoBinder: Binder<CredentialProtectionInformation> {
 		Binder(self) { base, info in
 			base.infoMessageLabel.text = info.message
 			base.confirmButton.isEnabled = !info.isInCoolDown

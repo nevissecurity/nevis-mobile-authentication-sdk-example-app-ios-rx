@@ -138,21 +138,21 @@ extension AppCoordinatorImpl: AppCoordinator {
 		rootNavigationController?.pushViewController(screen, animated: true)
 	}
 
-	func navigateToPin(with parameter: PinParameter) {
-		guard let screen = DependencyProvider.shared.container.resolve(PinScreen.self,
+	func navigateToCredential(with parameter: CredentialParameter) {
+		guard let screen = DependencyProvider.shared.container.resolve(CredentialScreen.self,
 		                                                               argument: parameter as NavigationParameterizable) else {
 			return
 		}
 
-		if let pinScreen = topScreen as? PinScreen {
-			// the `PinEnrollerImpl` or `PinUserVerifierImpl` emitted a response again
-			// `ResponseObserver` navigates to the PIN screen although that is the visible screen
-			// It means that the user entered an invalid PIN and a recoverable error recevied
-			// Just refresh the screen with the new view model
-			pinScreen.viewModel = DependencyProvider.shared.container.resolve(PinViewModel.self,
-			                                                                  argument: parameter as NavigationParameterizable)
-			logger.log("Refreshing Pin screen.", color: .purple)
-			pinScreen.refresh()
+		if let credentialScreen = topScreen as? CredentialScreen {
+			// the `PinEnrollerImpl`, `PinUserVerifierImpl`, `PasswordEnrollerImpl` or `PasswordUserVerifierImpl` emitted a response again
+			// `ResponseObserver` navigates to the Credential screen although that is the visible screen.
+			// It means that the user entered an invalid credential and a recoverable error recevied.
+			// Just refresh the screen with the new view model.
+			credentialScreen.viewModel = DependencyProvider.shared.container.resolve(CredentialViewModel.self,
+			                                                                         argument: parameter as NavigationParameterizable)
+			logger.log("Refreshing Credential screen.", color: .purple)
+			credentialScreen.refresh()
 			return
 		}
 

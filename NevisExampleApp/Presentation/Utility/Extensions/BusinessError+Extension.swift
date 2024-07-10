@@ -10,13 +10,13 @@ extension BusinessError: LocalizedError {
 	public var errorDescription: String? {
 		switch self {
 		case .authenticatorNotFound:
-			return L10n.Error.Business.authenticatorNotFound
+			L10n.Error.Business.authenticatorNotFound
 		case .deviceInformationNotFound:
-			return L10n.Error.Business.deviceInformationNotFound
+			L10n.Error.Business.deviceInformationNotFound
 		case .accountsNotFound:
-			return L10n.Error.Business.accountsNotFound
+			L10n.Error.Business.accountsNotFound
 		case .loginFailed:
-			return L10n.Error.Business.loginFailed
+			L10n.Error.Business.loginFailed
 		}
 	}
 }

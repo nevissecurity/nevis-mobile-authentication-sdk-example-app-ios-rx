@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0698AA542C3BEB20001B4000 /* PasswordAuthenticatorProtectionStatus+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA532C3BEB20001B4000 /* PasswordAuthenticatorProtectionStatus+Extension.swift */; };
+		0698AA562C3BF8E2001B4000 /* AuthenticatorAaid+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA552C3BF8E2001B4000 /* AuthenticatorAaid+Extension.swift */; };
+		0698AA582C3BFD64001B4000 /* AuthenticatorValidatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA572C3BFD64001B4000 /* AuthenticatorValidatorImpl.swift */; };
+		0698AA5A2C3BFED9001B4000 /* AuthenticatorValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA592C3BFED9001B4000 /* AuthenticatorValidator.swift */; };
+		0698AA5E2C3D10A5001B4000 /* PasswordChangerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA5D2C3D10A5001B4000 /* PasswordChangerImpl.swift */; };
+		0698AA602C3D116C001B4000 /* ChangePasswordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA5F2C3D116C001B4000 /* ChangePasswordResponse.swift */; };
+		0698AA622C3D11DD001B4000 /* PasswordEnrollerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA612C3D11DD001B4000 /* PasswordEnrollerImpl.swift */; };
+		0698AA642C3D12A7001B4000 /* EnrollPasswordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA632C3D12A7001B4000 /* EnrollPasswordResponse.swift */; };
+		0698AA662C3D12EA001B4000 /* VerifyPasswordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA652C3D12EA001B4000 /* VerifyPasswordResponse.swift */; };
+		0698AA682C3D1345001B4000 /* PasswordUserVerifierImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA672C3D1345001B4000 /* PasswordUserVerifierImpl.swift */; };
+		0698AA6A2C3D1DF8001B4000 /* ChangePasswordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA692C3D1DF8001B4000 /* ChangePasswordUseCase.swift */; };
+		0698AA6C2C3D1E21001B4000 /* ChangePasswordUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA6B2C3D1E21001B4000 /* ChangePasswordUseCaseImpl.swift */; };
 		3810439F268B0BBA0095D449 /* NavigationParameterizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3810439E268B0BBA0095D449 /* NavigationParameterizable.swift */; };
 		381043A2268B2C940095D449 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381043A1268B2C940095D449 /* ActivityIndicator.swift */; };
 		381043A6268B33620095D449 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381043A5268B33620095D449 /* UIViewController+Extension.swift */; };
@@ -65,8 +77,7 @@
 		3872BFD12A29E8D40041C594 /* AuthenticatorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3872BFD02A29E8D40041C594 /* AuthenticatorItem.swift */; };
 		3872BFD32A29E98E0041C594 /* Authenticator+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3872BFD22A29E98E0041C594 /* Authenticator+Extension.swift */; };
 		3875ADCC291BF6D100939D16 /* PinUserVerifierImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875ADC2291BF6D100939D16 /* PinUserVerifierImpl.swift */; };
-		3875ADCD291BF6D100939D16 /* RegistrationAuthenticatorSelectorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875ADC3291BF6D100939D16 /* RegistrationAuthenticatorSelectorImpl.swift */; };
-		3875ADD0291BF6D100939D16 /* AuthenticationAuthenticatorSelectorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875ADC7291BF6D100939D16 /* AuthenticationAuthenticatorSelectorImpl.swift */; };
+		3875ADD0291BF6D100939D16 /* AuthenticatorSelectorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875ADC7291BF6D100939D16 /* AuthenticatorSelectorImpl.swift */; };
 		3875ADD1291BF6D100939D16 /* PinChangerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875ADC8291BF6D100939D16 /* PinChangerImpl.swift */; };
 		3875ADD2291BF6D100939D16 /* AccountSelectorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875ADC9291BF6D100939D16 /* AccountSelectorImpl.swift */; };
 		3875ADD3291BF6D100939D16 /* PinEnrollerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875ADCA291BF6D100939D16 /* PinEnrollerImpl.swift */; };
@@ -75,10 +86,10 @@
 		3875ADD9291BF73000939D16 /* AccountValidatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875ADD7291BF73000939D16 /* AccountValidatorImpl.swift */; };
 		38821E6E292500ED0009522A /* ConfigIdentitySuite.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38821E6D292500ED0009522A /* ConfigIdentitySuite.plist */; };
 		38821E70292502670009522A /* ConfigAuthenticationCloud.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38821E6F292502670009522A /* ConfigAuthenticationCloud.plist */; };
-		388844DC2695C1E500CCFB00 /* PinScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388844DB2695C1E500CCFB00 /* PinScreen.swift */; };
-		388844DE2695C1F200CCFB00 /* PinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388844DD2695C1F200CCFB00 /* PinViewModel.swift */; };
+		388844DC2695C1E500CCFB00 /* CredentialScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388844DB2695C1E500CCFB00 /* CredentialScreen.swift */; };
+		388844DE2695C1F200CCFB00 /* CredentialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388844DD2695C1F200CCFB00 /* CredentialViewModel.swift */; };
 		388D0A622968236400EBFC1D /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388D0A612968236400EBFC1D /* Dictionary+Extension.swift */; };
-		38A0C0ED26E0C7F700898B6A /* PinProtectionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A0C0EC26E0C7F700898B6A /* PinProtectionInformation.swift */; };
+		38A0C0ED26E0C7F700898B6A /* CredentialProtectionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A0C0EC26E0C7F700898B6A /* CredentialProtectionInformation.swift */; };
 		38ABBB4D2906A151006B19B9 /* ChangeDeviceInformationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ABBB4C2906A151006B19B9 /* ChangeDeviceInformationUseCase.swift */; };
 		38ABBB4F2906A158006B19B9 /* ChangeDeviceInformationUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ABBB4E2906A158006B19B9 /* ChangeDeviceInformationUseCaseImpl.swift */; };
 		38ABBB522906AD41006B19B9 /* ChangeDeviceInformationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ABBB512906AD41006B19B9 /* ChangeDeviceInformationScreen.swift */; };
@@ -167,6 +178,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0698AA532C3BEB20001B4000 /* PasswordAuthenticatorProtectionStatus+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PasswordAuthenticatorProtectionStatus+Extension.swift"; sourceTree = "<group>"; };
+		0698AA552C3BF8E2001B4000 /* AuthenticatorAaid+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticatorAaid+Extension.swift"; sourceTree = "<group>"; };
+		0698AA572C3BFD64001B4000 /* AuthenticatorValidatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorValidatorImpl.swift; sourceTree = "<group>"; };
+		0698AA592C3BFED9001B4000 /* AuthenticatorValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorValidator.swift; sourceTree = "<group>"; };
+		0698AA5D2C3D10A5001B4000 /* PasswordChangerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangerImpl.swift; sourceTree = "<group>"; };
+		0698AA5F2C3D116C001B4000 /* ChangePasswordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordResponse.swift; sourceTree = "<group>"; };
+		0698AA612C3D11DD001B4000 /* PasswordEnrollerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEnrollerImpl.swift; sourceTree = "<group>"; };
+		0698AA632C3D12A7001B4000 /* EnrollPasswordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollPasswordResponse.swift; sourceTree = "<group>"; };
+		0698AA652C3D12EA001B4000 /* VerifyPasswordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPasswordResponse.swift; sourceTree = "<group>"; };
+		0698AA672C3D1345001B4000 /* PasswordUserVerifierImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordUserVerifierImpl.swift; sourceTree = "<group>"; };
+		0698AA692C3D1DF8001B4000 /* ChangePasswordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordUseCase.swift; sourceTree = "<group>"; };
+		0698AA6B2C3D1E21001B4000 /* ChangePasswordUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordUseCaseImpl.swift; sourceTree = "<group>"; };
 		3810439E268B0BBA0095D449 /* NavigationParameterizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationParameterizable.swift; sourceTree = "<group>"; };
 		381043A1268B2C940095D449 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		381043A5268B33620095D449 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -228,8 +251,7 @@
 		3872BFD02A29E8D40041C594 /* AuthenticatorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorItem.swift; sourceTree = "<group>"; };
 		3872BFD22A29E98E0041C594 /* Authenticator+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Authenticator+Extension.swift"; sourceTree = "<group>"; };
 		3875ADC2291BF6D100939D16 /* PinUserVerifierImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinUserVerifierImpl.swift; sourceTree = "<group>"; };
-		3875ADC3291BF6D100939D16 /* RegistrationAuthenticatorSelectorImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationAuthenticatorSelectorImpl.swift; sourceTree = "<group>"; };
-		3875ADC7291BF6D100939D16 /* AuthenticationAuthenticatorSelectorImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationAuthenticatorSelectorImpl.swift; sourceTree = "<group>"; };
+		3875ADC7291BF6D100939D16 /* AuthenticatorSelectorImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatorSelectorImpl.swift; sourceTree = "<group>"; };
 		3875ADC8291BF6D100939D16 /* PinChangerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinChangerImpl.swift; sourceTree = "<group>"; };
 		3875ADC9291BF6D100939D16 /* AccountSelectorImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSelectorImpl.swift; sourceTree = "<group>"; };
 		3875ADCA291BF6D100939D16 /* PinEnrollerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinEnrollerImpl.swift; sourceTree = "<group>"; };
@@ -238,10 +260,10 @@
 		3875ADD7291BF73000939D16 /* AccountValidatorImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountValidatorImpl.swift; sourceTree = "<group>"; };
 		38821E6D292500ED0009522A /* ConfigIdentitySuite.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ConfigIdentitySuite.plist; sourceTree = "<group>"; };
 		38821E6F292502670009522A /* ConfigAuthenticationCloud.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ConfigAuthenticationCloud.plist; sourceTree = "<group>"; };
-		388844DB2695C1E500CCFB00 /* PinScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinScreen.swift; sourceTree = "<group>"; };
-		388844DD2695C1F200CCFB00 /* PinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewModel.swift; sourceTree = "<group>"; };
+		388844DB2695C1E500CCFB00 /* CredentialScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialScreen.swift; sourceTree = "<group>"; };
+		388844DD2695C1F200CCFB00 /* CredentialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialViewModel.swift; sourceTree = "<group>"; };
 		388D0A612968236400EBFC1D /* Dictionary+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
-		38A0C0EC26E0C7F700898B6A /* PinProtectionInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinProtectionInformation.swift; sourceTree = "<group>"; };
+		38A0C0EC26E0C7F700898B6A /* CredentialProtectionInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialProtectionInformation.swift; sourceTree = "<group>"; };
 		38ABBB4C2906A151006B19B9 /* ChangeDeviceInformationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDeviceInformationUseCase.swift; sourceTree = "<group>"; };
 		38ABBB4E2906A158006B19B9 /* ChangeDeviceInformationUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDeviceInformationUseCaseImpl.swift; sourceTree = "<group>"; };
 		38ABBB512906AD41006B19B9 /* ChangeDeviceInformationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDeviceInformationScreen.swift; sourceTree = "<group>"; };
@@ -342,6 +364,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0698AA5B2C3D1064001B4000 /* Pin */ = {
+			isa = PBXGroup;
+			children = (
+				3875ADC8291BF6D100939D16 /* PinChangerImpl.swift */,
+				3875ADCA291BF6D100939D16 /* PinEnrollerImpl.swift */,
+				3875ADC2291BF6D100939D16 /* PinUserVerifierImpl.swift */,
+			);
+			path = Pin;
+			sourceTree = "<group>";
+		};
+		0698AA5C2C3D106B001B4000 /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				0698AA5D2C3D10A5001B4000 /* PasswordChangerImpl.swift */,
+				0698AA612C3D11DD001B4000 /* PasswordEnrollerImpl.swift */,
+				0698AA672C3D1345001B4000 /* PasswordUserVerifierImpl.swift */,
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
 		380E12A626E7500300AF5DB4 /* Deep Link */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,10 +419,12 @@
 			children = (
 				3872BFD02A29E8D40041C594 /* AuthenticatorItem.swift */,
 				38EB17782902B49600E82236 /* BusinessError.swift */,
+				0698AA5F2C3D116C001B4000 /* ChangePasswordResponse.swift */,
 				3863F3AB2907CAFF0028D26E /* ChangePinResponse.swift */,
 				38D67ECA26C6AC630068334F /* CompletedResponse.swift */,
 				38EB177A2902CB8500E82236 /* ConfirmTransactionResponse.swift */,
 				386FC3272909228F00CB30A7 /* Credentials.swift */,
+				0698AA632C3D12A7001B4000 /* EnrollPasswordResponse.swift */,
 				38F0769A2900129700EFDAF8 /* EnrollPinResponse.swift */,
 				386DA8FD26CA9B9A00060ADD /* Operation.swift */,
 				381EC646290AAE790005546B /* OperationError.swift */,
@@ -389,6 +433,7 @@
 				381D598226C56003006B02DD /* SelectAuthenticatorResponse.swift */,
 				38C6F35A2BB17778002909BE /* VerifyBiometricResponse.swift */,
 				38C6F35C2BB178F3002909BE /* VerifyDevicePasscodeResponse.swift */,
+				0698AA652C3D12EA001B4000 /* VerifyPasswordResponse.swift */,
 				38D67EC826C69BCC0068334F /* VerifyPinResponse.swift */,
 			);
 			path = Model;
@@ -481,6 +526,8 @@
 				38B085A72907F44F006295D8 /* AuthCloudApiRegistrationUseCaseImpl.swift */,
 				38ABBB4C2906A151006B19B9 /* ChangeDeviceInformationUseCase.swift */,
 				38ABBB4E2906A158006B19B9 /* ChangeDeviceInformationUseCaseImpl.swift */,
+				0698AA692C3D1DF8001B4000 /* ChangePasswordUseCase.swift */,
+				0698AA6B2C3D1E21001B4000 /* ChangePasswordUseCaseImpl.swift */,
 				3863F3AD2907CE370028D26E /* ChangePinUseCase.swift */,
 				3863F3AF2907CE3D0028D26E /* ChangePinUseCaseImpl.swift */,
 				38F0768E28FFD89000EFDAF8 /* CreateDeviceInformationUseCase.swift */,
@@ -521,7 +568,7 @@
 				38FE58C22693442B0014DF93 /* Home */,
 				3852F3A4268624470051FF73 /* Launch */,
 				382D51AC26B194DC00B774CF /* Logging */,
-				388844DA2695C1D600CCFB00 /* Pin */,
+				388844DA2695C1D600CCFB00 /* Credential */,
 				38FD7AC728FEDCAA00F64099 /* Qr Scanner */,
 				38C2D11A290BC20800E41764 /* Result */,
 				38DF7273290144F300429337 /* Select Account */,
@@ -552,8 +599,10 @@
 			isa = PBXGroup;
 			children = (
 				38F0769829000BA400EFDAF8 /* Authenticator+LocalizedExtension.swift */,
+				0698AA552C3BF8E2001B4000 /* AuthenticatorAaid+Extension.swift */,
 				381EC648290ABEDB0005546B /* BusinessError+Extension.swift */,
 				385B176E26CBC33B005A0B58 /* Operation+Extension.swift */,
+				0698AA532C3BEB20001B4000 /* PasswordAuthenticatorProtectionStatus+Extension.swift */,
 				38EB176929027B9C00E82236 /* PinAuthenticatorProtectionStatus+Extension.swift */,
 				38C1B384269DB56C00ED5782 /* UINavigationController+Extension.swift */,
 				3852F39926860C590051FF73 /* UIStackView+Extension.swift */,
@@ -728,14 +777,12 @@
 		3875ADC1291BF6D100939D16 /* Interaction */ = {
 			isa = PBXGroup;
 			children = (
+				0698AA5C2C3D106B001B4000 /* Password */,
+				0698AA5B2C3D1064001B4000 /* Pin */,
 				3875ADC9291BF6D100939D16 /* AccountSelectorImpl.swift */,
-				3875ADC7291BF6D100939D16 /* AuthenticationAuthenticatorSelectorImpl.swift */,
+				3875ADC7291BF6D100939D16 /* AuthenticatorSelectorImpl.swift */,
 				3875ADCB291BF6D100939D16 /* BiometricUserVerifierImpl.swift */,
 				38E1CBF42A8E3A0E00D4F7EB /* DevicePasscodeUserVerifierImpl.swift */,
-				3875ADC8291BF6D100939D16 /* PinChangerImpl.swift */,
-				3875ADCA291BF6D100939D16 /* PinEnrollerImpl.swift */,
-				3875ADC2291BF6D100939D16 /* PinUserVerifierImpl.swift */,
-				3875ADC3291BF6D100939D16 /* RegistrationAuthenticatorSelectorImpl.swift */,
 			);
 			path = Interaction;
 			sourceTree = "<group>";
@@ -745,24 +792,26 @@
 			children = (
 				3875ADD6291BF73000939D16 /* AccountValidator.swift */,
 				3875ADD7291BF73000939D16 /* AccountValidatorImpl.swift */,
+				0698AA592C3BFED9001B4000 /* AuthenticatorValidator.swift */,
+				0698AA572C3BFD64001B4000 /* AuthenticatorValidatorImpl.swift */,
 			);
 			path = Validators;
 			sourceTree = "<group>";
 		};
-		388844DA2695C1D600CCFB00 /* Pin */ = {
+		388844DA2695C1D600CCFB00 /* Credential */ = {
 			isa = PBXGroup;
 			children = (
 				38A0C0E926E0C28A00898B6A /* Model */,
-				388844DB2695C1E500CCFB00 /* PinScreen.swift */,
-				388844DD2695C1F200CCFB00 /* PinViewModel.swift */,
+				388844DB2695C1E500CCFB00 /* CredentialScreen.swift */,
+				388844DD2695C1F200CCFB00 /* CredentialViewModel.swift */,
 			);
-			path = Pin;
+			path = Credential;
 			sourceTree = "<group>";
 		};
 		38A0C0E926E0C28A00898B6A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				38A0C0EC26E0C7F700898B6A /* PinProtectionInformation.swift */,
+				38A0C0EC26E0C7F700898B6A /* CredentialProtectionInformation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -889,8 +938,8 @@
 			children = (
 				38DD19A726A070F000FE08A4 /* ValidationError.swift */,
 				38DD19A926A070F000FE08A4 /* ValidationResult.swift */,
-				382D51AA26B1679B00B774CF /* JWTValidator.swift */,
 				38B085AE29081EAF006295D8 /* AuthCloudApiRegistrationValidator.swift */,
+				382D51AA26B1679B00B774CF /* JWTValidator.swift */,
 			);
 			path = Validation;
 			sourceTree = "<group>";
@@ -988,6 +1037,13 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		5982DE8405D7B002EEB48C3D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1015,8 +1071,9 @@
 		3833EB112685EA03002C5E0C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					3833EB182685EA03002C5E0C = {
 						CreatedOnToolsVersion = 12.5;
@@ -1087,6 +1144,7 @@
 				38ED024426E0B6BF00FAFC38 /* InteractionCountDownTimer.swift in Sources */,
 				38EFD3D326DCB9B30051A19E /* SharedSequenceConvertibleType+Extension.swift in Sources */,
 				38F0767E28FFD42900EFDAF8 /* OutOfBandOperationUseCaseImpl.swift in Sources */,
+				0698AA602C3D116C001B4000 /* ChangePasswordResponse.swift in Sources */,
 				38C6F3572BB17398002909BE /* ConfirmationViewModel.swift in Sources */,
 				38B0A2BD269C477900FABCC1 /* ErrorHandlerChainImpl.swift in Sources */,
 				38EB17792902B49600E82236 /* BusinessError.swift in Sources */,
@@ -1109,8 +1167,8 @@
 				3852F39E2686193C0051FF73 /* ScreenViewModel.swift in Sources */,
 				38ABBB4D2906A151006B19B9 /* ChangeDeviceInformationUseCase.swift in Sources */,
 				38487849268C777F00FD8419 /* DeepLinkHandler.swift in Sources */,
-				3875ADCD291BF6D100939D16 /* RegistrationAuthenticatorSelectorImpl.swift in Sources */,
 				38FD7AD128FEEAD500F64099 /* DecodePayloadUseCaseImpl.swift in Sources */,
+				0698AA542C3BEB20001B4000 /* PasswordAuthenticatorProtectionStatus+Extension.swift in Sources */,
 				38C2D11D290BC20800E41764 /* ResultViewModel.swift in Sources */,
 				381EC649290ABEDB0005546B /* BusinessError+Extension.swift in Sources */,
 				38CAEE9D2B021FA600143059 /* DeleteAuthenticatorsUseCaseImpl.swift in Sources */,
@@ -1122,7 +1180,7 @@
 				381EC647290AAE7A0005546B /* OperationError.swift in Sources */,
 				386FC3262909215000CB30A7 /* LoginRequest.swift in Sources */,
 				38DD19AD26A070F000FE08A4 /* ValidationResult.swift in Sources */,
-				3875ADD0291BF6D100939D16 /* AuthenticationAuthenticatorSelectorImpl.swift in Sources */,
+				3875ADD0291BF6D100939D16 /* AuthenticatorSelectorImpl.swift in Sources */,
 				3852F39A26860C590051FF73 /* UIStackView+Extension.swift in Sources */,
 				381D598326C56003006B02DD /* SelectAuthenticatorResponse.swift in Sources */,
 				38F0769B2900129700EFDAF8 /* EnrollPinResponse.swift in Sources */,
@@ -1141,6 +1199,7 @@
 				3867C1A32685F73A00A8B98B /* AppLoader.swift in Sources */,
 				3867C1A62685F7AF00A8B98B /* DependencyProvider.swift in Sources */,
 				38ABBB4F2906A158006B19B9 /* ChangeDeviceInformationUseCaseImpl.swift in Sources */,
+				0698AA562C3BF8E2001B4000 /* AuthenticatorAaid+Extension.swift in Sources */,
 				38DF72772901451100429337 /* SelectAccountViewModel.swift in Sources */,
 				38AC7AB42689DA8C00A5A5AD /* Coordinator.swift in Sources */,
 				38B0A2C3269C483D00FABCC1 /* GeneralErrorHandler.swift in Sources */,
@@ -1159,33 +1218,40 @@
 				38FD7AB128FE954700F64099 /* InitClientUseCaseImpl.swift in Sources */,
 				3810439F268B0BBA0095D449 /* NavigationParameterizable.swift in Sources */,
 				386FC3282909228F00CB30A7 /* Credentials.swift in Sources */,
-				388844DE2695C1F200CCFB00 /* PinViewModel.swift in Sources */,
+				388844DE2695C1F200CCFB00 /* CredentialViewModel.swift in Sources */,
+				0698AA662C3D12EA001B4000 /* VerifyPasswordResponse.swift in Sources */,
+				0698AA642C3D12A7001B4000 /* EnrollPasswordResponse.swift in Sources */,
 				38B0A2B9269C2BCC00FABCC1 /* OSLog+Extension.swift in Sources */,
 				38FD7AB928FEA10000F64099 /* ConfigurationLoader.swift in Sources */,
 				3867C1A82685F7DD00A8B98B /* AppAssembly.swift in Sources */,
 				386423FC26984B89005F5961 /* UIDevice+Extension.swift in Sources */,
+				0698AA6C2C3D1E21001B4000 /* ChangePasswordUseCaseImpl.swift in Sources */,
 				381043A2268B2C940095D449 /* ActivityIndicator.swift in Sources */,
 				386F25302902E38A0036615B /* DeregistrationUseCase.swift in Sources */,
 				38FD7ACD28FEE8F800F64099 /* OutOfBandOperationUseCase.swift in Sources */,
 				38ABBB522906AD41006B19B9 /* ChangeDeviceInformationScreen.swift in Sources */,
 				38487847268C6B5100FD8419 /* SelectAuthenticatorViewModel.swift in Sources */,
 				386FC336290926AD00CB30A7 /* LoginResponse.swift in Sources */,
+				0698AA6A2C3D1DF8001B4000 /* ChangePasswordUseCase.swift in Sources */,
 				38CAEE9B2B021F9D00143059 /* DeleteAuthenticatorsUseCase.swift in Sources */,
 				38C2D11E290BC20800E41764 /* ResultScreen.swift in Sources */,
 				3863F3AC2907CAFF0028D26E /* ChangePinResponse.swift in Sources */,
 				38EB1770290293B000E82236 /* TransactionConfirmationScreen.swift in Sources */,
+				0698AA5A2C3BFED9001B4000 /* AuthenticatorValidator.swift in Sources */,
 				3840BEF3268DCCB200DBEA62 /* SelectAuthenticatorItemViewModel.swift in Sources */,
 				38DD19AB26A070F000FE08A4 /* ValidationError.swift in Sources */,
+				0698AA622C3D11DD001B4000 /* PasswordEnrollerImpl.swift in Sources */,
 				38FD7AC128FEA30B00F64099 /* AppConfiguration.swift in Sources */,
 				386FC3342909262200CB30A7 /* LoginDataSourceImpl.swift in Sources */,
 				38FD7AB628FE981A00F64099 /* ClientProviderImpl.swift in Sources */,
 				38C6F35D2BB178F3002909BE /* VerifyDevicePasscodeResponse.swift in Sources */,
 				38EB1772290293B900E82236 /* TransactionConfirmationViewModel.swift in Sources */,
+				0698AA582C3BFD64001B4000 /* AuthenticatorValidatorImpl.swift in Sources */,
 				38B0A2BB269C474E00FABCC1 /* ErrorHandlerChain.swift in Sources */,
 				38BAF1AB26B291A700725619 /* SDKLogger.swift in Sources */,
 				383D0A912912B98B00E94068 /* OutlinedButton.swift in Sources */,
 				38FD7AC528FEA8B200F64099 /* ConfigurationLoaderImpl.swift in Sources */,
-				388844DC2695C1E500CCFB00 /* PinScreen.swift in Sources */,
+				388844DC2695C1E500CCFB00 /* CredentialScreen.swift in Sources */,
 				386FC33B29094F2C00CB30A7 /* RegistrationUseCaseImpl.swift in Sources */,
 				3875ADD3291BF6D100939D16 /* PinEnrollerImpl.swift in Sources */,
 				3875ADCC291BF6D100939D16 /* PinUserVerifierImpl.swift in Sources */,
@@ -1195,6 +1261,7 @@
 				386FC33929094F2600CB30A7 /* RegistrationUseCase.swift in Sources */,
 				386FC32B290925CB00CB30A7 /* LoginRepository.swift in Sources */,
 				38FD7AB428FE97C700F64099 /* ClientProvider.swift in Sources */,
+				0698AA682C3D1345001B4000 /* PasswordUserVerifierImpl.swift in Sources */,
 				38ABBB582906C234006B19B9 /* GetDeviceInformationUseCaseImpl.swift in Sources */,
 				3863F3A52907BEE80028D26E /* GetAuthenticatorsUseCase.swift in Sources */,
 				38F0769128FFD8C100EFDAF8 /* CreateDeviceInformationUseCaseImpl.swift in Sources */,
@@ -1213,7 +1280,7 @@
 				3863F3B02907CE3D0028D26E /* ChangePinUseCaseImpl.swift in Sources */,
 				38DF72752901450700429337 /* SelectAccountScreen.swift in Sources */,
 				38F0769929000BA400EFDAF8 /* Authenticator+LocalizedExtension.swift in Sources */,
-				38A0C0ED26E0C7F700898B6A /* PinProtectionInformation.swift in Sources */,
+				38A0C0ED26E0C7F700898B6A /* CredentialProtectionInformation.swift in Sources */,
 				38AC7AB62689DC8600A5A5AD /* AppCoordinator.swift in Sources */,
 				38DABD7329D58B11008B8116 /* UsernamePasswordLoginScreen.swift in Sources */,
 				38F0769D290041FB00EFDAF8 /* GetAccountsUseCase.swift in Sources */,
@@ -1226,6 +1293,7 @@
 				3852F3A6268624550051FF73 /* LaunchScreen.swift in Sources */,
 				38EB176A29027B9C00E82236 /* PinAuthenticatorProtectionStatus+Extension.swift in Sources */,
 				38AC7ABB268A077200A5A5AD /* DeepLink.swift in Sources */,
+				0698AA5E2C3D10A5001B4000 /* PasswordChangerImpl.swift in Sources */,
 				386A74942913AF7600951EF8 /* NSLabel.swift in Sources */,
 				381D598B26C5605F006B02DD /* OperationResponse.swift in Sources */,
 				38FE58C4269344340014DF93 /* HomeScreen.swift in Sources */,

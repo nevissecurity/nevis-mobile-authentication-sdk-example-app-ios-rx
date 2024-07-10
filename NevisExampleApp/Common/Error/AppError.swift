@@ -16,6 +16,10 @@ enum AppError: Error {
 	case cookieNotFound
 	/// No PIN authenticator found in the list of registered authenticators.
 	case pinAuthenticatorNotFound
+	/// No Password authenticator found in the list of registered authenticators.
+	case passwordAuthenticatorNotFound
+	/// Unknown error.
+	case unknown
 }
 
 // MARK: - LocalizedError
@@ -24,13 +28,17 @@ extension AppError: LocalizedError {
 	public var errorDescription: String? {
 		switch self {
 		case .loadAppConfigurationError:
-			return L10n.Error.App.loadAppConfigurationError
+			L10n.Error.App.loadAppConfigurationError
 		case .readLoginConfigurationError:
-			return L10n.Error.App.readLoginConfigurationError
+			L10n.Error.App.readLoginConfigurationError
 		case .cookieNotFound:
-			return L10n.Error.App.cookieNotFound
+			L10n.Error.App.cookieNotFound
 		case .pinAuthenticatorNotFound:
-			return L10n.Error.App.pinAuthenticatorNotFound
+			L10n.Error.App.pinAuthenticatorNotFound
+		case .passwordAuthenticatorNotFound:
+			L10n.Error.App.passwordAuthenticatorNotFound
+		case .unknown:
+			L10n.Error.App.Generic.message
 		}
 	}
 }

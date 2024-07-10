@@ -21,6 +21,9 @@ class InBandAuthenticationUseCaseImpl {
 	/// The PIN user verifier.
 	private let pinUserVerifier: PinUserVerifier
 
+	/// The Password user verifier.
+	private let passwordUserVerifier: PasswordUserVerifier
+
 	/// The biometric user verifier.
 	private let biometricUserVerifier: BiometricUserVerifier
 
@@ -38,18 +41,21 @@ class InBandAuthenticationUseCaseImpl {
 	///   - clientProvider: The client provider.
 	///   - authenticatorSelector: The authenticator selector.
 	///   - pinUserVerifier: The PIN user verifier.
+	///   - passwordUserVerifier: The Password user verifier.
 	///   - biometricUserVerifier: The biometric user verifier.
 	///   - devicePasscodeUserVerifier: The device passcode user verifier.
 	///   - logger: The logger.
 	init(clientProvider: ClientProvider,
 	     authenticatorSelector: AuthenticatorSelector,
 	     pinUserVerifier: PinUserVerifier,
+	     passwordUserVerifier: PasswordUserVerifier,
 	     biometricUserVerifier: BiometricUserVerifier,
 	     devicePasscodeUserVerifier: DevicePasscodeUserVerifier,
 	     logger: SDKLogger) {
 		self.clientProvider = clientProvider
 		self.authenticatorSelector = authenticatorSelector
 		self.pinUserVerifier = pinUserVerifier
+		self.passwordUserVerifier = passwordUserVerifier
 		self.biometricUserVerifier = biometricUserVerifier
 		self.devicePasscodeUserVerifier = devicePasscodeUserVerifier
 		self.logger = logger
@@ -68,6 +74,7 @@ extension InBandAuthenticationUseCaseImpl: InBandAuthenticationUseCase {
 				.username(username)
 				.authenticatorSelector(authenticatorSelector)
 				.pinUserVerifier(pinUserVerifier)
+				.passwordUserVerifier(passwordUserVerifier)
 				.biometricUserVerifier(biometricUserVerifier)
 				.devicePasscodeUserVerifier(devicePasscodeUserVerifier)
 				.onSuccess {
@@ -84,6 +91,8 @@ extension InBandAuthenticationUseCaseImpl: InBandAuthenticationUseCase {
 					case let .FidoError(_, _, sessionProvider),
 					     let .NetworkError(_, sessionProvider):
 						self.printSessionInfo(sessionProvider)
+					case .NoDeviceLockError:
+						fallthrough
 					case .Unknown:
 						fallthrough
 					@unknown default:

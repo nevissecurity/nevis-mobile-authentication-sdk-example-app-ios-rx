@@ -29,6 +29,9 @@ public enum Operation {
 	/// PIN change operation.
 	case pinChange
 
+	/// Password change operation.
+	case passwordChange
+
 	/// Device information change operation.
 	case deviceInformationChange
 

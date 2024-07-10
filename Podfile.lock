@@ -4,8 +4,8 @@ PODS:
   - KRProgressHUD (3.4.7):
     - KRActivityIndicatorView (= 3.0.7)
   - MercariQRScanner (1.9.0)
-  - NevisMobileAuthentication (3.6.4)
-  - NevisMobileAuthentication-Debug (3.6.4)
+  - NevisMobileAuthentication (3.7.0)
+  - NevisMobileAuthentication-Debug (3.7.0)
   - Reusable (4.1.2):
     - Reusable/Storyboard (= 4.1.2)
     - Reusable/View (= 4.1.2)
@@ -26,8 +26,8 @@ DEPENDENCIES:
   - FittedSheets (= 2.6.1)
   - KRProgressHUD (= 3.4.7)
   - MercariQRScanner (= 1.9.0)
-  - NevisMobileAuthentication (~> 3.6.0)
-  - NevisMobileAuthentication-Debug (~> 3.6.0)
+  - NevisMobileAuthentication (~> 3.7.0)
+  - NevisMobileAuthentication-Debug (~> 3.7.0)
   - Reusable (= 4.1.2)
   - RxCocoa (= 6.5.0)
   - RxSwift (= 6.5.0)
@@ -56,8 +56,8 @@ SPEC CHECKSUMS:
   KRActivityIndicatorView: ad69e89c4ce40c986cf580595be4829dcad0e35a
   KRProgressHUD: a248f0bc6c9c2aed40a37b76e03ffecc7f85c887
   MercariQRScanner: e5aea873969af59b09b4cc411fc1c5b6293dba44
-  NevisMobileAuthentication: ddf68900d84b25df43397daf4e11231eed96e3ff
-  NevisMobileAuthentication-Debug: 2d5632961696c6ca3b246c45c50e438c4603a36a
+  NevisMobileAuthentication: 0b4094d60be9ba4b5a298a29b6f5ee33b5405a83
+  NevisMobileAuthentication-Debug: e458515add04dc3fe7cda6e18a352c96d237180e
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
@@ -66,6 +66,6 @@ SPEC CHECKSUMS:
   SwinjectAutoregistration: e3ee378dc458acf78d176fc7fec3902603452667
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 74cc85c013a793a69781789429086b667bfc6305
+PODFILE CHECKSUM: 82765de564b192f42c19f42f614c141c44f080f8
 
 COCOAPODS: 1.15.2

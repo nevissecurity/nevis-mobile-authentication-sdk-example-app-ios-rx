@@ -16,11 +16,11 @@ extension Authenticator {
 	func isEnrolled(username: Username) -> Bool {
 		switch userEnrollment {
 		case let enrollment as SdkUserEnrollment:
-			return enrollment.isEnrolled(username)
+			enrollment.isEnrolled(username)
 		case let enrollment as OsUserEnrollment:
-			return enrollment.isEnrolled()
+			enrollment.isEnrolled()
 		default:
-			return false
+			false
 		}
 	}
 }

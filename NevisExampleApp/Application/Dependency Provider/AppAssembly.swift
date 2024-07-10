@@ -30,6 +30,8 @@ extension AppAssembly: Assembly {
 
 private extension AppAssembly {
 
+	// MARK: Screens
+
 	/// Registers the screens.
 	///
 	/// - Parameter container: The container provided by the `Assembler`.
@@ -69,8 +71,8 @@ private extension AppAssembly {
 			                                             argument: arg))
 		}.inObjectScope(.weak)
 
-		container.register(PinScreen.self) { (res: Resolver, arg: NavigationParameterizable) in
-			PinScreen(viewModel: res ~> (PinViewModel.self, argument: arg))
+		container.register(CredentialScreen.self) { (res: Resolver, arg: NavigationParameterizable) in
+			CredentialScreen(viewModel: res ~> (CredentialViewModel.self, argument: arg))
 		}.inObjectScope(.weak)
 
 		container.register(TransactionConfirmationScreen.self) { (res: Resolver, arg: NavigationParameterizable) in
@@ -93,6 +95,8 @@ private extension AppAssembly {
 			.inObjectScope(.container)
 	}
 
+	// MARK: Coordinators
+
 	/// Registers the coordinators.
 	///
 	/// - Parameter container: The container provided by the `Assembler`.
@@ -101,6 +105,8 @@ private extension AppAssembly {
 		                       initializer: AppCoordinatorImpl.init)
 			.inObjectScope(.container)
 	}
+
+	// MARK: View models
 
 	/// Registers the view models.
 	///
@@ -141,9 +147,9 @@ private extension AppAssembly {
 		                       initializer: SelectAuthenticatorViewModel.init)
 			.inObjectScope(.transient)
 
-		container.autoregister(PinViewModel.self,
+		container.autoregister(CredentialViewModel.self,
 		                       argument: NavigationParameterizable.self,
-		                       initializer: PinViewModel.init)
+		                       initializer: CredentialViewModel.init)
 			.inObjectScope(.transient)
 
 		container.autoregister(TransactionConfirmationViewModel.self,
@@ -165,6 +171,8 @@ private extension AppAssembly {
 		                       initializer: LoggingViewModel.init)
 			.inObjectScope(.transient)
 	}
+
+	// MARK: Use-cases
 
 	/// Registers the use cases.
 	///
@@ -188,6 +196,8 @@ private extension AppAssembly {
 			                                     authenticationAuthenticatorSelector: authSelectorForAuth,
 			                                     pinEnroller: res~>,
 			                                     pinUserVerifier: res~>,
+			                                     passwordEnroller: res~>,
+			                                     passwordUserVerifier: res~>,
 			                                     biometricUserVerifier: res~>,
 			                                     devicePasscodeUserVerifier: res~>,
 			                                     logger: res~>)
@@ -200,6 +210,7 @@ private extension AppAssembly {
 			                               createDeviceInformationUseCase: res~>,
 			                               authenticatorSelector: authenticatorSelector,
 			                               pinEnroller: res~>,
+			                               passwordEnroller: res~>,
 			                               biometricUserVerifier: res~>,
 			                               devicePasscodeUserVerifier: res~>,
 			                               logger: res~>)
@@ -211,6 +222,7 @@ private extension AppAssembly {
 			return InBandAuthenticationUseCaseImpl(clientProvider: res~>,
 			                                       authenticatorSelector: authenticatorSelector,
 			                                       pinUserVerifier: res~>,
+			                                       passwordUserVerifier: res~>,
 			                                       biometricUserVerifier: res~>,
 			                                       devicePasscodeUserVerifier: res~>,
 			                                       logger: res~>)
@@ -222,6 +234,9 @@ private extension AppAssembly {
 		container.autoregister(ChangePinUseCase.self,
 		                       initializer: ChangePinUseCaseImpl.init)
 
+		container.autoregister(ChangePasswordUseCase.self,
+		                       initializer: ChangePasswordUseCaseImpl.init)
+
 		container.register(AuthCloudApiRegistrationUseCase.self) { res in
 			let authenticatorSelector = res ~> (AuthenticatorSelector.self,
 			                                    name: RegistrationAuthenticatorSelectorName)
@@ -229,6 +244,7 @@ private extension AppAssembly {
 			                                           createDeviceInformationUseCase: res~>,
 			                                           authenticatorSelector: authenticatorSelector,
 			                                           pinEnroller: res~>,
+			                                           passwordEnroller: res~>,
 			                                           biometricUserVerifier: res~>,
 			                                           devicePasscodeUserVerifier: res~>,
 			                                           logger: res~>)
@@ -256,6 +272,8 @@ private extension AppAssembly {
 		                       initializer: LoginUseCaseImpl.init)
 	}
 
+	// MARK: Repositories
+
 	/// Registers the repositories.
 	///
 	/// - Parameter container: The container provided by the `Assembler`.
@@ -264,6 +282,8 @@ private extension AppAssembly {
 		                       initializer: LoginRepositoryImpl.init)
 	}
 
+	// MARK: Data sources
+
 	/// Registers the data sources.
 	///
 	/// - Parameter container: The container provided by the `Assembler`.
@@ -271,6 +291,8 @@ private extension AppAssembly {
 		container.autoregister(LoginDataSource.self,
 		                       initializer: LoginDataSourceImpl.init)
 	}
+
+	// MARK: Components
 
 	/// Registers the components.
 	///
@@ -287,13 +309,21 @@ private extension AppAssembly {
 		container.autoregister(AccountSelector.self,
 		                       initializer: AccountSelectorImpl.init)
 
-		container.autoregister(AuthenticatorSelector.self,
-		                       name: AuthenticationAuthenticatorSelectorName,
-		                       initializer: AuthenticationAuthenticatorSelectorImpl.init)
+		container.register(AuthenticatorSelector.self,
+		                   name: AuthenticationAuthenticatorSelectorName) { res in
+			AuthenticatorSelectorImpl(authenticatorValidator: res~>,
+			                          operation: .authentication,
+			                          responseEmitter: res~>,
+			                          logger: res~>)
+		}
 
-		container.autoregister(AuthenticatorSelector.self,
-		                       name: RegistrationAuthenticatorSelectorName,
-		                       initializer: RegistrationAuthenticatorSelectorImpl.init)
+		container.register(AuthenticatorSelector.self,
+		                   name: RegistrationAuthenticatorSelectorName) { res in
+			AuthenticatorSelectorImpl(authenticatorValidator: res~>,
+			                          operation: .registration,
+			                          responseEmitter: res~>,
+			                          logger: res~>)
+		}
 
 		container.autoregister(PinEnroller.self,
 		                       initializer: PinEnrollerImpl.init)
@@ -303,6 +333,15 @@ private extension AppAssembly {
 
 		container.autoregister(PinUserVerifier.self,
 		                       initializer: PinUserVerifierImpl.init)
+
+		container.autoregister(PasswordEnroller.self,
+		                       initializer: PasswordEnrollerImpl.init)
+
+		container.autoregister(PasswordChanger.self,
+		                       initializer: PasswordChangerImpl.init)
+
+		container.autoregister(PasswordUserVerifier.self,
+		                       initializer: PasswordUserVerifierImpl.init)
 
 		container.autoregister(BiometricUserVerifier.self,
 		                       initializer: BiometricUserVerifierImpl.init)
@@ -320,6 +359,9 @@ private extension AppAssembly {
 
 		container.autoregister(AccountValidator.self,
 		                       initializer: AccountValidatorImpl.init)
+
+		container.autoregister(AuthenticatorValidator.self,
+		                       initializer: AuthenticatorValidatorImpl.init)
 
 		container.autoregister(SDKLogger.self,
 		                       initializer: SDKLoggerImpl.init)

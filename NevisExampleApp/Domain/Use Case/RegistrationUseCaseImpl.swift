@@ -24,6 +24,9 @@ class RegistrationUseCaseImpl {
 	/// The PIN enroller.
 	private let pinEnroller: PinEnroller
 
+	/// The Password enroller.
+	private let passwordEnroller: PasswordEnroller
+
 	/// The biometric user verifier.
 	private let biometricUserVerifier: BiometricUserVerifier
 
@@ -42,6 +45,7 @@ class RegistrationUseCaseImpl {
 	///   - createDeviceInformationUseCase: Use case for creating device information.
 	///   - authenticatorSelector: The authenticator selector.
 	///   - pinEnroller: The PIN enroller.
+	///   - passwordEnroller: The Password enroller.
 	///   - biometricUserVerifier: The biometric user verifier.
 	///   - devicePasscodeUserVerifier: The device passcode user verifier.
 	///   - logger: The logger.
@@ -49,6 +53,7 @@ class RegistrationUseCaseImpl {
 	     createDeviceInformationUseCase: CreateDeviceInformationUseCase,
 	     authenticatorSelector: AuthenticatorSelector,
 	     pinEnroller: PinEnroller,
+	     passwordEnroller: PasswordEnroller,
 	     biometricUserVerifier: BiometricUserVerifier,
 	     devicePasscodeUserVerifier: DevicePasscodeUserVerifier,
 	     logger: SDKLogger) {
@@ -56,6 +61,7 @@ class RegistrationUseCaseImpl {
 		self.createDeviceInformationUseCase = createDeviceInformationUseCase
 		self.authenticatorSelector = authenticatorSelector
 		self.pinEnroller = pinEnroller
+		self.passwordEnroller = passwordEnroller
 		self.biometricUserVerifier = biometricUserVerifier
 		self.devicePasscodeUserVerifier = devicePasscodeUserVerifier
 		self.logger = logger
@@ -80,6 +86,7 @@ extension RegistrationUseCaseImpl: RegistrationUseCase {
 				.deviceInformation(createDeviceInformationUseCase.execute())
 				.authenticatorSelector(authenticatorSelector)
 				.pinEnroller(pinEnroller)
+				.passwordEnroller(passwordEnroller)
 				.biometricUserVerifier(biometricUserVerifier)
 				.devicePasscodeUserVerifier(devicePasscodeUserVerifier)
 				.onSuccess {

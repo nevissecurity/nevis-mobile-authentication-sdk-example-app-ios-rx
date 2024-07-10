@@ -33,6 +33,12 @@ class OutOfBandOperationUseCaseImpl {
 	/// The PIN user verifier.
 	private let pinUserVerifier: PinUserVerifier
 
+	/// The Password enroller.
+	private let passwordEnroller: PasswordEnroller
+
+	/// The Password user verifier.
+	private let passwordUserVerifier: PasswordUserVerifier
+
 	/// The biometric user verifier.
 	private let biometricUserVerifier: BiometricUserVerifier
 
@@ -54,6 +60,8 @@ class OutOfBandOperationUseCaseImpl {
 	///   - authenticationAuthenticatorSelector: The authenticator selector used during authentication.
 	///   - pinEnroller: The PIN enroller.
 	///   - pinUserVerifier: The PIN user verifier.
+	///   - passwordEnroller: The Password enroller.
+	///   - passwordUserVerifier: The Password user verifier.
 	///   - biometricUserVerifier: The biometric user verifier.
 	///   - devicePasscodeUserVerifier: The device passcode user verifier.
 	///   - logger: The logger.
@@ -64,6 +72,8 @@ class OutOfBandOperationUseCaseImpl {
 	     authenticationAuthenticatorSelector: AuthenticatorSelector,
 	     pinEnroller: PinEnroller,
 	     pinUserVerifier: PinUserVerifier,
+	     passwordEnroller: PasswordEnroller,
+	     passwordUserVerifier: PasswordUserVerifier,
 	     biometricUserVerifier: BiometricUserVerifier,
 	     devicePasscodeUserVerifier: DevicePasscodeUserVerifier,
 	     logger: SDKLogger) {
@@ -74,6 +84,8 @@ class OutOfBandOperationUseCaseImpl {
 		self.authenticationAuthenticatorSelector = authenticationAuthenticatorSelector
 		self.pinEnroller = pinEnroller
 		self.pinUserVerifier = pinUserVerifier
+		self.passwordEnroller = passwordEnroller
+		self.passwordUserVerifier = passwordUserVerifier
 		self.biometricUserVerifier = biometricUserVerifier
 		self.devicePasscodeUserVerifier = devicePasscodeUserVerifier
 		self.logger = logger
@@ -124,6 +136,7 @@ private extension OutOfBandOperationUseCaseImpl {
 			.deviceInformation(createDeviceInformationUseCase.execute())
 			.authenticatorSelector(registrationAuthenticatorSelector)
 			.pinEnroller(pinEnroller)
+			.passwordEnroller(passwordEnroller)
 			.biometricUserVerifier(biometricUserVerifier)
 			.devicePasscodeUserVerifier(devicePasscodeUserVerifier)
 			.onSuccess {
@@ -149,6 +162,7 @@ private extension OutOfBandOperationUseCaseImpl {
 			.accountSelector(accountSelector)
 			.authenticatorSelector(authenticationAuthenticatorSelector)
 			.pinUserVerifier(pinUserVerifier)
+			.passwordUserVerifier(passwordUserVerifier)
 			.biometricUserVerifier(biometricUserVerifier)
 			.devicePasscodeUserVerifier(devicePasscodeUserVerifier)
 			.onSuccess {

@@ -23,6 +23,6 @@ struct AuthenticatorItem {
 	/// Tells that whether this authenticator item is selectable on select authenticator view or not.
 	/// The value is calculated based on the ``AuthenticatorItem/isPolicyCompliant`` and ``AuthenticatorItem/isUserEnrolled`` flags.
 	var isEnabled: Bool {
-		isPolicyCompliant && (authenticator.aaid == AuthenticatorAaid.Pin.rawValue || isUserEnrolled)
+		isPolicyCompliant && (authenticator.aaid == AuthenticatorAaid.Pin.rawValue || authenticator.aaid == AuthenticatorAaid.Password.rawValue || isUserEnrolled)
 	}
 }

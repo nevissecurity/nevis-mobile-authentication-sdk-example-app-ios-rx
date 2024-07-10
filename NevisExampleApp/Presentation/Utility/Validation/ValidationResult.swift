@@ -15,9 +15,9 @@ extension Result where Failure == ValidationError {
 	var message: String {
 		switch self {
 		case .success:
-			return ""
+			""
 		case let .failure(error):
-			return error.description
+			error.description
 		}
 	}
 
@@ -25,9 +25,9 @@ extension Result where Failure == ValidationError {
 	var isValid: Bool {
 		switch self {
 		case .success:
-			return true
+			true
 		case .failure:
-			return false
+			false
 		}
 	}
 }

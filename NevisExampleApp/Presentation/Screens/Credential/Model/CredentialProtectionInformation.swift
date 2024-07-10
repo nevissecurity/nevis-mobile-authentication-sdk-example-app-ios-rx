@@ -6,12 +6,12 @@
 
 import Foundation
 
-/// Represents Pin protection related information that is used by the PinScreen view.
-struct PinProtectionInformation {
+/// Represents the protection related information of a credential that is used by the CredentialScreen view.
+struct CredentialProtectionInformation {
 
 	// MARK: - Properties
 
-	/// Pin protection related message.
+	/// Protection related message.
 	let message: String
 
 	/// Flag that tells whether the authenticator is in cooldown.
@@ -22,7 +22,7 @@ struct PinProtectionInformation {
 	/// Creates a new instance.
 	///
 	/// - Parameters:
-	///   - message: Pin protection related message. Default value is an empty string.
+	///   - message: Protection related message. Default value is an empty string.
 	///   - isInCoolDown: Flag that tells whether the authenticator is in cooldown. Default value is false.
 	init(message: String = "", isInCoolDown: Bool = false) {
 		self.message = message
