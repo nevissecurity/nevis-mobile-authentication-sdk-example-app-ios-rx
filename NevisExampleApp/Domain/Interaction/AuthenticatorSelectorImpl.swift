@@ -46,7 +46,10 @@ class AuthenticatorSelectorImpl {
 	///   - operation: The current operation.
 	///   - responseEmitter: The response emitter.
 	///   - logger: The logger.
-	init(authenticatorValidator: AuthenticatorValidator, operation: Operation, responseEmitter: ResponseEmitter, logger: SDKLogger) {
+	init(authenticatorValidator: AuthenticatorValidator,
+	     operation: Operation,
+	     responseEmitter: ResponseEmitter,
+	     logger: SDKLogger) {
 		self.authenticatorValidator = authenticatorValidator
 		self.operation = operation
 		self.responseEmitter = responseEmitter

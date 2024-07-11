@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		068293692C3FE2AB005563AB /* PasswordPolicyImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068293682C3FE2AB005563AB /* PasswordPolicyImpl.swift */; };
 		0698AA542C3BEB20001B4000 /* PasswordAuthenticatorProtectionStatus+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA532C3BEB20001B4000 /* PasswordAuthenticatorProtectionStatus+Extension.swift */; };
 		0698AA562C3BF8E2001B4000 /* AuthenticatorAaid+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA552C3BF8E2001B4000 /* AuthenticatorAaid+Extension.swift */; };
 		0698AA582C3BFD64001B4000 /* AuthenticatorValidatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA572C3BFD64001B4000 /* AuthenticatorValidatorImpl.swift */; };
@@ -178,6 +179,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		068293682C3FE2AB005563AB /* PasswordPolicyImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordPolicyImpl.swift; sourceTree = "<group>"; };
 		0698AA532C3BEB20001B4000 /* PasswordAuthenticatorProtectionStatus+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PasswordAuthenticatorProtectionStatus+Extension.swift"; sourceTree = "<group>"; };
 		0698AA552C3BF8E2001B4000 /* AuthenticatorAaid+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticatorAaid+Extension.swift"; sourceTree = "<group>"; };
 		0698AA572C3BFD64001B4000 /* AuthenticatorValidatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorValidatorImpl.swift; sourceTree = "<group>"; };
@@ -794,6 +796,7 @@
 				3875ADD7291BF73000939D16 /* AccountValidatorImpl.swift */,
 				0698AA592C3BFED9001B4000 /* AuthenticatorValidator.swift */,
 				0698AA572C3BFD64001B4000 /* AuthenticatorValidatorImpl.swift */,
+				068293682C3FE2AB005563AB /* PasswordPolicyImpl.swift */,
 			);
 			path = Validators;
 			sourceTree = "<group>";
@@ -1165,6 +1168,7 @@
 				381043A6268B33620095D449 /* UIViewController+Extension.swift in Sources */,
 				3875ADD8291BF73000939D16 /* AccountValidator.swift in Sources */,
 				3852F39E2686193C0051FF73 /* ScreenViewModel.swift in Sources */,
+				068293692C3FE2AB005563AB /* PasswordPolicyImpl.swift in Sources */,
 				38ABBB4D2906A151006B19B9 /* ChangeDeviceInformationUseCase.swift in Sources */,
 				38487849268C777F00FD8419 /* DeepLinkHandler.swift in Sources */,
 				38FD7AD128FEEAD500F64099 /* DecodePayloadUseCaseImpl.swift in Sources */,
