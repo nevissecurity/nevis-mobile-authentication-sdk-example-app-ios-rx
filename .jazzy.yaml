@@ -47,10 +47,12 @@ custom_categories:
       - SelectAuthenticatorParameter
       - SelectAuthenticatorItemViewModel
       - AuthenticatorCell
-      - PinScreen
-      - PinViewModel
+      - CredentialScreen
+      - CredentialViewModel
+      - CredentialParameter
       - PinParameter
-      - PinProtectionInformation
+      - PasswordParameter
+      - CredentialProtectionInformation
       - AuthCloudApiRegistrationScreen
       - AuthCloudApiRegistrationViewModel
       - ChangeDeviceInformationScreen
@@ -61,6 +63,9 @@ custom_categories:
       - TransactionConfirmationScreen
       - TransactionConfirmationViewModel
       - TransactionConfirmationParameter
+      - ConfirmationScreen
+      - ConfirmationViewModel
+      - ConfirmationParameter
       - ResultScreen
       - ResultViewModel
       - ResultParameter
@@ -69,7 +74,9 @@ custom_categories:
   - name: Presentation / Utility
     children:
       - Authenticator
+      - AuthenticatorAaid
       - PinAuthenticatorProtectionStatus
+      - PasswordAuthenticatorProtectionStatus
       - ResponseObserver
       - ResponseObserverImpl
       - AuthCloudApiRegistrationValidator
@@ -95,29 +102,43 @@ custom_categories:
     children:
       - PinChangerImpl
       - PinEnrollerImpl
+      - PasswordChangerImpl
+      - PasswordEnrollerImpl
+      - PasswordPolicyImpl
       - AccountSelectorImpl
+      - AuthenticatorSelectorImpl
       - AuthenticationAuthenticatorSelectorName
       - AuthenticationAuthenticatorSelectorImpl
       - RegistrationAuthenticatorSelectorName
       - RegistrationAuthenticatorSelectorImpl
       - PinUserVerifierImpl
+      - PasswordUserVerifierImpl
       - BiometricUserVerifierImpl
+      - DevicePasscodeUserVerifierImpl
       - AccountValidator
       - AccountValidatorImpl
+      - AuthenticatorValidator
+      - AuthenticatorValidatorImpl
   - name: Domain / Model
     children:
+      - AuthenticatorItem
       - Operation
       - OperationError
       - BusinessError
       - Credentials
       - OperationResponse
       - ChangePinResponse
+      - ChangePasswordResponse
       - CompletedResponse
       - ConfirmTransactionResponse
       - EnrollPinResponse
+      - EnrollPasswordResponse
       - SelectAccountResponse
       - SelectAuthenticatorResponse
       - VerifyPinResponse      
+      - VerifyPasswordResponse
+      - VerifyBiometricResponse
+      - VerifyDevicePasscodeResponse
   - name: Domain / Repository
     children:
       - LoginRepository
@@ -129,6 +150,8 @@ custom_categories:
       - ChangeDeviceInformationUseCaseImpl
       - ChangePinUseCase
       - ChangePinUseCaseImpl
+      - ChangePasswordUseCase
+      - ChangePasswordUseCaseImpl
       - CreateDeviceInformationUseCase
       - CreateDeviceInformationUseCaseImpl
       - DecodePayloadUseCase
@@ -151,6 +174,8 @@ custom_categories:
       - OutOfBandOperationUseCaseImpl
       - RegistrationUseCase
       - RegistrationUseCaseImpl
+      - DeleteAuthenticatorsUseCase
+      - DeleteAuthenticatorsUseCaseImpl
   - name: Domain / Client Provider
     children:
       - ClientProvider

@@ -235,6 +235,7 @@ private extension CredentialScreen {
 				$0.keyboardType = credentialType == .Pin ? .numberPad : .default
 			}
 			base.credentialField.do {
+				$0.placeholder = credentialType == .Pin ? L10n.Credential.Pin.pinPlaceholder : L10n.Credential.Password.passwordPlaceholder
 				$0.keyboardType = credentialType == .Pin ? .numberPad : .default
 			}
 		}
