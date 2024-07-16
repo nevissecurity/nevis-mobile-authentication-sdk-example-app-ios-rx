@@ -12,7 +12,7 @@
 		<key>hostName</key>
 		<string>myinstance.mauth.nevis.cloud</string>
 	</dict>
-	<key>authenticatorWhitelist</key>
+	<key>authenticatorAllowlist</key>
 	<array>
 		<string>F1D0#1001</string>
 		<string>F1D0#1002</string>
