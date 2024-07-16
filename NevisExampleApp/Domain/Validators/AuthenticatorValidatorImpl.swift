@@ -30,7 +30,7 @@ final class AuthenticatorValidatorImpl {
 extension AuthenticatorValidatorImpl: AuthenticatorValidator {
 	func validateForRegistration(context: AuthenticatorSelectionContext) -> Observable<[any Authenticator]> {
 		configurationLoader.load().flatMap { configuration -> Observable<[any Authenticator]> in
-			let allowedAuthenticators = self.allowedAuthenticators(context: context, whitelistedAuthenticators: configuration.authenticatorWhitelist).filter { authenticator in
+			let allowedAuthenticators = self.allowedAuthenticators(context: context, allowlistedAuthenticators: configuration.authenticatorAllowlist).filter { authenticator in
 				// Do not display:
 				//   - policy non-compliant authenticators (this includes already registered authenticators)
 				//   - not hardware supported authenticators.
@@ -47,7 +47,7 @@ extension AuthenticatorValidatorImpl: AuthenticatorValidator {
 
 	func validateForAuthentication(context: AuthenticatorSelectionContext) -> Observable<[any Authenticator]> {
 		configurationLoader.load().flatMap { configuration -> Observable<[any Authenticator]> in
-			let allowedAuthenticators = self.allowedAuthenticators(context: context, whitelistedAuthenticators: configuration.authenticatorWhitelist).filter { authenticator in
+			let allowedAuthenticators = self.allowedAuthenticators(context: context, allowlistedAuthenticators: configuration.authenticatorAllowlist).filter { authenticator in
 				guard let registration = authenticator.registration else { return false }
 
 				// Do not display:
@@ -65,18 +65,18 @@ extension AuthenticatorValidatorImpl: AuthenticatorValidator {
 	}
 }
 
-// MARK: Filtering based on the authenticator whitelist
+// MARK: Filtering based on the authenticator allowlist
 
 private extension AuthenticatorValidatorImpl {
-	/// Filters out non-whitelisted authenticators.
+	/// Filters out non-allowlisted authenticators.
 	///
 	/// - Parameter context: The context holding the accounts to validate.
-	/// - Parameter whitelistedAuthenticators: The array holding the whitelisted authenticators.
+	/// - Parameter allowlistedAuthenticators: The array holding the allowlisted authenticators.
 	/// - Returns: The list of allowed authenticators.
-	func allowedAuthenticators(context: AuthenticatorSelectionContext, whitelistedAuthenticators: [AuthenticatorAaid]) -> [any Authenticator] {
+	func allowedAuthenticators(context: AuthenticatorSelectionContext, allowlistedAuthenticators: [AuthenticatorAaid]) -> [any Authenticator] {
 		context.authenticators.filter { authenticator in
 			guard let authenticatorAaid = AuthenticatorAaid(rawValue: authenticator.aaid) else { return false }
-			return whitelistedAuthenticators.contains(authenticatorAaid)
+			return allowlistedAuthenticators.contains(authenticatorAaid)
 		}
 	}
 }

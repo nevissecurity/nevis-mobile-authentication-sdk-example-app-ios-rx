@@ -18,7 +18,7 @@ struct AppConfiguration: Codable {
 	let sdkConfiguration: Configuration
 
 	/// The allowed authenticators.
-	let authenticatorWhitelist: [AuthenticatorAaid]
+	let authenticatorAllowlist: [AuthenticatorAaid]
 
 	// MARK: - CodingKey
 
@@ -28,8 +28,8 @@ struct AppConfiguration: Codable {
 		case loginConfiguration = "login"
 		/// Key for the SDK configuration.
 		case sdkConfiguration = "sdk"
-		/// Key for the authenticator whitelist.
-		case authenticatorWhitelist
+		/// Key for the authenticator allowlist.
+		case authenticatorAllowlist
 
 		/// Enumeration for the nested SDK configuration keys used during coding.
 		enum NestedCodingKeys: String, CodingKey {
@@ -78,6 +78,6 @@ struct AppConfiguration: Codable {
 		else {
 			self.sdkConfiguration = try container.decode(Configuration.self, forKey: .sdkConfiguration)
 		}
-		self.authenticatorWhitelist = try container.decode([AuthenticatorAaid].self, forKey: .authenticatorWhitelist)
+		self.authenticatorAllowlist = try container.decode([AuthenticatorAaid].self, forKey: .authenticatorAllowlist)
 	}
 }
