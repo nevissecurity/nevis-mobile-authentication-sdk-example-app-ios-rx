@@ -94,7 +94,6 @@ custom_categories:
       - SharedSequenceConvertibleType
       - Result
       - String?
-      - UIApplication
       - UINavigationController
       - UIStackView
       - UIView
@@ -108,9 +107,7 @@ custom_categories:
       - AccountSelectorImpl
       - AuthenticatorSelectorImpl
       - AuthenticationAuthenticatorSelectorName
-      - AuthenticationAuthenticatorSelectorImpl
       - RegistrationAuthenticatorSelectorName
-      - RegistrationAuthenticatorSelectorImpl
       - PinUserVerifierImpl
       - PasswordUserVerifierImpl
       - BiometricUserVerifierImpl

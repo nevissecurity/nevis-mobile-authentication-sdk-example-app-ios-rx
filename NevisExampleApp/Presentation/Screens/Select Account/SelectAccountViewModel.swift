@@ -199,7 +199,6 @@ private extension SelectAccountViewModel {
 					                                          authorizationProvider: authorizationProvider)
 				}
 				.flatMap(responseObserver.observe(response:))
-
 		case .pinChange:
 			return changePinUseCase.execute(username: account.username)
 				.flatMap(responseObserver.observe(response:))
