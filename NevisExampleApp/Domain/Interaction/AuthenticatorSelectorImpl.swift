@@ -18,8 +18,11 @@ let AuthenticationAuthenticatorSelectorName = "auth_selector_auth"
 /// With the help of the ``ResponseEmitter`` it will emit a ``SelectAuthenticatorResponse``.
 class AuthenticatorSelectorImpl {
 
+	/// Supported operations for authenticator selection.
 	enum Operation {
+		/// Registration operation.
 		case registration
+		/// Authentication operation.
 		case authentication
 	}
 

@@ -58,6 +58,8 @@
 "password_protection_status_last_retry_without_cool_down" = "You have %@ try left.\nAfter that your Password will be blocked.";
 "password_protection_status_retries_with_cool_down" = "You have %@ tries left.\nPlease retry in %@ seconds.";
 "password_protection_status_retries_without_cool_down" = "You have %@ tries left.";
+"password_policy_error_message" = "The password must not be password.";
+"password_policy_error_cause" = "The password is password.";
 
 // Transaction Confirmation screen
 "transaction_confirmation_title" = "Transaction Confirmation";

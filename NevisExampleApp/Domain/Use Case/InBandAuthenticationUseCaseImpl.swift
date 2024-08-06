@@ -112,6 +112,9 @@ extension InBandAuthenticationUseCaseImpl: InBandAuthenticationUseCase {
 // MARK: - Private Interface
 
 private extension InBandAuthenticationUseCaseImpl {
+	/// Prints authorization information to the console.
+	///
+	/// - Parameter authorizationProvider: The ``AuthorizationProvider`` holding the authorization information.
 	func printAuthorizationInfo(_ authorizationProvider: AuthorizationProvider?) {
 		if let cookieAuthorizationProvider = authorizationProvider as? CookieAuthorizationProvider {
 			logger.log("Received cookies: \(cookieAuthorizationProvider.cookies)")
@@ -121,6 +124,9 @@ private extension InBandAuthenticationUseCaseImpl {
 		}
 	}
 
+	/// Prints session information to the console.
+	///
+	/// - Parameter sessionProvider: The ``SessionProvider`` holding the session information.
 	func printSessionInfo(_ sessionProvider: SessionProvider?) {
 		if let cookieSessionProvider = sessionProvider as? CookieSessionProvider {
 			logger.log("Received cookies: \(cookieSessionProvider.cookies)")
