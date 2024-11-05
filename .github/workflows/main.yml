@@ -9,8 +9,9 @@ on:
   workflow_dispatch:
 
 env:
-  XCODE_VERSION: '15.2'
   CURRENT_BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+  RUBY_VERSION: '3.1'
+  XCODE_VERSION: '15.2'
 
 jobs:
   main:
@@ -31,7 +32,7 @@ jobs:
       - name: Cache RubyGem Dependencies
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0'
+          ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
 
       # Generate build number
