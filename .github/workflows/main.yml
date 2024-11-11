@@ -11,11 +11,11 @@ on:
 env:
   CURRENT_BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
   RUBY_VERSION: '3.1'
-  XCODE_VERSION: '15.2'
+  XCODE_VERSION: '15.4'
 
 jobs:
   main:
-    runs-on: macos-13
+    runs-on: macos-14
 
     steps:
       # Checkout the repository under $GITHUB_WORKSPACE

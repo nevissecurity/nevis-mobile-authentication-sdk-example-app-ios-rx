@@ -26,6 +26,8 @@
 		<string>/nevisfido/uaf/1.1/request/deregistration/</string>
 		<key>dispatchTargetResourcePath</key>
 		<string>/nevisfido/token/dispatch/targets/</string>
+		<key>deviceResourcePath</key>
+		<string>/nevisfido/devices/</string>
 		<key>networkTimeoutInSeconds</key>
 		<integer>60</integer>
 		<key>authenticationMaxRetries</key>

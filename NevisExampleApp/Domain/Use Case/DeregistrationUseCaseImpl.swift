@@ -44,7 +44,7 @@ extension DeregistrationUseCaseImpl: DeregistrationUseCase {
 		authenticators.forEach { authenticator in
 			if let username {
 				// deregister only an account
-				if let registration = authenticator.registration, registration.isRegistered(username) {
+				if authenticator.registration.isRegistered(username) {
 					responses.append(deregister(username: username,
 					                            aaid: authenticator.aaid,
 					                            authorizationProvider: authorizationProvider))
@@ -52,7 +52,7 @@ extension DeregistrationUseCaseImpl: DeregistrationUseCase {
 			}
 			else {
 				// username not provided, deregister all account
-				authenticator.registration?.registeredAccounts.forEach { account in
+				authenticator.registration.registeredAccounts.forEach { account in
 					responses.append(deregister(username: account.username,
 					                            aaid: authenticator.aaid,
 					                            authorizationProvider: authorizationProvider))
