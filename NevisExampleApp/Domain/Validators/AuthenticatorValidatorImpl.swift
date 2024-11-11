@@ -48,12 +48,10 @@ extension AuthenticatorValidatorImpl: AuthenticatorValidator {
 	func validateForAuthentication(context: AuthenticatorSelectionContext) -> Observable<[any Authenticator]> {
 		configurationLoader.load().flatMap { configuration -> Observable<[any Authenticator]> in
 			let allowedAuthenticators = self.allowedAuthenticators(context: context, allowlistedAuthenticators: configuration.authenticatorAllowlist).filter { authenticator in
-				guard let registration = authenticator.registration else { return false }
-
 				// Do not display:
 				//   - policy non-registered authenticators,
 				//   - not hardware supported authenticators.
-				return authenticator.isSupportedByHardware && registration.isRegistered(context.account.username)
+				authenticator.isSupportedByHardware && authenticator.registration.isRegistered(context.account.username)
 			}
 
 			if allowedAuthenticators.isEmpty {

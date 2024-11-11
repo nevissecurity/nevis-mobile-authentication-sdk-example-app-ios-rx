@@ -49,6 +49,8 @@ struct AppConfiguration: Codable {
 			case deregistrationRequestPath
 			/// Key for the dispatch target resource path.
 			case dispatchTargetResourcePath
+			/// Key for the devices resource path.
+			case deviceResourcePath
 			/// Key for the authentication max retries.
 			case authenticationMaxRetries
 			/// Key for the authentication retry interval.

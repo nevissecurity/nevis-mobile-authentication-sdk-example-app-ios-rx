@@ -18,17 +18,15 @@ extension AccountValidatorImpl: AccountValidator {
 			throw BusinessError.authenticatorNotFound
 		}
 
-		var accounts = [any Account]()
+		var accounts: [Username: any Account] = [:]
 		supportedAuthenticators.forEach { authenticator in
-			authenticator.registration?.registeredAccounts.forEach { account in
+			authenticator.registration.registeredAccounts.forEach { account in
 				if context.isPolicyCompliant(username: account.username, aaid: authenticator.aaid) {
-					if !accounts.contains(where: { $0.username == account.username }) {
-						accounts.append(account)
-					}
+					accounts[account.username] = account
 				}
 			}
 		}
 
-		return accounts
+		return accounts.values.map { $0 }
 	}
 }
