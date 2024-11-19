@@ -9,6 +9,9 @@ on:
   workflow_dispatch:
 
 env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SLACK_WEBHOOK_URL: ${{ vars.SLACK_WEBHOOK_URL }}
+
   CURRENT_BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
   RUBY_VERSION: '3.1'
   XCODE_VERSION: '15.4'
@@ -39,13 +42,10 @@ jobs:
       - name: Generate Build Number
         uses: onyxmueller/build-tag-number@v1
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
+          token: ${{ env.GITHUB_TOKEN }}
 
       # Build & Distribute
       - name: Run Fastlane
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         uses: maierj/fastlane-action@v3.1.0
         with:
           lane: 'main'
