@@ -5,9 +5,38 @@
 
 default_platform(:ios)
 
+workspace = "NevisExampleApp.xcworkspace"
+app_xcodeproj = "NevisExampleApp.xcodeproj"
+target_name = "NevisExampleApp"
+app_identifier = "ch.nevis.mobile.authentication.sdk.ios.example"
+match_type = "adhoc"
+config_plist = File.expand_path("../NevisExampleApp/Resources/ConfigAuthenticationCloud.plist")
+output_dir = File.expand_path("output/")
 display_name = "Nevis Mobile Authentication SDK Example App iOS Reactive"
 
+keychain_password = SecureRandom.base64
 ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "120"
+
+def ensure_temp_keychain(name, password)
+	delete_temp_keychain(name)
+	create_temp_keychain(name, password)
+end
+
+def create_temp_keychain(name, password)
+	create_keychain(
+		name: name,
+		password: password,
+		unlock: true,
+		timeout: 0,
+		lock_when_sleeps: true
+	)
+end
+
+def delete_temp_keychain(name)
+	delete_keychain(
+		name: name
+	) if File.exist? File.expand_path("~/Library/Keychains/#{name}-db")
+end
 
 def report_on_success(message)
 	slack(
@@ -38,6 +67,14 @@ platform :ios do
 	desc "Build the application"
 	lane :main do
 		begin
+			keychain_name = ENV["TEMP_KEYCHAIN_NAME"]
+			ensure_temp_keychain(
+				keychain_name,
+				keychain_password
+			)
+
+			update_config(host_name: ENV["HOST_NAME"])
+
 			build_number = ENV["BUILD_NUMBER"] || get_build_number()
 			version = get_version_number()
 			increment_build_number(build_number: build_number)
@@ -45,21 +82,54 @@ platform :ios do
 			UI.message("Building #{display_name} #{version} (#{build_number}) 📦")
 
 			cocoapods()
+
+			match(
+				type: match_type,
+				readonly: true,
+				app_identifier: app_identifier,
+				git_url: ENV["MATCH_GIT_URL"],
+				git_branch: "main",
+				keychain_name: keychain_name,
+				keychain_password: keychain_password
+			)
+
+			update_code_signing_settings(
+				path: app_xcodeproj,
+				build_configurations: ["Release"],
+				use_automatic_signing: false,
+				team_id: ENV["DEVELOPER_PORTAL_TEAM_ID"],
+				code_sign_identity: ENV["CODE_SIGNING_IDENTITY"],
+				profile_name: ENV["sigh_#{app_identifier}_#{match_type}_profile-name"],
+			)
+
 			gym(
 				workspace: "NevisExampleApp.xcworkspace",
 				scheme: "NevisExampleApp",
 				configuration: "Release",
 				clean: true,
-				skip_codesigning: true,
 				skip_profile_detection: true,
 				skip_package_dependencies_resolution: true,
-				skip_archive: true,
-				skip_package_ipa: true
+				export_method: "ad-hoc",
+				export_options: {
+					provisioningProfiles: {
+						app_identifier => ENV["PROVISIONING_PROFILE_SPECIFIER"]
+					}
+				},
+				output_directory: "#{output_dir}/builds",
+				xcargs: "OTHER_CODE_SIGN_FLAGS=\"--keychain=#{keychain_name}\"",
+			)
+
+			firebase_app_distribution(
+				app: ENV["FIREBASE_APP_ID"],
+				ipa_path: "#{output_dir}/builds/#{target_name}.ipa",
+				groups: "developers, internal-testers, presales",
+				release_notes: "Reactive version"
 			)
 
 			add_git_tag(tag: "release/#{version}/#{build_number}", message: "[Fastlane] #{display_name} #{version} (#{build_number})")
 			push_git_tags
 
+			delete_temp_keychain(keychain_name)
 			report_on_success("#{display_name} build is completed: #{version} (#{build_number}) ✅")
 		rescue => exception
 			report_on_error("#{display_name} build failed ❌", exception)
@@ -79,6 +149,26 @@ platform :ios do
 			skip_package_dependencies_resolution: true,
 			skip_archive: true,
 			skip_package_ipa: true
+		)
+	end
+
+	##
+	## Private Lanes
+	##
+
+	private_lane :update_config do |options|
+		host_name = options[:host_name]
+
+		update_plist(
+			plist_path: config_plist,
+			block: proc do |plist|
+				plist["login"] = {
+					"loginRequestURL": "https://#{host_name}.mauth.nevis.cloud/_app/auth/pwd"
+				}
+				plist["sdk"] = {
+					"hostName": "#{host_name}.mauth.nevis.cloud"
+				}
+			end
 		)
 	end
 end
