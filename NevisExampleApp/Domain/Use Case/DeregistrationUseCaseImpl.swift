@@ -35,30 +35,8 @@ class DeregistrationUseCaseImpl {
 // MARK: - DeregistrationUseCase
 
 extension DeregistrationUseCaseImpl: DeregistrationUseCase {
-	func execute(username: String?, authorizationProvider: AuthorizationProvider?) -> Observable<OperationResponse> {
-		guard let authenticators = clientProvider.get()?.localData.authenticators else {
-			return .just(CompletedResponse(operation: .deregistration))
-		}
-
-		var responses: [Observable<OperationResponse>] = []
-		authenticators.forEach { authenticator in
-			if let username {
-				// deregister only an account
-				if authenticator.registration.isRegistered(username) {
-					responses.append(deregister(username: username,
-					                            aaid: authenticator.aaid,
-					                            authorizationProvider: authorizationProvider))
-				}
-			}
-			else {
-				// username not provided, deregister all account
-				authenticator.registration.registeredAccounts.forEach { account in
-					responses.append(deregister(username: account.username,
-					                            aaid: authenticator.aaid,
-					                            authorizationProvider: authorizationProvider))
-				}
-			}
-		}
+	func execute(usernames: [String], authorizationProvider: AuthorizationProvider?) -> Observable<OperationResponse> {
+		let responses = usernames.map { deregister(username: $0, authorizationProvider: authorizationProvider) }
 
 		return Observable.create { [weak self] observer in
 			Observable.concat(responses)
@@ -83,18 +61,16 @@ private extension DeregistrationUseCaseImpl {
 	///
 	/// - Parameters:
 	///  - username: The username that must be deregistered.
-	///  - aaid: The AAID of the ``Authenticator`` that must be deregistered.
 	///  - authorizationProvider: The authorization provider that must be used to deregister the authenticator.
 	/// - Returns: The observable sequence that will emit an ``OperationResponse`` object.
-	func deregister(username: String, aaid: String, authorizationProvider: AuthorizationProvider?) -> Observable<OperationResponse> {
+	func deregister(username: String, authorizationProvider: AuthorizationProvider?) -> Observable<OperationResponse> {
 		Observable.create { [weak self] observer in
-			self?.logger.log("Deregistering authenticator with aaid \(aaid) for user \(username)")
+			self?.logger.log("Deregistering authenticator for user \(username)")
 			let client = self?.clientProvider.get()
 			let operation = client?.operations.deregistration
 				.username(username)
-				.aaid(aaid)
 				.onSuccess {
-					self?.logger.log("Deregistration succeeded for authenticator with aaid \(aaid) for user \(username)", color: .green)
+					self?.logger.log("Deregistration succeeded for authenticator for user \(username)", color: .green)
 					observer.onNext(CompletedResponse(operation: .deregistration))
 					observer.onCompleted()
 				}

@@ -185,7 +185,7 @@ private extension SelectAccountViewModel {
 			return inBandAuthenticationUseCase.execute(username: account.username, operation: operation!)
 				.flatMap(responseObserver.observe(response:))
 		case .deregistration:
-			// deregistration (on-premise env) is in progress where the deregistration endpoint is guarded,
+			// deregistration (Identity Suite env) is in progress where the deregistration endpoint is guarded,
 			// so an authorization provider is needed.
 			// First perform in-band authentication then a deregistration with the username.
 			return inBandAuthenticationUseCase.execute(username: account.username, operation: operation!)
@@ -195,7 +195,7 @@ private extension SelectAccountViewModel {
 						return .error(AppError.cookieNotFound)
 					}
 
-					return self.deregistrationUseCase.execute(username: account.username,
+					return self.deregistrationUseCase.execute(usernames: [account.username],
 					                                          authorizationProvider: authorizationProvider)
 				}
 				.flatMap(responseObserver.observe(response:))
