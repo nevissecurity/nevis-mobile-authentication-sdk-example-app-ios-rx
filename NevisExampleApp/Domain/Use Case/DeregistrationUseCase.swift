@@ -13,8 +13,8 @@ protocol DeregistrationUseCase {
 	/// Deregisters the users.
 	///
 	/// - Parameters:
-	///   - username: The username that need to be deregistered. If not provided all user will be deregistered.
+	///   - usernames: The list of username that need to be deregistered.
 	///   - authorizationProvider: Object providing credentials to perform deregistration.
 	/// - Returns: The observable sequence that will emit an ``OperationResponse`` object.
-	func execute(username: String?, authorizationProvider: AuthorizationProvider?) -> Observable<OperationResponse>
+	func execute(usernames: [String], authorizationProvider: AuthorizationProvider?) -> Observable<OperationResponse>
 }

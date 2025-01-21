@@ -186,6 +186,7 @@ extension HomeViewModel: ScreenViewModel {
 
 		let deregister = input.deregisterTrigger
 			.asObservable()
+			.flatMapLatest(getAccountsUseCase.execute)
 			.flatMapLatest(deregister)
 			.asDriverOnErrorJustComplete()
 
@@ -258,28 +259,28 @@ private extension HomeViewModel {
 
 	/// Starts deregistration.
 	///
+	/// - Parameter accounts: The list of the available accounts.
 	/// - Returns: An observable sequence.
-	func deregister() -> Observable<()> {
+	func deregister(accounts: [any Account]) -> Observable<()> {
+		guard !accounts.isEmpty else {
+			return .error(BusinessError.accountsNotFound)
+		}
+
 		switch configurationLoader.environment {
 		case .authenticationCloud:
-			deregistrationUseCase.execute(username: nil,
-			                              authorizationProvider: nil)
+			return deregistrationUseCase.execute(usernames: accounts.map(\.username),
+			                                     authorizationProvider: nil)
 				.flatMap(responseObserver.observe(response:))
 				.trackActivity(activityIndicator)
 				.trackError(errorTracker)
 		case .identitySuite:
 			// In the Identity Suite environment the deregistration endpoint is guarded,
 			// and as such we need to provide a cookie to the deregister call.
-			// Also in Identity Siute a deregistration has to be authenticated for every user,
-			// so batch deregistration is not really possible.
-			getAccountsUseCase.execute()
-				.flatMap {
-					let parameter: SelectAccountParameter = .select(accounts: $0,
-					                                                operation: .deregistration,
-					                                                handler: nil,
-					                                                message: nil)
-					return Observable.just(self.appCoordinator.navigateToAccountSelection(with: parameter))
-				}
+			let parameter: SelectAccountParameter = .select(accounts: accounts,
+			                                                operation: .deregistration,
+			                                                handler: nil,
+			                                                message: nil)
+			return Observable.just(appCoordinator.navigateToAccountSelection(with: parameter))
 		}
 	}
 
