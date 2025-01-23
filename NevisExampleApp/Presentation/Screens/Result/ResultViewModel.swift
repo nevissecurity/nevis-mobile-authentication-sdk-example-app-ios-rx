@@ -58,9 +58,8 @@ final class ResultViewModel {
 		setParameter(parameter as? ResultParameter)
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("ResultViewModel", log: OSLog.deinit, type: .debug)
+		logger.deinit("ResultViewModel")
 	}
 }
 

@@ -22,7 +22,7 @@ extension PasswordPolicyError: LocalizedError {
 	}
 }
 
-/// Implementation of the ``PasswordPolicy``.
+/// Implementation of the `PasswordPolicy`.
 /// This policy validates the password entered by the user during registration or password changing,
 /// and allows only passwords that are not equal to `password`.
 final class PasswordPolicyImpl {}

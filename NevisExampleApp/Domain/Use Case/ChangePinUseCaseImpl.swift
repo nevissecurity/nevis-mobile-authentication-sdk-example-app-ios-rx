@@ -18,9 +18,6 @@ class ChangePinUseCaseImpl {
 	/// The PIN changer.
 	private let pinChanger: PinChanger
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
@@ -28,13 +25,10 @@ class ChangePinUseCaseImpl {
 	/// - Parameters:
 	///   - clientProvider: The client provider.
 	///   - pinChanger: The PIN changer.
-	///   - logger: The logger.
 	init(clientProvider: ClientProvider,
-	     pinChanger: PinChanger,
-	     logger: SDKLogger) {
+	     pinChanger: PinChanger) {
 		self.clientProvider = clientProvider
 		self.pinChanger = pinChanger
-		self.logger = logger
 	}
 }
 
@@ -52,12 +46,12 @@ extension ChangePinUseCaseImpl: ChangePinUseCase {
 				.username(username)
 				.pinChanger(pinChanger)
 				.onSuccess {
-					self.logger.log("PIN change succeeded.", color: .green)
+					logger.sdk("PIN change succeeded.", .green)
 					observer.onNext(CompletedResponse(operation: .pinChange))
 					observer.onCompleted()
 				}
 				.onError {
-					self.logger.log("PIN change failed.", color: .red)
+					logger.sdk("PIN change failed.", .red)
 					observer.onError(OperationError(operation: .pinChange,
 					                                underlyingError: $0))
 				}

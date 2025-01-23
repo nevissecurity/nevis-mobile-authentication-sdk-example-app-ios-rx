@@ -6,7 +6,8 @@
 
 import NevisMobileAuthentication
 
-/// Default implementation of ``PinChanger`` protocol.
+/// Default implementation of `PinChanger` protocol.
+/// For more information about PIN change please read the [official documentation](https://docs.nevis.net/mobilesdk/guide/operation/other-operations#change-pin).
 ///
 /// With the help of the ``ResponseEmitter`` it will emit a ``ChangePinResponse``.
 class PinChangerImpl {
@@ -16,20 +17,14 @@ class PinChangerImpl {
 	/// The response emitter.
 	private let responseEmitter: ResponseEmitter
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
 	///
 	/// - Parameters:
 	///   - responseEmitter: The response emitter.
-	///   - logger: The logger.
-	init(responseEmitter: ResponseEmitter,
-	     logger: SDKLogger) {
+	init(responseEmitter: ResponseEmitter) {
 		self.responseEmitter = responseEmitter
-		self.logger = logger
 	}
 }
 
@@ -38,10 +33,10 @@ class PinChangerImpl {
 extension PinChangerImpl: PinChanger {
 	func changePin(context: PinChangeContext, handler: PinChangeHandler) {
 		if context.lastRecoverableError != nil {
-			logger.log("PIN change failed. Please try again.")
+			logger.sdk("PIN change failed. Please try again.", .red)
 		}
 		else {
-			logger.log("Please start PIN change.")
+			logger.sdk("Please start PIN change.")
 		}
 
 		let response = ChangePinResponse(protectionStatus: context.authenticatorProtectionStatus,

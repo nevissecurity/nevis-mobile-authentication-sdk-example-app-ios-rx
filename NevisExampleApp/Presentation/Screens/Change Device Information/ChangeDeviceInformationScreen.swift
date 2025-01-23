@@ -45,9 +45,8 @@ final class ChangeDeviceInformationScreen: BaseScreen, Screen {
 		super.init()
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("ChangeDeviceInformationScreen", log: OSLog.deinit, type: .debug)
+		logger.deinit("ChangeDeviceInformationScreen")
 	}
 }
 
@@ -77,7 +76,6 @@ extension ChangeDeviceInformationScreen {
 
 // MARK: - Setups
 
-/// :nodoc:
 private extension ChangeDeviceInformationScreen {
 
 	func setupUI() {
@@ -128,7 +126,6 @@ private extension ChangeDeviceInformationScreen {
 
 // MARK: - Binding
 
-/// :nodoc:
 private extension ChangeDeviceInformationScreen {
 
 	func bindViewModel() {

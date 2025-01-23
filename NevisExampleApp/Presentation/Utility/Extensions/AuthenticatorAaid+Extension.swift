@@ -19,21 +19,21 @@ extension AuthenticatorAaid: Codable {
 }
 
 extension AuthenticatorAaid {
-	/// Returns a Boolean value indicating whether a ``String`` and an ``AuthenticatorAaid`` are equal.
+	/// Returns a Boolean value indicating whether a `String` and an `AuthenticatorAaid` are equal.
 	///
 	/// - Parameters:
-	///   - lhs: A ``String`` value to compare.
-	///   - rhs: An ``AuthenticatorAaid`` to compare.
+	///   - lhs: A `String` value to compare.
+	///   - rhs: An `AuthenticatorAaid` to compare.
 	/// - Returns: A Boolean value indicating whether the two values are equal.
 	static func == (lhs: String, rhs: AuthenticatorAaid) -> Bool {
 		rhs.rawValue == lhs
 	}
 
-	/// Returns a Boolean value indicating whether a ``String`` and an ``AuthenticatorAaid`` are equal.
+	/// Returns a Boolean value indicating whether a `String` and an `AuthenticatorAaid` are equal.
 	///
 	/// - Parameters:
-	///   - lhs: An ``AuthenticatorAaid`` to compare.
-	///   - rhs: A ``String`` value to compare.
+	///   - lhs: An `AuthenticatorAaid` to compare.
+	///   - rhs: A `String` value to compare.
 	/// - Returns: A Boolean value indicating whether the two values are equal.
 	static func == (lhs: AuthenticatorAaid, rhs: String) -> Bool {
 		rhs == lhs.rawValue

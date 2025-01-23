@@ -29,6 +29,8 @@
 		381EC649290ABEDB0005546B /* BusinessError+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381EC648290ABEDB0005546B /* BusinessError+Extension.swift */; };
 		382D51AB26B1679B00B774CF /* JWTValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382D51AA26B1679B00B774CF /* JWTValidator.swift */; };
 		382D51AE26B194EB00B774CF /* LoggingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382D51AD26B194EB00B774CF /* LoggingScreen.swift */; };
+		382FC5052D4229AD0002AB9D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382FC5042D4229AD0002AB9D /* Logger.swift */; };
+		382FC5072D423F7C0002AB9D /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 382FC5062D423F7C0002AB9D /* Documentation.docc */; };
 		3833EB1D2685EA03002C5E0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3833EB1C2685EA03002C5E0C /* AppDelegate.swift */; };
 		3833EB262685EA03002C5E0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3833EB252685EA03002C5E0C /* Assets.xcassets */; };
 		3833EB292685EA03002C5E0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3833EB272685EA03002C5E0C /* LaunchScreen.storyboard */; };
@@ -107,14 +109,11 @@
 		38B085AB2907F5F6006295D8 /* AuthCloudApiRegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B085AA2907F5F6006295D8 /* AuthCloudApiRegistrationScreen.swift */; };
 		38B085AD2907F5FE006295D8 /* AuthCloudApiRegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B085AC2907F5FE006295D8 /* AuthCloudApiRegistrationViewModel.swift */; };
 		38B085AF29081EAF006295D8 /* AuthCloudApiRegistrationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B085AE29081EAF006295D8 /* AuthCloudApiRegistrationValidator.swift */; };
-		38B0A2B9269C2BCC00FABCC1 /* OSLog+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B0A2B8269C2BCC00FABCC1 /* OSLog+Extension.swift */; };
 		38B0A2BB269C474E00FABCC1 /* ErrorHandlerChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B0A2BA269C474E00FABCC1 /* ErrorHandlerChain.swift */; };
 		38B0A2BD269C477900FABCC1 /* ErrorHandlerChainImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B0A2BC269C477900FABCC1 /* ErrorHandlerChainImpl.swift */; };
 		38B0A2BF269C47B900FABCC1 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B0A2BE269C47B900FABCC1 /* ErrorHandler.swift */; };
 		38B0A2C3269C483D00FABCC1 /* GeneralErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B0A2C2269C483D00FABCC1 /* GeneralErrorHandler.swift */; };
 		38BAF1A826B2863A00725619 /* LoggingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BAF1A726B2863A00725619 /* LoggingViewModel.swift */; };
-		38BAF1AB26B291A700725619 /* SDKLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BAF1AA26B291A700725619 /* SDKLogger.swift */; };
-		38BAF1AD26B291B000725619 /* SDKLoggerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BAF1AC26B291B000725619 /* SDKLoggerImpl.swift */; };
 		38C1B365269D6E9C00ED5782 /* NevisErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1B364269D6E9C00ED5782 /* NevisErrorHandler.swift */; };
 		38C1B379269D815A00ED5782 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38C1B37B269D815A00ED5782 /* Localizable.strings */; };
 		38C1B381269D820C00ED5782 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1B380269D820C00ED5782 /* Strings.swift */; };
@@ -201,6 +200,8 @@
 		381EC648290ABEDB0005546B /* BusinessError+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BusinessError+Extension.swift"; sourceTree = "<group>"; };
 		382D51AA26B1679B00B774CF /* JWTValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTValidator.swift; sourceTree = "<group>"; };
 		382D51AD26B194EB00B774CF /* LoggingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingScreen.swift; sourceTree = "<group>"; };
+		382FC5042D4229AD0002AB9D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		382FC5062D423F7C0002AB9D /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		3833EB192685EA03002C5E0C /* NevisExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NevisExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3833EB1C2685EA03002C5E0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3833EB252685EA03002C5E0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -282,14 +283,11 @@
 		38B085AA2907F5F6006295D8 /* AuthCloudApiRegistrationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCloudApiRegistrationScreen.swift; sourceTree = "<group>"; };
 		38B085AC2907F5FE006295D8 /* AuthCloudApiRegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCloudApiRegistrationViewModel.swift; sourceTree = "<group>"; };
 		38B085AE29081EAF006295D8 /* AuthCloudApiRegistrationValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCloudApiRegistrationValidator.swift; sourceTree = "<group>"; };
-		38B0A2B8269C2BCC00FABCC1 /* OSLog+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extension.swift"; sourceTree = "<group>"; };
 		38B0A2BA269C474E00FABCC1 /* ErrorHandlerChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlerChain.swift; sourceTree = "<group>"; };
 		38B0A2BC269C477900FABCC1 /* ErrorHandlerChainImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlerChainImpl.swift; sourceTree = "<group>"; };
 		38B0A2BE269C47B900FABCC1 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		38B0A2C2269C483D00FABCC1 /* GeneralErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralErrorHandler.swift; sourceTree = "<group>"; };
 		38BAF1A726B2863A00725619 /* LoggingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingViewModel.swift; sourceTree = "<group>"; };
-		38BAF1AA26B291A700725619 /* SDKLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKLogger.swift; sourceTree = "<group>"; };
-		38BAF1AC26B291B000725619 /* SDKLoggerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKLoggerImpl.swift; sourceTree = "<group>"; };
 		38C1B364269D6E9C00ED5782 /* NevisErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NevisErrorHandler.swift; sourceTree = "<group>"; };
 		38C1B37A269D815A00ED5782 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		38C1B380269D820C00ED5782 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -467,6 +465,7 @@
 		3833EB1B2685EA03002C5E0C /* NevisExampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				382FC5062D423F7C0002AB9D /* Documentation.docc */,
 				3867C1982685EEB700A8B98B /* Deployment */,
 				383DB3A626A5968A006A0788 /* Application */,
 				383DB3A726A59804006A0788 /* Common */,
@@ -634,7 +633,6 @@
 			children = (
 				3872BFD22A29E98E0041C594 /* Authenticator+Extension.swift */,
 				388D0A612968236400EBFC1D /* Dictionary+Extension.swift */,
-				38B0A2B8269C2BCC00FABCC1 /* OSLog+Extension.swift */,
 				386423E9269711A5005F5961 /* String+Extension.swift */,
 				386423FB26984B89005F5961 /* UIDevice+Extension.swift */,
 			);
@@ -893,8 +891,7 @@
 		38BAF1A926B2919900725619 /* Logger */ = {
 			isa = PBXGroup;
 			children = (
-				38BAF1AA26B291A700725619 /* SDKLogger.swift */,
-				38BAF1AC26B291B000725619 /* SDKLoggerImpl.swift */,
+				382FC5042D4229AD0002AB9D /* Logger.swift */,
 			);
 			path = Logger;
 			sourceTree = "<group>";
@@ -919,8 +916,8 @@
 		38C6F3552BB17387002909BE /* Confirmation */ = {
 			isa = PBXGroup;
 			children = (
-				38C6F3562BB17398002909BE /* ConfirmationViewModel.swift */,
 				38C6F3582BB173A1002909BE /* ConfirmationScreen.swift */,
+				38C6F3562BB17398002909BE /* ConfirmationViewModel.swift */,
 			);
 			path = Confirmation;
 			sourceTree = "<group>";
@@ -1202,11 +1199,11 @@
 				386DA8FE26CA9B9A00060ADD /* Operation.swift in Sources */,
 				38C6F3592BB173A1002909BE /* ConfirmationScreen.swift in Sources */,
 				38DF72802901657700429337 /* ResponseObserverImpl.swift in Sources */,
+				382FC5072D423F7C0002AB9D /* Documentation.docc in Sources */,
 				38C1B385269DB56C00ED5782 /* UINavigationController+Extension.swift in Sources */,
 				38EB176D29027E7600E82236 /* ResponseEmitterImpl.swift in Sources */,
 				3852F3A9268624720051FF73 /* BaseScreen.swift in Sources */,
 				38FD7ACF28FEEA6800F64099 /* DecodePayloadUseCase.swift in Sources */,
-				38BAF1AD26B291B000725619 /* SDKLoggerImpl.swift in Sources */,
 				38C6F35B2BB17778002909BE /* VerifyBiometricResponse.swift in Sources */,
 				38DF72792901456100429337 /* AccountCell.swift in Sources */,
 				38ABBB542906AD49006B19B9 /* ChangeDeviceInformationViewModel.swift in Sources */,
@@ -1216,7 +1213,6 @@
 				388844DE2695C1F200CCFB00 /* CredentialViewModel.swift in Sources */,
 				0698AA662C3D12EA001B4000 /* VerifyPasswordResponse.swift in Sources */,
 				0698AA642C3D12A7001B4000 /* EnrollPasswordResponse.swift in Sources */,
-				38B0A2B9269C2BCC00FABCC1 /* OSLog+Extension.swift in Sources */,
 				38FD7AB928FEA10000F64099 /* ConfigurationLoader.swift in Sources */,
 				3867C1A82685F7DD00A8B98B /* AppAssembly.swift in Sources */,
 				386423FC26984B89005F5961 /* UIDevice+Extension.swift in Sources */,
@@ -1235,6 +1231,7 @@
 				0698AA5A2C3BFED9001B4000 /* AuthenticatorValidator.swift in Sources */,
 				3840BEF3268DCCB200DBEA62 /* SelectAuthenticatorItemViewModel.swift in Sources */,
 				38DD19AB26A070F000FE08A4 /* ValidationError.swift in Sources */,
+				382FC5052D4229AD0002AB9D /* Logger.swift in Sources */,
 				0698AA622C3D11DD001B4000 /* PasswordEnrollerImpl.swift in Sources */,
 				38FD7AC128FEA30B00F64099 /* AppConfiguration.swift in Sources */,
 				386FC3342909262200CB30A7 /* LoginDataSourceImpl.swift in Sources */,
@@ -1243,7 +1240,6 @@
 				38EB1772290293B900E82236 /* TransactionConfirmationViewModel.swift in Sources */,
 				0698AA582C3BFD64001B4000 /* AuthenticatorValidatorImpl.swift in Sources */,
 				38B0A2BB269C474E00FABCC1 /* ErrorHandlerChain.swift in Sources */,
-				38BAF1AB26B291A700725619 /* SDKLogger.swift in Sources */,
 				383D0A912912B98B00E94068 /* OutlinedButton.swift in Sources */,
 				38FD7AC528FEA8B200F64099 /* ConfigurationLoaderImpl.swift in Sources */,
 				388844DC2695C1E500CCFB00 /* CredentialScreen.swift in Sources */,

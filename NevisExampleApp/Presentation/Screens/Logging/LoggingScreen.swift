@@ -44,9 +44,8 @@ final class LoggingScreen: UIViewController, Screen {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("LoggingScreen", log: OSLog.deinit, type: .debug)
+		logger.deinit("LoggingScreen")
 	}
 }
 
@@ -68,7 +67,6 @@ extension LoggingScreen {
 
 // MARK: - Setups
 
-/// :nodoc:
 private extension LoggingScreen {
 
 	func setupUI() {
@@ -113,7 +111,6 @@ private extension LoggingScreen {
 
 // MARK: - Binding
 
-/// :nodoc:
 private extension LoggingScreen {
 
 	func bindViewModel() {

@@ -6,7 +6,7 @@
 
 import UIKit
 
-/// Custom ``UILabel`` implementation.
+/// Custom `UILabel` implementation.
 class NSLabel: UILabel {
 
 	// MARK: - Initialization

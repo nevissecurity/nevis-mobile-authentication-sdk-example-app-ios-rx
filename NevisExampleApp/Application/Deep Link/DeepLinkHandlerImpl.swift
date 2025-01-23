@@ -23,9 +23,6 @@ final class DeepLinkHandlerImpl {
 	/// The application coordinator.
 	private let coordinator: AppCoordinator
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	/// An observer that will emit a ``String`` object.
 	private var onOobOperation = PublishSubject<String>()
 
@@ -41,17 +38,14 @@ final class DeepLinkHandlerImpl {
 	///   - outOfBandOperationUseCase: Use case for processing an Out-of-Band payload.
 	///   - responseObserver: The response observer.
 	///   - coordinator: The application coordinator.
-	///   - logger: The logger.
 	init(decodePayloadUseCase: DecodePayloadUseCase,
 	     outOfBandOperationUseCase: OutOfBandOperationUseCase,
 	     responseObserver: ResponseObserver,
-	     coordinator: AppCoordinator,
-	     logger: SDKLogger) {
+	     coordinator: AppCoordinator) {
 		self.decodePayloadUseCase = decodePayloadUseCase
 		self.outOfBandOperationUseCase = outOfBandOperationUseCase
 		self.responseObserver = responseObserver
 		self.coordinator = coordinator
-		self.logger = logger
 	}
 }
 

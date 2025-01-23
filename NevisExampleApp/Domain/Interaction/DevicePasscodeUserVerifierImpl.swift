@@ -6,7 +6,8 @@
 
 import NevisMobileAuthentication
 
-/// Default implementation of ``DevicePasscodeUserVerifier`` protocol.
+/// Default implementation of `DevicePasscodeUserVerifier` protocol.
+/// For more information about device passcode user verification please read the [official documentation](https://docs.nevis.net/mobilesdk/guide/operation/registration#device-passcode-user-verifier).
 ///
 /// With the help of the ``ResponseEmitter`` it will emit a ``VerifyDevicePasscodeResponse``.
 class DevicePasscodeUserVerifierImpl {
@@ -16,20 +17,14 @@ class DevicePasscodeUserVerifierImpl {
 	/// The response emitter.
 	private let responseEmitter: ResponseEmitter
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
 	///
 	/// - Parameters:
 	///   - responseEmitter: The response emitter.
-	///   - logger: The logger.
-	init(responseEmitter: ResponseEmitter,
-	     logger: SDKLogger) {
+	init(responseEmitter: ResponseEmitter) {
 		self.responseEmitter = responseEmitter
-		self.logger = logger
 	}
 }
 
@@ -37,7 +32,7 @@ class DevicePasscodeUserVerifierImpl {
 
 extension DevicePasscodeUserVerifierImpl: DevicePasscodeUserVerifier {
 	func verifyDevicePasscode(context: DevicePasscodeUserVerificationContext, handler: DevicePasscodeUserVerificationHandler) {
-		logger.log("Please start device passcode user verification.")
+		logger.sdk("Please start device passcode user verification.")
 
 		let response = VerifyDevicePasscodeResponse(authenticator: context.authenticator.localizedTitle,
 		                                            handler: handler)

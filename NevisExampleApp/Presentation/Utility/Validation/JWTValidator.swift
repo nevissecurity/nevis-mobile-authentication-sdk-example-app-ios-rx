@@ -6,7 +6,7 @@
 
 import Foundation
 
-/// Class for validating JWT
+/// Class for validating JWT.
 final class JWTValidator {
 
 	// MARK: - Properties

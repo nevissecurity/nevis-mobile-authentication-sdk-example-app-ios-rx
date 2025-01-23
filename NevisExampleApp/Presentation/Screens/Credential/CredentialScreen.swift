@@ -58,9 +58,8 @@ class CredentialScreen: BaseScreen, Screen {
 		super.init()
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("CredentialScreen", log: OSLog.deinit, type: .debug)
+		logger.deinit("CredentialScreen")
 	}
 }
 
@@ -90,7 +89,6 @@ extension CredentialScreen {
 
 // MARK: - Setups
 
-/// :nodoc:
 private extension CredentialScreen {
 
 	func setupUI() {
@@ -189,7 +187,6 @@ private extension CredentialScreen {
 
 // MARK: - Actions
 
-/// :nodoc:
 private extension CredentialScreen {
 	@objc
 	func done() {
@@ -199,7 +196,6 @@ private extension CredentialScreen {
 
 // MARK: - Binding
 
-/// :nodoc:
 private extension CredentialScreen {
 
 	func bindViewModel() {

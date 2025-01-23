@@ -15,20 +15,14 @@ class DeleteAuthenticatorsUseCaseImpl {
 	/// The client provider.
 	private let provider: ClientProvider
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
 	///
 	/// - Parameters:
-	///   - clientProvider: The client provider.
-	///   - logger: The logger.
-	init(provider: ClientProvider,
-	     logger: SDKLogger) {
+	///   - provider: The client provider.
+	init(provider: ClientProvider) {
 		self.provider = provider
-		self.logger = logger
 	}
 }
 
@@ -37,7 +31,7 @@ class DeleteAuthenticatorsUseCaseImpl {
 extension DeleteAuthenticatorsUseCaseImpl: DeleteAuthenticatorsUseCase {
 	func execute(accounts: [any Account]) -> Observable<OperationResponse> {
 		guard !accounts.isEmpty else {
-			logger.log("Accounts not found.", color: .red)
+			logger.sdk("Accounts not found.", .red)
 			return .error(BusinessError.accountsNotFound)
 		}
 
@@ -46,17 +40,17 @@ extension DeleteAuthenticatorsUseCaseImpl: DeleteAuthenticatorsUseCase {
 			responses.append(deleteAuthenticators(of: account.username))
 		}
 
-		return Observable.create { [weak self] observer in
+		return Observable.create { observer in
 			Observable.concat(responses)
 				.observe(on: MainScheduler.instance)
 				.subscribe(on: SerialDispatchQueueScheduler(qos: .background))
 				.subscribe(onError: {
-				           	self?.logger.log("Delete authenticators failed.", color: .green)
+				           	logger.sdk("Delete authenticators failed.", .red)
 				           	observer.onError(OperationError(operation: .localData,
 				           	                                underlyingError: $0))
 				           },
 				           onCompleted: {
-				           	self?.logger.log("Delete authenticators succeeded.", color: .green)
+				           	logger.sdk("Delete authenticators succeeded.", .green)
 				           	observer.onNext(CompletedResponse(operation: .localData))
 				           	observer.onCompleted()
 				           })
@@ -72,7 +66,7 @@ private extension DeleteAuthenticatorsUseCaseImpl {
 		Observable.create { [unowned self] observer in
 			do {
 				try provider.get()?.localData.deleteAuthenticator(username: username, aaid: nil)
-				logger.log("Delete authenticators succeeded for user \(username).", color: .green)
+				logger.sdk("Delete authenticators succeeded for user %@.", .green, .debug, username)
 				observer.onNext(CompletedResponse(operation: .localData))
 				observer.onCompleted()
 			}

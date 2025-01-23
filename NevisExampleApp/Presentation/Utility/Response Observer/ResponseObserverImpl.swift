@@ -6,7 +6,7 @@
 
 import RxSwift
 
-/// Default implementation of ``ResponseObserver`` protoocol.
+/// Default implementation of ``ResponseObserver`` protocol.
 class ResponseObserverImpl {
 
 	// MARK: - Properties

@@ -18,9 +18,6 @@ class ChangePasswordUseCaseImpl {
 	/// The Password changer.
 	private let passwordChanger: PasswordChanger
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
@@ -28,13 +25,10 @@ class ChangePasswordUseCaseImpl {
 	/// - Parameters:
 	///   - clientProvider: The client provider.
 	///   - passwordChanger: The Password changer.
-	///   - logger: The logger.
 	init(clientProvider: ClientProvider,
-	     passwordChanger: PasswordChanger,
-	     logger: SDKLogger) {
+	     passwordChanger: PasswordChanger) {
 		self.clientProvider = clientProvider
 		self.passwordChanger = passwordChanger
-		self.logger = logger
 	}
 }
 
@@ -52,12 +46,12 @@ extension ChangePasswordUseCaseImpl: ChangePasswordUseCase {
 				.username(username)
 				.passwordChanger(passwordChanger)
 				.onSuccess {
-					self.logger.log("Password change succeeded.", color: .green)
+					logger.sdk("Password change succeeded.", .green)
 					observer.onNext(CompletedResponse(operation: .passwordChange))
 					observer.onCompleted()
 				}
 				.onError {
-					self.logger.log("Password change failed.", color: .red)
+					logger.sdk("Password change failed.", .red)
 					observer.onError(OperationError(operation: .passwordChange,
 					                                underlyingError: $0))
 				}

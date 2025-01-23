@@ -58,7 +58,7 @@ extension LoginDataSourceImpl: LoginDataSource {
 
 // MARK: - LoginSessionDelegate
 
-/// Login specific implementation of ``URLSessionDelegate`` protocol.
+/// Login specific implementation of `URLSessionDelegate` protocol.
 class LoginSessionDelegate: NSObject, URLSessionDelegate {
 
 	/// Requests credentials from the delegate in response to a session-level authentication request from the remote server.
@@ -67,7 +67,8 @@ class LoginSessionDelegate: NSObject, URLSessionDelegate {
 	///   - session: The session containing the task that requested authentication.
 	///   - challenge: An object that contains the request for authentication.
 	///   - completionHandler: A handler that your delegate method must call.
-	func urlSession(_: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> ()) {
+	// swiftformat:disable:next unusedArguments
+	func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> ()) {
 		if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust,
 		   let serverTrust = challenge.protectionSpace.serverTrust {
 			completionHandler(.useCredential, URLCredential(trust: serverTrust))

@@ -15,20 +15,14 @@ class InitClientUseCaseImpl {
 	/// The client provider.
 	private let provider: ClientProvider
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
 	///
 	/// - Parameters:
-	///   - clientProvider: The client provider.
-	///   - logger: The logger.
-	init(provider: ClientProvider,
-	     logger: SDKLogger) {
+	///   - provider: The client provider.
+	init(provider: ClientProvider) {
 		self.provider = provider
-		self.logger = logger
 	}
 }
 
@@ -38,22 +32,22 @@ extension InitClientUseCaseImpl: InitClientUseCase {
 	func execute(configuration: Configuration) -> Observable<()> {
 		Observable.create { [weak self] observer in
 			if self?.provider.get() != nil {
-				self?.logger.log("Client already initialized.")
+				logger.sdk("Client already initialized.")
 				observer.onNext(())
 				observer.onCompleted()
 			}
 			else {
-				self?.logger.log("Initializing client.")
+				logger.sdk("Initializing client.")
 				MobileAuthenticationClientInitializer()
 					.configuration(configuration)
 					.onSuccess { client in
-						self?.logger.log("Client initialization succeeded.", color: .green)
+						logger.sdk("Client initialization succeeded.", .green)
 						self?.provider.save(client: client)
 						observer.onNext(())
 						observer.onCompleted()
 					}
 					.onError {
-						self?.logger.log("Client initialization failed.", color: .red)
+						logger.sdk("Client initialization failed.", .red)
 						observer.onError(OperationError(operation: .initClient,
 						                                underlyingError: $0))
 					}

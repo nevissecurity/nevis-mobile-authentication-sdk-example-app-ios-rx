@@ -24,7 +24,7 @@ struct SelectAuthenticatorItemViewModel {
 
 	/// Creates a new instance.
 	///
-	/// - Parameter authenticatorItem: The authenticator item.
+	/// - Parameter item: The authenticator item.
 	init(item: AuthenticatorItem) {
 		self.title = item.authenticator.localizedTitle
 		self.isEnabled = item.isEnabled

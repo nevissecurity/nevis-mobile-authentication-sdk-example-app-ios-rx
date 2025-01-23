@@ -33,9 +33,6 @@ class AuthCloudApiRegistrationUseCaseImpl {
 	/// The device passcode user verifier.
 	private let devicePasscodeUserVerifier: DevicePasscodeUserVerifier
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
@@ -48,15 +45,13 @@ class AuthCloudApiRegistrationUseCaseImpl {
 	///   - passwordEnroller: The Password enroller.
 	///   - biometricUserVerifier: The biometric user verifier.
 	///   - devicePasscodeUserVerifier: The device passcode user verifier.
-	///   - logger: The logger.
 	init(clientProvider: ClientProvider,
 	     createDeviceInformationUseCase: CreateDeviceInformationUseCase,
 	     authenticatorSelector: AuthenticatorSelector,
 	     pinEnroller: PinEnroller,
 	     passwordEnroller: PasswordEnroller,
 	     biometricUserVerifier: BiometricUserVerifier,
-	     devicePasscodeUserVerifier: DevicePasscodeUserVerifier,
-	     logger: SDKLogger) {
+	     devicePasscodeUserVerifier: DevicePasscodeUserVerifier) {
 		self.clientProvider = clientProvider
 		self.createDeviceInformationUseCase = createDeviceInformationUseCase
 		self.authenticatorSelector = authenticatorSelector
@@ -64,7 +59,6 @@ class AuthCloudApiRegistrationUseCaseImpl {
 		self.passwordEnroller = passwordEnroller
 		self.biometricUserVerifier = biometricUserVerifier
 		self.devicePasscodeUserVerifier = devicePasscodeUserVerifier
-		self.logger = logger
 	}
 }
 
@@ -86,12 +80,12 @@ extension AuthCloudApiRegistrationUseCaseImpl: AuthCloudApiRegistrationUseCase {
 				.biometricUserVerifier(biometricUserVerifier)
 				.devicePasscodeUserVerifier(devicePasscodeUserVerifier)
 				.onSuccess {
-					self.logger.log("Auth Cloud Api registration succeeded.", color: .green)
+					logger.sdk("Auth Cloud Api registration succeeded.", .green)
 					observer.onNext(CompletedResponse(operation: .registration))
 					observer.onCompleted()
 				}
 				.onError {
-					self.logger.log("Auth Cloud Api registration failed.", color: .red)
+					logger.sdk("Auth Cloud Api registration failed.", .red)
 					observer.onError(OperationError(operation: .registration,
 					                                underlyingError: $0))
 				}

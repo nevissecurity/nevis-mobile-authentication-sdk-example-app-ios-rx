@@ -13,7 +13,8 @@ let RegistrationAuthenticatorSelectorName = "auth_selector_reg"
 /// The unique name of authenticator selector implementation for Authentication operation.
 let AuthenticationAuthenticatorSelectorName = "auth_selector_auth"
 
-/// Default implementation of ``AuthenticatorSelector`` protocol.
+/// Default implementation of `AuthenticatorSelector` protocol.
+/// For more information about authenticator selection please read the [official documentation](https://docs.nevis.net/mobilesdk/guide/operation/registration#authenticator-selector).
 ///
 /// With the help of the ``ResponseEmitter`` it will emit a ``SelectAuthenticatorResponse``.
 class AuthenticatorSelectorImpl {
@@ -37,9 +38,6 @@ class AuthenticatorSelectorImpl {
 	/// The response emitter.
 	private let responseEmitter: ResponseEmitter
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
@@ -48,15 +46,12 @@ class AuthenticatorSelectorImpl {
 	///   - authenticatorValidator: The authenticator validator.
 	///   - operation: The current operation.
 	///   - responseEmitter: The response emitter.
-	///   - logger: The logger.
 	init(authenticatorValidator: AuthenticatorValidator,
 	     operation: Operation,
-	     responseEmitter: ResponseEmitter,
-	     logger: SDKLogger) {
+	     responseEmitter: ResponseEmitter) {
 		self.authenticatorValidator = authenticatorValidator
 		self.operation = operation
 		self.responseEmitter = responseEmitter
-		self.logger = logger
 	}
 }
 
@@ -64,7 +59,7 @@ class AuthenticatorSelectorImpl {
 
 extension AuthenticatorSelectorImpl: AuthenticatorSelector {
 	func selectAuthenticator(context: AuthenticatorSelectionContext, handler: AuthenticatorSelectionHandler) {
-		logger.log("Please select one of the received available authenticators!")
+		logger.sdk("Please select one of the received available authenticators!")
 
 		let validationResult = switch operation {
 		case .registration: authenticatorValidator.validateForRegistration(context: context)
@@ -84,7 +79,7 @@ extension AuthenticatorSelectorImpl: AuthenticatorSelector {
 				self.responseEmitter.subject.onNext(response)
 			},
 			onError: { error in
-				self.logger.log("Authenticator selection failed due to \(error.localizedDescription)", color: .red)
+				logger.sdk("Authenticator selection failed due to %@", .red, .debug, error.localizedDescription)
 				handler.cancel()
 			}
 		).dispose()

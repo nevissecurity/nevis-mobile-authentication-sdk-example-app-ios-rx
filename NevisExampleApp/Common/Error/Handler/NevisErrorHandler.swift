@@ -17,20 +17,14 @@ final class NevisErrorHandler {
 	/// The application coordinator.
 	private let coordinator: AppCoordinator
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
 	///
 	/// - Parameters:
 	///  - coordinator: The application coordinator.
-	///  - logger: The logger.
-	init(coordinator: AppCoordinator,
-	     logger: SDKLogger) {
+	init(coordinator: AppCoordinator) {
 		self.coordinator = coordinator
-		self.logger = logger
 	}
 }
 
@@ -40,12 +34,12 @@ extension NevisErrorHandler: ErrorHandler {
 
 	func handle(error: Error, chain: ErrorHandlerChain) {
 		guard let operationError = error as? OperationError else {
-			os_log("Error is not an Operation error.", log: OSLog.default, type: .debug)
+			logger.app("Error is not an Operation error.")
 			chain.handle(error: error)
 			return
 		}
 
-		logger.log("Operation error occurred: \(operationError.underlyingError.localizedDescription)", color: .red)
+		logger.sdk("Operation error occurred: %@", .red, .debug, operationError.underlyingError.localizedDescription)
 
 		coordinator.navigateToResult(with: .failure(operation: operationError.operation,
 		                                            description: operationError.underlyingError.localizedDescription))

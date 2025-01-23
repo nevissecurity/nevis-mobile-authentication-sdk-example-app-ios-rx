@@ -12,6 +12,6 @@ protocol GetDeviceInformationUseCase {
 
 	/// Retrieves the device information.
 	///
-	/// - Returns: The observable sequence that will emit a ``DeviceInformation`` object.
+	/// - Returns: The observable sequence that will emit a `DeviceInformation` object.
 	func execute() -> Observable<DeviceInformation>
 }

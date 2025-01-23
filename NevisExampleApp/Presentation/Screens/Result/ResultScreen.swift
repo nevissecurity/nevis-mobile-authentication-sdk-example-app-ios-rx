@@ -42,9 +42,8 @@ final class ResultScreen: BaseScreen, Screen {
 		super.init()
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("ResultScreen", log: OSLog.deinit, type: .debug)
+		logger.deinit("ResultScreen")
 	}
 }
 
@@ -66,7 +65,6 @@ extension ResultScreen {
 
 // MARK: - Setups
 
-/// :nodoc:
 private extension ResultScreen {
 
 	func setupUI() {
@@ -109,7 +107,6 @@ private extension ResultScreen {
 
 // MARK: - Binding
 
-/// :nodoc:
 private extension ResultScreen {
 
 	func bindViewModel() {

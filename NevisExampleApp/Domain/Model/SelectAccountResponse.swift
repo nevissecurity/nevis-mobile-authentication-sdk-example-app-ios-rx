@@ -25,7 +25,7 @@ final class SelectAccountResponse: OperationResponse {
 	/// Creates a new instance.
 	///
 	/// - Parameters:
-	///   - authenticators: The list of available accounts.
+	///   - accounts: The list of available accounts.
 	///   - handler: The object that is notified of the selection result.
 	///   - transactionConfirmationData: The transaction confirmation data, if any, to be presented to the user for verification.
 	init(accounts: [any Account],

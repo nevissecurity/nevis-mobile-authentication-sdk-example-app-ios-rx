@@ -14,13 +14,13 @@ protocol AuthenticatorValidator {
 	///
 	/// - Parameter context: The context holding the accounts to validate.
 	/// - Throws: ``BusinessError`` if supported authenticators are not found.
-	/// - Returns: The observable sequence that will emit an ``Authenticator`` array.
+	/// - Returns: The observable sequence that will emit an `Authenticator` array.
 	func validateForRegistration(context: AuthenticatorSelectionContext) -> Observable<[any Authenticator]>
 
 	/// Validates authenticators for authentication.
 	///
 	/// - Parameter context: The context holding the accounts to validate.
 	/// - Throws: ``BusinessError`` if supported authenticators are not found.
-	/// - Returns: The observable sequence that will emit an ``Authenticator`` array.
+	/// - Returns: The observable sequence that will emit an `Authenticator` array.
 	func validateForAuthentication(context: AuthenticatorSelectionContext) -> Observable<[any Authenticator]>
 }

@@ -15,20 +15,14 @@ class ChangeDeviceInformationUseCaseImpl {
 	/// The client provider.
 	private let clientProvider: ClientProvider
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
 	///
 	/// - Parameters:
 	///   - clientProvider: The client provider.
-	///   - logger: The logger.
-	init(clientProvider: ClientProvider,
-	     logger: SDKLogger) {
+	init(clientProvider: ClientProvider) {
 		self.clientProvider = clientProvider
-		self.logger = logger
 	}
 }
 
@@ -40,12 +34,12 @@ extension ChangeDeviceInformationUseCaseImpl: ChangeDeviceInformationUseCase {
 			let client = self?.clientProvider.get()
 			let operation = client?.operations.deviceInformationChange
 				.onSuccess {
-					self?.logger.log("Change device information succeeded.", color: .green)
+					logger.sdk("Change device information succeeded.", .green)
 					observer.onNext(CompletedResponse(operation: .deviceInformationChange))
 					observer.onCompleted()
 				}
 				.onError {
-					self?.logger.log("Change device information failed.", color: .red)
+					logger.sdk("Change device information failed.", .red)
 					observer.onError(OperationError(operation: .deviceInformationChange,
 					                                underlyingError: $0))
 				}

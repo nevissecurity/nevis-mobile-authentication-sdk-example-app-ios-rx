@@ -53,9 +53,8 @@ final class UsernamePasswordLoginViewModel {
 		self.appCoordinator = appCoordinator
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("UsernamePasswordLoginViewModel", log: OSLog.deinit, type: .debug)
+		logger.deinit("UsernamePasswordLoginViewModel")
 	}
 }
 

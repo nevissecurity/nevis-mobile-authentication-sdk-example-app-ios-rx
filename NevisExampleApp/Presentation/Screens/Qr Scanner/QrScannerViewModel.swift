@@ -37,9 +37,8 @@ final class QrScannerViewModel {
 		self.responseObserver = responseObserver
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("QrScannerViewModel", log: OSLog.deinit, type: .debug)
+		logger.deinit("QrScannerViewModel")
 	}
 }
 

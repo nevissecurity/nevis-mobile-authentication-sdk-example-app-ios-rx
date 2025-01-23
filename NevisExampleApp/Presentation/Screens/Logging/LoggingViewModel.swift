@@ -9,19 +9,10 @@ import RxCocoa
 /// View model of Logging view.
 final class LoggingViewModel {
 
-	// MARK: - Properties
-
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
-	///
-	/// - Parameter logger: The logger.
-	init(logger: SDKLogger) {
-		self.logger = logger
-	}
+	init() {}
 }
 
 // MARK: - ScreenViewModel

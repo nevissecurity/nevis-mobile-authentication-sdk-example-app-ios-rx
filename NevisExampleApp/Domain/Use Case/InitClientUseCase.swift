@@ -14,6 +14,6 @@ protocol InitClientUseCase {
 	///
 	/// - Parameters:
 	///   - configuration: The configuration of the client.
-	/// - Returns: The observable sequence that will emit a ``Void`` object.
+	/// - Returns: The observable sequence that will emit a `Void` object.
 	func execute(configuration: Configuration) -> Observable<()>
 }

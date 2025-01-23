@@ -45,9 +45,6 @@ class OutOfBandOperationUseCaseImpl {
 	/// The device passcode user verifier.
 	private let devicePasscodeUserVerifier: DevicePasscodeUserVerifier
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
@@ -64,7 +61,6 @@ class OutOfBandOperationUseCaseImpl {
 	///   - passwordUserVerifier: The Password user verifier.
 	///   - biometricUserVerifier: The biometric user verifier.
 	///   - devicePasscodeUserVerifier: The device passcode user verifier.
-	///   - logger: The logger.
 	init(clientProvider: ClientProvider,
 	     createDeviceInformationUseCase: CreateDeviceInformationUseCase,
 	     accountSelector: AccountSelector,
@@ -75,8 +71,7 @@ class OutOfBandOperationUseCaseImpl {
 	     passwordEnroller: PasswordEnroller,
 	     passwordUserVerifier: PasswordUserVerifier,
 	     biometricUserVerifier: BiometricUserVerifier,
-	     devicePasscodeUserVerifier: DevicePasscodeUserVerifier,
-	     logger: SDKLogger) {
+	     devicePasscodeUserVerifier: DevicePasscodeUserVerifier) {
 		self.clientProvider = clientProvider
 		self.createDeviceInformationUseCase = createDeviceInformationUseCase
 		self.accountSelector = accountSelector
@@ -88,7 +83,6 @@ class OutOfBandOperationUseCaseImpl {
 		self.passwordUserVerifier = passwordUserVerifier
 		self.biometricUserVerifier = biometricUserVerifier
 		self.devicePasscodeUserVerifier = devicePasscodeUserVerifier
-		self.logger = logger
 	}
 }
 
@@ -111,7 +105,7 @@ extension OutOfBandOperationUseCaseImpl: OutOfBandOperationUseCase {
 					self.authenticate(using: $0, observer: observer)
 				}
 				.onError {
-					self.logger.log("Out-of-Band operation failed.", color: .red)
+					logger.sdk("Out-of-Band operation failed.", .red)
 					observer.onError(OperationError(operation: .outOfBand,
 					                                underlyingError: $0))
 				}
@@ -140,12 +134,12 @@ private extension OutOfBandOperationUseCaseImpl {
 			.biometricUserVerifier(biometricUserVerifier)
 			.devicePasscodeUserVerifier(devicePasscodeUserVerifier)
 			.onSuccess {
-				self.logger.log("Out-of-Band registration succeeded.", color: .green)
+				logger.sdk("Out-of-Band registration succeeded.", .green)
 				observer.onNext(CompletedResponse(operation: .registration))
 				observer.onCompleted()
 			}
 			.onError {
-				self.logger.log("Out-of-Band registration failed.", color: .red)
+				logger.sdk("Out-of-Band registration failed.", .red)
 				observer.onError(OperationError(operation: .registration,
 				                                underlyingError: $0))
 			}
@@ -166,13 +160,13 @@ private extension OutOfBandOperationUseCaseImpl {
 			.biometricUserVerifier(biometricUserVerifier)
 			.devicePasscodeUserVerifier(devicePasscodeUserVerifier)
 			.onSuccess {
-				self.logger.log("Out-of-Band authentication succeeded.", color: .green)
+				logger.sdk("Out-of-Band authentication succeeded.", .green)
 				observer.onNext(CompletedResponse(operation: .authentication,
 				                                  authorizationProvider: $0))
 				observer.onCompleted()
 			}
 			.onError {
-				self.logger.log("Out-of-Band authentication failed.", color: .red)
+				logger.sdk("Out-of-Band authentication failed.", .red)
 				observer.onError(OperationError(operation: .authentication,
 				                                underlyingError: $0))
 			}

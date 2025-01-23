@@ -42,7 +42,6 @@ extension LaunchScreen {
 
 // MARK: - Setups
 
-/// :nodoc:
 private extension LaunchScreen {
 
 	func setupUI() {

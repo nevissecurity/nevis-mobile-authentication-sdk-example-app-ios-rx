@@ -15,20 +15,14 @@ class DeregistrationUseCaseImpl {
 	/// The client provider.
 	private let clientProvider: ClientProvider
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
 	///
 	/// - Parameters:
 	///   - clientProvider: The client provider.
-	///   - logger: The logger.
-	init(clientProvider: ClientProvider,
-	     logger: SDKLogger) {
+	init(clientProvider: ClientProvider) {
 		self.clientProvider = clientProvider
-		self.logger = logger
 	}
 }
 
@@ -38,12 +32,12 @@ extension DeregistrationUseCaseImpl: DeregistrationUseCase {
 	func execute(usernames: [String], authorizationProvider: AuthorizationProvider?) -> Observable<OperationResponse> {
 		let responses = usernames.map { deregister(username: $0, authorizationProvider: authorizationProvider) }
 
-		return Observable.create { [weak self] observer in
+		return Observable.create { observer in
 			Observable.concat(responses)
 				.observe(on: MainScheduler.instance)
 				.subscribe(on: SerialDispatchQueueScheduler(qos: .background))
 				.subscribe(onError: {
-				           	self?.logger.log("Deregistration failed.", color: .red)
+				           	logger.sdk("Deregistration failed.", .red)
 				           	observer.onError(OperationError(operation: .deregistration,
 				           	                                underlyingError: $0))
 				           },
@@ -65,12 +59,12 @@ private extension DeregistrationUseCaseImpl {
 	/// - Returns: The observable sequence that will emit an ``OperationResponse`` object.
 	func deregister(username: String, authorizationProvider: AuthorizationProvider?) -> Observable<OperationResponse> {
 		Observable.create { [weak self] observer in
-			self?.logger.log("Deregistering authenticator for user \(username)")
+			logger.sdk("Deregistering authenticator for user %@", .black, .debug, username)
 			let client = self?.clientProvider.get()
 			let operation = client?.operations.deregistration
 				.username(username)
 				.onSuccess {
-					self?.logger.log("Deregistration succeeded for authenticator for user \(username)", color: .green)
+					logger.sdk("Deregistration succeeded for authenticator for user %@", .green, .debug, username)
 					observer.onNext(CompletedResponse(operation: .deregistration))
 					observer.onCompleted()
 				}

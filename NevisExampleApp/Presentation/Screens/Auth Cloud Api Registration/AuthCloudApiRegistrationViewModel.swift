@@ -36,9 +36,8 @@ final class AuthCloudApiRegistrationViewModel {
 		self.appCoordinator = appCoordinator
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("AuthCloudApiRegistrationViewModel", log: OSLog.deinit, type: .debug)
+		logger.deinit("AuthCloudApiRegistrationViewModel")
 	}
 }
 

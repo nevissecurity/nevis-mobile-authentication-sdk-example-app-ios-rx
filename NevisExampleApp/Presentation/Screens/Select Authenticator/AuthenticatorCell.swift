@@ -40,7 +40,6 @@ class AuthenticatorCell: UITableViewCell, Reusable {
 
 // MARK: - Private setups
 
-/// :nodoc:
 private extension AuthenticatorCell {
 
 	func setupUI() {

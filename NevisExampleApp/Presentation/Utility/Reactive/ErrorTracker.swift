@@ -7,7 +7,7 @@
 import RxCocoa
 import RxSwift
 
-/// :nodoc:
+/// Enables monitoring errors of sequence computation.
 final class ErrorTracker {
 
 	public typealias SharingStrategy = DriverSharingStrategy
@@ -18,6 +18,7 @@ final class ErrorTracker {
 
 	// MARK: - Initialization
 
+	/// Creates a new instance.
 	init() {}
 
 	deinit {
@@ -40,7 +41,6 @@ extension ErrorTracker: SharedSequenceConvertibleType {
 
 // MARK: - ObservableConvertibleType
 
-/// :nodoc:
 extension ObservableConvertibleType {
 
 	func trackError(_ errorTracker: ErrorTracker) -> Observable<Element> {
@@ -50,7 +50,6 @@ extension ObservableConvertibleType {
 
 // MARK: - Private Interface
 
-/// :nodoc:
 private extension ErrorTracker {
 
 	func onError(_ error: Error) {

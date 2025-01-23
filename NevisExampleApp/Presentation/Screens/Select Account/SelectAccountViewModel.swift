@@ -83,9 +83,8 @@ final class SelectAccountViewModel {
 		setParameter(parameter as? SelectAccountParameter)
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("SelectAccountViewModel", log: OSLog.deinit, type: .debug)
+		logger.deinit("SelectAccountViewModel")
 		// If it is not nil at this moment, it means that a concurrent operation will be started
 		handler?.cancel()
 	}
