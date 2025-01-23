@@ -49,9 +49,8 @@ final class AuthCloudApiRegistrationScreen: BaseScreen, Screen {
 		super.init()
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("AuthCloudApiRegistrationScreen", log: OSLog.deinit, type: .debug)
+		logger.deinit("AuthCloudApiRegistrationScreen")
 	}
 }
 
@@ -73,7 +72,6 @@ extension AuthCloudApiRegistrationScreen {
 
 // MARK: - Setups
 
-/// :nodoc:
 private extension AuthCloudApiRegistrationScreen {
 
 	func setupUI() {
@@ -128,7 +126,6 @@ private extension AuthCloudApiRegistrationScreen {
 
 // MARK: - Binding
 
-/// :nodoc:
 private extension AuthCloudApiRegistrationScreen {
 
 	func bindViewModel() {

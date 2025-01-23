@@ -7,7 +7,7 @@
 import Foundation
 
 /// A convenient timer that is run until the defined `TimeInterval`, then invalidated.
-/// Calls the given `intervalCallback` periodically in each`refreshInveral`, until the timer is invalidated.
+/// Calls the given `intervalCallback` periodically in each `refreshInveral`, until the timer is invalidated.
 final class InteractionCountDownTimer {
 
 	// MARK: - Properties

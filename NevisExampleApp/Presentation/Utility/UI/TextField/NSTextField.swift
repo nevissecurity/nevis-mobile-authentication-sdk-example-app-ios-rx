@@ -6,7 +6,7 @@
 
 import UIKit
 
-/// Custom ``UITextField`` implementation.
+/// Custom `UITextField` implementation.
 class NSTextField: UITextField {
 
 	// MARK: - Initialization

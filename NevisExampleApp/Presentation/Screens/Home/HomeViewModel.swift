@@ -92,9 +92,8 @@ final class HomeViewModel {
 		self.appCoordinator = appCoordinator
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("HomeViewModel", log: OSLog.deinit, type: .debug)
+		logger.deinit("HomeViewModel")
 	}
 }
 

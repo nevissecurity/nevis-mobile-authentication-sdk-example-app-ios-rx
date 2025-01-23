@@ -6,7 +6,8 @@
 
 import NevisMobileAuthentication
 
-/// Default implementation of ``PinEnroller`` protocol.
+/// Default implementation of `PinEnroller` protocol.
+/// For more information about PIN enrollment please read the [official documentation](https://docs.nevis.net/mobilesdk/guide/operation/registration#pin-enroller).
 ///
 /// With the help of the ``ResponseEmitter`` it will emit an ``EnrollPinResponse``.
 class PinEnrollerImpl {
@@ -16,20 +17,14 @@ class PinEnrollerImpl {
 	/// The response emitter.
 	private let responseEmitter: ResponseEmitter
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
 	///
 	/// - Parameters:
 	///   - responseEmitter: The response emitter.
-	///   - logger: The logger.
-	init(responseEmitter: ResponseEmitter,
-	     logger: SDKLogger) {
+	init(responseEmitter: ResponseEmitter) {
 		self.responseEmitter = responseEmitter
-		self.logger = logger
 	}
 }
 
@@ -38,10 +33,10 @@ class PinEnrollerImpl {
 extension PinEnrollerImpl: PinEnroller {
 	func enrollPin(context: PinEnrollmentContext, handler: PinEnrollmentHandler) {
 		if context.lastRecoverableError != nil {
-			logger.log("PIN enrollment failed. Please try again.")
+			logger.sdk("PIN enrollment failed. Please try again.", .red)
 		}
 		else {
-			logger.log("Please start PIN enrollment.")
+			logger.sdk("Please start PIN enrollment.")
 		}
 
 		let response = EnrollPinResponse(lastRecoverableError: context.lastRecoverableError,

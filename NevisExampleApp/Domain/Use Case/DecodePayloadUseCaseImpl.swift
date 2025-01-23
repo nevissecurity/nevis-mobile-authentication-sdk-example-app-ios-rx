@@ -15,18 +15,13 @@ class DecodePayloadUseCaseImpl {
 	/// The client provider.
 	private let clientProvider: ClientProvider
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
 	///
 	/// - Parameter clientProvider: The client provider.
-	init(clientProvider: ClientProvider,
-	     logger: SDKLogger) {
+	init(clientProvider: ClientProvider) {
 		self.clientProvider = clientProvider
-		self.logger = logger
 	}
 }
 
@@ -38,12 +33,12 @@ extension DecodePayloadUseCaseImpl: DecodePayloadUseCase {
 			let client = self?.clientProvider.get()
 			let operation = client?.operations.outOfBandPayloadDecode
 				.onSuccess {
-					self?.logger.log("Decode payload succeeded.", color: .green)
+					logger.sdk("Decode payload succeeded.", .green)
 					observer.onNext($0)
 					observer.onCompleted()
 				}
 				.onError {
-					self?.logger.log("Decode payload failed.", color: .red)
+					logger.sdk("Decode payload failed.", .red)
 					observer.onError(OperationError(operation: .payloadDecode,
 					                                underlyingError: $0))
 				}

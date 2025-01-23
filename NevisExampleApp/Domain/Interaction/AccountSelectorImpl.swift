@@ -6,7 +6,8 @@
 
 import NevisMobileAuthentication
 
-/// Default implementation of ``AccountSelector`` protocol.
+/// Default implementation of `AccountSelector` protocol.
+/// For more information about account selection please read the [official documentation](https://docs.nevis.net/mobilesdk/guide/operation/authentication#account-selector).
 ///
 /// First validates the accounts based on policy compliance. Then based on the number of accounts:
 ///  - if no account is found, the SDK will raise an error.
@@ -23,9 +24,6 @@ class AccountSelectorImpl {
 	/// The response emitter.
 	private let responseEmitter: ResponseEmitter
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
@@ -33,14 +31,10 @@ class AccountSelectorImpl {
 	/// - Parameters:
 	///   - accountValidator: The account validator.
 	///   - responseEmitter: The response emitter.
-	///   - logger: The logger.
 	init(accountValidator: AccountValidator,
-	     responseEmitter: ResponseEmitter,
-	     errorHandlerChain _: ErrorHandlerChain,
-	     logger: SDKLogger) {
+	     responseEmitter: ResponseEmitter) {
 		self.accountValidator = accountValidator
 		self.responseEmitter = responseEmitter
-		self.logger = logger
 	}
 }
 
@@ -48,7 +42,7 @@ class AccountSelectorImpl {
 
 extension AccountSelectorImpl: AccountSelector {
 	func selectAccount(context: AccountSelectionContext, handler: AccountSelectionHandler) {
-		logger.log("Please select one of the received available accounts!")
+		logger.sdk("Please select one of the received available accounts!")
 
 		do {
 			let validAccounts = try accountValidator.validate(context: context)
@@ -85,7 +79,7 @@ extension AccountSelectorImpl: AccountSelector {
 			}
 		}
 		catch {
-			logger.log("Authenticator selection failed due to \(error.localizedDescription)", color: .red)
+			logger.sdk("Authenticator selection failed due to %@", .red, .debug, error.localizedDescription)
 			handler.cancel()
 		}
 	}

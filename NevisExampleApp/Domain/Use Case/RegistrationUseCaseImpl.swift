@@ -33,9 +33,6 @@ class RegistrationUseCaseImpl {
 	/// The device passcode user verifier.
 	private let devicePasscodeUserVerifier: DevicePasscodeUserVerifier
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
@@ -48,15 +45,13 @@ class RegistrationUseCaseImpl {
 	///   - passwordEnroller: The Password enroller.
 	///   - biometricUserVerifier: The biometric user verifier.
 	///   - devicePasscodeUserVerifier: The device passcode user verifier.
-	///   - logger: The logger.
 	init(clientProvider: ClientProvider,
 	     createDeviceInformationUseCase: CreateDeviceInformationUseCase,
 	     authenticatorSelector: AuthenticatorSelector,
 	     pinEnroller: PinEnroller,
 	     passwordEnroller: PasswordEnroller,
 	     biometricUserVerifier: BiometricUserVerifier,
-	     devicePasscodeUserVerifier: DevicePasscodeUserVerifier,
-	     logger: SDKLogger) {
+	     devicePasscodeUserVerifier: DevicePasscodeUserVerifier) {
 		self.clientProvider = clientProvider
 		self.createDeviceInformationUseCase = createDeviceInformationUseCase
 		self.authenticatorSelector = authenticatorSelector
@@ -64,7 +59,6 @@ class RegistrationUseCaseImpl {
 		self.passwordEnroller = passwordEnroller
 		self.biometricUserVerifier = biometricUserVerifier
 		self.devicePasscodeUserVerifier = devicePasscodeUserVerifier
-		self.logger = logger
 	}
 }
 
@@ -90,12 +84,12 @@ extension RegistrationUseCaseImpl: RegistrationUseCase {
 				.biometricUserVerifier(biometricUserVerifier)
 				.devicePasscodeUserVerifier(devicePasscodeUserVerifier)
 				.onSuccess {
-					self.logger.log("In-Band registration succeeded.", color: .green)
+					logger.sdk("In-Band registration succeeded.", .green)
 					observer.onNext(CompletedResponse(operation: .registration))
 					observer.onCompleted()
 				}
 				.onError {
-					self.logger.log("In-Band registration failed.", color: .red)
+					logger.sdk("In-Band registration failed.", .red)
 					observer.onError(OperationError(operation: .registration,
 					                                underlyingError: $0))
 				}

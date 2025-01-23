@@ -18,7 +18,7 @@ struct SelectAccountItemViewModel {
 
 	/// Creates a new instance.
 	///
-	/// - Parameter title: The readable title.
+	/// - Parameter account: The account.
 	init(account: any Account) {
 		self.title = account.username
 	}

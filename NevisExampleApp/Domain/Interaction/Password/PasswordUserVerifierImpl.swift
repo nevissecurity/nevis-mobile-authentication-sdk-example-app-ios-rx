@@ -6,7 +6,8 @@
 
 import NevisMobileAuthentication
 
-/// Default implementation of ``PasswordUserVerifier`` protocol.
+/// Default implementation of `PasswordUserVerifier` protocol.
+/// For more information about password user verification please read the [official documentation](https://docs.nevis.net/mobilesdk/guide/operation/authentication#password-user-verifier).
 ///
 /// With the help of the ``ResponseEmitter`` it will emit a ``VerifyPasswordResponse``.
 class PasswordUserVerifierImpl {
@@ -16,20 +17,14 @@ class PasswordUserVerifierImpl {
 	/// The response emitter.
 	private let responseEmitter: ResponseEmitter
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
 	///
 	/// - Parameters:
 	///   - responseEmitter: The response emitter.
-	///   - logger: The logger.
-	init(responseEmitter: ResponseEmitter,
-	     logger: SDKLogger) {
+	init(responseEmitter: ResponseEmitter) {
 		self.responseEmitter = responseEmitter
-		self.logger = logger
 	}
 }
 
@@ -38,10 +33,10 @@ class PasswordUserVerifierImpl {
 extension PasswordUserVerifierImpl: PasswordUserVerifier {
 	func verifyPassword(context: PasswordUserVerificationContext, handler: PasswordUserVerificationHandler) {
 		if context.lastRecoverableError != nil {
-			logger.log("Password user verification failed. Please try again.")
+			logger.sdk("Password user verification failed. Please try again.", .red)
 		}
 		else {
-			logger.log("Please start Password user verification.")
+			logger.sdk("Please start Password user verification.")
 		}
 
 		let response = VerifyPasswordResponse(protectionStatus: context.authenticatorProtectionStatus,

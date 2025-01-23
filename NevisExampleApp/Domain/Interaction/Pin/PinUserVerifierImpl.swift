@@ -6,7 +6,8 @@
 
 import NevisMobileAuthentication
 
-/// Default implementation of ``PinUserVerifier`` protocol.
+/// Default implementation of `PinUserVerifier` protocol.
+/// For more information about PIN user verification please read the [official documentation](https://docs.nevis.net/mobilesdk/guide/operation/authentication#pin-user-verifier).
 ///
 /// With the help of the ``ResponseEmitter`` it will emit a ``VerifyPinResponse``.
 class PinUserVerifierImpl {
@@ -16,20 +17,14 @@ class PinUserVerifierImpl {
 	/// The response emitter.
 	private let responseEmitter: ResponseEmitter
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
 	///
 	/// - Parameters:
 	///   - responseEmitter: The response emitter.
-	///   - logger: The logger.
-	init(responseEmitter: ResponseEmitter,
-	     logger: SDKLogger) {
+	init(responseEmitter: ResponseEmitter) {
 		self.responseEmitter = responseEmitter
-		self.logger = logger
 	}
 }
 
@@ -38,10 +33,10 @@ class PinUserVerifierImpl {
 extension PinUserVerifierImpl: PinUserVerifier {
 	func verifyPin(context: PinUserVerificationContext, handler: PinUserVerificationHandler) {
 		if context.lastRecoverableError != nil {
-			logger.log("PIN user verification failed. Please try again.")
+			logger.sdk("PIN user verification failed. Please try again.", .red)
 		}
 		else {
-			logger.log("Please start PIN user verification.")
+			logger.sdk("Please start PIN user verification.")
 		}
 
 		let response = VerifyPinResponse(protectionStatus: context.authenticatorProtectionStatus,

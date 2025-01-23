@@ -11,9 +11,6 @@ final class AppCoordinatorImpl {
 
 	// MARK: - Properties
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	/// The window of the application.
 	private let window: UIWindow
 
@@ -23,10 +20,7 @@ final class AppCoordinatorImpl {
 	// MARK: - Initialization
 
 	/// Creates a new instance.
-	///
-	/// - Parameter logger: The logger.
-	init(logger: SDKLogger) {
-		self.logger = logger
+	init() {
 		self.window = UIWindow()
 
 		guard let rootViewController = DependencyProvider.shared.container.resolve(LaunchScreen.self) else {
@@ -49,7 +43,7 @@ extension AppCoordinatorImpl: AppCoordinator {
 	}
 
 	func start() {
-		logger.log("Starting application coordinator.", color: .purple)
+		logger.app("Starting application coordinator.")
 		navigateToHome()
 	}
 
@@ -57,7 +51,7 @@ extension AppCoordinatorImpl: AppCoordinator {
 		rootNavigationController?.dismiss(animated: true, completion: nil) // e.g. error
 
 		if let screenInStack = rootNavigationController?.screenInStackFor(screenType: HomeScreen.self) {
-			logger.log("Navigating to Home.", color: .purple)
+			logger.app("Navigating to Home.")
 			rootNavigationController?.popToRootViewController(animated: false)
 			rootNavigationController?.setViewControllers([screenInStack], animated: true)
 			return
@@ -67,7 +61,7 @@ extension AppCoordinatorImpl: AppCoordinator {
 			return
 		}
 
-		logger.log("Navigating to Home.", color: .purple)
+		logger.app("Navigating to Home.")
 		rootNavigationController?.popToRootViewController(animated: false)
 		rootNavigationController?.setViewControllers([screen], animated: true)
 	}
@@ -85,7 +79,7 @@ extension AppCoordinatorImpl: AppCoordinator {
 				return
 			}
 
-			logger.log("Navigating to Qr Scanner screen.", color: .purple)
+			logger.app("Navigating to Qr Scanner screen.")
 			rootNavigationController?.pushViewController(screen, animated: true)
 		#endif
 	}
@@ -96,7 +90,7 @@ extension AppCoordinatorImpl: AppCoordinator {
 			return
 		}
 
-		logger.log("Navigating to Change Device Information screen.", color: .purple)
+		logger.app("Navigating to Change Device Information screen.")
 		rootNavigationController?.pushViewController(screen, animated: true)
 	}
 
@@ -105,7 +99,7 @@ extension AppCoordinatorImpl: AppCoordinator {
 			return
 		}
 
-		logger.log("Navigating to Auth Cloud Api Registration screen.", color: .purple)
+		logger.app("Navigating to Auth Cloud Api Registration screen.")
 		rootNavigationController?.pushViewController(screen, animated: true)
 	}
 
@@ -114,7 +108,7 @@ extension AppCoordinatorImpl: AppCoordinator {
 			return
 		}
 
-		logger.log("Navigating to Username Password Login screen.", color: .purple)
+		logger.app("Navigating to Username Password Login screen.")
 		rootNavigationController?.pushViewController(screen, animated: true)
 	}
 
@@ -124,7 +118,7 @@ extension AppCoordinatorImpl: AppCoordinator {
 			return
 		}
 
-		logger.log("Navigating to Account Selection screen.", color: .purple)
+		logger.app("Navigating to Account Selection screen.")
 		rootNavigationController?.pushViewController(screen, animated: true)
 	}
 
@@ -134,7 +128,7 @@ extension AppCoordinatorImpl: AppCoordinator {
 			return
 		}
 
-		logger.log("Navigating to Authenticator Selection screen.", color: .purple)
+		logger.app("Navigating to Authenticator Selection screen.")
 		rootNavigationController?.pushViewController(screen, animated: true)
 	}
 
@@ -151,12 +145,12 @@ extension AppCoordinatorImpl: AppCoordinator {
 			// Just refresh the screen with the new view model.
 			credentialScreen.viewModel = DependencyProvider.shared.container.resolve(CredentialViewModel.self,
 			                                                                         argument: parameter as NavigationParameterizable)
-			logger.log("Refreshing Credential screen.", color: .purple)
+			logger.app("Refreshing Credential screen.")
 			credentialScreen.refresh()
 			return
 		}
 
-		logger.log("Navigating to Pin screen.", color: .purple)
+		logger.app("Navigating to Pin screen.")
 		rootNavigationController?.pushViewController(screen, animated: true)
 	}
 
@@ -166,7 +160,7 @@ extension AppCoordinatorImpl: AppCoordinator {
 			return
 		}
 
-		logger.log("Navigating to Transaction Confirmation screen.", color: .purple)
+		logger.app("Navigating to Transaction Confirmation screen.")
 		rootNavigationController?.pushViewController(screen, animated: true)
 	}
 
@@ -176,7 +170,7 @@ extension AppCoordinatorImpl: AppCoordinator {
 			return
 		}
 
-		logger.log("Navigating to Confirmation screen.", color: .purple)
+		logger.app("Navigating to Confirmation screen.")
 		rootNavigationController?.pushViewController(screen, animated: true)
 	}
 
@@ -186,7 +180,7 @@ extension AppCoordinatorImpl: AppCoordinator {
 			return
 		}
 
-		logger.log("Navigating to Result screen.", color: .purple)
+		logger.app("Navigating to Result screen.")
 		rootNavigationController?.pushViewController(screen, animated: true)
 	}
 

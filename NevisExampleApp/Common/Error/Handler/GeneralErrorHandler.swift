@@ -18,20 +18,14 @@ final class GeneralErrorHandler {
 	/// The application coordinator.
 	private let coordinator: AppCoordinator
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
 	///
 	/// - Parameters:
 	///   - coordinator: The application coordinator.
-	///   - logger: The logger.
-	init(coordinator: AppCoordinator,
-	     logger: SDKLogger) {
+	init(coordinator: AppCoordinator) {
 		self.coordinator = coordinator
-		self.logger = logger
 	}
 }
 
@@ -46,7 +40,7 @@ extension GeneralErrorHandler: ErrorHandler {
 			return
 		}
 
-		logger.log("General error occurred: \(error.localizedDescription)", color: .red)
+		logger.sdk("General error occurred: %@", .red, .debug, error.localizedDescription)
 
 		coordinator.navigateToResult(with: .failure(operation: nil, description: error.localizedDescription))
 		chain.handle(error: error)

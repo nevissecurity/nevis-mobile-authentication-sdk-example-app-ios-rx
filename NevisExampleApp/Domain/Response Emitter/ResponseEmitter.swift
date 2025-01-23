@@ -14,8 +14,7 @@ import RxSwift
 /// - See: ``PinChangerImpl``
 /// - See: ``PinEnrollerImpl``
 /// - See: ``AccountSelectorImpl``
-/// - See: ``AuthenticationAuthenticatorSelectorImpl``
-/// - See: ``RegistrationAuthenticatorSelectorImpl``
+/// - See: ``AuthenticatorSelectorImpl``
 /// - See: ``PinUserVerifierImpl``
 protocol ResponseEmitter {
 

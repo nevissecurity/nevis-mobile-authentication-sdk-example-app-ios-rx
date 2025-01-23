@@ -67,9 +67,8 @@ final class HomeScreen: BaseScreen, Screen {
 		super.init()
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("HomeScreen", log: OSLog.deinit, type: .debug)
+		logger.deinit("HomeScreen")
 	}
 }
 
@@ -99,7 +98,6 @@ extension HomeScreen {
 
 // MARK: - Setups
 
-/// :nodoc:
 private extension HomeScreen {
 
 	func setupUI() {
@@ -201,7 +199,6 @@ private extension HomeScreen {
 
 // MARK: - Binding
 
-/// :nodoc:
 private extension HomeScreen {
 
 	func bindViewModel() {

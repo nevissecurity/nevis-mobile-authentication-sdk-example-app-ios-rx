@@ -46,9 +46,8 @@ final class SelectAuthenticatorViewModel {
 		setParameter(parameter as? SelectAuthenticatorParameter)
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("SelectAuthenticatorViewModel", log: OSLog.deinit, type: .debug)
+		logger.deinit("SelectAuthenticatorViewModel")
 		// If it is not nil at this moment, it means that a concurrent operation will be started
 		handler?.cancel()
 	}

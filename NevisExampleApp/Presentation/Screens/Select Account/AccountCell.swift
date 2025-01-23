@@ -38,7 +38,6 @@ class AccountCell: UITableViewCell, Reusable {
 
 // MARK: - Private setups
 
-/// :nodoc:
 private extension AccountCell {
 
 	func setupUI() {

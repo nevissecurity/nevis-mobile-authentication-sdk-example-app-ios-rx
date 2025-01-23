@@ -6,7 +6,7 @@
 
 import NevisMobileAuthentication
 
-/// Protocol declaration for handling an instance of ``MobileAuthenticationClient``.
+/// Protocol declaration for handling an instance of `MobileAuthenticationClient`.
 protocol ClientProvider {
 
 	/// Saves the given client instance.
@@ -16,7 +16,7 @@ protocol ClientProvider {
 
 	/// Returns a client or `nil`.
 	///
-	/// - Returns: An optional ``MobileAuthenticationClient`` instance.
+	/// - Returns: An optional `MobileAuthenticationClient` instance.
 	func get() -> MobileAuthenticationClient?
 
 	/// Resets the state of the provider.

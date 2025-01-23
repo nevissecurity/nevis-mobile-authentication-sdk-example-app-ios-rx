@@ -41,9 +41,8 @@ final class SelectAccountScreen: BaseScreen, Screen {
 		super.init()
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("SelectAccountScreen", log: OSLog.deinit, type: .debug)
+		logger.deinit("SelectAccountScreen")
 	}
 }
 
@@ -65,7 +64,6 @@ extension SelectAccountScreen {
 
 // MARK: - Setups
 
-/// :nodoc:
 private extension SelectAccountScreen {
 
 	func setupUI() {
@@ -111,7 +109,6 @@ private extension SelectAccountScreen {
 
 // MARK: - Binding
 
-/// :nodoc:
 private extension SelectAccountScreen {
 
 	func bindViewModel() {

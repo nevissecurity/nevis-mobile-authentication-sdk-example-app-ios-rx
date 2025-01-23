@@ -53,9 +53,8 @@ final class ConfirmationViewModel {
 		setParameter(parameter as? ConfirmationParameter)
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("ConfirmationViewModel", log: OSLog.deinit, type: .debug)
+		logger.deinit("ConfirmationViewModel")
 	}
 }
 

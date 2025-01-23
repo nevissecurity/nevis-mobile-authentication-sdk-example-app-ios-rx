@@ -7,7 +7,6 @@
 import RxCocoa
 import RxSwift
 
-/// :nodoc:
 private struct ActivityToken<E>: ObservableConvertibleType, Disposable {
 
 	// MARK: - Properties
@@ -33,7 +32,10 @@ private struct ActivityToken<E>: ObservableConvertibleType, Disposable {
 	}
 }
 
-/// :nodoc:
+/// Enables monitoring of sequence computation.
+///
+/// If there is at least one sequence computation in progress, `true` will be sent.
+/// When all activities complete `false` will be sent.
 final class ActivityIndicator {
 
 	public typealias Element = Bool
@@ -47,6 +49,7 @@ final class ActivityIndicator {
 
 	// MARK: - Initialization
 
+	/// Creates a new instance.
 	init() {
 		self.loading = relay.asDriver()
 			.map { $0 > 0 }
@@ -65,7 +68,6 @@ extension ActivityIndicator: SharedSequenceConvertibleType {
 
 // MARK: - ObservableConvertibleType
 
-/// :nodoc:
 extension ObservableConvertibleType {
 
 	func trackActivity(_ activityIndicator: ActivityIndicator) -> Observable<Element> {
@@ -75,7 +77,6 @@ extension ObservableConvertibleType {
 
 // MARK: - Private Interface
 
-/// :nodoc:
 private extension ActivityIndicator {
 
 	func trackActivityOfObservable<Source: ObservableConvertibleType>(_ source: Source) -> Observable<Source.Element> {

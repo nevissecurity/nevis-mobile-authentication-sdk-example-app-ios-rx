@@ -6,7 +6,7 @@
 
 import UIKit
 
-/// Custom ``UIButton`` implementation with black title and black rouded border.
+/// Custom `UIButton` implementation with black title and black rouded border.
 class OutlinedButton: UIButton {
 
 	// MARK: - Properties

@@ -41,9 +41,8 @@ final class SelectAuthenticatorScreen: BaseScreen, Screen {
 		super.init()
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("SelectAuthenticatorScreen", log: OSLog.deinit, type: .debug)
+		logger.deinit("SelectAuthenticatorScreen")
 	}
 }
 
@@ -65,7 +64,6 @@ extension SelectAuthenticatorScreen {
 
 // MARK: - Setups
 
-/// :nodoc:
 private extension SelectAuthenticatorScreen {
 
 	func setupUI() {
@@ -113,7 +111,6 @@ private extension SelectAuthenticatorScreen {
 
 // MARK: - Binding
 
-/// :nodoc:
 private extension SelectAuthenticatorScreen {
 
 	func bindViewModel() {

@@ -51,9 +51,8 @@ final class ChangeDeviceInformationViewModel {
 		setParameter(parameter as? ChangeDeviceInformationParameter)
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("ChangeDeviceInformationViewModel", log: OSLog.deinit, type: .debug)
+		logger.deinit("ChangeDeviceInformationViewModel")
 	}
 }
 

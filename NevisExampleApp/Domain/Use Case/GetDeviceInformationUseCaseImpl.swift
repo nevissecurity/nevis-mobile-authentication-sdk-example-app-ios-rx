@@ -15,18 +15,13 @@ class GetDeviceInformationUseCaseImpl {
 	/// The client provider.
 	private let clientProvider: ClientProvider
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
 	///
 	/// - Parameter clientProvider: The client provider.
-	init(clientProvider: ClientProvider,
-	     logger: SDKLogger) {
+	init(clientProvider: ClientProvider) {
 		self.clientProvider = clientProvider
-		self.logger = logger
 	}
 }
 
@@ -39,12 +34,12 @@ extension GetDeviceInformationUseCaseImpl: GetDeviceInformationUseCase {
 			let deviceInformation = client?.localData.deviceInformation
 			let disposable = Disposables.create()
 			guard let deviceInformation else {
-				logger.log("Get device information failed.", color: .red)
+				logger.sdk("Get device information failed.", .red)
 				observer.onError(BusinessError.deviceInformationNotFound)
 				return disposable
 			}
 
-			logger.log("Get device information succeeded.", color: .green)
+			logger.sdk("Get device information succeeded.", .green)
 			observer.onNext(deviceInformation)
 			observer.onCompleted()
 			return disposable

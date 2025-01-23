@@ -199,8 +199,7 @@ private extension AppAssembly {
 			                                     passwordEnroller: res~>,
 			                                     passwordUserVerifier: res~>,
 			                                     biometricUserVerifier: res~>,
-			                                     devicePasscodeUserVerifier: res~>,
-			                                     logger: res~>)
+			                                     devicePasscodeUserVerifier: res~>)
 		}
 
 		container.register(RegistrationUseCase.self) { res in
@@ -212,8 +211,7 @@ private extension AppAssembly {
 			                               pinEnroller: res~>,
 			                               passwordEnroller: res~>,
 			                               biometricUserVerifier: res~>,
-			                               devicePasscodeUserVerifier: res~>,
-			                               logger: res~>)
+			                               devicePasscodeUserVerifier: res~>)
 		}
 
 		container.register(InBandAuthenticationUseCase.self) { res in
@@ -224,8 +222,7 @@ private extension AppAssembly {
 			                                       pinUserVerifier: res~>,
 			                                       passwordUserVerifier: res~>,
 			                                       biometricUserVerifier: res~>,
-			                                       devicePasscodeUserVerifier: res~>,
-			                                       logger: res~>)
+			                                       devicePasscodeUserVerifier: res~>)
 		}
 
 		container.autoregister(DeregistrationUseCase.self,
@@ -246,8 +243,7 @@ private extension AppAssembly {
 			                                           pinEnroller: res~>,
 			                                           passwordEnroller: res~>,
 			                                           biometricUserVerifier: res~>,
-			                                           devicePasscodeUserVerifier: res~>,
-			                                           logger: res~>)
+			                                           devicePasscodeUserVerifier: res~>)
 		}
 
 		container.autoregister(GetDeviceInformationUseCase.self,
@@ -313,16 +309,14 @@ private extension AppAssembly {
 		                   name: AuthenticationAuthenticatorSelectorName) { res in
 			AuthenticatorSelectorImpl(authenticatorValidator: res~>,
 			                          operation: .authentication,
-			                          responseEmitter: res~>,
-			                          logger: res~>)
+			                          responseEmitter: res~>)
 		}
 
 		container.register(AuthenticatorSelector.self,
 		                   name: RegistrationAuthenticatorSelectorName) { res in
 			AuthenticatorSelectorImpl(authenticatorValidator: res~>,
 			                          operation: .registration,
-			                          responseEmitter: res~>,
-			                          logger: res~>)
+			                          responseEmitter: res~>)
 		}
 
 		container.autoregister(PinEnroller.self,
@@ -365,10 +359,6 @@ private extension AppAssembly {
 
 		container.autoregister(AuthenticatorValidator.self,
 		                       initializer: AuthenticatorValidatorImpl.init)
-
-		container.autoregister(SDKLogger.self,
-		                       initializer: SDKLoggerImpl.init)
-			.inObjectScope(.container)
 
 		container.autoregister(DeepLinkHandler.self,
 		                       initializer: DeepLinkHandlerImpl.init)

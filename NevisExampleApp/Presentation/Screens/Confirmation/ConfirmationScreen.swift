@@ -41,9 +41,8 @@ final class ConfirmationScreen: BaseScreen, Screen {
 		super.init()
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("ConfirmationScreen", log: OSLog.deinit, type: .debug)
+		logger.deinit("ConfirmationScreen")
 	}
 }
 
@@ -65,7 +64,6 @@ extension ConfirmationScreen {
 
 // MARK: - Setups
 
-/// :nodoc:
 private extension ConfirmationScreen {
 
 	func setupUI() {
@@ -109,7 +107,6 @@ private extension ConfirmationScreen {
 
 // MARK: - Binding
 
-/// :nodoc:
 private extension ConfirmationScreen {
 
 	func bindViewModel() {

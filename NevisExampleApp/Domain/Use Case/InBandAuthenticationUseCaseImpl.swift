@@ -30,9 +30,6 @@ class InBandAuthenticationUseCaseImpl {
 	/// The device passcode user verifier.
 	private let devicePasscodeUserVerifier: DevicePasscodeUserVerifier
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	// MARK: - Initialization
 
 	/// Creates a new instance.
@@ -44,21 +41,18 @@ class InBandAuthenticationUseCaseImpl {
 	///   - passwordUserVerifier: The Password user verifier.
 	///   - biometricUserVerifier: The biometric user verifier.
 	///   - devicePasscodeUserVerifier: The device passcode user verifier.
-	///   - logger: The logger.
 	init(clientProvider: ClientProvider,
 	     authenticatorSelector: AuthenticatorSelector,
 	     pinUserVerifier: PinUserVerifier,
 	     passwordUserVerifier: PasswordUserVerifier,
 	     biometricUserVerifier: BiometricUserVerifier,
-	     devicePasscodeUserVerifier: DevicePasscodeUserVerifier,
-	     logger: SDKLogger) {
+	     devicePasscodeUserVerifier: DevicePasscodeUserVerifier) {
 		self.clientProvider = clientProvider
 		self.authenticatorSelector = authenticatorSelector
 		self.pinUserVerifier = pinUserVerifier
 		self.passwordUserVerifier = passwordUserVerifier
 		self.biometricUserVerifier = biometricUserVerifier
 		self.devicePasscodeUserVerifier = devicePasscodeUserVerifier
-		self.logger = logger
 	}
 }
 
@@ -78,7 +72,7 @@ extension InBandAuthenticationUseCaseImpl: InBandAuthenticationUseCase {
 				.biometricUserVerifier(biometricUserVerifier)
 				.devicePasscodeUserVerifier(devicePasscodeUserVerifier)
 				.onSuccess {
-					self.logger.log("In-Band authentication succeeded.", color: .green)
+					logger.sdk("In-Band authentication succeeded.", .green)
 					self.printAuthorizationInfo($0)
 
 					observer.onNext(CompletedResponse(operation: operation,
@@ -86,7 +80,7 @@ extension InBandAuthenticationUseCaseImpl: InBandAuthenticationUseCase {
 					observer.onCompleted()
 				}
 				.onError { error in
-					self.logger.log("In-Band authentication failed.", color: .red)
+					logger.sdk("In-Band authentication failed.", .red)
 					switch error {
 					case let .FidoError(_, _, sessionProvider),
 					     let .NetworkError(_, sessionProvider):
@@ -96,7 +90,7 @@ extension InBandAuthenticationUseCaseImpl: InBandAuthenticationUseCase {
 					case .Unknown:
 						fallthrough
 					@unknown default:
-						self.logger.log("In-band authentication failed because of an unknown error.", color: .red)
+						logger.sdk("In-band authentication failed because of an unknown error.", .red)
 					}
 
 					observer.onError(OperationError(operation: .authentication,
@@ -117,10 +111,10 @@ private extension InBandAuthenticationUseCaseImpl {
 	/// - Parameter authorizationProvider: The ``AuthorizationProvider`` holding the authorization information.
 	func printAuthorizationInfo(_ authorizationProvider: AuthorizationProvider?) {
 		if let cookieAuthorizationProvider = authorizationProvider as? CookieAuthorizationProvider {
-			logger.log("Received cookies: \(cookieAuthorizationProvider.cookies)")
+			logger.sdk("Received cookies: %@", .black, .debug, cookieAuthorizationProvider.cookies)
 		}
 		else if let jwtAuthorizationProvider = authorizationProvider as? JwtAuthorizationProvider {
-			logger.log("Received JWT is \(jwtAuthorizationProvider.jwt)")
+			logger.sdk("Received JWT is %@", .black, .debug, jwtAuthorizationProvider.jwt)
 		}
 	}
 
@@ -129,10 +123,10 @@ private extension InBandAuthenticationUseCaseImpl {
 	/// - Parameter sessionProvider: The ``SessionProvider`` holding the session information.
 	func printSessionInfo(_ sessionProvider: SessionProvider?) {
 		if let cookieSessionProvider = sessionProvider as? CookieSessionProvider {
-			logger.log("Received cookies: \(cookieSessionProvider.cookies)")
+			logger.sdk("Received cookies: %@", .black, .debug, cookieSessionProvider.cookies)
 		}
 		else if let jwtSessionProvider = sessionProvider as? JwtSessionProvider {
-			logger.log("Received JWT is \(jwtSessionProvider.jwt)")
+			logger.sdk("Received JWT is %@", .black, .debug, jwtSessionProvider.jwt)
 		}
 	}
 }

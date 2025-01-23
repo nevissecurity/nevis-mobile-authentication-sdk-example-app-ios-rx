@@ -24,9 +24,6 @@ final class TransactionConfirmationViewModel {
 
 	// MARK: - Properties
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	/// The transaction confirmation message.
 	private var message: String?
 
@@ -41,17 +38,13 @@ final class TransactionConfirmationViewModel {
 	/// Creates a new instance.
 	///
 	/// - Parameters:
-	///   - logger: The logger.
 	///   - parameter: The navigation parameter.
-	init(logger: SDKLogger,
-	     parameter: NavigationParameterizable? = nil) {
-		self.logger = logger
+	init(parameter: NavigationParameterizable? = nil) {
 		setParameter(parameter as? TransactionConfirmationParameter)
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("TransactionConfirmationViewModel", log: OSLog.deinit, type: .debug)
+		logger.deinit("TransactionConfirmationViewModel")
 		// If it is not nil at this moment, it means that a concurrent operation will be started
 		handler?.cancel()
 	}

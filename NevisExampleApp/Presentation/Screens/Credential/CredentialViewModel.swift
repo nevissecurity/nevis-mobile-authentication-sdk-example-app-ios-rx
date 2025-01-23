@@ -92,9 +92,6 @@ final class CredentialViewModel {
 
 	// MARK: - Properties
 
-	/// The logger.
-	private let logger: SDKLogger
-
 	/// The current Credential type.
 	private var credentialType: AuthenticatorAaid = .Pin
 
@@ -158,17 +155,13 @@ final class CredentialViewModel {
 	/// Creates a new instance.
 	///
 	/// - Parameters:
-	///   - logger: The logger.
 	///   - parameter: The navigation parameter.
-	init(logger: SDKLogger,
-	     parameter: NavigationParameterizable? = nil) {
-		self.logger = logger
+	init(parameter: NavigationParameterizable? = nil) {
 		setParameter(parameter as? CredentialParameter)
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("CredentialViewModel", log: OSLog.deinit, type: .debug)
+		logger.deinit("CredentialViewModel")
 		// If it is not nil at this moment, it means that a concurrent operation will be started
 		pinEnrollmentHandler?.cancel()
 		pinVerificationHandler?.cancel()
@@ -404,7 +397,7 @@ private extension CredentialViewModel {
 	///  - credential: The Credential.
 	/// - Returns: An observable sequence.
 	func confirm(oldCredential: String, credential: String) -> Observable<()> {
-		logger.log("Confirming entered credentials.")
+		logger.sdk("Confirming entered credentials.")
 		return Observable.create {
 			switch self.operation {
 			case .enrollment:
@@ -427,19 +420,19 @@ private extension CredentialViewModel {
 	func cancel() {
 		switch operation {
 		case .enrollment:
-			logger.log("Cancelling credential enrollment.")
+			logger.sdk("Cancelling credential enrollment.")
 			pinEnrollmentHandler?.cancel()
 			pinEnrollmentHandler = nil
 			passwordEnrollmentHandler?.cancel()
 			passwordEnrollmentHandler = nil
 		case .verification:
-			logger.log("Cancelling credential verification.")
+			logger.sdk("Cancelling credential verification.")
 			pinVerificationHandler?.cancel()
 			pinVerificationHandler = nil
 			passwordVerificationHandler?.cancel()
 			passwordVerificationHandler = nil
 		case .credentialChange:
-			logger.log("Cancelling credential change.")
+			logger.sdk("Cancelling credential change.")
 			pinCredentialChangeHandler?.cancel()
 			pinCredentialChangeHandler = nil
 			passwordCredentialChangeHandler?.cancel()
@@ -452,10 +445,11 @@ private extension CredentialViewModel {
 		if case .Pin = credentialType {
 			switch pinProtectionStatus {
 			case .Unlocked, .none:
-				logger.log("PIN authenticator is unlocked.")
+				logger.sdk("PIN authenticator is unlocked.")
 				credentialProtectionInfoSubject.accept(CredentialProtectionInformation())
 			case let .LastAttemptFailed(remainingTries, coolDown):
-				logger.log("Last attempt failed using the PIN authenticator.")
+				logger.sdk("Last attempt failed using the PIN authenticator.")
+				logger.sdk("Remaining tries: %d, cool down period: %d.", .black, .debug, remainingTries, coolDown)
 				let info = CredentialProtectionInformation(message: pinProtectionStatus?.localizedDescription ?? String(),
 				                                           isInCoolDown: coolDown > 0)
 				credentialProtectionInfoSubject.accept(info)
@@ -464,20 +458,22 @@ private extension CredentialViewModel {
 					startCoolDownTimer(with: coolDown, remainingTries: remainingTries)
 				}
 			case .LockedOut:
-				logger.log("PIN authenticator is locked.")
+				logger.sdk("PIN authenticator is locked.")
 				let info = CredentialProtectionInformation(message: pinProtectionStatus?.localizedDescription ?? String())
 				credentialProtectionInfoSubject.accept(info)
 			case .some:
-				logger.log("Unknown PIN authenticator protection status.")
+				logger.sdk("Unknown PIN authenticator protection status.")
 				credentialProtectionInfoSubject.accept(CredentialProtectionInformation())
 			}
 		}
 		else if case .Password = credentialType {
 			switch passwordProtectionStatus {
 			case .Unlocked, .none:
-				logger.log("Password authenticator is unlocked.")
+				logger.sdk("Password authenticator is unlocked.")
 				credentialProtectionInfoSubject.accept(CredentialProtectionInformation())
 			case let .LastAttemptFailed(remainingTries, coolDown):
+				logger.sdk("Last attempt failed using the Password authenticator.")
+				logger.sdk("Remaining tries: %d, cool down period: %d.", .black, .debug, remainingTries, coolDown)
 				let info = CredentialProtectionInformation(message: passwordProtectionStatus?.localizedDescription ?? String(),
 				                                           isInCoolDown: coolDown > 0)
 				credentialProtectionInfoSubject.accept(info)
@@ -486,11 +482,11 @@ private extension CredentialViewModel {
 					startCoolDownTimer(with: coolDown, remainingTries: remainingTries)
 				}
 			case .LockedOut:
-				logger.log("Password authenticator is locked.")
+				logger.sdk("Password authenticator is locked.")
 				let info = CredentialProtectionInformation(message: passwordProtectionStatus?.localizedDescription ?? String())
 				credentialProtectionInfoSubject.accept(info)
 			case .some:
-				logger.log("Unknown Password authenticator protection status.")
+				logger.sdk("Unknown Password authenticator protection status.")
 				credentialProtectionInfoSubject.accept(CredentialProtectionInformation())
 			}
 		}

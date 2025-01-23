@@ -46,9 +46,8 @@ final class UsernamePasswordLoginScreen: BaseScreen, Screen {
 		super.init()
 	}
 
-	/// :nodoc:
 	deinit {
-		os_log("UsernamePasswordLoginScreen", log: OSLog.deinit, type: .debug)
+		logger.deinit("UsernamePasswordLoginScreen")
 	}
 }
 
@@ -70,7 +69,6 @@ extension UsernamePasswordLoginScreen {
 
 // MARK: - Setups
 
-/// :nodoc:
 private extension UsernamePasswordLoginScreen {
 
 	func setupUI() {
@@ -120,7 +118,6 @@ private extension UsernamePasswordLoginScreen {
 
 // MARK: - UITextFieldDelegate
 
-/// :nodoc:
 extension UsernamePasswordLoginScreen: UITextFieldDelegate {
 	func textFieldShouldReturn(_: UITextField) -> Bool {
 		passwordField.becomeFirstResponder()
@@ -130,7 +127,6 @@ extension UsernamePasswordLoginScreen: UITextFieldDelegate {
 
 // MARK: - Binding
 
-/// :nodoc:
 private extension UsernamePasswordLoginScreen {
 
 	func bindViewModel() {
