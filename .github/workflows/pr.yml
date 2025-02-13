@@ -31,6 +31,10 @@ jobs:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
 
+      # Run RuboCop to lint Ruby code
+      - name: Run Ruby Linter
+        run: bundle exec rubocop
+
       # Build & Distribute
       - name: Run Fastlane
         uses: maierj/fastlane-action@v3.1.0
