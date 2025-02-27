@@ -1,5 +1,5 @@
 # File options
---swiftversion 5.10
+--swiftversion 6.0.3
 
 # Format options
 --allman false

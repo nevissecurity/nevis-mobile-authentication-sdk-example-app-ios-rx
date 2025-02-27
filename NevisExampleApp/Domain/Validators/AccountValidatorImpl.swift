@@ -27,6 +27,6 @@ extension AccountValidatorImpl: AccountValidator {
 			}
 		}
 
-		return accounts.values.map { $0 }
+		return accounts.values.map(\.self)
 	}
 }
