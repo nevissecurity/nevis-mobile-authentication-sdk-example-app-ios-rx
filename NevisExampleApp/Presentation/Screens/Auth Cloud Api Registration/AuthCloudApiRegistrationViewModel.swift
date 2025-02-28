@@ -85,7 +85,7 @@ extension AuthCloudApiRegistrationViewModel: ScreenViewModel {
 
 		let confirm = input.confirmTrigger
 			.withLatestFrom(confirmPinValidation.map(\.isValid).startWith(true))
-			.filter { $0 }
+			.filter(\.self)
 			.withLatestFrom(inputData)
 			.asObservable()
 			.flatMapLatest { enrollResponse, appLinkUri in

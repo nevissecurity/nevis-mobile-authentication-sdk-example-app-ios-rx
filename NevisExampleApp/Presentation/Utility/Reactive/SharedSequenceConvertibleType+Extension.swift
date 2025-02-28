@@ -33,7 +33,7 @@ extension SharedSequenceConvertibleType where Element == Bool {
 	/// - Returns: A `Bool` shared sequence that will emit `true` only if all combined sequence emit `true`.
 	static func and(_ sources: SharedSequence<DriverSharingStrategy, Bool>...) -> SharedSequence<DriverSharingStrategy, Bool> {
 		Driver.combineLatest(sources)
-			.map { $0.allSatisfy { $0 } }
+			.map { $0.allSatisfy(\.self) }
 	}
 }
 

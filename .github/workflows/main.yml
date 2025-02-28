@@ -7,6 +7,15 @@ on:
     # At 5:30 am on the 1st and 15th day of the month (every two weeks)
     - cron: '30 5 1,15 * *'
   workflow_dispatch:
+    inputs:
+      runner_type:
+        type: choice
+        required: true
+        description: "Runner type"
+        default: "self-hosted"
+        options:
+          - "self-hosted"
+          - "macos-15"
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -23,12 +32,12 @@ env:
   SLACK_WEBHOOK_URL: ${{ vars.SLACK_WEBHOOK_URL }}
 
   CURRENT_BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-  RUBY_VERSION: '3.1'
-  XCODE_VERSION: '15.4'
+  RUBY_VERSION: 3.1
+  XCODE_VERSION: 16.2
 
 jobs:
   main:
-    runs-on: macos-14
+    runs-on: "${{ github.event.inputs.runner_type || 'self-hosted' }}"
 
     steps:
       # Checkout the repository under $GITHUB_WORKSPACE
