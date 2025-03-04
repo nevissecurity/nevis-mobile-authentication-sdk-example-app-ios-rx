@@ -145,6 +145,10 @@ The [DeregistrationUseCaseImpl](NevisExampleApp/Domain/Use%20Case/Deregistration
 
 The change PIN operation is implemented in the [ChangePinUseCaseImpl](NevisExampleApp/Domain/Use%20Case/ChangePinUseCaseImpl.swift) class with which you can modify the PIN of a registered PIN authenticator for a given user.
 
+#### Change password
+
+The change password operation is implemented in the [ChangePasswordUseCaseImpl](NevisExampleApp/Domain/Use%20Case/ChangePasswordUseCaseImpl.swift) class with which you can modify the password of a registered Password authenticator for a given user.
+
 #### Decode out-of-band payload
 
 Out-of-band operations occur when a message is delivered to the application through an alternate channel like a push notification, a QR code, or a deep link. With the help of the [DecodePayloadUseCaseImpl](NevisExampleApp/Domain/Use%20Case/DecodePayloadUseCaseImpl.swift) class the application can create an `OutOfBandPayload` either from a JSON or a Base64 URL encoded String. The `OutOfBandPayload` is then used to start an `OutOfBandOperation`, see chapters [Out-of-Band Registration](#out-of-band-registration) and [Out-of-Band Authentication](#out-of-band-authentication).
@@ -160,5 +164,9 @@ The following use cases are responsible for getting information with the help of
 * The [GetAccountsUseCaseImpl](NevisExampleApp/Domain/Use%20Case/GetAccountsUseCaseImpl.swift) class obtains the registered accounts.
 * The [GetAuthenticatorsUseCaseImpl](NevisExampleApp/Domain/Use%20Case/GetAuthenticatorsUseCaseImpl.swift) class obtains the authenticator information.
 * The [GetDeviceInformationUseCaseImpl](NevisExampleApp/Domain/Use%20Case/GetDeviceInformationUseCaseImpl.swift) class obtains the device information.
+
+### Error handling
+
+As this is an example app, we are directly showing the technical error occurring. Be aware that this is not to be considered best practice. Your own production app should handle the errors in a more appropriate manner such as providing translations for all your supported languages as well as simplifying the error message presented to the end-user in a way non-technical adverse people can understand and act upon them.
 
 © 2023 made with ❤ by Nevis
