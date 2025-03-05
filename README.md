@@ -155,7 +155,10 @@ Out-of-band operations occur when a message is delivered to the application thro
 
 #### Change device information
 
-During registration, the device information can be provided that contains the name identifying your device, and also the Firebase Cloud Messaging registration token. Updating both the name and the token is implemented in the [ChangeDeviceInformationUseCaseImpl](NevisExampleApp/Domain/Use%20Case/ChangeDeviceInformationUseCaseImpl.swift) class.
+During registration, the device information can be provided that contains the name identifying your device, and also the Firebase Cloud Messaging registration token. Updating the device name is implemented in the [ChangeDeviceInformationUseCaseImpl](NevisExampleApp/Domain/Use%20Case/ChangeDeviceInformationUseCaseImpl.swift) class.
+
+> [!NOTE]
+> Firebase Cloud Messaging is not supported in the example app.
 
 #### Get information
 
