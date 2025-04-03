@@ -32,7 +32,7 @@ env:
   SLACK_WEBHOOK_URL: ${{ vars.SLACK_WEBHOOK_URL }}
 
   CURRENT_BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-  RUBY_VERSION: 3.1
+  RUBY_VERSION: 3.4.2
   XCODE_VERSION: 16.2
 
 jobs:
