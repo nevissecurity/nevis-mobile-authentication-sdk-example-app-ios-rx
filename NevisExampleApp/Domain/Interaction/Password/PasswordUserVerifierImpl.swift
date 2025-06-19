@@ -32,15 +32,9 @@ class PasswordUserVerifierImpl {
 
 extension PasswordUserVerifierImpl: PasswordUserVerifier {
 	func verifyPassword(context: PasswordUserVerificationContext, handler: PasswordUserVerificationHandler) {
-		if context.lastRecoverableError != nil {
-			logger.sdk("Password user verification failed. Please try again.", .red)
-		}
-		else {
-			logger.sdk("Please start Password user verification.")
-		}
+		logger.sdk("Please start Password user verification.")
 
 		let response = VerifyPasswordResponse(protectionStatus: context.authenticatorProtectionStatus,
-		                                      lastRecoverableError: context.lastRecoverableError,
 		                                      handler: handler)
 		responseEmitter.subject.onNext(response)
 	}
