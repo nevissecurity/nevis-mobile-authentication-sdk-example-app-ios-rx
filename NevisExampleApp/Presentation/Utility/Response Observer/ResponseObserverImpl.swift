@@ -84,13 +84,11 @@ private extension ResponseObserverImpl {
 		}
 		else if let response = response as? VerifyPinResponse {
 			let parameter: PinParameter = .verification(protectionStatus: response.protectionStatus,
-			                                            lastRecoverableError: response.lastRecoverableError,
 			                                            handler: response.handler)
 			appCoordinator.navigateToCredential(with: parameter)
 		}
 		else if let response = response as? VerifyPasswordResponse {
 			let parameter: PasswordParameter = .verification(protectionStatus: response.protectionStatus,
-			                                                 lastRecoverableError: response.lastRecoverableError,
 			                                                 handler: response.handler)
 			appCoordinator.navigateToCredential(with: parameter)
 		}

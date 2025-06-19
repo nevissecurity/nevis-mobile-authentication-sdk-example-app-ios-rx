@@ -14,9 +14,6 @@ final class VerifyPasswordResponse: OperationResponse {
 	/// Status object of the Password authenticator.
 	let protectionStatus: PasswordAuthenticatorProtectionStatus
 
-	/// The object describing the last credential verification error.
-	let lastRecoverableError: PasswordUserVerificationError?
-
 	/// The object that is notified of the verification result.
 	let handler: PasswordUserVerificationHandler
 
@@ -26,13 +23,10 @@ final class VerifyPasswordResponse: OperationResponse {
 	///
 	/// - Parameters:
 	///   - protectionStatus: Status object of the Password authenticator.
-	///   - lastRecoverableError: The object describing the last credential verification error.
 	///   - handler: The object that is notified of the verification result.
 	init(protectionStatus: PasswordAuthenticatorProtectionStatus,
-	     lastRecoverableError: PasswordUserVerificationError?,
 	     handler: PasswordUserVerificationHandler) {
 		self.protectionStatus = protectionStatus
-		self.lastRecoverableError = lastRecoverableError
 		self.handler = handler
 		super.init()
 	}

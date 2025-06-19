@@ -3,7 +3,7 @@ project "NevisExampleApp.xcodeproj"
 
 use_frameworks!
 
-ios_deployment_target = "12.0".freeze
+ios_deployment_target = "14.0".freeze
 
 target "NevisExampleApp" do
 	platform :ios, ios_deployment_target
@@ -17,8 +17,8 @@ target "NevisExampleApp" do
 	pod "Swinject", "= 2.9.1"
 	pod "SwinjectAutoregistration", "= 2.9.1"
 	pod "Then", "= 3.0.0"
-	pod "NevisMobileAuthentication", "~> 3.9.0", :configurations => ["Release"]
-	pod "NevisMobileAuthentication-Debug", "~> 3.9.0", :configurations => ["Debug"]
+	pod "NevisMobileAuthentication", "~> 4.0.0", :configurations => ["Release"]
+	pod "NevisMobileAuthentication-Debug", "~> 4.0.0", :configurations => ["Debug"]
 end
 
 post_install do |installer|
