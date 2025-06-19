@@ -28,7 +28,7 @@ Before you start compiling and using the example applications please ensure you 
 
 Your development setup has to meet the following prerequisites:
 
-* iOS 12 or later
+* iOS 14 or later
 * Xcode 16.2, including Swift 6.0.3
 
 ### Initialization
@@ -172,4 +172,4 @@ The following use cases are responsible for getting information with the help of
 
 As this is an example app, we are directly showing the technical error occurring. Be aware that this is not to be considered best practice. Your own production app should handle the errors in a more appropriate manner such as providing translations for all your supported languages as well as simplifying the error message presented to the end-user in a way non-technical adverse people can understand and act upon them.
 
-© 2023 made with ❤ by Nevis
+© 2025 made with ❤ by Nevis
