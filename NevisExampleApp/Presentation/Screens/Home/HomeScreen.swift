@@ -49,6 +49,18 @@ final class HomeScreen: BaseScreen, Screen {
 	/// The in-Band Register button.
 	private let inBandRegisterButton = OutlinedButton(title: L10n.Home.inBandRegistration)
 
+	/// The title label of Nevis Mobile Authentication SDK version.
+	private let versionTitleLabel = NSLabel(text: L10n.Home.sdkVersion, style: .normal)
+
+	/// The value label of Nevis Mobile Authentication SDK version.
+	private let versionValueLabel = NSLabel(style: .info)
+
+	/// The title label of application facet identifier.
+	private let facetIdTitleLabel = NSLabel(text: L10n.Home.facetId, style: .normal)
+
+	/// The value label of application facet identifier.
+	private let facetIdValueLabel = NSLabel(style: .info)
+
 	// MARK: - Properties
 
 	/// The view model.
@@ -113,6 +125,8 @@ private extension HomeScreen {
 		setupDeleteAuthenticatorsButton()
 		setupSeparatorLabel()
 		setupInBandRegisterButton()
+		setupVersionLabels()
+		setupFacetIdLabels()
 	}
 
 	func setupTitleLabel() {
@@ -123,7 +137,7 @@ private extension HomeScreen {
 
 	func setupDescriptionLabel() {
 		descriptionLabel.do {
-			addItem($0, topSpacing: 30)
+			addItem($0, spacing: 16, topSpacing: 30)
 		}
 	}
 
@@ -195,6 +209,26 @@ private extension HomeScreen {
 			$0.setHeight(with: 40)
 		}
 	}
+
+	func setupVersionLabels() {
+		versionTitleLabel.do {
+			addItemToBottom($0, spacing: 8)
+		}
+
+		versionValueLabel.do {
+			addItemToBottom($0, spacing: 16)
+		}
+	}
+
+	func setupFacetIdLabels() {
+		facetIdTitleLabel.do {
+			addItemToBottom($0, spacing: 8)
+		}
+
+		facetIdValueLabel.do {
+			addItemToBottom($0, spacing: 16)
+		}
+	}
 }
 
 // MARK: - Binding
@@ -229,6 +263,8 @@ private extension HomeScreen {
 		 output.authCloudApiRegistration.drive(),
 		 output.deleteAuthenticators.drive(),
 		 output.inBandRegistration.drive(),
+		 output.sdkVersion.drive(sdkVersionBinder),
+		 output.facetId.drive(facetIdBinder),
 		 output.loading.drive(rx.isLoading),
 		 output.error.drive(rx.error)]
 			.forEach { $0.disposed(by: disposeBag) }
@@ -237,6 +273,18 @@ private extension HomeScreen {
 	var accountsBinder: Binder<[any Account]> {
 		Binder(self) { base, accounts in
 			base.descriptionLabel.text = L10n.Home.description(accounts.count)
+		}
+	}
+
+	var sdkVersionBinder: Binder<String> {
+		Binder(self) { base, version in
+			base.versionValueLabel.text = version
+		}
+	}
+
+	var facetIdBinder: Binder<String> {
+		Binder(self) { base, facetId in
+			base.facetIdValueLabel.text = facetId
 		}
 	}
 }

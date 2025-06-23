@@ -49,6 +49,10 @@ enum L10n {
 		static let separator = L10n.tr("home_separator")
 		/// In-band registration button: "In-Band Register"
 		static let inBandRegistration = L10n.tr("home_in_band_registration_button")
+		/// SDK version title label: "Nevis Mobile Authentication SDK"
+		static let sdkVersion = L10n.tr("home_sdk_version")
+		/// Facet ID title label: "Facet Id"
+		static let facetId = L10n.tr("home_facet_id")
 	}
 
 	/// Account Selection screen related localized strings.

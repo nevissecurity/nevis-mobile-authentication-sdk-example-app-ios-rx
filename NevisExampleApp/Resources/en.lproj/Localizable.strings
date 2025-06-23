@@ -15,6 +15,8 @@
 "home_delete_authenticators_button" = "Delete Authenticators";
 "home_separator" = "Identity Suite only";
 "home_in_band_registration_button" = "In-Band Register";
+"home_sdk_version" = "Nevis Mobile Authentication SDK";
+"home_facet_id" = "Facet Id";
 
 // Account Selection screen
 "account_selection_title"="Select an Account";
