@@ -149,6 +149,10 @@ extension HomeViewModel: ScreenViewModel {
 		let deleteAuthenticators: Driver<()>
 		/// Observable sequence used for listening to in-band registration event.
 		let inBandRegistration: Driver<()>
+		/// Observable sequence used for listening to SDK version event.
+		let sdkVersion: Driver<String>
+		/// Observable sequence used for listening to application facet identifier version event.
+		let facetId: Driver<String>
 		/// Observable sequence used for listening to loading events.
 		let loading: Driver<Bool>
 		/// Observable sequence used for listening to error events.
@@ -220,6 +224,12 @@ extension HomeViewModel: ScreenViewModel {
 		let inBandRegistration = input.inBandRegistrationTrigger
 			.do(onNext: appCoordinator.navigateToUsernamePasswordLogin)
 
+		let sdkVersion = input.loadTrigger
+			.flatMapLatest { Driver.just(MetaData.mobileAuthenticationVersion.descriptionWithBuild) }
+
+		let facetId = input.loadTrigger
+			.flatMapLatest { Driver.just(MetaData.applicationFacetId) }
+
 		let loading = activityIndicator.asDriver()
 		let error = errorTracker.asDriver()
 		return Output(initClient: initClient,
@@ -233,6 +243,8 @@ extension HomeViewModel: ScreenViewModel {
 		              authCloudApiRegistration: authCloudApiRegistration,
 		              deleteAuthenticators: deleteAuthenticators,
 		              inBandRegistration: inBandRegistration,
+		              sdkVersion: sdkVersion,
+		              facetId: facetId,
 		              loading: loading,
 		              error: error)
 	}

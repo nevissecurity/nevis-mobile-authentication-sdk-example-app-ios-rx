@@ -39,7 +39,6 @@ enum Style {
 	var textColor: UIColor {
 		switch self {
 		case .detail: .lightGray
-		case .info: .blue
 		case .error: .red
 		default: .black
 		}
