@@ -10,7 +10,7 @@ import RxSwift
 /// Enables monitoring errors of sequence computation.
 final class ErrorTracker {
 
-	public typealias SharingStrategy = DriverSharingStrategy
+	typealias SharingStrategy = DriverSharingStrategy
 
 	// MARK: - Properties
 

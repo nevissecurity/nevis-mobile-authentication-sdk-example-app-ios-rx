@@ -38,8 +38,8 @@ private struct ActivityToken<E>: ObservableConvertibleType, Disposable {
 /// When all activities complete `false` will be sent.
 final class ActivityIndicator {
 
-	public typealias Element = Bool
-	public typealias SharingStrategy = DriverSharingStrategy
+	typealias Element = Bool
+	typealias SharingStrategy = DriverSharingStrategy
 
 	// MARK: - Properties
 

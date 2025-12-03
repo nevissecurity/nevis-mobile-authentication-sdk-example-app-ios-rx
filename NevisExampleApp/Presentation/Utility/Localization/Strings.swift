@@ -490,6 +490,22 @@ enum L10n {
 		}
 	}
 
+	/// Biometric prompt related localized strings.
+	enum BiometricPrompt {
+		// Reason: "Please authenticate to complete the operation."
+		static let reason = L10n.tr("biometric_prompt_reason")
+		// Fallback button: "Enter Passcode"
+		static let fallback = L10n.tr("biometric_prompt_fallback_button")
+		// Cancel button: "Cancel"
+		static let cancel = L10n.tr("biometric_prompt_cancel_button")
+	}
+
+	/// Device passcode prompt related localized strings.
+	enum DevicePasscodePrompt {
+		// Reason: "Please authenticate to complete the operation."
+		static let reason = L10n.tr("device_passcode_prompt_reason")
+	}
+
 	/// Error related localized strings.
 	enum Error {
 		/// App error related localized strings.

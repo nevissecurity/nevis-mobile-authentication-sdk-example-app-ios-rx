@@ -26,7 +26,7 @@ Layout/SpaceInsideHashLiteralBraces:
 Layout/LineLength:
   Max: 150
 
-Naming/PredicateName:
+Naming/PredicatePrefix:
   Enabled: false
 Naming/FileName:
   Exclude:
