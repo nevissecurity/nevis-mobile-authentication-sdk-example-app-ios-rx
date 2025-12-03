@@ -25,7 +25,7 @@ enum AppError: Error {
 // MARK: - LocalizedError
 
 extension AppError: LocalizedError {
-	public var errorDescription: String? {
+	var errorDescription: String? {
 		switch self {
 		case .loadAppConfigurationError:
 			L10n.Error.App.loadAppConfigurationError

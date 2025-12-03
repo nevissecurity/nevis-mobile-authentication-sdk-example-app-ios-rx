@@ -14,7 +14,7 @@ enum PasswordPolicyError: Error {
 
 extension PasswordPolicyError: LocalizedError {
 	/// A message describing what error occurred.
-	public var errorDescription: String? {
+	var errorDescription: String? {
 		switch self {
 		case .invalidPassword:
 			L10n.Credential.Password.Policy.errorCause

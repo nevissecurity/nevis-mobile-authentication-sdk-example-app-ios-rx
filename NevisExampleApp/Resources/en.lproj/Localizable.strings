@@ -144,3 +144,11 @@
 "authenticator_fingerprint_title" = "Touch ID";
 "authenticator_device_passcode_title" = "Device Passcode";
 "authenticator_device_password_title" = "Password";
+
+// Biometric prompt
+"biometric_prompt_reason" = "Please authenticate to complete the operation.";
+"biometric_prompt_fallback_button" = "Enter Passcode";
+"biometric_prompt_cancel_button" = "Cancel";
+
+// Device passcode prompt
+"device_passcode_prompt_reason" = "Please authenticate to complete the operation.";

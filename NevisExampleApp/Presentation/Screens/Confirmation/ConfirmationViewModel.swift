@@ -88,8 +88,10 @@ extension ConfirmationViewModel: ScreenViewModel {
 		let title = Driver.just(L10n.Confirmation.title(authenticator ?? String()))
 		let confirm = input.confirmTrigger
 			.do(onNext: {
-				self.biometricUserVerificationHandler?.verify()
-				self.devicePasscodeUserVerificationHandler?.verify()
+				self.biometricUserVerificationHandler?.verify(using: .init(reason: L10n.BiometricPrompt.reason,
+				                                                           fallbackButtonTitle: L10n.BiometricPrompt.fallback,
+				                                                           cancelButtonTitle: L10n.BiometricPrompt.cancel))
+				self.devicePasscodeUserVerificationHandler?.verify(using: .init(reason: L10n.DevicePasscodePrompt.reason))
 			})
 
 		let cancel = input.cancelTrigger
