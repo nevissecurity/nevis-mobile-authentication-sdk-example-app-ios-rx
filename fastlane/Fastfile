@@ -97,12 +97,12 @@ platform :ios do
 			use_automatic_signing: false,
 			team_id: ENV["DEVELOPER_PORTAL_TEAM_ID"],
 			code_sign_identity: ENV["CODE_SIGNING_IDENTITY"],
-			profile_name: ENV["sigh_#{app_identifier}_#{match_type}_profile-name"],
+			profile_name: ENV["sigh_#{app_identifier}_#{match_type}_profile-name"]
 		)
 
 		gym(
-			workspace: "NevisExampleApp.xcworkspace",
-			scheme: "NevisExampleApp",
+			workspace:,
+			scheme: target_name,
 			configuration: "Release",
 			clean: true,
 			skip_profile_detection: true,
@@ -114,7 +114,7 @@ platform :ios do
 				}
 			},
 			output_directory: "#{output_dir}/builds",
-			xcargs: "OTHER_CODE_SIGN_FLAGS=\"--keychain=#{keychain_name}\"",
+			xcargs: "OTHER_CODE_SIGN_FLAGS=\"--keychain=#{keychain_name}\""
 		)
 
 		firebase_app_distribution(
@@ -136,8 +136,8 @@ platform :ios do
 	lane :pr do
 		cocoapods
 		gym(
-			workspace: "NevisExampleApp.xcworkspace",
-			scheme: "NevisExampleApp",
+			workspace:,
+			scheme: target_name,
 			configuration: "Release",
 			clean: true,
 			skip_codesigning: true,
