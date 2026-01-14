@@ -15,7 +15,7 @@ on:
         default: "self-hosted"
         options:
           - "self-hosted"
-          - "macos-15"
+          - "macos-26"
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -33,7 +33,7 @@ env:
 
   CURRENT_BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
   RUBY_VERSION: 3.4.2
-  XCODE_VERSION: 16.2
+  XCODE_VERSION: 26.2
 
 jobs:
   main:

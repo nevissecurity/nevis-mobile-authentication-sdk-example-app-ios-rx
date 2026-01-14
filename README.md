@@ -29,7 +29,7 @@ Before you start compiling and using the example applications please ensure you 
 Your development setup has to meet the following prerequisites:
 
 * iOS 14 or later
-* Xcode 16.2, including Swift 6.0.3
+* Xcode 26.2, including Swift 6 or later
 
 ### Initialization
 
