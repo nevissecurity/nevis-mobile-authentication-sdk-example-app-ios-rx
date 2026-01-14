@@ -13,11 +13,11 @@ on:
         default: "self-hosted"
         options:
           - "self-hosted"
-          - "macos-15"
+          - "macos-26"
 
 env:
   RUBY_VERSION: 3.4.2
-  XCODE_VERSION: 16.2
+  XCODE_VERSION: 26.2
 
 jobs:
   pr:
