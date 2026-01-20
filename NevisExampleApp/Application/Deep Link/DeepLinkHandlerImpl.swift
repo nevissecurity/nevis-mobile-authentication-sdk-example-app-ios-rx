@@ -11,6 +11,9 @@ final class DeepLinkHandlerImpl {
 
 	// MARK: - Properties
 
+	/// The client provider.
+	private let clientProvider: ClientProvider
+
 	/// Use case for decoding an Out-of-Band payload.
 	private let decodePayloadUseCase: DecodePayloadUseCase
 
@@ -23,9 +26,6 @@ final class DeepLinkHandlerImpl {
 	/// The application coordinator.
 	private let coordinator: AppCoordinator
 
-	/// An observer that will emit a ``String`` object.
-	private var onOobOperation = PublishSubject<String>()
-
 	/// Thread safe bag that disposes added disposables on `deinit`.
 	private let disposeBag = DisposeBag()
 
@@ -34,14 +34,17 @@ final class DeepLinkHandlerImpl {
 	/// Creates a new instance.
 	///
 	/// - Parameters:
+	///   - clientProvider: The client provider.
 	///   - decodePayloadUseCase: Use case for decoding an Out-of-Band payload.
 	///   - outOfBandOperationUseCase: Use case for processing an Out-of-Band payload.
 	///   - responseObserver: The response observer.
 	///   - coordinator: The application coordinator.
-	init(decodePayloadUseCase: DecodePayloadUseCase,
+	init(clientProvider: ClientProvider,
+	     decodePayloadUseCase: DecodePayloadUseCase,
 	     outOfBandOperationUseCase: OutOfBandOperationUseCase,
 	     responseObserver: ResponseObserver,
 	     coordinator: AppCoordinator) {
+		self.clientProvider = clientProvider
 		self.decodePayloadUseCase = decodePayloadUseCase
 		self.outOfBandOperationUseCase = outOfBandOperationUseCase
 		self.responseObserver = responseObserver
@@ -70,24 +73,28 @@ private extension DeepLinkHandlerImpl {
 	///
 	/// - Parameter payload: The payload need to be processed.
 	func process(payload: String) {
-		guard let topScreen = coordinator.topScreen else {
-			return
-		}
+		clientProvider.resolve()
+			.map { _ in
+				guard let topScreen = self.coordinator.topScreen else {
+					return
+				}
 
-		if !(topScreen is HomeScreen) {
-			confirmOperationInterrupt { confirmed in
-				if confirmed {
-					// During coordinator start all of the presented views and view models will be deinited.
-					// In case of an ongoing operation if the SDK hangs on waiting for a handler invocation
-					// the corresponding view model will cancel that in its `deinit` method.
-					self.coordinator.start()
-					self.internalProcess(payload: payload)
+				if topScreen is HomeScreen {
+					return self.internalProcess(payload: payload)
+				}
+
+				self.confirmOperationInterrupt { confirmed in
+					if confirmed {
+						// During coordinator start all of the presented views and view models will be deinited.
+						// In case of an ongoing operation if the SDK hangs on waiting for a handler invocation
+						// the corresponding view model will cancel that in its `deinit` method.
+						self.coordinator.navigateToHome()
+						self.internalProcess(payload: payload)
+					}
 				}
 			}
-		}
-		else {
-			internalProcess(payload: payload)
-		}
+			.subscribe()
+			.disposed(by: disposeBag)
 	}
 
 	/// Starts processing the payload.

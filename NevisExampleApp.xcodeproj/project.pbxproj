@@ -20,6 +20,7 @@
 		0698AA682C3D1345001B4000 /* PasswordUserVerifierImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA672C3D1345001B4000 /* PasswordUserVerifierImpl.swift */; };
 		0698AA6A2C3D1DF8001B4000 /* ChangePasswordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA692C3D1DF8001B4000 /* ChangePasswordUseCase.swift */; };
 		0698AA6C2C3D1E21001B4000 /* ChangePasswordUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698AA6B2C3D1E21001B4000 /* ChangePasswordUseCaseImpl.swift */; };
+		38048CD02F1FD76B0094EBF7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38048CCF2F1FD76B0094EBF7 /* SceneDelegate.swift */; };
 		3810439F268B0BBA0095D449 /* NavigationParameterizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3810439E268B0BBA0095D449 /* NavigationParameterizable.swift */; };
 		381043A2268B2C940095D449 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381043A1268B2C940095D449 /* ActivityIndicator.swift */; };
 		381043A6268B33620095D449 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381043A5268B33620095D449 /* UIViewController+Extension.swift */; };
@@ -191,6 +192,7 @@
 		0698AA672C3D1345001B4000 /* PasswordUserVerifierImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordUserVerifierImpl.swift; sourceTree = "<group>"; };
 		0698AA692C3D1DF8001B4000 /* ChangePasswordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordUseCase.swift; sourceTree = "<group>"; };
 		0698AA6B2C3D1E21001B4000 /* ChangePasswordUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordUseCaseImpl.swift; sourceTree = "<group>"; };
+		38048CCF2F1FD76B0094EBF7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3810439E268B0BBA0095D449 /* NavigationParameterizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationParameterizable.swift; sourceTree = "<group>"; };
 		381043A1268B2C940095D449 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		381043A5268B33620095D449 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -492,6 +494,7 @@
 				3867C1A12685F72C00A8B98B /* App Loader */,
 				3867C1A42685F79B00A8B98B /* Dependency Provider */,
 				3833EB1C2685EA03002C5E0C /* AppDelegate.swift */,
+				38048CCF2F1FD76B0094EBF7 /* SceneDelegate.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1291,6 +1294,7 @@
 				386FC32F290925FB00CB30A7 /* LoginRepositoryImpl.swift in Sources */,
 				38F0769528FFEBDE00EFDAF8 /* ResponseEmitter.swift in Sources */,
 				3833EB1D2685EA03002C5E0C /* AppDelegate.swift in Sources */,
+				38048CD02F1FD76B0094EBF7 /* SceneDelegate.swift in Sources */,
 				38E1CBF52A8E3A0E00D4F7EB /* DevicePasscodeUserVerifierImpl.swift in Sources */,
 				3852F39C268611830051FF73 /* Screen.swift in Sources */,
 				38EB177F2902D31000E82236 /* InBandAuthenticationUseCaseImpl.swift in Sources */,

@@ -91,7 +91,7 @@ extension ResultViewModel: ScreenViewModel {
 		let title = Driver.just(title())
 		let description = Driver.just(description)
 		let action = input.actionTrigger
-			.do(onNext: appCoordinator.start)
+			.do(onNext: appCoordinator.navigateToHome)
 
 		return Output(title: title,
 		              description: description,

@@ -172,7 +172,7 @@ extension HomeViewModel: ScreenViewModel {
 			.trackError(errorTracker)
 			.asDriverOnErrorJustComplete()
 
-		let accounts = input.loadTrigger
+		let accounts = initClient
 			.asObservable()
 			.flatMapLatest(getAccountsUseCase.execute)
 			.asDriverOnErrorJustComplete()

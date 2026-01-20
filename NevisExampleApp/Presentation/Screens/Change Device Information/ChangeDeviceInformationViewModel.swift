@@ -109,7 +109,7 @@ extension ChangeDeviceInformationViewModel: ScreenViewModel {
 			.asDriverOnErrorJustComplete()
 
 		let cancel = input.cancelTrigger
-			.do(onNext: appCoordinator.start)
+			.do(onNext: appCoordinator.navigateToHome)
 
 		let loading = activityIndicator.asDriver()
 		let error = errorTracker.asDriver()
