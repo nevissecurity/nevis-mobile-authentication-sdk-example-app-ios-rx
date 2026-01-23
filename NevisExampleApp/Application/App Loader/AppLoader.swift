@@ -10,9 +10,11 @@ import UIKit
 enum AppLoader {
 
 	/// Loads the application.
-	static func load() {
+	///
+	/// - Parameter scene: The `UIWindowScene` to start the coordinator on.
+	static func load(using scene: UIWindowScene) {
 		setupObserving()
-		setupNavigation()
+		setupNavigation(using: scene)
 	}
 }
 
@@ -21,9 +23,11 @@ enum AppLoader {
 private extension AppLoader {
 
 	/// Sets up the navigation.
-	static func setupNavigation() {
+	///
+	/// - Parameter scene: The `UIWindowScene` to start the coordinator on.
+	static func setupNavigation(using scene: UIWindowScene) {
 		let appCoordinator = DependencyProvider.shared.container.resolve(AppCoordinator.self)
-		appCoordinator?.start()
+		appCoordinator?.start(on: scene)
 	}
 
 	/// Starts domain event observing.

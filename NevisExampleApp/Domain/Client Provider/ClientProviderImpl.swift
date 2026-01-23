@@ -5,6 +5,7 @@
 //
 
 import NevisMobileAuthentication
+import RxSwift
 
 /// Default implementation of ``ClientProvider`` protocol.
 class ClientProviderImpl {
@@ -12,7 +13,10 @@ class ClientProviderImpl {
 	// MARK: - Properties
 
 	/// The client.
-	var client: MobileAuthenticationClient?
+	private var client: MobileAuthenticationClient?
+
+	/// Observable sequence used to emit the client.
+	private let clientSubject = BehaviorSubject<MobileAuthenticationClient?>(value: nil)
 }
 
 // MARK: - ClientProvider
@@ -20,10 +24,15 @@ class ClientProviderImpl {
 extension ClientProviderImpl: ClientProvider {
 	func save(client: MobileAuthenticationClient) {
 		self.client = client
+		clientSubject.on(.next(client))
 	}
 
 	func get() -> MobileAuthenticationClient? {
 		client
+	}
+
+	func resolve() -> BehaviorSubject<MobileAuthenticationClient?> {
+		clientSubject
 	}
 
 	func reset() {

@@ -12,26 +12,10 @@ final class AppCoordinatorImpl {
 	// MARK: - Properties
 
 	/// The window of the application.
-	private let window: UIWindow
+	private var window: UIWindow?
 
 	/// The root navigation controller.
 	private var rootNavigationController: UINavigationController?
-
-	// MARK: - Initialization
-
-	/// Creates a new instance.
-	init() {
-		self.window = UIWindow()
-
-		guard let rootViewController = DependencyProvider.shared.container.resolve(LaunchScreen.self) else {
-			return
-		}
-
-		self.rootNavigationController = UINavigationController(rootViewController: rootViewController)
-		rootNavigationController?.isNavigationBarHidden = true
-		window.rootViewController = rootNavigationController
-		window.makeKeyAndVisible()
-	}
 }
 
 // MARK: - AppCoordinator
@@ -42,8 +26,9 @@ extension AppCoordinatorImpl: AppCoordinator {
 		rootNavigationController?.topViewController as? BaseScreen
 	}
 
-	func start() {
+	func start(on scene: UIWindowScene) {
 		logger.app("Starting application coordinator.")
+		showWindow(on: scene)
 		navigateToHome()
 	}
 
@@ -186,5 +171,19 @@ extension AppCoordinatorImpl: AppCoordinator {
 
 	func present(_ controller: UIAlertController) {
 		rootNavigationController?.present(controller, animated: true)
+	}
+}
+
+private extension AppCoordinatorImpl {
+	func showWindow(on scene: UIWindowScene) {
+		window = UIWindow(windowScene: scene)
+		guard let rootViewController = DependencyProvider.shared.container.resolve(LaunchScreen.self) else {
+			return logger.app("Failed to resolve LaunchScreen from dependency container. Unable to display initial UI.", .red, .error)
+		}
+
+		rootNavigationController = UINavigationController(rootViewController: rootViewController)
+		rootNavigationController?.isNavigationBarHidden = true
+		window?.rootViewController = rootNavigationController
+		window?.makeKeyAndVisible()
 	}
 }

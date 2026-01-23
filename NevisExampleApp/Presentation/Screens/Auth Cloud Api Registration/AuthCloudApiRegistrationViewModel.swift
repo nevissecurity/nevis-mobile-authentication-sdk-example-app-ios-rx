@@ -97,7 +97,7 @@ extension AuthCloudApiRegistrationViewModel: ScreenViewModel {
 			.asDriverOnErrorJustComplete()
 
 		let cancel = input.cancelTrigger
-			.do(onNext: appCoordinator.start)
+			.do(onNext: appCoordinator.navigateToHome)
 
 		let error = errorTracker.asDriver()
 		return Output(confirm: confirm,
