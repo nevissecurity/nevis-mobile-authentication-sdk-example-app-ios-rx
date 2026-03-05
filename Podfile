@@ -17,8 +17,8 @@ target "NevisExampleApp" do
 	pod "Swinject", "= 2.9.1"
 	pod "SwinjectAutoregistration", "= 2.9.1"
 	pod "Then", "= 3.0.0"
-	pod "NevisMobileAuthentication", "~> 4.2.0", :configurations => ["Release"]
-	pod "NevisMobileAuthentication-Debug", "~> 4.2.0", :configurations => ["Debug"]
+	pod "NevisMobileAuthentication", "~> 4.3.0", :configurations => ["Release"]
+	pod "NevisMobileAuthentication-Debug", "~> 4.3.0", :configurations => ["Debug"]
 end
 
 post_install do |installer|
