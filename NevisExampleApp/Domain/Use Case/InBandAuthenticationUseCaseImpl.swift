@@ -89,6 +89,8 @@ extension InBandAuthenticationUseCaseImpl: InBandAuthenticationUseCase {
 						fallthrough
 					case .NoDeviceLockError:
 						fallthrough
+					case .ServerCanceledOperation(cause: _):
+						fallthrough
 					case .Unknown:
 						fallthrough
 					@unknown default:

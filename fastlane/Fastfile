@@ -134,7 +134,7 @@ platform :ios do
 
 	desc "Build the application"
 	lane :pr do
-		cocoapods
+		cocoapods(repo_update: true)
 		gym(
 			workspace:,
 			scheme: target_name,
