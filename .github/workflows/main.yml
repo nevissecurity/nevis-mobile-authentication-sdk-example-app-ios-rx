@@ -42,7 +42,7 @@ jobs:
     steps:
       # Checkout the repository under $GITHUB_WORKSPACE
       - name: Checkout Project
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # Ensure correct Xcode version is installed.
       - name: Setup Xcode
