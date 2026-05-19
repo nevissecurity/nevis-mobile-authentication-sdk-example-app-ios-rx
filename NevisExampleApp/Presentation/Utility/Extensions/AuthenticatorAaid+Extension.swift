@@ -7,7 +7,7 @@
 import NevisMobileAuthentication
 
 /// Codable extension for AuthenticatorAaids.
-extension AuthenticatorAaid: Codable {
+extension AuthenticatorAaid: @retroactive Codable {
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.singleValueContainer()
 		let aaid = try container.decode(String.self)
