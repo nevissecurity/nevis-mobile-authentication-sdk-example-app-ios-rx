@@ -9,7 +9,7 @@ target "NevisExampleApp" do
 	platform :ios, ios_deployment_target
 
 	pod "FittedSheets", "= 2.7.1"
-	pod "KRProgressHUD", "= 3.4.7"
+	pod "KRProgressHUD", "= 3.4.8"
 	pod "MercariQRScanner", "= 1.9.0"
 	pod "Reusable", "= 4.1.2"
 	pod "RxCocoa", "= 6.9.0"
@@ -17,8 +17,8 @@ target "NevisExampleApp" do
 	pod "Swinject", "= 2.9.1"
 	pod "SwinjectAutoregistration", "= 2.9.1"
 	pod "Then", "= 3.0.0"
-	pod "NevisMobileAuthentication", "~> 4.4.0", :configurations => ["Release"]
-	pod "NevisMobileAuthentication-Debug", "~> 4.4.0", :configurations => ["Debug"]
+	pod "NevisMobileAuthentication", "~> 4.5.0", :configurations => ["Release"]
+	pod "NevisMobileAuthentication-Debug", "~> 4.5.0", :configurations => ["Debug"]
 end
 
 post_install do |installer|

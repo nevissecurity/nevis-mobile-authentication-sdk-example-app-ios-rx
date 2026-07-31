@@ -32,13 +32,13 @@ env:
   SLACK_WEBHOOK_URL: ${{ vars.SLACK_WEBHOOK_URL }}
 
   CURRENT_BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-  RUBY_VERSION: 3.4.2
-  XCODE_VERSION: 26.2
+  RUBY_VERSION: "4.0"
+  XCODE_VERSION: "26.2"
 
 jobs:
   main:
+    name: Main Branch Commit
     runs-on: "${{ github.event.inputs.runner_type || 'self-hosted' }}"
-
     steps:
       # Checkout the repository under $GITHUB_WORKSPACE
       - name: Checkout Project
