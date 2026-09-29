@@ -225,6 +225,9 @@ private extension AppAssembly {
 			                                       devicePasscodeUserVerifier: res~>)
 		}
 
+		container.autoregister(FetchPendingOperationsUseCase.self,
+		                       initializer: FetchPendingOperationsUseCaseImpl.init)
+
 		container.autoregister(DeregistrationUseCase.self,
 		                       initializer: DeregistrationUseCaseImpl.init)
 

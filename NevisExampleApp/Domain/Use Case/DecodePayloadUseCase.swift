@@ -16,6 +16,6 @@ protocol DecodePayloadUseCase {
 	/// - Parameters:
 	///   - json: Specifies the JSON to be decoded.
 	///   - base64UrlEncoded: Specifies the JSON as Base64 URL encoded `String` to be decoded.
-	/// - Returns: The observable sequence that will emit an ``OperationResponse`` object.
+	/// - Returns: The observable sequence that will emit an ``OutOfBandPayload`` object.
 	func execute(json: String?, base64UrlEncoded: String?) -> Observable<OutOfBandPayload>
 }

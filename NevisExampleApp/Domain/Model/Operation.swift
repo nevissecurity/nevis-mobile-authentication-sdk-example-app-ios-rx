@@ -23,6 +23,9 @@ public enum Operation {
 	/// FIDO authentication operation.
 	case authentication
 
+	/// Fetch pending operations.
+	case fetchPendingOperations
+
 	/// FIDO deregistration operation.
 	case deregistration
 

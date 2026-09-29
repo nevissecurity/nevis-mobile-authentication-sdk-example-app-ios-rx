@@ -33,6 +33,8 @@ enum L10n {
 		static let readQrCode = L10n.tr("home_read_qr_code_button")
 		/// Authenticate button: "Authenticate"
 		static let authenticate = L10n.tr("home_authenticate_button")
+		/// Fetch Pending Operations button: "Fetch Pending Operations"
+		static let fetchPendingOperations = L10n.tr("home_fetch_pending_operations_button")
 		/// Deregister button: "Deregister"
 		static let deregister = L10n.tr("home_deregister_button")
 		/// Change PIN  button: "PIN Change"
@@ -383,6 +385,12 @@ enum L10n {
 		enum Authentication {
 			/// Operation title: "Authentication"
 			static let title = L10n.tr("operation_authentication_title")
+		}
+
+		/// Fetch pending operations related localized strings.
+		enum FetchPendingOperations {
+			/// Operation title: "Fetch pending operations"
+			static let title = L10n.tr("operation_fetch_pending_operations_title")
 		}
 
 		/// Deregistration operation related localized strings.

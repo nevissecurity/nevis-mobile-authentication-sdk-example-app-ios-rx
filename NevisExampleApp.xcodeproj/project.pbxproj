@@ -42,6 +42,8 @@
 		38487847268C6B5100FD8419 /* SelectAuthenticatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38487846268C6B5100FD8419 /* SelectAuthenticatorViewModel.swift */; };
 		38487849268C777F00FD8419 /* DeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38487848268C777F00FD8419 /* DeepLinkHandler.swift */; };
 		3848784B268C778800FD8419 /* DeepLinkHandlerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3848784A268C778800FD8419 /* DeepLinkHandlerImpl.swift */; };
+		384ABAEE306AA8CB0022EA16 /* FetchPendingOperationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384ABAED306AA8CB0022EA16 /* FetchPendingOperationsUseCase.swift */; };
+		384ABAF0306AA8D80022EA16 /* FetchPendingOperationsUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384ABAEF306AA8D80022EA16 /* FetchPendingOperationsUseCaseImpl.swift */; };
 		3852F39826860C400051FF73 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3852F39726860C400051FF73 /* UIView+Extension.swift */; };
 		3852F39A26860C590051FF73 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3852F39926860C590051FF73 /* UIStackView+Extension.swift */; };
 		3852F39C268611830051FF73 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3852F39B268611830051FF73 /* Screen.swift */; };
@@ -216,6 +218,8 @@
 		38487846268C6B5100FD8419 /* SelectAuthenticatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAuthenticatorViewModel.swift; sourceTree = "<group>"; };
 		38487848268C777F00FD8419 /* DeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandler.swift; sourceTree = "<group>"; };
 		3848784A268C778800FD8419 /* DeepLinkHandlerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandlerImpl.swift; sourceTree = "<group>"; };
+		384ABAED306AA8CB0022EA16 /* FetchPendingOperationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPendingOperationsUseCase.swift; sourceTree = "<group>"; };
+		384ABAEF306AA8D80022EA16 /* FetchPendingOperationsUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPendingOperationsUseCaseImpl.swift; sourceTree = "<group>"; };
 		3852F39726860C400051FF73 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		3852F39926860C590051FF73 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		3852F39B268611830051FF73 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
@@ -540,6 +544,8 @@
 				38CAEE9C2B021FA600143059 /* DeleteAuthenticatorsUseCaseImpl.swift */,
 				386F252F2902E38A0036615B /* DeregistrationUseCase.swift */,
 				386F25312902E3900036615B /* DeregistrationUseCaseImpl.swift */,
+				384ABAED306AA8CB0022EA16 /* FetchPendingOperationsUseCase.swift */,
+				384ABAEF306AA8D80022EA16 /* FetchPendingOperationsUseCaseImpl.swift */,
 				38F0769C290041FB00EFDAF8 /* GetAccountsUseCase.swift */,
 				38F0769E2900422B00EFDAF8 /* GetAccountsUseCaseImpl.swift */,
 				3863F3A42907BEE80028D26E /* GetAuthenticatorsUseCase.swift */,
@@ -1150,6 +1156,7 @@
 				38B085AF29081EAF006295D8 /* AuthCloudApiRegistrationValidator.swift in Sources */,
 				38D67ECB26C6AC630068334F /* CompletedResponse.swift in Sources */,
 				38F0768F28FFD89000EFDAF8 /* CreateDeviceInformationUseCase.swift in Sources */,
+				384ABAEE306AA8CB0022EA16 /* FetchPendingOperationsUseCase.swift in Sources */,
 				385B176F26CBC33B005A0B58 /* Operation+Extension.swift in Sources */,
 				38EB177B2902CB8500E82236 /* ConfirmTransactionResponse.swift in Sources */,
 				3863F3AE2907CE370028D26E /* ChangePinUseCase.swift in Sources */,
@@ -1166,6 +1173,7 @@
 				0698AA542C3BEB20001B4000 /* PasswordAuthenticatorProtectionStatus+Extension.swift in Sources */,
 				38C2D11D290BC20800E41764 /* ResultViewModel.swift in Sources */,
 				381EC649290ABEDB0005546B /* BusinessError+Extension.swift in Sources */,
+				384ABAF0306AA8D80022EA16 /* FetchPendingOperationsUseCaseImpl.swift in Sources */,
 				38CAEE9D2B021FA600143059 /* DeleteAuthenticatorsUseCaseImpl.swift in Sources */,
 				38FD7AC928FEDCC600F64099 /* QrScannerScreen.swift in Sources */,
 				3840BEF1268DCAD900DBEA62 /* AuthenticatorCell.swift in Sources */,

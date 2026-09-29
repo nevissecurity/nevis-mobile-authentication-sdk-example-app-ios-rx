@@ -40,6 +40,12 @@ final class HomeViewModel {
 	/// Use case for retrieving the device information.
 	private let getDeviceInformationUseCase: GetDeviceInformationUseCase
 
+	/// Use case for fetching pending out-of-band operations.
+	private let fetchPendingOperationsUseCase: FetchPendingOperationsUseCase
+
+	/// Use case for starting an out-of-band operation.
+	private let outOfBandOperationUseCase: OutOfBandOperationUseCase
+
 	/// The response observer.
 	private let responseObserver: ResponseObserver
 
@@ -66,6 +72,8 @@ final class HomeViewModel {
 	///   - getAuthenticatorsUseCase: Use case for retrieving the authenticators.
 	///   - deleteAuthenticatorsUseCase: Use case for deleting local authenticators.
 	///   - getDeviceInformationUseCase: Use case for retrieving the device information.
+	///   - fetchPendingOperationsUseCase: Use case for fetching pending out-of-band operations.
+	///   - outOfBandOperationUseCase: Use case for starting an out-of-band operation.
 	///   - responseObserver: The response observer.
 	///   - appCoordinator: The application coordinator.
 	init(configurationLoader: ConfigurationLoader,
@@ -77,6 +85,8 @@ final class HomeViewModel {
 	     getAuthenticatorsUseCase: GetAuthenticatorsUseCase,
 	     deleteAuthenticatorsUseCase: DeleteAuthenticatorsUseCase,
 	     getDeviceInformationUseCase: GetDeviceInformationUseCase,
+	     fetchPendingOperationsUseCase: FetchPendingOperationsUseCase,
+	     outOfBandOperationUseCase: OutOfBandOperationUseCase,
 	     responseObserver: ResponseObserver,
 	     appCoordinator: AppCoordinator) {
 		self.configurationLoader = configurationLoader
@@ -88,6 +98,8 @@ final class HomeViewModel {
 		self.getAuthenticatorsUseCase = getAuthenticatorsUseCase
 		self.deleteAuthenticatorsUseCase = deleteAuthenticatorsUseCase
 		self.getDeviceInformationUseCase = getDeviceInformationUseCase
+		self.fetchPendingOperationsUseCase = fetchPendingOperationsUseCase
+		self.outOfBandOperationUseCase = outOfBandOperationUseCase
 		self.responseObserver = responseObserver
 		self.appCoordinator = appCoordinator
 	}
@@ -109,6 +121,8 @@ extension HomeViewModel: ScreenViewModel {
 		let readQrCodeTrigger: Driver<()>
 		/// Observable sequence used for starting in-band authentication.
 		let authenticateTrigger: Driver<()>
+		/// Observable sequence used for starting fetch pending out-of-band operations.
+		let fetchPendingOperationsTrigger: Driver<()>
 		/// Observable sequence used for starting deregistration.
 		let deregisterTrigger: Driver<()>
 		/// Observable sequence used for starting PIN change.
@@ -135,6 +149,8 @@ extension HomeViewModel: ScreenViewModel {
 		let readQrCode: Driver<()>
 		/// Observable sequence used for listening to authenticate event.
 		let authenticate: Driver<()>
+		/// Observable sequence used for listening to fetch pending out-of-band operations event.
+		let fetchPendingOperations: Driver<()>
 		/// Observable sequence used for listening to deregister event.
 		let deregister: Driver<()>
 		/// Observable sequence used for listening to PIN change event.
@@ -187,6 +203,13 @@ extension HomeViewModel: ScreenViewModel {
 			.trackError(errorTracker)
 			.asDriverOnErrorJustComplete()
 
+		let fetchPendingOperations = input.fetchPendingOperationsTrigger
+			.asObservable()
+			.flatMapLatest(getAccountsUseCase.execute)
+			.flatMap(fetchPendingOperations(accounts:))
+			.trackError(errorTracker)
+			.asDriverOnErrorJustComplete()
+
 		let deregister = input.deregisterTrigger
 			.asObservable()
 			.flatMapLatest(getAccountsUseCase.execute)
@@ -236,6 +259,7 @@ extension HomeViewModel: ScreenViewModel {
 		              accounts: accounts,
 		              readQrCode: readQrCode,
 		              authenticate: authenticate,
+		              fetchPendingOperations: fetchPendingOperations,
 		              deregister: deregister,
 		              pinChange: pinChange,
 		              passwordChange: passwordChange,
@@ -266,6 +290,22 @@ private extension HomeViewModel {
 		                                                handler: nil,
 		                                                message: nil)
 		return .just(appCoordinator.navigateToAccountSelection(with: parameter))
+	}
+
+	/// Fetches pending out-of-band operations.
+	///
+	/// - Parameter accounts: The list of the available accounts.
+	/// - Returns: An observable sequence.
+	func fetchPendingOperations(accounts: [any Account]) -> Observable<()> {
+		guard !accounts.isEmpty else {
+			return .error(BusinessError.accountsNotFound)
+		}
+
+		return fetchPendingOperationsUseCase.execute()
+			.map { $0.operations.compactMap(\.payload) }
+			.compactMap(\.last)
+			.flatMap(outOfBandOperationUseCase.execute(payload:))
+			.flatMap(responseObserver.observe(response:))
 	}
 
 	/// Starts deregistration.
