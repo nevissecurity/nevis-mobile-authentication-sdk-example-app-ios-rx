@@ -21,6 +21,8 @@ extension Operation {
 			L10n.Operation.Registration.title
 		case .authentication:
 			L10n.Operation.Authentication.title
+		case .fetchPendingOperations:
+			L10n.Operation.FetchPendingOperations.title
 		case .deregistration:
 			L10n.Operation.Deregistration.title
 		case .pinChange:

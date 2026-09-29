@@ -1,4 +1,8 @@
-![Nevis Logo](https://www.nevis.net/hubfs/Nevis/images/logotype.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://www.nevis.net/hubfs/Nevis%202023%20theme/Icons/negativ.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://www.nevis.net/hubfs/Nevis%202023%20theme/Icons/positiv.svg">
+  <img alt="Nevis logo" src="https://www.nevis.net/hubfs/Nevis/images/logotype.svg">
+</picture>
 
 # Nevis Mobile Authentication SDK iOS Example App Reactive
 
@@ -33,7 +37,7 @@ Your development setup has to meet the following prerequisites:
 
 ### Initialization
 
-Dependencies in this project are provided via Cocoapods. Please install all dependencies by running
+Dependencies in this project are provided via CocoaPods. Please install all dependencies by running
 
 ```bash
 pod install
@@ -152,6 +156,10 @@ The change password operation is implemented in the [ChangePasswordUseCaseImpl](
 #### Decode out-of-band payload
 
 Out-of-band operations occur when a message is delivered to the application through an alternate channel like a push notification, a QR code, or a deep link. With the help of the [DecodePayloadUseCaseImpl](NevisExampleApp/Domain/Use%20Case/DecodePayloadUseCaseImpl.swift) class the application can create an [OutOfBandPayload](https://docs.nevis.net/mobilesdk/api-references/swift/documentation/nevismobileauthentication/outofbandpayload) either from a JSON or a Base64 URL encoded String. The [OutOfBandPayload](https://docs.nevis.net/mobilesdk/api-references/swift/documentation/nevismobileauthentication/outofbandpayload) is then used to start an [OutOfBandOperation](https://docs.nevis.net/mobilesdk/api-references/swift/documentation/nevismobileauthentication/outofbandoperation), see chapters [Out-of-Band Registration](#out-of-band-registration) and [Out-of-Band Authentication](#out-of-band-authentication).
+
+#### Fetch pending operations
+
+Fetching the pending out-of-band operations of the registered accounts is implemented in the [FetchPendingOperationsUseCaseImpl](NevisExampleApp/Domain/Use%20Case/FetchPendingOperationsUseCaseImpl.swift) class. The fetch operation completes with a [PendingOutOfBandOperationsResult](https://docs.nevis.net/mobilesdk/api-references/swift/documentation/nevismobileauthentication/pendingoutofbandoperationsresult), containing an array of [PendingOutOfBandOperation](https://docs.nevis.net/mobilesdk/api-references/swift/documentation/nevismobileauthentication/pendingoutofbandoperation) objects together with their payloads, if there are any. If pending out-of-band operations are found, the [OutOfBandPayload](https://docs.nevis.net/mobilesdk/api-references/swift/documentation/nevismobileauthentication/outofbandpayload) of the latest one is processed by the [OutOfBandOperationUseCaseImpl](NevisExampleApp/Domain/Use%20Case/OutOfBandOperationUseCaseImpl.swift) class the same way as a payload obtained from a QR code or a deep link. If there is no pending out-of-band operation, nothing happens.
 
 #### Change device information
 

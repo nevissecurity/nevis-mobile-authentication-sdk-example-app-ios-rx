@@ -25,6 +25,9 @@ final class HomeScreen: BaseScreen, Screen {
 	/// The Authenticate button.
 	private let authenticateButton = OutlinedButton(title: L10n.Home.authenticate)
 
+	/// The Fetch Pending Operations button.
+	private let fetchPendingOperationsButton = OutlinedButton(title: L10n.Home.fetchPendingOperations)
+
 	/// The Deregister button.
 	private let deregisterButton = OutlinedButton(title: L10n.Home.deregister)
 
@@ -117,6 +120,7 @@ private extension HomeScreen {
 		setupDescriptionLabel()
 		setupReadQrCodeButton()
 		setupAuthenticateButton()
+		setupFetchPendingOperationsButton()
 		setupDeregisterButton()
 		setupPinChangeButton()
 		setupPasswordChangeButton()
@@ -150,6 +154,13 @@ private extension HomeScreen {
 
 	func setupAuthenticateButton() {
 		authenticateButton.do {
+			addItemToBottom($0, spacing: 16)
+			$0.setHeight(with: 40)
+		}
+	}
+
+	func setupFetchPendingOperationsButton() {
+		fetchPendingOperationsButton.do {
 			addItemToBottom($0, spacing: 16)
 			$0.setHeight(with: 40)
 		}
@@ -244,6 +255,7 @@ private extension HomeScreen {
 		let input = HomeViewModel.Input(loadTrigger: loadTrigger,
 		                                readQrCodeTrigger: readQrCodeButton.rx.tap.asDriver(),
 		                                authenticateTrigger: authenticateButton.rx.tap.asDriver(),
+		                                fetchPendingOperationsTrigger: fetchPendingOperationsButton.rx.tap.asDriver(),
 		                                deregisterTrigger: deregisterButton.rx.tap.asDriver(),
 		                                pinChangeTrigger: pinChangeButton.rx.tap.asDriver(),
 		                                passwordChangeTrigger: passwordChangeButton.rx.tap.asDriver(),
@@ -256,6 +268,7 @@ private extension HomeScreen {
 		 output.accounts.drive(accountsBinder),
 		 output.readQrCode.drive(),
 		 output.authenticate.drive(),
+		 output.fetchPendingOperations.drive(),
 		 output.deregister.drive(),
 		 output.pinChange.drive(),
 		 output.passwordChange.drive(),

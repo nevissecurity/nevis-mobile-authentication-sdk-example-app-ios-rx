@@ -7,6 +7,7 @@
 "home_description" = "Registered accounts: %@";
 "home_read_qr_code_button" = "Read Qr Code";
 "home_authenticate_button" = "In-Band Authenticate";
+"home_fetch_pending_operations_button" = "Fetch Pending Operations";
 "home_deregister_button" = "Deregister";
 "home_pin_change_button" = "PIN change";
 "home_password_change_button" = "Password change";
@@ -110,6 +111,7 @@
 "operation_out_of_band_title" = "Out-of-Band operation";
 "operation_registration_title" = "Registration";
 "operation_authentication_title" = "Authentication";
+"operation_fetch_pending_operations_title" = "Fetch pending operations";
 "operation_deregistration_title" = "Deregistration";
 "operation_pin_change_title" = "PIN change";
 "operation_password_change_title" = "Password change";
