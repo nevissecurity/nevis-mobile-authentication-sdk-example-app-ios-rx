@@ -97,6 +97,10 @@ Now that the iOS example app is up and running, it's time to try it out!
 
 Check out our [Quickstart Guide](https://docs.nevis.net/mobilesdk/quickstart).
 
+## AI Assistant Support
+
+This repository contains an [AGENTS.md](AGENTS.md) file with project context for AI coding assistants (e.g. Claude Code, Cursor, GitHub Copilot). `CLAUDE.md`, `.cursorrules` and `.github/copilot-instructions.md` are symlinks to it. It helps the assistant answer questions about configuring, running and adapting the example app, and about moving its SDK integration code into your own application.
+
 ## Integration Notes
 
 In this section you can find hints about how the Nevis Mobile Authentication SDK is integrated into the example app.
