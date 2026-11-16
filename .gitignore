@@ -250,5 +250,5 @@ xcuserdata/
 ### Custom Xcode Patch ###
 *.xcworkspace/*
 
-### Jazzy Patch ###
-Docs/generated
+# AI coding assistants: local, per-user state
+.claude/settings.local.json
