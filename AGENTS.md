@@ -33,8 +33,8 @@ The example covers only part of the SDK. For features that are not shown here, u
 How the SDK is consumed:
 
 - **CocoaPods**, see `Podfile`. There are two pods, linked per build configuration:
-  - `NevisMobileAuthentication-Debug` (`~> 4.6.0`) for the `Debug` configuration. This is the **debug flavor**: it runs on devices and simulators, has logging, and only a subset of the protection mechanisms.
-  - `NevisMobileAuthentication` (`~> 4.6.0`) for the `Release` configuration. This is the **release flavor**: all protection mechanisms are on, and it **runs on physical devices only**.
+  - `NevisMobileAuthentication-Debug` (`~> 4.7.0`) for the `Debug` configuration. This is the **debug flavor**: it runs on devices and simulators, has logging, and only a subset of the protection mechanisms.
+  - `NevisMobileAuthentication` (`~> 4.7.0`) for the `Release` configuration. This is the **release flavor**: all protection mechanisms are on, and it **runs on physical devices only**.
 - The SDK is also published as a Swift package: https://github.com/nevissecurity/nevis-mobile-authentication-sdk-ios-package. **CocoaPods support for the SDK ends when the CocoaPods Specs repository becomes read-only at the end of 2026.** For a new customer app, recommend Swift Package Manager. SPM can't link per configuration, so a release target and a debug target are needed (see the installation guide).
 - See the [iOS installation guide](https://docs.nevis.net/mobilesdk/guide/installation/ios-installation) and [SDK flavors](https://docs.nevis.net/mobilesdk/guide/introduction#sdk-flavors).
 
@@ -183,7 +183,7 @@ If something isn't covered here, check https://docs.nevis.net (guide + DocC API 
 - **Handlers are single-use**: every SDK handler must be completed or cancelled exactly once. ViewModels set them to `nil` after use; keep that pattern, or the operation hangs.
 - **Main thread**: don't assume that SDK callbacks arrive on the main thread. UI work is routed through `ResponseObserverImpl` (`observe(on: MainScheduler.instance)`) and `Driver`s; keep doing that when you add new flows.
 - **Retain cycles**: the `Observable.create` closures capture `[weak self]` / `[unowned self]`. Follow the same pattern in new use cases.
-- **SDK version alignment**: the pods use `~> 4.6.0`. Keep `Podfile` and `Podfile.lock` in sync (`pod install`), and check the [iOS release notes](https://docs.nevis.net/mobilesdk/release_notes/ios-release-notes) when upgrading.
+- **SDK version alignment**: the pods use `~> 4.7.0`. Keep `Podfile` and `Podfile.lock` in sync (`pod install`), and check the [iOS release notes](https://docs.nevis.net/mobilesdk/release_notes/ios-release-notes) when upgrading.
 - **Code style**: SwiftFormat (`.swiftformat`) with tab indentation. Document public types with `///` comments; DocC sources are in `Documentation.docc`.
 - **New files must be added to `NevisExampleApp.xcodeproj`**, in the correct group and the `NevisExampleApp` target. A file that exists on disk but not in the project is not compiled.
 - **Never commit secrets** (signing certificates, provisioning profiles, tokens) or personal Xcode state (`xcuserdata/`).
